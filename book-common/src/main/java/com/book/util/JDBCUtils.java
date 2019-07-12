@@ -1,4 +1,4 @@
-package com.book;
+package com.book.util;
 
 import javax.sql.DataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
