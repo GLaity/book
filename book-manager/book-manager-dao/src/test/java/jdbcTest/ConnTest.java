@@ -16,17 +16,18 @@ import java.util.List;
 public class ConnTest {
     @Test
     public void demoTest(){
-        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        List<Advice> li = null;
+        IAdviceDao adviceDao = new AdviceDaoImpl();
+        Advice li = new Advice();
+        li.setAdvice_Text("hao");
+        li.setAdvice_Level(3);
+        li.setAdvice_Date("2019-02-02");
+        li.setBook_Id(1111);
+        li.setUser_Id(1212);
         try {
-            li = qr.query("select * from advice", new BeanListHandler<>(Advice.class));
+            adviceDao.insertAdvice(li);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(li.get(0)==null){
-            return;
-        }
-        System.out.println(li.get(0));
     }
     @Test
     public void demo1Test(){

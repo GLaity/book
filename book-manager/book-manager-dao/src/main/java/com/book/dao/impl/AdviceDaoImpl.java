@@ -6,10 +6,8 @@ import com.book.util.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdviceDaoImpl implements IAdviceDao {
@@ -37,32 +35,24 @@ public class AdviceDaoImpl implements IAdviceDao {
     @Override
     public Advice select(int advice_Id) throws SQLException {
         String adStr = "select * from advice where advice_id = ?";
-        Advice advice = null;
-        advice = qr.query(adStr, new BeanHandler<>(Advice.class), advice_Id);
-        return advice;
+        return qr.query(adStr, new BeanHandler<>(Advice.class), advice_Id);
     }
 
     @Override
     public List<Advice> selectAll() throws SQLException {
         String adStr = "select * from advice";
-        List<Advice> adviceList = null;
-        adviceList = qr.query(adStr, new BeanListHandler<>(Advice.class));
-        return adviceList;
+        return qr.query(adStr, new BeanListHandler<>(Advice.class));
     }
 
     @Override
     public List<Advice> selectByBook(int book_Id) throws SQLException {
         String adStr = "select * from advice where book_id = ?";
-        List<Advice> adviceList = null;
-        adviceList = qr.query(adStr, new BeanListHandler<>(Advice.class),book_Id);
-        return adviceList;
+        return qr.query(adStr, new BeanListHandler<>(Advice.class),book_Id);
     }
 
     @Override
     public List<Advice> selectByUser(int user_Id) throws SQLException {
         String adStr = "select * from advice where user_id = ?";
-        List<Advice> adviceList = null;
-        adviceList = qr.query(adStr, new BeanListHandler<>(Advice.class),user_Id);
-        return adviceList;
+        return qr.query(adStr, new BeanListHandler<>(Advice.class),user_Id);
     }
 }
