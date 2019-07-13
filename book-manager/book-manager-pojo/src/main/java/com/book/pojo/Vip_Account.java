@@ -38,23 +38,4 @@ public class Vip_Account {
     public void setVip_Balance(double vip_Balance) {
         this.vip_Balance = vip_Balance;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vip_Account that = (Vip_Account) o;
-        return user_Id == that.user_Id &&
-                vip_Id == that.vip_Id &&
-                Double.compare(that.vip_Balance, vip_Balance) == 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Vip_Account{" +
-                "user_Id=" + user_Id +
-                ", vip_Id=" + vip_Id +
-                ", vip_Balance=" + vip_Balance +
-                '}';
-    }
 }

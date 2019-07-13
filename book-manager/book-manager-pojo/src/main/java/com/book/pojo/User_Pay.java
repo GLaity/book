@@ -58,27 +58,4 @@ public class User_Pay {
     public void setPay_Other(String pay_Other) {
         this.pay_Other = pay_Other;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User_Pay user_pay = (User_Pay) o;
-        return user_Id == user_pay.user_Id &&
-                pay_Id == user_pay.pay_Id &&
-                Double.compare(user_pay.pay_Money, pay_Money) == 0 &&
-                pay_Date.equals(user_pay.pay_Date) &&
-                pay_Other.equals(user_pay.pay_Other);
-    }
-
-    @Override
-    public String toString() {
-        return "User_Pay{" +
-                "user_Id=" + user_Id +
-                ", pay_Id=" + pay_Id +
-                ", pay_Date='" + pay_Date + '\'' +
-                ", pay_Money=" + pay_Money +
-                ", pay_Other='" + pay_Other + '\'' +
-                '}';
-    }
 }
