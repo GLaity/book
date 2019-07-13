@@ -1,5 +1,7 @@
 package com.book.dao;
 
+import com.book.pojo.Book_Basic;
+
 import java.util.List;
 
 public interface IBookDao {
@@ -16,7 +18,7 @@ public interface IBookDao {
     public Book_Basic selectBookById(int book_Id);
 
     //根据分类 查询书籍
-    public List<Book_Basic> selectBookById(int type_Id);
+    public List<Book_Basic> selectBookByType(int type_Id);
 
     //查询全部书籍
     public  List<Book_Basic> selectAllBook();
