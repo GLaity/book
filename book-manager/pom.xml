@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>book-parent</artifactId>
-        <groupId>com.lanqiao</groupId>
+        <groupId>com.book1</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../book-parent/pom.xml</relativePath>
     </parent>
@@ -22,9 +22,27 @@
         <!--工程之间的依赖 manager依赖common-->
         <dependency>
             <artifactId>book-common</artifactId>
-            <groupId>com.lanqiao</groupId>
+            <groupId>com.book1</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.eclipse.jetty</groupId>
+               <artifactId>jetty-maven-plugin</artifactId>
+               <version>9.2.1.v20140609</version>
+               <configuration>
+                   <webAppConfig>
+                       <!--              应用访问的上下文路径-->
+                       <contextPath>/index.jsp</contextPath>
+                   </webAppConfig>
+                   <httpConnector>
+                       <!--              端口号-->
+                       <port>9099</port>
+                   </httpConnector>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
 </project>
