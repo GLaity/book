@@ -46,7 +46,7 @@ public class IUserDaoImpl implements IUserDao {
     }
 
     public User_Account selectUserAccountByUsername(String username) {
-        String sql = "select password from user_account where user_username=?";
+        String sql = "select * from user_account where user_username=?";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         User_Account user = null;
         try {

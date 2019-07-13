@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: lenovo
+  Date: 2019/7/12
+  Time: 20:04
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -30,15 +39,28 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
-                <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
     </div>
@@ -49,7 +71,9 @@
         <!--search-->
         <div class="search">
             <ul class="switchNav">
+
                 <li class="active" id="chanpin">小说</li>
+
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
@@ -221,6 +245,7 @@
     <div class="IdxAsideRt">
         <!--login-->
         <div class="idxRtLogin">
+            <c:if test="${empty(sessionScope.user)}">
             <div class="fstArea">
                 <a href="#" class="userIcon">
                     <img src="images/icon/DefaultAvatar.jpg">
@@ -230,11 +255,25 @@
                     <p class="obviousText">小说</p>
                 </div>
             </div>
-            <div class="secArea">
-                <a href="login.html">登录</a>
-                <a href="register.html">免费注册</a>
-
-            </div>
+                <div class="secArea">
+                    <a href="login.jsp">登录</a>
+                    <a href="register.jsp">免费注册</a>
+                </div>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <div class="fstArea">
+                    <a href="#" class="userIcon">
+                        <img src="images/icon/DefaultAvatar.jpg">
+                    </a>
+                    <div class="rtInfor">
+                        <p>Hi!你好</p>
+                        <p class="obviousText"><c:out value="${sessionScope.user.getUser_Username()}"></c:out></p>
+                    </div>
+                </div>
+                <div class="secArea">
+                    <a href="user.jsp">个人中心</a>
+                </div>
+            </c:if>
         </div>
         <dl class="idxRtAtc">
             <dt>

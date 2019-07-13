@@ -42,7 +42,19 @@ public class IUserServiceImpl implements IUserService {
         dao.deleteUserAccountId(id);
     }
 
-    public void loginService(String username, String password) {
-
+    public User_Account loginService(String username, String password) {
+        IUserDao userdao = new IUserDaoImpl();
+        User_Account user = new User_Account();
+        user = userdao.selectUserAccountByUsername(username);
+        if(user!=null){
+            if(password.equals(user.getUser_Password())){
+                return user;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
+
 }

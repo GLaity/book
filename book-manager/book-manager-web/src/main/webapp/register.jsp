@@ -1,15 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
-  Date: 2019/7/12
-  Time: 20:04
+  Date: 2019/7/13
+  Time: 14:10
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>登录</title>
+    <title>注册</title>
     <meta name="keywords"  content="DeathGhost" />
     <meta name="description" content="DeathGhost" />
     <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
@@ -26,7 +27,47 @@
             $("nav .asideNav").mouseleave(function(){
                 $(".asideNav").slideUp();
             });
+
         });
+        $(function () {
+            $("#username").mouseleave(function () {
+                var username = $("#username").val();
+                $.ajax({
+                    type:"post",
+                    url:"/check",
+                    data:"username="+username,
+
+                    success:function (data) {
+                        if(data=="0"){
+                            $("#namemsg").text("用户名已被注册");
+                            $("#regbtn").attr("disable","disabled");
+                        }else{
+                            $("#regbtn").removeAttr("disabled");
+                            $("#namemsg").text("");
+                        }
+                    }
+                })
+            })
+            $("#password").mouseleave(function () {
+                if($("#repassword").val()!=$("#password").val()){
+                    $("#pwdmsg").text("两次密码不一致，请重新输入");
+                    $("#regbtn").attr("disable","disabled");
+                }else{
+                    $("#pwdmsg").text("");
+                    $("#regbtn").removeAttr("disabled");
+                }
+            })
+            $("#repassword").mouseleave(function () {
+                if($("#repassword").val()!=$("#password").val()){
+                    $("#pwdmsg").text("两次密码不一致，请重新输入");
+                    $("#regbtn").attr("disable","disabled");
+                }else{
+                    $("#pwdmsg").text("");
+                    $("#regbtn").removeAttr("disabled");
+                }
+            })
+        })
+
     </script>
 </head>
 <body>
@@ -78,7 +119,7 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="product_list.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.html">分类</a></dt> -->
                     <dd>
                         <a href="type.html"><span><i>玄幻</i></span></a>
                     </dd>
@@ -138,30 +179,35 @@
     <div class="lt_img">
         <img src="images/form_bg.jpg"/>
     </div>
-    <form action="/user?_method=login" method="post">
+    <form action="/user?_method=register" method="post">
         <div class="rt_form">
-
-            <h2>会员登录</h2>
+            <h2>会员注册</h2>
             <ul>
                 <li class="user_icon">
-                    <input type="text" class="textbox" placeholder="账号" name="username"/>
+                    <input type="text" class="textbox" placeholder="用户名" name="username" id="username" value=""/>
                 </li>
+                <span id="namemsg"></span>
+
                 <li class="user_pwd">
-                    <input type="password" class="textbox" placeholder="密码" name="password"/>
+                    <input type="password" class="textbox" placeholder="设置密码" name="password" id="password" value=""/>
+                </li>
+                <span id="pwdmsg"></span>
+
+                <li class="user_pwd">
+                    <input type="password" class="textbox" placeholder="确认密码"name="repassword" id="repassword" value=""/>
+                </li>
+                <span id="repwdmsg"></span>
+
+                <li class="link_li">
+                    <label><input type="checkbox"/><a>阅读注册协议</a></label>
+                    <a href="login.html" title="登录账号" class="fr">已有账号，立即登录？</a>
                 </li>
                 <li class="link_li">
-                    <a href="register.html" title="注册新用户" class="fl">注册新用户</a>
-                    <a href="find_pwd.html" title="忘记密码" class="fr">忘记密码？</a>
-                </li>
-                <li class="link_li">
-                    <input type="submit" value="立即登录" class="sbmt_btn"/>
+                    <input type="submit" value="立即注册" class="sbmt_btn" id="regbtn" disabled=""/>
                 </li>
             </ul>
         </div>
     </form>
-
-
-
 </section>
 
 <!--footer-->
@@ -227,3 +273,4 @@
 </footer>
 </body>
 </html>
+
