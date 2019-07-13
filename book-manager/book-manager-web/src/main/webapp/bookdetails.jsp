@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -53,6 +55,7 @@
                 $(this).nextAll().text(text_k).removeClass("current");
                 $(this).text(text_s).addClass("current");
                 $(this).prevAll().text(text_s).addClass("current");
+                $("#adviceLevel").val($(this).index()+1)
             })
         })
     </script>
@@ -253,25 +256,19 @@
         <!--小说评价-->
         <div class="cont_wrap">
             <table class="table">
+                <c:forEach items="${adviceList}" var="advice">
                 <tr>
-                    <td width="20%" align="center">李*锋</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
+                    <td width="20%" align="center">${advice.getUser_Id()}</td>
+                    <td width="60%">${advice.getAdvice_Text()}</td>
+                    <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
                 </tr>
-                <tr>
-                    <td width="20%" align="center">彭**法</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
-                </tr>
-                <tr>
-                    <td width="20%" align="center">代**彭</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
-                </tr>
+                </c:forEach>
             </table>
             <!--分页-->
+            <form action="/advice?_method=add" method="post">
             <div class="box_con3">
                 <div class="head">
+                    <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
                     <ul>
                         <li>☆</li>
                         <li>☆</li>
@@ -281,7 +278,7 @@
                     </ul>
                 </div>
                 <div class="text">
-                    <textarea rows="5" cols="100%" placeholder="我的评论"></textarea>
+                    <textarea rows="5" cols="100%" name="adviceText" placeholder="我的评论"></textarea>
                 </div>
                 <br>
                 <div class="button">
@@ -289,6 +286,7 @@
                     <input type="reset" value="重置" name="" />
                 </div>
             </div>
+            </form>
 
             <div class="paging">
                 <a>第一页</a>
