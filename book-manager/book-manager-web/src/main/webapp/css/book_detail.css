@@ -1,0 +1,240 @@
+@charset 'UTF-8';
+
+a,
+blockquote,
+body,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+	margin: 0;
+	padding: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 14px
+}
+
+li,
+ol,
+ul {
+	list-style: none outside none
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse
+}
+
+fieldset,
+img {
+	border: 0 none
+}
+
+html {
+	min-width: 990px
+}
+
+body {
+	font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+	text-align: left;
+	color: #262626;
+	background: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased
+}
+
+body {
+	overflow: hidden;
+	width: 100%;
+	width: 100vw
+}
+
+html {
+	overflow-y: scroll
+}
+
+:root body {
+	position: absolute background-color: #008EE0;
+}
+
+.top-op span {
+	padding: 0 6px 4px;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, .2);
+	color: whitesmoke;
+}
+
+.book-detail-img {
+	float: left;
+	width: 144px;
+	height: 192px;
+	margin: 20px 20px 0
+}
+
+.book-detail-info {
+	float: left;
+	margin-top: 20px;
+	margin: 0;
+	padding: 0;
+}
+
+.book-detail-info h1 {
+	font: 700 28px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+	overflow: hidden;
+	height: 38px;
+	margin-bottom: 12px;
+}
+
+.blue{
+	font-size: 15px;
+	text-decoration: none;
+	font: 12px/22px PingFangSC-Regular, '-apple-system', Simsun;
+	display: inline-block;
+	overflow: hidden;
+	height: 22px;
+	margin-right: 12px;
+	padding: 0 10px;
+	text-align: center;
+	vertical-align: middle;
+	border-color: #9fadc9;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 15px
+}
+
+.book-detail-info h1 span{
+	
+	position: relative;
+	font: 20px PingFangSC-Regular,'-apple-system',Simsun;
+}
+
+.book-detail-info p {
+	word-wrap: break-word;
+	word-break: break-all;
+	/* font-size: 0; */
+	overflow: hidden;
+	height: 25px;
+	margin-bottom: 12px;
+	color: #3f5a93;
+	border-color: #9fadc9;
+}
+
+.hengfu {
+	overflow: hidden;
+	width: 976px;
+	margin: 10px auto;
+}
+
+.box_con1 {
+	border: 2px solid #88C6E5;
+	overflow: hidden;
+	width: 976px;
+	margin: 10px auto;
+}
+
+.box_con3 {
+	border: 2px solid #88C6E5;
+	overflow: hidden;
+	width: 976px;
+	margin: 10px auto;
+	
+}
+
+.box_con3 ul{
+	list-style: none;
+	margin-left: 90px;
+}
+
+.box_con3 li{
+	/* 靠左浮动 */
+	float: left;
+	/* 大小 */
+	font-size: 20px;
+	display: inline-block;
+	/* 左边距 */
+	margin-left: 10px;
+	/* 	颜色 */
+	color: orange;
+}
+.box_con3 p{
+	margin-left: 105px;
+}
+
+
+#list dl {
+	display: block;
+	float: left;
+	overflow: hidden;
+	padding-bottom: 1px;
+	margin: auto;
+}
+#white{
+	width: 1200px;
+	height: 1px;
+	/* background-color: #0000FF; */
+}
+#list dd {
+	border-bottom: 1px dashed;
+	display: inline;
+	float: left;
+	height: 25px;
+	line-height: 200%;
+	margin-bottom: 5px;
+	overflow: hidden;
+	text-align: left;
+	text-indent: 10px;
+	vertical-align: middle;
+	width: 33%;
+}
+
+.box_con2 {
+	border: 2px solid #88C6E5;
+	overflow: hidden;
+	width: 976px;
+	margin: 10px auto;
+
+}
+
+.button{
+	width: auto;
+	height: auto;
+	text-align:center;
+}
+.head{
+	height: 50px;
+}
+.textarea{
+	margin-left: 100px;
+}
+/* .box_con2 ul li{ list-style: none;}
+.box_con2 ul li input{ display: none;}
+.box_con2 ul li label{ float: left; width: 100px; text-align: center; line-height: 30px; border: 1px solid #000; border-right: 0; box-sizing: border-box; cursor: pointer; transition: all .3s;}
+.box_con2 ul li input:checked+label{ color: #fff;}
+.box_con2 ul li:last-child label{ border-right: 1px solid #000;}
+.box_con2 ul li .content{ opacity: 0; visibility:hidden; position: absolute; left: 0; top: 31px; width: 100%; height: 300px; border: 1px solid #000; box-sizing: border-box; font-size: 24px; text-align: center; line-height: 300px; color: #fff; transition: all .3s;}
+.box_con2 ul li:nth-child(1) .content{ background-color: #0f0;}
+.box_con2 ul li:nth-child(2) .content{ background-color: #00f;}
+.box_con2 ul li input:checked~.content{ opacity: 1; visibility:visible;} */
