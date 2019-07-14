@@ -10,7 +10,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.sql.SQLException;
 import java.util.List;
 
-public class IVipDaoImpl implements IVipDao {
+public class VipDaoImpl implements IVipDao {
 
 
     public void insertVipAccount(Vip_Account vip) {

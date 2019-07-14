@@ -51,6 +51,13 @@ public class UserServlet extends HttpServlet {
 
     }
     public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        IUserService userService = new IUserServiceImpl();
+        User_Account user = new User_Account();
+        user.setUser_Username(username);
+        user.setUser_Password(password);
+        userService.addUser(user);
+        resp.sendRedirect("/login.jsp");
     }
 }

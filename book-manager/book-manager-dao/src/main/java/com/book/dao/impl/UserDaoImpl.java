@@ -10,13 +10,13 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.sql.SQLException;
 import java.util.List;
 
-public class IUserDaoImpl implements IUserDao {
+public class UserDaoImpl implements IUserDao {
     //新增用户 ，注册用户
     public void insertUserAccount(User_Account user) {
-        String sql ="insert into user_account values(?,?,?,?,?,?,?)";
+        String sql ="insert into user_account(user_username,user_password,user_date)values(?,?,date(NOW()))";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         try {
-            qr.update(sql,user.getUser_Id(),user.getUser_Username(),user.getUser_Password(),user.getUser_Date(),user.getUser_Tel(),user.getUser_Email(),user.getUser_Photo());
+            qr.update(sql,user.getUser_Username(),user.getUser_Password());
         } catch (SQLException e) {
             e.printStackTrace();
         }
