@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -53,6 +55,7 @@
                 $(this).nextAll().text(text_k).removeClass("current");
                 $(this).text(text_s).addClass("current");
                 $(this).prevAll().text(text_s).addClass("current");
+                $("#adviceLevel").val($(this).index()+1)
             })
         })
     </script>
@@ -70,7 +73,7 @@
             </ul>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
+                <li><a href="user.jsp">个人中心</a></li>
                 <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
                 <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
             </ul>
@@ -184,25 +187,25 @@
     <div class="rt_infor">
         <!--lt_infor-->
         <div class="goods_infor">
-            <h2>2019小说小说小说小说小说小说</h2>
+            <h2><c:out value="${requestScope.bookBasic.getBook_Title()}"></c:out></h2>
             <ul>
                 <li>
                     <dl class="horizontal">
                         <dt>作者</dt>
-                        <dd>哈哈哈</dd>
+                        <dd><c:out value="${requestScope.bookBasic.getWriter_Id()}"></c:out></dd>
                         <!-- <dd><strong class="rmb_icon univalent">129.00-169.00</strong>小说</dd> -->
                     </dl>
                 </li>
                 <li>
                     <dl class="horizontal">
                         <dt>出版时间：</dt>
-                        <dd><time>2019年01月份</time></dd>
+                        <dd><time><c:out value="${requestScope.bookBasic.getBook_Createdate()}"></c:out></time></dd>
                     </dl>
                 </li>
                 <li>
                     <dl class="horizontal">
                         <dt>类别：</dt>
-                        <dd><em>类别名</em></dd>
+                        <dd><em><c:out value="${requestScope.bookBasic.getType_Id()}"></c:out></em></dd>
                     </dl>
                 </li>
                 <li class="statistics">
@@ -240,38 +243,24 @@
         </ul>
         <!--商品详情-->
         <div class="cont_wrap active">
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾后及贫困地区的孩子们搭建课<br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾
-            <br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾后及贫困地区的孩子们搭建课<br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓
+            <c:out value="${requestScope.bookBasic.getBook_Context()}"></c:out>
         </div>
         <!--小说评价-->
         <div class="cont_wrap">
             <table class="table">
+                <c:forEach items="${adviceList}" var="advice">
                 <tr>
-                    <td width="20%" align="center">李*锋</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
+                    <td width="20%" align="center">${advice.getUser_Id()}</td>
+                    <td width="60%">${advice.getAdvice_Text()}</td>
+                    <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
                 </tr>
-                <tr>
-                    <td width="20%" align="center">彭**法</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
-                </tr>
-                <tr>
-                    <td width="20%" align="center">代**彭</td>
-                    <td width="60%">这里是评论内容哦这里是评论内容哦这里是评论内容哦容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦这里是评论内容哦</td>
-                    <td width="20%" align="center"><time>2013-01-13 15:06</time></td>
-                </tr>
+                </c:forEach>
             </table>
             <!--分页-->
+            <form action="/advice?_method=add" method="post">
             <div class="box_con3">
                 <div class="head">
+                    <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
                     <ul>
                         <li>☆</li>
                         <li>☆</li>
@@ -281,7 +270,7 @@
                     </ul>
                 </div>
                 <div class="text">
-                    <textarea rows="5" cols="100%" placeholder="我的评论"></textarea>
+                    <textarea rows="5" cols="100%" name="adviceText" placeholder="我的评论"></textarea>
                 </div>
                 <br>
                 <div class="button">
@@ -289,6 +278,7 @@
                     <input type="reset" value="重置" name="" />
                 </div>
             </div>
+            </form>
 
             <div class="paging">
                 <a>第一页</a>
