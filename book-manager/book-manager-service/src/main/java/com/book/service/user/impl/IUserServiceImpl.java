@@ -1,7 +1,10 @@
 package com.book.service.user.impl;
 
+import com.book.dao.ICountAccountDao;
 import com.book.dao.IUserDao;
+import com.book.dao.impl.CountAccountImpl;
 import com.book.dao.impl.UserDaoImpl;
+import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
 import com.book.service.user.IUserService;
 
@@ -11,7 +14,8 @@ public class IUserServiceImpl implements IUserService {
     public void addUser(User_Account user) {
         IUserDao dao = new UserDaoImpl();
         dao.insertUserAccount(user);
-
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.insertUserCount(user.getUser_Id());
     }
 
     public void modifyUser(User_Account user) {
@@ -55,6 +59,36 @@ public class IUserServiceImpl implements IUserService {
         }else{
             return null;
         }
+    }
+
+    @Override
+    public void modifyTotalVisit(int user_id) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.updataTotalVisit(user_id);
+    }
+
+    @Override
+    public void modifyTotalBought(int user_id) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.updataTotalBought(user_id);
+    }
+
+    @Override
+    public void modifyTotalTime(int user_id, int readTime) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.updataTotalTime(user_id,readTime);
+    }
+
+    @Override
+    public void modifyTotalPay(int user_id, double pay) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.updataTotalPay(user_id,pay);
+    }
+
+    @Override
+    public void modifyById(int user_id) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        countDao.selectById(user_id);
     }
 
 }
