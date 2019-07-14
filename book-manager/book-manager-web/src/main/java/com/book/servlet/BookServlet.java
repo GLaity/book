@@ -65,7 +65,7 @@ public class BookServlet extends HttpServlet {
         return null;
     }
 
-    public String add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String addadvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String adviceText = req.getParameter("adviceText");
         int adviceLevel = Integer.valueOf(req.getParameter("adviceLevel"));
         System.out.println(adviceText);

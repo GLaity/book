@@ -95,46 +95,46 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="product_list.html"><span><i>玄幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>武侠</i></span></a>
+                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>都市</i></span></a>
+                        <a href="product_list.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>军事</i></span></a>
+                        <a href="product_list.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>历史</i></span></a>
+                        <a href="product_list.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>游戏</i></span></a>
+                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>悬疑</i></span></a>
+                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>科幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>言情</i></span></a>
+                        <a href="product_list.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>青春</i></span></a>
+                        <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
                 <dl class="asideNav2">
                     <img src="upload/ad002.jpg" />
                 </dl>
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
-            <li><a href="product_list.html">完本</a></li>
-            <li><a href="product_list.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -162,17 +162,17 @@
         <div id="slide">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="bookdetails.jsp">
                         <img src="upload/slide01.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="bookdetails.jsp">
                         <img src="upload/slide02.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="bookdetails.jsp">
                         <img src="upload/slide03.jpg"/>
                     </a>
                 </div>
@@ -181,7 +181,7 @@
         </div>
         <!--singleAd-->
         <div class="singleAd">
-            <a href="product_list.html">
+            <a href="product_list.jsp">
                 <img src="upload/sigleAd.jpg"/>
             </a>
         </div>
@@ -189,52 +189,52 @@
         <dl class="bestShop">
             <dt>
                 <strong>优秀小说推荐</strong>
-                <a href="product_list.html" class="fr">更多</a>
+                <a href="product_list.jsp" class="fr">更多</a>
             </dt>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/001.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/002.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/003.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/004.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/005.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/006.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/007.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/008.jpg"/>
                     <h2>精品小说</h2>
                 </a>
@@ -278,16 +278,16 @@
         <dl class="idxRtAtc">
             <dt>
                 <em class="obviousText">最新排行</em>
-                <a href="ranking_list.html">more</a>
+                <a href="ranking_list.jsp">more</a>
             </dt>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
         </dl>
 
     </div>
@@ -299,84 +299,84 @@
             <a href="#">男生频道</a>
         </strong>
         <span class="classLi">
-   <a href="type.html">悬疑</a>
-   <a href="type.html">军事</a>
-   <a href="type.html">科幻</a>
-   <a href="type.html">玄幻</a>
-   <a href="type.html">游戏</a>
+   <a href="type.jsp">悬疑</a>
+   <a href="type.jsp">军事</a>
+   <a href="type.jsp">科幻</a>
+   <a href="type.jsp">玄幻</a>
+   <a href="type.jsp">游戏</a>
   </span>
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="product.html"><img src="upload/bestCategoryPic01.jpg"/></a>
+        <a href="bookdetails.jsp"><img src="upload/bestCategoryPic01.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>545.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods004.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>980.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods002.jpg"/>
                     <h3>小说</h3>
                     <p><span>642.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods004.jpg"/>
                     <h3>小说</h3>
                     <p><span>793.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>755.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods002.jpg"/>
                     <h3>小说</h3>
                     <p><span>360.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>1255.00</span></p>
@@ -385,10 +385,10 @@
         </ul>
         <!--bestBrand-->
         <div class="idxBrandLi">
-            <a href="product.html"><img src="upload/brandLogo01.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo02.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo03.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo04.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo01.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo02.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo03.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo04.jpg"/></a>
         </div>
     </div>
 </section>
@@ -399,82 +399,82 @@
             <a href="#">女生频道</a>
         </strong>
         <span class="classLi">
-   <a href="type.html">言情</a>
-   <a href="type.html">青春</a>
-   <a href="type.html">都市</a>
+   <a href="type.jsp">言情</a>
+   <a href="type.jsp">青春</a>
+   <a href="type.jsp">都市</a>
   </span>
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="product.html"><img src="upload/bestCategoryPic02.jpg"/></a>
+        <a href="bookdetails.jsp"><img src="upload/bestCategoryPic02.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods005.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods006.jpg"/>
                     <h3>小说</h3>
                     <p><span>545.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods007.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods008.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods009.jpg"/>
                     <h3>小说</h3>
                     <p><span>980.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods010.jpg"/>
                     <h3>小说</h3>
                     <p><span>642.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods005.jpg"/>
                     <h3>小说</h3>
                     <p><span>793.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods006.jpg"/>
                     <h3>小说</h3>
                     <p><span>755.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods007.jpg"/>
                     <h3>小说</h3>
                     <p><span>360.00</span></p>
                 </a>
             </li>
             <li>
-                <a href="product.html">
+                <a href="bookdetails.jsp">
                     <img src="upload/goods008.jpg"/>
                     <h3>小说</h3>
                     <p><span>1255.00</span></p>
@@ -483,10 +483,10 @@
         </ul>
         <!--bestBrand-->
         <div class="idxBrandLi">
-            <a href="product.html"><img src="upload/brandLogo01.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo02.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo03.jpg"/></a>
-            <a href="product.html"><img src="upload/brandLogo04.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo01.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo02.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo03.jpg"/></a>
+            <a href="bookdetails.jsp"><img src="upload/brandLogo04.jpg"/></a>
         </div>
     </div>
 </section>
@@ -494,35 +494,35 @@
 <section class="wrap idexCase">
     <h2>
         <strong>小说推荐</strong>
-        <a href="product.html">more</a>
+        <a href="bookdetails.jsp">more</a>
     </h2>
     <ul>
         <li>
-            <a href="product.html">
+            <a href="bookdetails.jsp">
                 <img src="upload/case001.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
-            <a href="product.html">
+            <a href="bookdetails.jsp">
                 <img src="upload/case002.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
-            <a href="product.html">
+            <a href="bookdetails.jsp">
                 <img src="upload/case003.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
-            <a href="product.html">
+            <a href="bookdetails.jsp">
                 <img src="upload/case004.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
-            <a href="product.html">
+            <a href="bookdetails.jsp">
                 <img src="upload/case005.jpg"/>
                 <h3>小说</h3>
             </a>

@@ -257,7 +257,7 @@
                 </c:forEach>
             </table>
             <!--分页-->
-            <form action="/advice?_method=add" method="post">
+            <form action="/advice?_method=addadvice" method="post">
             <div class="box_con3">
                 <div class="head">
                     <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
