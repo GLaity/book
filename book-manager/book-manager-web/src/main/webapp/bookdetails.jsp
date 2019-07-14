@@ -73,7 +73,7 @@
             </ul>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
+                <li><a href="user.jsp">个人中心</a></li>
                 <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
                 <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
             </ul>
