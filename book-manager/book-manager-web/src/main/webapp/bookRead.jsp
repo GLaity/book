@@ -9,6 +9,10 @@
 <%@page import="java.io.BufferedReader"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.File"%>
+<%@ page import="com.book.read.IBookReadService" %>
+<%@ page import="com.book.read.impl.BookReadServiceImpl" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -155,7 +159,12 @@
         });
     })
 </script>
+<%--小说初始化--%>
+<%--<%--%>
+<%--    IBookReadService bookReadService = new BookReadServiceImpl();--%>
+<%--    String path = bookReadService.readTargetBook(1,1);--%>
 
+<%--%>--%>
 <!--导航指向-->
 <aside class="wrap insideLink">
     <a href="index.html">首页</a>
@@ -170,38 +179,44 @@
         </p>
 
         <span class="atc_cha">
-					<a>上一章</a>
-					←<a>章节目录</a>→
-					<a>下一章</a>
+<a href="/user/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
+					←<a href="/user/read.do?_method=dir">章节目录</a>→
+					<a href="/user/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
 				</span>
         <hr >
         <!--				<div class="atc_cont">-->
+        <div class = "atc_cont">
+            <%
+                String path = (String) request.getAttribute("path");
+                if(path!=null){
 
-        <%
 
-//            String path ="D:\Work\HBuilderX\HBuilderXWorkSpace\BookWeb";   // 这边文件目录需改成相对路径
-            File file = new File("D:\\Download\\万古天帝\\0001.txt");
-            FileReader fr = new FileReader(file);  //字符输入流
-            BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
-            StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
-            String str = br.readLine();
-            while(str!=null){
-                strB.append(str).append("<br>");   //将读取的内容放入strB
-                str = br.readLine();
-            }
-            br.close();    //关闭输入流
-        %>
+                //            String path ="D:\Work\HBuilderX\HBuilderXWorkSpace\BookWeb";   // 这边文件目录需改成相对路径
+                File file = new File(path);
+//                File file = new File("D:\\Download\\万古天帝\\0001.txt");
+                FileReader fr = new FileReader(file);  //字符输入流
+                BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
+//                StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
+                String str = br.readLine();
+                while(str!=null){
+                    %>
+                <%=str%><br>
+            <%
+//                    strB.append(str).append("<br>");   //将读取的内容放入strB
+                    str = br.readLine();
+                }
+                br.close();    //关闭输入流
+                }
+            %>
 
-        <%=strB %>
+<%--            <%=strB %>--%>
+        </div>
 
-<%--        <!--				<textarea id=txt><%=txt %></textarea>-->--%>
-        <!-- <input type="text" id="in" name="in" /> -->
-        <!-- <iframe src='‪D:/Work/HBuilderX/HBuilderXWorkSpace/BookWeb/0001.txt'></iframe> -->
-        <!--				</div>-->
+
         <span class="atc_cha">
-					<a>上一章</a>
-					←<a>章节目录</a>→
-					<a>下一章</a>
+					<a href="/user/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
+					←<a href="/user/read.do?_method=dir">章节目录</a>→
+					<a href="/user/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
 				</span>
 
     </div>
