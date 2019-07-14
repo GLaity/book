@@ -1,8 +1,8 @@
 package com.book.servlet;
 
 import com.book.pojo.User_Account;
-import com.book.service.user.IUserService;
-import com.book.service.user.impl.IUserServiceImpl;
+import com.book.service.IUserService;
+import com.book.service.impl.IUserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
