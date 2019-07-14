@@ -1,4 +1,4 @@
-package com.book.read.impl;
+package com.book.service.impl;
 
 import com.book.dao.IBookContendDao;
 import com.book.dao.IBookDao;
@@ -6,7 +6,7 @@ import com.book.dao.impl.BookContendDaoImpl;
 import com.book.dao.impl.BookDaoImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
-import com.book.read.IBookService;
+import com.book.service.IBookService;
 
 public class BookServiceImpl implements IBookService {
     IBookDao bookDao = new BookDaoImpl();

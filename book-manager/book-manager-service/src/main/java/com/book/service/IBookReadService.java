@@ -1,4 +1,4 @@
-package com.book.read;
+package com.book.service;
 
 public interface IBookReadService {
     //根据书籍ID，章节号返回文本路径

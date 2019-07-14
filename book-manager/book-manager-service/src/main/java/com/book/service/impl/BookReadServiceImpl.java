@@ -1,9 +1,9 @@
-package com.book.read.impl;
+package com.book.service.impl;
 
 import com.book.dao.IBookContendDao;
 import com.book.dao.impl.BookContendDaoImpl;
 import com.book.pojo.Book_Contend;
-import com.book.read.IBookReadService;
+import com.book.service.IBookReadService;
 
 public class BookReadServiceImpl implements IBookReadService {
     public String readTargetBook(int BookId, int ChapterId) {

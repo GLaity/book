@@ -9,8 +9,8 @@
 <%@page import="java.io.BufferedReader"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.File"%>
-<%@ page import="com.book.read.IBookReadService" %>
-<%@ page import="com.book.read.impl.BookReadServiceImpl" %>
+<%@ page import="com.book.service.IBookReadService" %>
+<%@ page import="com.book.service.impl.BookReadServiceImpl" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
