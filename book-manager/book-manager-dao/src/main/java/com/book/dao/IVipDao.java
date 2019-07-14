@@ -5,15 +5,16 @@ import com.book.pojo.Vip_Account;
 import java.util.List;
 
 public interface IVipDao {
-    //æ–°å¢è®°å½•
+    
+    //ĞÂÔö¼ÇÂ¼
     public void insertVipAccount(Vip_Account vip);
-    //æ›´æ–°è®°å½•
+    //¸üĞÂ¼ÇÂ¼
     public void updateVipAccount(Vip_Account vip);
-    //æŸ¥è¯¢ä¸€æ¡è®°å½•
+    //²éÑ¯Ò»Ìõ¼ÇÂ¼
     public Vip_Account selectVipAccount(int id);
-    //æŸ¥è¯¢æ‰€æœ‰è®°å½•
+    //²éÑ¯ËùÓĞ¼ÇÂ¼
     public List<Vip_Account> selectVipAccount();
-    //åˆ é™¤ä¸€æ¡è®°å½•æ ¹æ®id
+    //É¾³ıÒ»Ìõ¼ÇÂ¼¸ù¾İid
     public void deleteVipAccountId(int id);
 
 }

@@ -38,4 +38,24 @@ public class Vip_Level {
     public void setVip_Balance(double vip_Balance) {
         this.vip_Balance = vip_Balance;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vip_Level vip_level = (Vip_Level) o;
+        return vip_Id == vip_level.vip_Id &&
+                Double.compare(vip_level.vip_Balance, vip_Balance) == 0 &&
+                vip_Level.equals(vip_level.vip_Level);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Vip_Level{" +
+                "vip_Id=" + vip_Id +
+                ", vip_Level='" + vip_Level + '\'' +
+                ", vip_Balance=" + vip_Balance +
+                '}';
+    }
 }

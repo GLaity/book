@@ -28,4 +28,5 @@ public class User_Advice {
     public void setAdvice_Id(int advice_Id) {
         this.advice_Id = advice_Id;
     }
+
 }
