@@ -132,7 +132,7 @@
                 </dl>
             </li>
             <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.html">完本</a></li>
             <li><a href="product_list.html">书库</a></li>
         </ul>
@@ -162,17 +162,17 @@
         <div id="slide">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="product.jsp">
                         <img src="upload/slide01.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="product.jsp">
                         <img src="upload/slide02.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="product.html">
+                    <a href="product.jsp">
                         <img src="upload/slide03.jpg"/>
                     </a>
                 </div>
@@ -189,52 +189,52 @@
         <dl class="bestShop">
             <dt>
                 <strong>优秀小说推荐</strong>
-                <a href="product_list.html" class="fr">更多</a>
+                <a href="product_list.jsp" class="fr">更多</a>
             </dt>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/001.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/002.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/003.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/004.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/005.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/006.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/007.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
-                <a href="product.html">
+                <a href="product.jsp">
                     <img src="upload/008.jpg"/>
                     <h2>精品小说</h2>
                 </a>

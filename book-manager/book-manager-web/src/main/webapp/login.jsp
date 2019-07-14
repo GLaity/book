@@ -38,14 +38,14 @@
         <div class="wrap">
             <!--topLeftNav-->
             <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
+                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                <li><a href="register.jsp">注册</a></li>
             </ul>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
-                <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
+                <li><a href="user.jsp">个人中心</a></li>
+                <li><a href="favorite.jsp" class="favorIcon">收藏夹</a></li>
+                <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
     </div>
@@ -80,42 +80,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="product_list.html">分类</a></dt> -->
                     <dd>
-                        <a href="type.html"><span><i>玄幻</i></span></a>
+                        <a href="type.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>武侠</i></span></a>
+                        <a href="type.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>都市</i></span></a>
+                        <a href="type.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>军事</i></span></a>
+                        <a href="type.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>历史</i></span></a>
+                        <a href="type.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>游戏</i></span></a>
+                        <a href="type.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>悬疑</i></span></a>
+                        <a href="type.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>科幻</i></span></a>
+                        <a href="type.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>言情</i></span></a>
+                        <a href="type.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>青春</i></span></a>
+                        <a href="type.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
-            <li><a href="product_list.html">完本</a></li>
-            <li><a href="product_list.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -150,8 +150,8 @@
                     <input type="password" class="textbox" placeholder="密码" name="password"/>
                 </li>
                 <li class="link_li">
-                    <a href="register.html" title="注册新用户" class="fl">注册新用户</a>
-                    <a href="find_pwd.html" title="忘记密码" class="fr">忘记密码？</a>
+                    <a href="register.jsp" title="注册新用户" class="fl">注册新用户</a>
+                    <a href="find_pwd.jsp" title="忘记密码" class="fr">忘记密码？</a>
                 </li>
                 <li class="link_li">
                     <input type="submit" value="立即登录" class="sbmt_btn"/>
@@ -171,37 +171,37 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>

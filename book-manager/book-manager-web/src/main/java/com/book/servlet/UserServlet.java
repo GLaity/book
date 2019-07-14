@@ -2,8 +2,8 @@ package com.book.servlet;
 
 
 import com.book.pojo.User_Account;
-import com.book.service.user.IUserService;
-import com.book.service.user.impl.IUserServiceImpl;
+import com.book.service.IUserService;
+import com.book.service.impl.IUserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
