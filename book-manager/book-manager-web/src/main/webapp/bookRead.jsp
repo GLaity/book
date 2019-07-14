@@ -179,9 +179,9 @@
         </p>
 
         <span class="atc_cha">
-<a href="/user/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
-					←<a href="/user/read.do?_method=dir">章节目录</a>→
-					<a href="/user/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
+<a href="/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
+					←<a href="/read.do?_method=dir">章节目录</a>→
+					<a href="/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
 				</span>
         <hr >
         <!--				<div class="atc_cont">-->
@@ -214,9 +214,9 @@
 
 
         <span class="atc_cha">
-					<a href="/user/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
-					←<a href="/user/read.do?_method=dir">章节目录</a>→
-					<a href="/user/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
+					<a href="/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
+					←<a href="/read.do?_method=dir">章节目录</a>→
+					<a href="/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
 				</span>
 
     </div>

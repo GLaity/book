@@ -1,5 +1,7 @@
-import com.book.read.IBookReadService;
-import com.book.read.impl.BookReadServiceImpl;
+package com.book.servlet;
+
+import com.book.service.IBookReadService;
+import com.book.service.impl.BookReadServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user/read.do")
+@WebServlet("/read.do")
 public class BookReadServlet extends HttpServlet {
     IBookReadService bookReadService = new BookReadServiceImpl();
     @Override
