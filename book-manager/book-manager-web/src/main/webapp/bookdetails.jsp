@@ -187,25 +187,25 @@
     <div class="rt_infor">
         <!--lt_infor-->
         <div class="goods_infor">
-            <h2>2019小说小说小说小说小说小说</h2>
+            <h2><c:out value="${requestScope.bookBasic.getBook_Title()}"></c:out></h2>
             <ul>
                 <li>
                     <dl class="horizontal">
                         <dt>作者</dt>
-                        <dd>哈哈哈</dd>
+                        <dd><c:out value="${requestScope.bookBasic.getWriter_Id()}"></c:out></dd>
                         <!-- <dd><strong class="rmb_icon univalent">129.00-169.00</strong>小说</dd> -->
                     </dl>
                 </li>
                 <li>
                     <dl class="horizontal">
                         <dt>出版时间：</dt>
-                        <dd><time>2019年01月份</time></dd>
+                        <dd><time><c:out value="${requestScope.bookBasic.getBook_Createdate()}"></c:out></time></dd>
                     </dl>
                 </li>
                 <li>
                     <dl class="horizontal">
                         <dt>类别：</dt>
-                        <dd><em>类别名</em></dd>
+                        <dd><em><c:out value="${requestScope.bookBasic.getType_Id()}"></c:out></em></dd>
                     </dl>
                 </li>
                 <li class="statistics">
@@ -243,15 +243,7 @@
         </ul>
         <!--商品详情-->
         <div class="cont_wrap active">
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾后及贫困地区的孩子们搭建课<br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾
-            <br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓球桌等，为灾后及贫困地区的孩子们搭建课<br />
-            该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹乐园计划捐赠0.02元。该商品已累积捐赠24560笔。
-            善款用途简介：基于游戏教育在儿童成长中的重要性，壹基金设立了“壹乐园计划”，帮助提供滑梯、攀爬架、跷跷板、秋千、乒乓
+            <c:out value="${requestScope.bookBasic.getBook_Context()}"></c:out>
         </div>
         <!--小说评价-->
         <div class="cont_wrap">

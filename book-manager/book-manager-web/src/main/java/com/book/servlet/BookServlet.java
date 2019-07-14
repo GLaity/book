@@ -1,6 +1,9 @@
 package com.book.servlet;
 
+import com.book.dao.IBookDao;
+import com.book.dao.impl.BookDaoImpl;
 import com.book.pojo.Advice;
+import com.book.pojo.Book_Basic;
 import com.book.service.IAdviceService;
 import com.book.service.impl.AdviceServiceImpl;
 
@@ -14,27 +17,31 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
-@WebServlet("/advice")
-public class AdviceServlet extends HttpServlet {
+@WebServlet("/book")
+public class BookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = req.getParameter("_method");
-        if(method == null){
-            execute(req, resp);
-        }
-        try {
-            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
-            if(forwardPath != null){
-                req.getRequestDispatcher(forwardPath).forward(req,resp);
-            }
 
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        execute(req, resp);
+
+
+//        String method = req.getParameter("_method");
+//        if(method == null){
+//            execute(req, resp);
+//        }
+//        try {
+//            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
+//            if(forwardPath != null){
+//                req.getRequestDispatcher(forwardPath).forward(req,resp);
+//            }
+//
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
@@ -44,12 +51,16 @@ public class AdviceServlet extends HttpServlet {
 
 
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+
+        IBookDao bookDao = new BookDaoImpl();
+        Book_Basic bookBasic = bookDao.selectBookById(bookId);
+        req.setAttribute("bookBasic",bookBasic);
+
         IAdviceService adviceService = new AdviceServiceImpl();
-        List<Advice> adviceList = adviceService.findAdviceAll();
+        List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
         req.setAttribute("adviceList",adviceList);
-//        for(Advice advice:adviceList){
-//            System.out.println(advice.getAdvice_Text());
-//        }
+
         req.getRequestDispatcher("bookdetails.jsp").forward(req,resp);
         return null;
     }
