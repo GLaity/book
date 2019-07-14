@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -59,15 +61,16 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
-            </ul>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
-                <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
+                <li><a href="user.jsp">个人中心</a></li>
+                <li><a href="#" class="favorIcon">收藏夹</a></li>
+                <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
     </div>
@@ -102,44 +105,46 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="#"><span><i>玄幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>武侠</i></span></a>
+                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>都市</i></span></a>
+                        <a href="product_list.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>军事</i></span></a>
+                        <a href="product_list.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>历史</i></span></a>
+                        <a href="product_list.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>游戏</i></span></a>
+                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>悬疑</i></span></a>
+                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>科幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>言情</i></span></a>
+                        <a href="product_list.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>青春</i></span></a>
+                        <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
-
+                <dl class="asideNav2">
+                    <img src="upload/ad002.jpg" />
+                </dl>
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="#">排行</a></li>
-            <li><a href="channel.html">完本</a></li>
-            <li><a href="channel.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -290,7 +295,7 @@
             </tr>
             <tr>
                 <td class="center">A880936</td>
-                <td class="center"><a href="product.html" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
+                <td class="center"><a href="/book?bookId=1" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
                 <td><a href="product.html" target="_blank">这里是产品名称哦</a></td>
                 <td class="center"><strong class="rmb_icon">159.00</strong></td>
                 <td class="center">10000</td>
@@ -688,42 +693,42 @@
 </section>
 <!-- footer-->
 <footer>
-    <!--help -->
+    <!--help-->
     <ul class="wrap help">
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>

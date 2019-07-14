@@ -171,37 +171,37 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>

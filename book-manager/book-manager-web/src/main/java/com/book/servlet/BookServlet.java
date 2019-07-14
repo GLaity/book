@@ -61,7 +61,7 @@ public class BookServlet extends HttpServlet {
         List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
         req.setAttribute("adviceList",adviceList);
 
-        req.getRequestDispatcher("bookdetails.jsp").forward(req,resp);
+        req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);
         return null;
     }
 

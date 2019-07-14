@@ -9,5 +9,4 @@ public interface ICountAccountDao {
     public void updataTotalTime(int user_Id,int readTime);
     public void updataTotalPay(int user_Id,double pay);
     public Count_Account selectById(int user_Id);
-
 }

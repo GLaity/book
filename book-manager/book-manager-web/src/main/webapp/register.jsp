@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,8 +86,14 @@
             </ul>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.jsp">个人中心</a></li>
-                <li><a href="favorite.jsp" class="favorIcon">收藏夹</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
@@ -226,28 +234,28 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>

@@ -66,16 +66,28 @@
     <!--topNavBg-->
     <div class="topNavBg">
         <div class="wrap">
-            <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.jsp">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
-                <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
     </div>
@@ -110,44 +122,44 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="product_list.html"><span><i>玄幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>武侠</i></span></a>
+                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>都市</i></span></a>
+                        <a href="product_list.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>军事</i></span></a>
+                        <a href="product_list.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>历史</i></span></a>
+                        <a href="product_list.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>游戏</i></span></a>
+                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>悬疑</i></span></a>
+                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>科幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>言情</i></span></a>
+                        <a href="product_list.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.html"><span><i>青春</i></span></a>
+                        <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="#">排行</a></li>
-            <li><a href="channel.html">完本</a></li>
-            <li><a href="channel.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -224,7 +236,7 @@
                 </li>
 
                 <li class="last_li">
-                    <input type="button" value="免费试读" class="buy_btn" />
+                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=1'"/>
                     <input type="button" value="加入书架" class="add_btn" />
                 </li>
             </ul>
@@ -332,61 +344,59 @@
     <ul class="wrap help">
         <li>
             <dl>
-                <dt>消费者保障</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dt>关于我们</dt>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
-                <dt>新手上路</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dt>关于我们</dt>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
-                <dt>付款方式</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dt>关于我们</dt>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
-                <dt>服务保障</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dt>关于我们</dt>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
-        <dd><a href="http://www.17sucai.com" target="_blank">17素材</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/24448.html">HTML5模块化后台管理模板</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/15966.html">绿色清爽后台管理系统模板</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/14931.html">黑色的cms商城网站后台管理模板</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">前端博客</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">博客</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">新码笔记</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">DethGhost</a></dd>
-        <dd><a href="#">当当</a></dd>
-        <dd><a href="#">优酷</a></dd>
-        <dd><a href="#">土豆</a></dd>
-        <dd><a href="#">新浪</a></dd>
-        <dd><a href="#">钉钉</a></dd>
-        <dd><a href="#">支付宝</a></dd>
+
+        <dd><a href="#">小说小说小说小说小说小说</a></dd>
+        <dd><a href="#">小说小说小说小说小说小说</a></dd>
+        <dd><a href="#">小说小说小说小说小说小说</a></dd>
+        <dd><a href="#" target="_blank">小说小说</a></dd>
+        <dd><a href="#" target="_blank">小说</a></dd>
+        <dd><a href="#" target="_blank">小说小说</a></dd>
+        <dd><a href="#" target="_blank">小说小说</a></dd>
+        <dd><a href="#">小说小说小说小说</a></dd>
+        <dd><a href="#">小说小说小说小说</a></dd>
+        <dd><a href="#">小说小说小说小说</a></dd>
+
     </dl>
     <div class="wrap btmInfor">
-        <p>© 2013 DeathGhost.cn 版权所有 网络文化经营许可证：浙网文[2013]***-027号 增值电信业务经营许可证：浙B2-200***24-1 信息网络传播视听节目许可证：1109***4号</p>
-        <address>联系地址：陕西省西安市雁塔区XXX号</address>
+        <p>© 2019 DeathGhost.cn 版权所有 网络文化经营许可证：晋网文[2019]***-02号 增值小说经营许可证：晋B2-200***24-1 信息网络传播阅读许可证：1109***4号</p>
+        <address>联系地址：山西省太原市尖草坪区</address>
     </div>
 </footer>
 </body>

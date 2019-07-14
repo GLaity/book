@@ -6,12 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.io.BufferedReader"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.File"%>
-<%@ page import="com.book.service.IBookReadService" %>
-<%@ page import="com.book.service.impl.BookReadServiceImpl" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ page import="com.book.service.IBookReadService" %>--%>
+<%--<%@ page import="com.book.service.impl.BookReadServiceImpl" %>--%>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 
 <html>
 <head>
@@ -42,16 +44,28 @@
     <!--topNavBg-->
     <div class="topNavBg">
         <div class="wrap">
-            <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
-                <li><a href="article_read.html" class="srvIcon">客户服务</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
     </div>
@@ -86,44 +100,44 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="product_list.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="type.html"><span><i>玄幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>武侠</i></span></a>
+                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>都市</i></span></a>
+                        <a href="product_list.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>军事</i></span></a>
+                        <a href="product_list.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>历史</i></span></a>
+                        <a href="product_list.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>游戏</i></span></a>
+                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>悬疑</i></span></a>
+                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>科幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>言情</i></span></a>
+                        <a href="product_list.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>青春</i></span></a>
+                        <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
-            <li><a href="product_list.html">完本</a></li>
-            <li><a href="product_list.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -149,15 +163,15 @@
             $(".asideNav").slideUp();
         });
     });
-    $(document).ready(function() {
-        //焦点图
-        var mySwiper = new Swiper('#slide', {
-            autoplay: 5000,
-            visibilityFullFit: true,
-            loop: true,
-            pagination: '.pagination',
-        });
-    })
+    // $(document).ready(function() {
+    //     //焦点图
+    //     var mySwiper = new Swiper('#slide', {
+    //         autoplay: 5000,
+    //         visibilityFullFit: true,
+    //         loop: true,
+    //         pagination: '.pagination',
+    //     });
+    // })
 </script>
 <%--小说初始化--%>
 <%--<%--%>
@@ -178,8 +192,8 @@
             <time>2019-01-02 09:43</time>
         </p>
 
-        <span class="atc_cha">
-<a href="/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
+                <span class="atc_cha">
+                    <a href="/read.do?_method=last&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">上一章</a>
 					←<a href="/read.do?_method=dir">章节目录</a>→
 					<a href="/read.do?_method=next&bookId=<c:out value="${requestScope.bookId}"></c:out>&chapterId=<c:out value="${requestScope.chapterId}"></c:out>">下一章</a>
 				</span>
@@ -192,8 +206,8 @@
 
 
                 //            String path ="D:\Work\HBuilderX\HBuilderXWorkSpace\BookWeb";   // 这边文件目录需改成相对路径
-                File file = new File(path);
-//                File file = new File("D:\\Download\\万古天帝\\0001.txt");
+//                File file = new File(path);
+                File file = new File("D:\\Download\\万古天帝\\1.txt");
                 FileReader fr = new FileReader(file);  //字符输入流
                 BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
 //                StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
@@ -228,37 +242,37 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="article_read.jsp">小说小说</a></dd>
             </dl>
         </li>
     </ul>
