@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -61,13 +59,11 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-<%--            <ul class="topLtNav">--%>
-<%--                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>--%>
-<%--                <li><a href="register.jsp">注册</a></li>--%>
-<%--            </ul>--%>
-            <ul class="topLtNav">
-                <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
-            </ul>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
                 <li><a href="user.jsp">个人中心</a></li>

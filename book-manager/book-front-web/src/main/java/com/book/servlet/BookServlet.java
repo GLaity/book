@@ -61,11 +61,11 @@ public class BookServlet extends HttpServlet {
         List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
         req.setAttribute("adviceList",adviceList);
 
-        req.getRequestDispatcher("bookdetails.jsp").forward(req,resp);
+        req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);
         return null;
     }
 
-    public String add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String addadvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String adviceText = req.getParameter("adviceText");
         int adviceLevel = Integer.valueOf(req.getParameter("adviceLevel"));
         System.out.println(adviceText);
