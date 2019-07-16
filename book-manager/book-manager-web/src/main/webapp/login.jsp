@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <form action="" method="post">
+                <form action="/manager?_method=login" method="post">
                     <div class="card p-4">
                         <div class="card-header text-center text-uppercase h4 font-weight-light">
                             登录
@@ -36,13 +36,13 @@
 
                         <div class="card-body py-5">
                             <div class="form-group">
-                                <label class="form-control-label">用户名</label>
-                                <input type="text" class="form-control">
+                                <label class="form-control-label" >用户名</label>
+                                <input type="text" class="form-control" name="username">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-control-label">密码</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" name="password">
                             </div>
 
                             <div class="custom-control custom-checkbox mt-4">
