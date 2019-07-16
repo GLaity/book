@@ -2,12 +2,15 @@ package test;
 
 import com.book.dao.IBookContendDao;
 import com.book.dao.IBookDao;
+import com.book.dao.IBookDirDao;
 import com.book.dao.impl.BookContendDaoImpl;
 import com.book.dao.impl.BookDaoImpl;
+import com.book.dao.impl.BookDirDaoImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import org.junit.Test;
 
+import java.io.*;
 import java.util.List;
 
 public class WolfTest {
@@ -45,5 +48,101 @@ public class WolfTest {
         System.out.println(contend2.getBook_Id());
     }
 
+    String path = "D:\\Download\\万古天帝\\";
+    @Test
+    public void bookDirBuild() throws IOException {
 
+        String writePath = path + "dir.txt";
+        File writeFile = new File(writePath);
+        if (!writeFile.exists()){
+            writeFile.createNewFile();
+        }
+
+        int count = 1;
+//        String readPath = "";
+//        FileWriter fw = new FileWriter(writeFile);
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(writeFile),"UTF-8"));
+        File readFile = new File(getReadPath(count));
+         do{
+            BufferedReader reader=new BufferedReader( new InputStreamReader(new FileInputStream(readFile),"gbk"));
+//            FileReader fr = new FileReader(readFile);  //字符输入流
+//            BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
+//             String str = br.readLine();
+             String str = reader.readLine();
+             byte[] bytes = str.getBytes("UTF-8");
+             String outStr = new String(bytes);
+//             fw.write(str + "\n");
+             writer.write(outStr + "\n");
+//             writer.write(str.getBytes("UTF-8")+ "\n");
+//             br.close();
+            count++;
+            readFile = new File(getReadPath(count));
+            reader.close();
+        }while(readFile.exists());
+         writer.flush();
+         writer.close();
+//         fw.close();
+//         writer.close();
+
+
+//                StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
+
+//        while(str!=null){
+////                    strB.append(str).append("<br>");   //将读取的内容放入strB
+//            str = br.readLine();
+//        }
+//        br.close();    //关闭输入流
+    }
+
+    String getReadPath(int ChapterId){
+        String ChapterIdStr = null;
+        if (0 <= ChapterId && 9>= ChapterId){
+            ChapterIdStr = path + "000" + ChapterId + ".txt";
+        }else if (10 <= ChapterId && 99>= ChapterId){
+            ChapterIdStr =  path + "00" + ChapterId + ".txt";
+        }else if (100 <= ChapterId && 999>= ChapterId){
+            ChapterIdStr = path +  "0" + ChapterId + ".txt";
+        }else{
+            ChapterIdStr = path + ChapterId + ".txt";
+        }
+        return ChapterIdStr;
+    }
+
+    @Test
+    public void TestGetBookDir() throws IOException {
+        IBookDirDao bookDirDao = new BookDirDaoImpl();
+//        bookDirDao.setBookDir(1);
+        List<String> bookDir = bookDirDao.getBookDir(1);
+        if (bookDir == null){
+            System.out.println("null");
+        }
+        System.out.println("0" + bookDir.get(0));
+        System.out.println("1" + bookDir.get(1));
+//        for (String str : bookDir){
+//            System.out.println(str);
+//        }
+        System.out.println(bookDir.size());
+
+    }
+
+    @Test
+    public void testWriterDemo() throws IOException {
+        String readPath = "D:\\Download\\万古天\\UTF8.txt";
+        String copyPath = "D:\\Download\\万古天\\copy.txt";
+        //输入流
+        BufferedReader reader=new BufferedReader(
+                new InputStreamReader(new FileInputStream(new File(readPath)),"gbk"));
+        //输出流
+        BufferedWriter writer=new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(new File(copyPath)),"UTF-8"));
+        String string;
+        while((string=reader.readLine())!=null) {
+            byte[] str = string.getBytes("UTF-8");
+            String outStr = new String(str);
+            writer.write(outStr);
+        }
+        writer.flush();
+        writer.close();
+        reader.close();
+    }
 }

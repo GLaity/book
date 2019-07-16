@@ -317,7 +317,7 @@ footer .btmInfor p{color:#09;margin:5px 0;text-align: center;}
 .atc_rd .hr{border-top:1px #d2d2d2 solid;}
 .atc_rd .otherInfor{margin:8px 0;text-align:center;}
 .atc_rd .otherInfor span,.atc_rd .otherInfor time{color:#09;margin:0 8px;}
-.atc_rd .atc_cont{line-height:1.5;}
+.atc_rd .atc_cont{line-height:2;font-size: 18px;}
 .atc_rd .file_area{border:1px #d2d2d2 solid;height:550px;}
 .atc_rd .file_btm{margin:5px 0;}
 .atc_rd .file_btm p{margin:10px 0;text-align:center;height:45px;line-height:45px;font-size:16px;}

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user/read.do")
+@WebServlet("/read.do")
 public class BookReadServlet extends HttpServlet {
     IBookReadService bookReadService = new BookReadServiceImpl();
     @Override
