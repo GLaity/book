@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+/*@charset 'UTF-8';*/
 
 a,
 blockquote,
@@ -77,7 +77,7 @@ html {
 }
 
 :root body {
-	position: absolute background-color: #008EE0;
+	position: absolute;background-color: #008EE0;
 }
 
 .top-op span {
