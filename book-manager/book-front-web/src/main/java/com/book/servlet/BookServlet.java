@@ -25,26 +25,25 @@ public class BookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        execute(req, resp);
 
 
-//        String method = req.getParameter("_method");
-//        if(method == null){
-//            execute(req, resp);
-//        }
-//        try {
-//            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
-//            if(forwardPath != null){
-//                req.getRequestDispatcher(forwardPath).forward(req,resp);
-//            }
-//
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (InvocationTargetException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchMethodException e) {
-//            e.printStackTrace();
-//        }
+        String method = req.getParameter("_method");
+        if(method == null){
+            execute(req, resp);
+        }
+        try {
+            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
+            if(forwardPath != null){
+                req.getRequestDispatcher(forwardPath).forward(req,resp);
+            }
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -59,8 +58,10 @@ public class BookServlet extends HttpServlet {
         IBookService bookService = new BookServiceImpl();
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
         Book_Extend bookExtend = bookService.findBookExtendById(bookId);
+        List<String> bookDir = bookService.getBookDir(bookId);
         req.setAttribute("bookBasic",bookBasic);
         req.setAttribute("bookExtend",bookExtend);
+        req.setAttribute("bookDir",bookDir);
 
         IAdviceService adviceService = new AdviceServiceImpl();
         List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
@@ -74,6 +75,7 @@ public class BookServlet extends HttpServlet {
         String adviceText = req.getParameter("adviceText");
         int adviceLevel = Integer.valueOf(req.getParameter("adviceLevel"));
         int bookId = Integer.parseInt(req.getParameter("bookId"));
+
         HttpSession session = req.getSession();
         User_Account user = (User_Account) session.getAttribute("user");
         if(user == null){

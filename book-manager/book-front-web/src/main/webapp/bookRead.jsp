@@ -8,7 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.io.*" %>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.FileReader"%>
+<%@page import="java.io.File"%>
+<%@ page import="java.io.InputStreamReader" %>
 <%--<%@ page import="com.book.service.IBookReadService" %>--%>
 <%--<%@ page import="com.book.service.impl.BookReadServiceImpl" %>--%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
@@ -132,7 +135,7 @@
                 </dl>
 
             </li>
-            <li><a href="../../../../book-manager-web/src/main/webapp/index.jsp" class="active">首页</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -215,6 +218,7 @@
                 }
             %>
 
+<%--            <%=strB %>--%>
         </div>
 
 
