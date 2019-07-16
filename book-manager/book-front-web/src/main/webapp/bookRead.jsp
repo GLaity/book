@@ -134,7 +134,7 @@
                 </dl>
 
             </li>
-            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="../../../../book-manager-web/src/main/webapp/index.jsp" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
