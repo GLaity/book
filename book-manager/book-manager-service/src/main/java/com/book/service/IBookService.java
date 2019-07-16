@@ -3,6 +3,8 @@ package com.book.service;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Extend;
 
+import java.util.List;
+
 public interface IBookService {
     //上传新书
     void insertNewBook(Book_Basic book, String bookPath);
@@ -15,6 +17,8 @@ public interface IBookService {
 
     //下架书籍
     void deleteBook(int bookId);
+
+    List<String> getBookDir(int bookId);
 
     Book_Basic findBookBasicById(int bookId);
     Book_Extend findBookExtendById(int bookId);

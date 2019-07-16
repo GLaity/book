@@ -269,9 +269,10 @@
                 </c:forEach>
             </table>
             <!--分页-->
-            <form action="/advice?_method=addadvice" method="post">
+            <form action="/book?_method=addadvice" method="post">
             <div class="box_con3">
                 <div class="head">
+                    <input type="hidden" name="bookId" value="${requestScope.bookBasic.getBook_Id()}">
                     <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
                     <ul>
                         <li>☆</li>
@@ -292,49 +293,41 @@
             </div>
             </form>
 
-            <div class="paging">
-                <a>第一页</a>
-                <a class="active">2</a>
-                <a>3</a>
-                <a>...</a>
-                <a>89</a>
-                <a>最后一页</a>
-            </div>
+<%--            <div class="paging">--%>
+<%--                <a>第一页</a>--%>
+<%--                <a class="active">2</a>--%>
+<%--                <a>3</a>--%>
+<%--                <a>...</a>--%>
+<%--                <a>89</a>--%>
+<%--                <a>最后一页</a>--%>
+<%--            </div>--%>
         </div>
         <!--小说目录-->
         <div class="cont_wrap">
             <table class="table">
-                <tr>
-                    <td><a href="#">序章</a></td>
-                    <td><a href="#">第一章 青云</a></td>
-                    <td><a href="#">第二章 迷局</a></td>
-                    <td><a href="#">第三章 宏愿</a></td>
-                    <td><a href="#">第四章 惊变</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">第五章 入门</a></td>
-                    <td><a href="#">第六章 拜师</a></td>
-                    <td><a href="#">第七章 初始</a></td>
-                    <td><a href="#">第八章 传艺</a></td>
-                    <td><a href="#">第九章 佛与道</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">第十章 幽谷</a></td>
-                    <td><a href="#">第十一章 异变</a></td>
-                    <td><a href="#">第十二章 重逢</a></td>
-                    <td><a href="#">第十三章 奇才</a></td>
-                    <td><a href="#">第十四章 神通</a></td>
-                </tr>
+                <c:forEach items="${bookDir}" var="dir" varStatus="vs">
+                    <c:if test="${vs.count%3 == 1}">
+                        <tr>
+                            <td><a href="#">${dir}</a></td>
+                    </c:if>
+                    <c:if test="${vs.count%3 == 2}">
+                        <td><a href="#">${dir}</a></td>
+                    </c:if>
+                    <c:if test="${vs.count%3 == 0}">
+                            <td><a href="#">${dir}</a></td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
             </table>
             <!--分页-->
-            <div class="paging">
-                <a>第一页</a>
-                <a class="active">2</a>
-                <a>3</a>
-                <a>...</a>
-                <a>89</a>
-                <a>最后一页</a>
-            </div>
+<%--            <div class="paging">--%>
+<%--                <a>第一页</a>--%>
+<%--                <a class="active">2</a>--%>
+<%--                <a>3</a>--%>
+<%--                <a>...</a>--%>
+<%--                <a>89</a>--%>
+<%--                <a>最后一页</a>--%>
+<%--            </div>--%>
         </div>
     </article>
 </section>
