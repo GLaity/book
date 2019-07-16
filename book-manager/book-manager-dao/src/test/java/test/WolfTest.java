@@ -127,8 +127,10 @@ public class WolfTest {
 
     @Test
     public void testWriterDemo() throws IOException {
-        String readPath = "D:\\Download\\万古天\\UTF8.txt";
-        String copyPath = "D:\\Download\\万古天\\copy.txt";
+//        String readPath = "D:\\Download\\万古天\\UTF8.txt";
+//        String copyPath = "D:\\Download\\万古天\\copy.txt";
+        String readPath = null;
+        String copyPath = null;
         //输入流
         BufferedReader reader=new BufferedReader(
                 new InputStreamReader(new FileInputStream(new File(readPath)),"gbk"));
@@ -144,5 +146,18 @@ public class WolfTest {
         writer.flush();
         writer.close();
         reader.close();
+    }
+
+    @Test
+    public void TestSplit(){
+        IBookContendDao bookContend = new BookContendDaoImpl();
+        Book_Contend book_contend = bookContend.findBookContend(1);
+        String path = book_contend.getBook_Contend();
+        String picturePath = path + "/picture.jpg";
+//		String[] sa=filename.split("\\/");
+        String[] sa=path.split("\\\\");
+        String newname=sa[sa.length-1];
+        System.out.println(newname);        //获取小说名
+        System.out.println(picturePath);    //获取小说封面图片
     }
 }

@@ -16,6 +16,7 @@
         <module>book-manager-dao</module>
         <module>book-manager-pojo</module>
         <module>book-manager-service</module>
+        <module>book-front-web</module>
         <module>book-manager-web</module>
     </modules>
     <dependencies>
@@ -44,5 +45,6 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
 </project>

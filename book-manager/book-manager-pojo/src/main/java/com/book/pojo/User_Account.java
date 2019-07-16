@@ -77,4 +77,17 @@ public class User_Account {
     public void setUser_Photo(String user_Photo) {
         this.user_Photo = user_Photo;
     }
+
+    @Override
+    public String toString() {
+        return "User_Account{" +
+                "user_Id=" + user_Id +
+                ", user_Username='" + user_Username + '\'' +
+                ", user_Password='" + user_Password + '\'' +
+                ", user_Date='" + user_Date + '\'' +
+                ", user_Tel='" + user_Tel + '\'' +
+                ", user_Email='" + user_Email + '\'' +
+                ", user_Photo='" + user_Photo + '\'' +
+                '}';
+    }
 }
