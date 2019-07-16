@@ -2,7 +2,7 @@ package com.book.pojo;
 
 public class Book_Extend {
     private int book_Id;
-    private int book_IsEnd;
+    private int book_Isend;
     private int book_Bought;
     private int book_Collected;
     private int book_Visited;
@@ -11,9 +11,9 @@ public class Book_Extend {
     public Book_Extend() {
     }
 
-    public Book_Extend(int book_Id, int book_IsEnd, int book_Bought, int book_Collected, int book_Visited, int book_Chapters) {
+    public Book_Extend(int book_Id, int book_Isend, int book_Bought, int book_Collected, int book_Visited, int book_Chapters) {
         this.book_Id = book_Id;
-        this.book_IsEnd = book_IsEnd;
+        this.book_Isend = book_Isend;
         this.book_Bought = book_Bought;
         this.book_Collected = book_Collected;
         this.book_Visited = book_Visited;
@@ -28,12 +28,12 @@ public class Book_Extend {
         this.book_Id = book_Id;
     }
 
-    public int getBook_IsEnd() {
-        return book_IsEnd;
+    public int getBook_Isend() {
+        return book_Isend;
     }
 
-    public void setBook_IsEnd(int book_IsEnd) {
-        this.book_IsEnd = book_IsEnd;
+    public void setBook_Isend(int book_Isend) {
+        this.book_Isend = book_Isend;
     }
 
     public int getBook_Bought() {

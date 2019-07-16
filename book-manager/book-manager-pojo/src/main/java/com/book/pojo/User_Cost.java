@@ -68,4 +68,30 @@ public class User_Cost {
     public void setCost_Other(String cost_Other) {
         this.cost_Other = cost_Other;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User_Cost user_cost = (User_Cost) o;
+        return user_Id == user_cost.user_Id &&
+                book_Id == user_cost.book_Id &&
+                cost_Id == user_cost.cost_Id &&
+                Double.compare(user_cost.cost_Money, cost_Money) == 0 &&
+                cost_Date.equals(user_cost.cost_Date) &&
+                cost_Other.equals(user_cost.cost_Other);
+    }
+
+
+    @Override
+    public String toString() {
+        return "User_Cost{" +
+                "user_Id=" + user_Id +
+                ", book_Id=" + book_Id +
+                ", cost_Id=" + cost_Id +
+                ", cost_Date='" + cost_Date + '\'' +
+                ", cost_Money=" + cost_Money +
+                ", cost_Other='" + cost_Other + '\'' +
+                '}';
+    }
 }

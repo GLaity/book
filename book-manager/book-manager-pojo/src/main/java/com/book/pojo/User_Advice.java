@@ -28,4 +28,22 @@ public class User_Advice {
     public void setAdvice_Id(int advice_Id) {
         this.advice_Id = advice_Id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User_Advice that = (User_Advice) o;
+        return user_Id == that.user_Id &&
+                advice_Id == that.advice_Id;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User_Advice{" +
+                "user_Id=" + user_Id +
+                ", advice_Id=" + advice_Id +
+                '}';
+    }
 }
