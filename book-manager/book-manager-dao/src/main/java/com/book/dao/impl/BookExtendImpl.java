@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BookExtendImpl implements IBookExtendDao {
+
     @Override
     public void insertBook(int book_Id) {
         String sql = "insert into book_extend values (?,0,0,0,0.0)";

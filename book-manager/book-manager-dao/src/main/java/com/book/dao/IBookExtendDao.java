@@ -6,6 +6,7 @@ import com.book.pojo.Book_Extend;
 import java.util.List;
 
 public interface IBookExtendDao {
+
     //新增书籍扩展信息
     void insertBook(int book_Id);
     //根据id查询是否完结查询书籍
