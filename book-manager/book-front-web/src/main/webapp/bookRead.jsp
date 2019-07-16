@@ -206,8 +206,8 @@
 
 
                 //            String path ="D:\Work\HBuilderX\HBuilderXWorkSpace\BookWeb";   // 这边文件目录需改成相对路径
-//                File file = new File(path);
-                File file = new File("D:\\Download\\万古天帝\\1.txt");
+                File file = new File(path);
+//                File file = new File("D:\\Download\\万古天帝\\1.txt");
                 FileReader fr = new FileReader(file);  //字符输入流
                 BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
 //                StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
