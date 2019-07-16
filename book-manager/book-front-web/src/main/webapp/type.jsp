@@ -5,7 +5,7 @@
   Time: 10:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=gb2312" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -123,7 +123,7 @@
                 </dl>
 
             </li>
-            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -155,7 +155,7 @@
 
         <c:forEach items="${bookBasicList}" var="bookBasic">
             <li>
-                <a href="bookDetails.jsp">
+                <a href="/book?bookId=${bookBasic.getBook_Id()}">
                     <img src="upload/goods005.jpg"/>
                     <h3>${bookBasic.getBook_Title()}</h3>
                     <p class="price"><span class="rmb_icon">298.00</span></p>

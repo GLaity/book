@@ -1,7 +1,13 @@
 package com.book.servlet;
 
+import com.book.dao.IBookDirDao;
+import com.book.dao.impl.BookDirDaoImpl;
+import com.book.pojo.Book_Basic;
+import com.book.pojo.Book_Contend;
 import com.book.service.IBookReadService;
+import com.book.service.IBookService;
 import com.book.service.impl.BookReadServiceImpl;
+import com.book.service.impl.BookServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/read.do")
 public class BookReadServlet extends HttpServlet {
     IBookReadService bookReadService = new BookReadServiceImpl();
+    IBookService bookService = new BookServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fun = req.getParameter("_method");
@@ -30,12 +38,6 @@ public class BookReadServlet extends HttpServlet {
                 dir(req,resp);
                 break;
         }
-//        bookReadService.readTargetBook();
-//        int BookId = Integer.valueOf(req.getParameter("bookId"));
-//        int ChapterId = Integer.valueOf(req.getParameter("chapterId"));
-//        String path = bookReadService.readTargetBook(1,0001);
-//        String path = bookReadService.readTargetBook(BookId,ChapterId);
-
     }
 
     @Override
@@ -45,7 +47,9 @@ public class BookReadServlet extends HttpServlet {
 
     public void start(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
-        int chapterId = 1;
+        int chapterId = Integer.valueOf(req.getParameter("chapterId"));
+        Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+        req.setAttribute("bookBasic",bookBasic);
         req.setAttribute("bookId",bookId);
         req.setAttribute("chapterId",chapterId);
         String path = bookReadService.readTargetBook(bookId,chapterId);
@@ -57,6 +61,10 @@ public class BookReadServlet extends HttpServlet {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int chapterId = Integer.valueOf(req.getParameter("chapterId"));
         String path = bookReadService.readTargetBook(bookId,chapterId-1);
+        Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+        System.out.println(bookBasic.getBook_Title());
+        req.setAttribute("bookBasic",bookBasic);
+
         req.setAttribute("bookId",bookId);
         req.setAttribute("path",path);
         if(chapterId <= 1){
@@ -72,6 +80,10 @@ public class BookReadServlet extends HttpServlet {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int chapterId = Integer.valueOf(req.getParameter("chapterId"));
         String path = bookReadService.readTargetBook(bookId,chapterId+1);
+        Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+
+        req.setAttribute("bookBasic",bookBasic);
+
         req.setAttribute("bookId",bookId);
         req.setAttribute("path",path);
         if(chapterId >= 10){
@@ -84,6 +96,8 @@ public class BookReadServlet extends HttpServlet {
     }
 
     public void dir(HttpServletRequest req, HttpServletResponse resp){
-        System.out.println("dir");
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        IBookDirDao bookDirDao = new BookDirDaoImpl();
+        List<String> dir = bookDirDao.getBookDir(bookId);
     }
 }
