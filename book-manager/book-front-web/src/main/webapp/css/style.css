@@ -653,7 +653,7 @@ footer .btmInfor p{color:#09;margin:5px 0;text-align: center;}
 .zoomdiv{z-index:100;position:absolute;top:0px;left:0px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
 .jqZoomPup{z-index:10;visibility:hidden;position:absolute;top:0px;left:0px;width:20px;height:20px;border:1px solid #aaa;background:#ffffff ;opacity: 0.5;-moz-opacity: 0.5;-khtml-opacity: 0.5;filter: alpha(Opacity=50);}
 /*smallPicList*/
-.spec-preview{width:420px;border:1px solid #DFDFDF;}
+.spec-preview{width:420px;}
 .spec-scroll{clear:both;margin-top:5px;width:420px;}
 .spec-scroll .prev{float:left;margin-right:4px;}
 .spec-scroll .next{float:right;}

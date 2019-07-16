@@ -99,14 +99,14 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <c:forEach items="${book_typeList}" var="book_type">
-                        <dd><a href="/booktype?typeId=${book_type.getType_Id()}"><span><i>${book_type.getType_Name()}</i></span></a></dd>
+                        <dd><a href="/booktype?_method=type&typeId=${book_type.getType_Id()}"><span><i>${book_type.getType_Name()}</i></span></a></dd>
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
                     <img src="upload/ad002.jpg" />
                 </dl>
             </li>
-            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
