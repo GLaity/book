@@ -55,28 +55,32 @@ public class BookReadServlet extends HttpServlet {
 
     public void last(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
-        int chapterId = Integer.valueOf(req.getParameter("chapterId"))-1;
-        if(chapterId <= 0){
-            return;
-        }
-        String path = bookReadService.readTargetBook(bookId,chapterId);
+        int chapterId = Integer.valueOf(req.getParameter("chapterId"));
+        String path = bookReadService.readTargetBook(bookId,chapterId-1);
         req.setAttribute("bookId",bookId);
-        req.setAttribute("chapterId",chapterId);
         req.setAttribute("path",path);
-        req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        if(chapterId <= 1){
+            req.setAttribute("chapterId",chapterId);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        }else{
+            req.setAttribute("chapterId",chapterId-1);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        }
     }
 
     public void next(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
-        int chapterId = Integer.valueOf(req.getParameter("chapterId"))+1;
-        if(chapterId >= 10){
-            return;
-        }
-        String path = bookReadService.readTargetBook(bookId,chapterId);
+        int chapterId = Integer.valueOf(req.getParameter("chapterId"));
+        String path = bookReadService.readTargetBook(bookId,chapterId+1);
         req.setAttribute("bookId",bookId);
-        req.setAttribute("chapterId",chapterId);
         req.setAttribute("path",path);
-        req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        if(chapterId >= 10){
+            req.setAttribute("chapterId",chapterId);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        } else {
+            req.setAttribute("chapterId",chapterId+1);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        }
     }
 
     public void dir(HttpServletRequest req, HttpServletResponse resp){

@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="userinformation.jsp">
                         <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                         <h1 class="tm-site-title mb-0">后台管理</h1>
                     </a>
@@ -39,7 +39,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="userinformation.html">用户管理
+                                <a class="nav-link" href="userinformation.jsp">用户管理
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -55,7 +55,7 @@
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="products.html">书籍管理</a>
+                                <a class="nav-link" href="bookControler.jsp">书籍管理</a>
                             </li>
 
                             <li class="nav-item">
@@ -65,7 +65,7 @@
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="login.html">
+                                <a class="nav-link d-flex" href="login.jsp">
                                     <i class="far fa-user mr-2 tm-logout-icon"></i>
                                     <span>注销</span>
                                 </a>
@@ -109,76 +109,6 @@
                                 <td class="text-center">145</td>
                                 <td class="text-center">255</td>
                                 <td>2018-10-28</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">2. Aenean eget urna enim. Sed enim</td>
-                                <td class="text-center">240</td>
-                                <td class="text-center">260</td>
-                                <td>2018-10-24</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">3. Vivamus convallis tincidunt nisi</td>
-                                <td class="text-center">360</td>
-                                <td class="text-center">440</td>
-                                <td>2019-02-14</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">4. Donec semper massa eget</td>
-                                <td class="text-center">445</td>
-                                <td class="text-center">655</td>
-                                <td>2019-03-22</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">5. Donec semper massa eget</td>
-                                <td class="text-center">445</td>
-                                <td class="text-center">655</td>
-                                <td>2019-03-22</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">6. Donec semper massa eget</td>
-                                <td class="text-center">445</td>
-                                <td class="text-center">655</td>
-                                <td>2019-03-22</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">7. Donec semper massa eget</td>
-                                <td class="text-center">445</td>
-                                <td class="text-center">655</td>
-                                <td>2019-03-22</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">8. Donec semper massa eget</td>
-                                <td class="text-center">445</td>
-                                <td class="text-center">655</td>
-                                <td>2019-03-22</td>
                                 <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                             </tr>
                             </tbody>

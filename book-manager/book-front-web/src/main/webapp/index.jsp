@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.book.pojo.Book_Type" %><%--
   Created by IntelliJ IDEA.
   User: lenovo
   Date: 2019/7/12
@@ -15,10 +16,10 @@
     <meta name="keywords"  content="DeathGhost" />
     <meta name="description" content="DeathGhost" />
     <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
-    <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="css/style.css" /><script src="js/html5.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/swiper.min.js"></script>
+    <link rel="icon" href="${pageContext.request.contextPath }/images/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css" /><script src="js/html5.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/js/swiper.min.js"></script>
     <script>
         $(document).ready(function(){
             //焦点图
@@ -90,42 +91,16 @@
         </div>
     </div>
     <!--nav-->
+
     <nav>
         <ul class="wrap navList">
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="channel.jsp">分类</a></dt> -->
-                    <dd>
-                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>都市</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>军事</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>历史</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>言情</i></span></a>
-                    </dd>
-                    <dd>
-                        <a href="product_list.jsp"><span><i>青春</i></span></a>
-                    </dd>
+                    <c:forEach items="${book_typeList}" var="book_type">
+                        <dd><a href="/booktype?typeId=${book_type.getType_Id()}"><span><i>${book_type.getType_Name()}</i></span></a></dd>
+                    </c:forEach>
                 </dl>
                 <dl class="asideNav2">
                     <img src="upload/ad002.jpg" />
@@ -151,7 +126,7 @@
             $(".inputWrap input[type='text']").attr("placeholder","输入作者姓名");
         });
     });
-
+$()
 </script>
 
 <!--advertisment area-->
@@ -181,7 +156,7 @@
         </div>
         <!--singleAd-->
         <div class="singleAd">
-            <a href="product_list.jsp">
+            <a href="bookDetails.jsp">
                 <img src="upload/sigleAd.jpg"/>
             </a>
         </div>

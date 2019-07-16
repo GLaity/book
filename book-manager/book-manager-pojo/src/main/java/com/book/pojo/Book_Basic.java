@@ -67,4 +67,16 @@ public class Book_Basic {
     public void setBook_Createdate(String book_Createdate) {
         this.book_Createdate = book_Createdate;
     }
+
+    @Override
+    public String toString() {
+        return "Book_Basic{" +
+                "book_Id=" + book_Id +
+                ", book_Title='" + book_Title + '\'' +
+                ", book_Context='" + book_Context + '\'' +
+                ", type_Id=" + type_Id +
+                ", writer_Id='" + writer_Id + '\'' +
+                ", book_Createdate='" + book_Createdate + '\'' +
+                '}';
+    }
 }

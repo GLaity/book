@@ -23,14 +23,13 @@ public class UserDaoImpl implements IUserDao {
     }
     //更新用户 修改资料
     public void updateUserAccount(User_Account user) {
-        String sql ="update user_account set user_username=?,user_date=?,user_password=?,user_tel=?,user_email=?,user_photo=? where user_id=?";
+        String sql ="update user_account set user_username=?,user_date=?,user_password=?,user_tel=?,user_email=? where user_id=?";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         try {
-            qr.update(sql,user.getUser_Username(),user.getUser_Date(),user.getUser_Password(),user.getUser_Tel(),user.getUser_Email(),user.getUser_Photo(),user.getUser_Id());
+            qr.update(sql,user.getUser_Username(),user.getUser_Date(),user.getUser_Password(),user.getUser_Tel(),user.getUser_Email(),user.getUser_Id());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
         //根据id查询用户信息selectUserAccountById
     public User_Account selectUserAccountById(int id) {

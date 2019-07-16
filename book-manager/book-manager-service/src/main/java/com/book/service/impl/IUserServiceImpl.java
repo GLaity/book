@@ -4,6 +4,7 @@ import com.book.dao.ICountAccountDao;
 import com.book.dao.IUserDao;
 import com.book.dao.impl.CountAccountImpl;
 import com.book.dao.impl.UserDaoImpl;
+import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
 import com.book.service.IUserService;
 
@@ -88,6 +89,12 @@ public class IUserServiceImpl implements IUserService {
     public void modifyById(int user_id) {
         ICountAccountDao countDao = new CountAccountImpl();
         countDao.selectById(user_id);
+    }
+
+    @Override
+    public Count_Account findUserCountById(int userId) {
+        ICountAccountDao countDao = new CountAccountImpl();
+        return countDao.selectById(userId);
     }
 
 }

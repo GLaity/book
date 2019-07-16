@@ -11,6 +11,7 @@
 <%@page import="java.io.BufferedReader"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.File"%>
+<%@ page import="java.io.InputStreamReader" %>
 <%--<%@ page import="com.book.service.IBookReadService" %>--%>
 <%--<%@ page import="com.book.service.impl.BookReadServiceImpl" %>--%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
@@ -134,7 +135,7 @@
                 </dl>
 
             </li>
-            <li><a href="../../../../book-manager-web/src/main/webapp/index.jsp" class="active">首页</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -203,23 +204,17 @@
             <%
                 String path = (String) request.getAttribute("path");
                 if(path!=null){
-
-
-                //            String path ="D:\Work\HBuilderX\HBuilderXWorkSpace\BookWeb";   // 这边文件目录需改成相对路径
-//                File file = new File(path);
-                File file = new File("D:\\Download\\万古天帝\\1.txt");
-                FileReader fr = new FileReader(file);  //字符输入流
-                BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
-//                StringBuffer strB = new StringBuffer();   //strB用来存储jsp.txt文件里的内容
-                String str = br.readLine();
-                while(str!=null){
-                    %>
-                <%=str%><br>
+                    File file = new File(path);
+                    BufferedReader reader=new BufferedReader( new InputStreamReader(new FileInputStream(file),"gbk"));
+                    String outStr = reader.readLine();
+                    byte[] bytes = outStr.getBytes("UTF-8");
+                    String str = new String(bytes);
+                    while(str!=null){
+            %>
+            <%=str%><br>
             <%
-//                    strB.append(str).append("<br>");   //将读取的内容放入strB
-                    str = br.readLine();
-                }
-                br.close();    //关闭输入流
+                        str = reader.readLine();
+                    }reader.close();    //关闭输入流
                 }
             %>
 
