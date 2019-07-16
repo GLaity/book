@@ -57,7 +57,7 @@
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <c:if test="${!empty(sessionScope.user)}">
-                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="/personal">个人中心</a></li>
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
