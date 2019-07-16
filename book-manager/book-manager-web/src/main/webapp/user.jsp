@@ -137,9 +137,6 @@
                         <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
-                <dl class="asideNav2">
-                    <img src="upload/ad002.jpg" />
-                </dl>
             </li>
             <li><a href="index.jsp" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
@@ -182,7 +179,7 @@
     <!--右侧：个人资料-->
     <div class="user_rt_cont selected">
         <div class="top_title">
-            <strong><em>DeathGhost</em>欢迎回到用户中心</strong>
+            <strong><em><c:out value="${sessionScope.user.getUser_Username()}"></c:out></em>欢迎回到用户中心</strong>
         </div>
 
         <div class="user_factbook">
@@ -191,7 +188,7 @@
                 <span>修改头像</span>
             </a>
             <div class="user_infor">
-                <p><strong>DeathGhost</strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="authenticate.html">申请入驻</a></p>
+                <p><strong><c:out value="${sessionScope.user.getUser_Username()}"></c:out></strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="authenticate.html">申请入驻</a></p>
                 <p>上次登录时间：<time>2019-01-14 13:55</time>，登录ip：192.168.1.1</p>
                 <p>账户余额：<strong class="rmb_icon">0.00</strong><a href="account.html" class="btn">充值</a><a href="account.html"
                                                                                                           class="btn">提现</a></p>
@@ -201,56 +198,56 @@
             <dt>订单</dt>
             <dd>
                 <a href="order_list.html">
-                    <strong>20</strong>
-                    <em>订单</em>
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalVisit()}"></c:out></strong>
+                    <em>浏览数</em>
                 </a>
             </dd>
             <dd>
                 <a href="order_list.html">
-                    <strong>10</strong>
-                    <em>订单</em>
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalBought()}"></c:out></strong>
+                    <em>购买数</em>
                 </a>
             </dd>
             <dd>
                 <a href="order_list.html">
-                    <strong>30</strong>
-                    <em>订单</em>
+                    <strong><c:out value="${countAccount.getCount_TotalPay()}"></c:out></strong>
+                    <em>消费金额（元）</em>
                 </a>
             </dd>
             <dd>
                 <a href="order_list.html">
-                    <strong>15</strong>
-                    <em>订单</em>
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalTime()}"></c:out></strong>
+                    <em>阅读时长（分钟）</em>
                 </a>
             </dd>
         </dl>
-        <dl class="user_order_tips">
-            <dt>提醒</dt>
-            <dd>
-                <a href="#">
-                    <strong>9</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dd>
-                <a href="#">
-                    <strong>10</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dd>
-                <a href="#">
-                    <strong>20</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dd>
-                <a href="#">
-                    <strong>2</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-        </dl>
+<%--        <dl class="user_order_tips">--%>
+<%--            <dt>提醒</dt>--%>
+<%--            <dd>--%>
+<%--                <a href="#">--%>
+<%--                    <strong>9</strong>--%>
+<%--                    <em>订单</em>--%>
+<%--                </a>--%>
+<%--            </dd>--%>
+<%--            <dd>--%>
+<%--                <a href="#">--%>
+<%--                    <strong>10</strong>--%>
+<%--                    <em>订单</em>--%>
+<%--                </a>--%>
+<%--            </dd>--%>
+<%--            <dd>--%>
+<%--                <a href="#">--%>
+<%--                    <strong>20</strong>--%>
+<%--                    <em>订单</em>--%>
+<%--                </a>--%>
+<%--            </dd>--%>
+<%--            <dd>--%>
+<%--                <a href="#">--%>
+<%--                    <strong>2</strong>--%>
+<%--                    <em>订单</em>--%>
+<%--                </a>--%>
+<%--            </dd>--%>
+<%--        </dl>--%>
     </div>
 
     <!--右侧：我的浏览-->

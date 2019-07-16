@@ -223,15 +223,15 @@
                 <li class="statistics">
                     <dl class="vertical">
                         <dt>收藏量</dt>
-                        <dd>20</dd>
+                        <dd><c:out value="${requestScope.bookExtend.getBook_Collected()}"></c:out></dd>
                     </dl>
                     <dl class="vertical">
                         <dt>购买量</dt>
-                        <dd>198</dd>
+                        <dd><c:out value="${requestScope.bookExtend.getBook_Bought()}"></c:out></dd>
                     </dl>
                     <dl class="vertical">
                         <dt>浏览量</dt>
-                        <dd>230</dd>
+                        <dd><c:out value="${requestScope.bookExtend.getBook_Visited()}"></c:out></dd>
                     </dl>
                 </li>
 

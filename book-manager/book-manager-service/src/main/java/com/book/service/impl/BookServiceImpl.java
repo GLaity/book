@@ -2,15 +2,19 @@ package com.book.service.impl;
 
 import com.book.dao.IBookContendDao;
 import com.book.dao.IBookDao;
+import com.book.dao.IBookExtendDao;
 import com.book.dao.impl.BookContendDaoImpl;
 import com.book.dao.impl.BookDaoImpl;
+import com.book.dao.impl.BookExtendImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
+import com.book.pojo.Book_Extend;
 import com.book.service.IBookService;
 
 public class BookServiceImpl implements IBookService {
     IBookDao bookDao = new BookDaoImpl();
     IBookContendDao bookContendDao = new BookContendDaoImpl();
+    IBookExtendDao bookExtendDao = new BookExtendImpl();
 
     public void insertNewBook(Book_Basic book, String bookPath) {
         int bookId = book.getBook_Id();
@@ -34,5 +38,15 @@ public class BookServiceImpl implements IBookService {
     public void deleteBook(int bookId) {
         bookContendDao.deleteBookContend(bookId);
         bookDao.deleteBookById(bookId);
+    }
+
+    @Override
+    public Book_Basic findBookBasicById(int bookId) {
+        return bookDao.selectBookById(bookId);
+    }
+
+    @Override
+    public Book_Extend findBookExtendById(int bookId) {
+        return bookExtendDao.selectBookById(bookId);
     }
 }

@@ -1,6 +1,7 @@
 package com.book.service;
 
 import com.book.pojo.Book_Basic;
+import com.book.pojo.Book_Extend;
 
 public interface IBookService {
     //上传新书
@@ -14,4 +15,7 @@ public interface IBookService {
 
     //下架书籍
     void deleteBook(int bookId);
+
+    Book_Basic findBookBasicById(int bookId);
+    Book_Extend findBookExtendById(int bookId);
 }
