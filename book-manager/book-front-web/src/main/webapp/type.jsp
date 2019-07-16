@@ -1,21 +1,24 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 郭文佐
+  User: lenovo
   Date: 2019/7/16
-  Time: 11:26
+  Time: 10:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=gb2312" language="java" %>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>小说分类—类别</title>
-    <meta name="keywords" content="DeathGhost" />
+    <meta name="keywords"  content="DeathGhost" />
     <meta name="description" content="DeathGhost" />
     <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
     <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/html5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" /><script src="js/html5.js"></script>
     <script src="js/jquery.js"></script>
     <script>
         $(document).ready(function(){
@@ -29,7 +32,7 @@
             //冒泡
             $(".favorite_list li a").click(function(){
                 alert("链接");
-                window.location.href='product.html';
+                window.location.href='product.jsp';
             });
             $(".favorite_list li .shop_collect_goods").click(function(){
                 alert("收藏小说");
@@ -46,13 +49,13 @@
         <div class="wrap">
             <!--topLeftNav-->
             <ul class="topLtNav">
-                <li><a href="login.html" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.html">注册</a></li>
+                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                <li><a href="register.jsp">注册</a></li>
             </ul>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.html">个人中心</a></li>
-                <li><a href="favorite.html" class="favorIcon">收藏夹</a></li>
+                <li><a href="user.jsp">个人中心</a></li>
+                <li><a href="favorite.jsp" class="favorIcon">收藏夹</a></li>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
@@ -60,9 +63,7 @@
     <!--logoArea-->
     <div class="wrap logoSearch">
         <!--logo-->
-        <div class="logo">
-            <h1><img src="images/logo.png" /></h1>
-        </div>
+        <div class="logo"><h1><img src="images/logo.png"/></h1></div>
         <!--search-->
         <div class="search">
             <ul class="switchNav">
@@ -72,10 +73,10 @@
             <div class="searchBox">
                 <form>
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词" />
+                        <input type="text" placeholder="输入小说关键词"/>
                     </div>
                     <div class="btnWrap">
-                        <input type="submit" value="搜索" />
+                        <input type="submit" value="搜索"/>
                     </div>
                 </form>
                 <!-- <a href="#" class="advancedSearch">高级搜索</a> -->
@@ -88,170 +89,94 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="type.html"><span><i>玄幻</i></span></a>
+                        <a href="type.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>武侠</i></span></a>
+                        <a href="type.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>都市</i></span></a>
+                        <a href="type.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>军事</i></span></a>
+                        <a href="type.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>历史</i></span></a>
+                        <a href="type.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>游戏</i></span></a>
+                        <a href="type.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>悬疑</i></span></a>
+                        <a href="type.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>科幻</i></span></a>
+                        <a href="type.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>言情</i></span></a>
+                        <a href="type.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>青春</i></span></a>
+                        <a href="type.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
-            <li><a href="product_list.html">完本</a></li>
-            <li><a href="product_list.html">书库</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
+            <li><a href="product_list.jsp">完本</a></li>
+            <li><a href="product_list.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function(){
         //测试效果，程序对接如需变动重新编辑
-        $(".switchNav li").click(function() {
+        $(".switchNav li").click(function(){
             $(this).addClass("active").siblings().removeClass("active");
         });
-        $("#chanpin").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入小说关键词或货号");
+        $("#chanpin").click(function(){
+            $(".inputWrap input[type='text']").attr("placeholder","输入小说关键词");
         });
-        $("#shangjia").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入商家店铺名");
-        });
-        $("#zixun").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入关键词查找文章内容");
-        });
-        $("#wenku").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入关键词查找文库内容");
+        $("#shangjia").click(function(){
+            $(".inputWrap input[type='text']").attr("placeholder","输入作者姓名");
         });
     });
+
 </script>
 
 <section class="wrap shop_header">
 
 </section>
 <section class="wrap shop_goods_li">
-    <h2>科幻小说</h2>
+    <h2>${bookType.getType_Name()}小说</h2>
     <ul class="favorite_list">
-        <li>
-            <a>
-                <img src="upload/goods005.jpg" />
-                <h3>小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods010.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods009.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods008.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods006.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods004.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods003.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods002.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods006.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods004.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods003.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
-        <li>
-            <a>
-                <img src="upload/goods002.jpg" />
-                <h3>2019小说名</h3>
-                <p class="price"><span class="rmb_icon">298.00</span></p>
-                <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
-            </a>
-        </li>
+
+        <c:forEach items="${bookBasicList}" var="bookBasic">
+            <li>
+                <a href="bookDetails.jsp">
+                    <img src="upload/goods005.jpg"/>
+                    <h3>${bookBasic.getBook_Title()}</h3>
+                    <p class="price"><span class="rmb_icon">298.00</span></p>
+                    <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
+                </a>
+            </li>
+        </c:forEach>
+<%--    <%--%>
+
+<%--    %>--%>
+<%--        <c:forEach items="${pathList}" var="path">--%>
+<%--            <li>--%>
+<%--                <a>--%>
+<%--                    <img src= "${path}/picture.jpg"/>--%>
+
+<%--&lt;%&ndash;                    <h3>${}</h3>&ndash;%&gt;--%>
+<%--                    <p class="price"><span class="rmb_icon">298.00</span></p>--%>
+<%--                    <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>--%>
+<%--                </a>--%>
+<%--            </li>--%>
+<%--        </c:forEach>--%>
     </ul>
     <!--分页-->
     <div class="paging">
@@ -270,37 +195,37 @@
         <li>
             <dl>
                 <dt>消费者保障</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dd><a href="#">保障范围</a></dd>
+                <dd><a href="#">退换货流程</a></dd>
+                <dd><a href="#">服务中心</a></dd>
+                <dd><a href="#">更多服务特色</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>新手上路</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dd><a href="#">保障范围</a></dd>
+                <dd><a href="#">退换货流程</a></dd>
+                <dd><a href="#">服务中心</a></dd>
+                <dd><a href="#">更多服务特色</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>付款方式</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dd><a href="#">保障范围</a></dd>
+                <dd><a href="#">退换货流程</a></dd>
+                <dd><a href="#">服务中心</a></dd>
+                <dd><a href="#">更多服务特色</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>服务保障</dt>
-                <dd><a href="article_read.html">保障范围</a></dd>
-                <dd><a href="article_read.html">退换货流程</a></dd>
-                <dd><a href="article_read.html">服务中心</a></dd>
-                <dd><a href="article_read.html">更多服务特色</a></dd>
+                <dd><a href="#">保障范围</a></dd>
+                <dd><a href="#">退换货流程</a></dd>
+                <dd><a href="#">服务中心</a></dd>
+                <dd><a href="#">更多服务特色</a></dd>
             </dl>
         </li>
     </ul>
@@ -328,4 +253,3 @@
 </footer>
 </body>
 </html>
-

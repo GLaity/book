@@ -2,6 +2,10 @@ package com.book.service;
 
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Extend;
+import com.book.pojo.Book_Type;
+
+import java.awt.print.Book;
+import java.util.List;
 
 import java.util.List;
 
@@ -22,4 +26,13 @@ public interface IBookService {
 
     Book_Basic findBookBasicById(int bookId);
     Book_Extend findBookExtendById(int bookId);
+
+    List<Book_Basic> findBookByTypeId(int typeId);
+
+    //根据类型id返回书籍信息
+    List<Book_Type> findBookType();
+    Book_Type fintBookTypeByTypeId(int type_Id);
+    String findPathById(int bookId);
+
+
 }
