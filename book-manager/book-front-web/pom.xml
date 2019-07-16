@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>book-manager-web</artifactId>
+    <artifactId>book-front-web</artifactId>
     <packaging>war</packaging>
 
-    <name>book-manager-web Maven Webapp</name>
+    <name>book-front-web Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -29,10 +29,32 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lanqiao</groupId>
+            <artifactId>book-manager-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>book-manager-web</finalName>
+        <finalName>book-front-web</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
@@ -63,6 +85,21 @@
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.2.1.v20140609</version>
+                    <configuration>
+                        <webAppConfig>
+                            <!--              应用访问的上下文路径-->
+                            <contextPath>/</contextPath>
+                        </webAppConfig>
+                        <httpConnector>
+                            <!--              端口号-->
+                            <port>9099</port>
+                        </httpConnector>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
