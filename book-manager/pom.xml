@@ -35,7 +35,7 @@
                <configuration>
                    <webAppConfig>
                        <!--              应用访问的上下文路径-->
-                       <contextPath>/index.jsp</contextPath>
+                       <contextPath>/</contextPath>
                    </webAppConfig>
                    <httpConnector>
                        <!--              端口号-->

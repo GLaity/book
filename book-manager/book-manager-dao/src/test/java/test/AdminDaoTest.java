@@ -9,7 +9,7 @@ public class AdminDaoTest {
     public static void main(String[] args) {
        AdminDao adminDao=new AdminDaoImpl();
         Admin admin =new Admin();
-       admin=adminDao.selectPwdById("00001");
+       admin=adminDao.selectPwdByNameAndPwd("zyp","123456");
         System.out.println(admin);
 
     }
