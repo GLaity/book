@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
@@ -25,25 +24,30 @@ public class BookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-
         String method = req.getParameter("_method");
         if(method == null){
             execute(req, resp);
-        }
-        try {
-            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
-            if(forwardPath != null){
-                req.getRequestDispatcher(forwardPath).forward(req,resp);
+        } else {
+            switch (method){
+                case "addAdvice" :
+                    addAdvice(req, resp);
+                    break;
             }
-
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
         }
+
+//        try {
+//            String forwardPath =  (String)this.getClass().getMethod(method,HttpServletRequest.class,HttpServletResponse.class).invoke(this,req,resp);
+//            if(forwardPath != null){
+//                req.getRequestDispatcher(forwardPath).forward(req,resp);
+//            }
+//
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
@@ -71,11 +75,12 @@ public class BookServlet extends HttpServlet {
         return null;
     }
 
-    public String addadvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String addAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String adviceText = req.getParameter("adviceText");
         int adviceLevel = Integer.valueOf(req.getParameter("adviceLevel"));
         int bookId = Integer.parseInt(req.getParameter("bookId"));
 
+        System.out.println(bookId);
         HttpSession session = req.getSession();
         User_Account user = (User_Account) session.getAttribute("user");
         if(user == null){
@@ -89,8 +94,8 @@ public class BookServlet extends HttpServlet {
             advice.setBook_Id(bookId);
             advice.setAdvice_Level(adviceLevel);
             advice.setAdvice_Text(adviceText);
-//            adviceService.addAdvice(advice);
-            resp.sendRedirect("/advice");
+            adviceService.addAdvice(advice);
+            execute(req, resp);
         }
 
         return null;
