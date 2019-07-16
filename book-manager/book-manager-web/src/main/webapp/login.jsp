@@ -33,7 +33,6 @@
                         <div class="card-header text-center text-uppercase h4 font-weight-light">
                             登录
                         </div>
-
                         <div class="card-body py-5">
                             <div class="form-group">
                                 <label class="form-control-label" >用户名</label>

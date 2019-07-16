@@ -1,5 +1,6 @@
 package com.book.service;
 
+import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface IUserService {
     public void modifyTotalTime(int user_id,int readTime);
     public void modifyTotalPay(int user_id,double pay);
     public void modifyById(int user_id);
+
+    Count_Account findUserCountById(int userId);
 }
