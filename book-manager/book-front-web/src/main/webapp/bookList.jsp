@@ -34,6 +34,7 @@
             // });
             $(".favorite_list li .shop_collect_goods").click(function(){
                 alert("收藏产品");
+                r
                 event.stopPropagation();
             });
         });

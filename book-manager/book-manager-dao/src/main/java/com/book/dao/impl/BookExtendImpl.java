@@ -116,7 +116,7 @@ public class BookExtendImpl implements IBookExtendDao {
 
     @Override
     public List<Integer> queueByCollected() {
-        String sql = "select book_id from book_extend order by book_collected limit 8";
+        String sql = "select book_id from book_extend order by book_collected desc limit 8";
         List<Object[]> tempList = null;
         List<Integer> bookIdList = new ArrayList<>();
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
@@ -133,7 +133,7 @@ public class BookExtendImpl implements IBookExtendDao {
 
     @Override
     public List<Integer> queueByBought() {
-        String sql = "select book_id from book_extend order by book_bought limit 8";
+        String sql = "select book_id from book_extend order by book_bought desc limit 8";
         List<Object[]> tempList = null;
         List<Integer> bookIdList = new ArrayList<>();
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
