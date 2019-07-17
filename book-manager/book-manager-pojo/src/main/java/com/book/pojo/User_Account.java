@@ -12,6 +12,11 @@ public class User_Account {
     public User_Account() {
     }
 
+    public User_Account(String user_Username, String user_Password) {
+        this.user_Username = user_Username;
+        this.user_Password = user_Password;
+    }
+
     public User_Account(int user_Id, String user_Username, String user_Password, String user_Date, String user_Tel, String user_Email, String user_Photo) {
         this.user_Id = user_Id;
         this.user_Username = user_Username;

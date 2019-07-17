@@ -9,41 +9,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/manager")
+@WebServlet("/managerlogin.do")
 public class ManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = req.getParameter("_method");
-        switch (method){
-            case "login":
-                login(req, resp);
-                break;
-        }
-    }
+//        String method = req.getParameter("_method");
+//        switch (method){
+//            case "login":
+//                login(req, resp);
+//                break;
+//        }
 
+        //AdminService adminService =new AdminServiceImpl();
+       // Admin admin =adminService.adminLogin(username,password);
+       // System.out.println(admin.getAdmin_Name());
+//        System.out.println(admin.getAdmin_Password());
+
+
+            System.out.println("登录成功");
+//            HttpSession session = req.getSession();
+            IUserService iUserService =new IUserServiceImpl();
+
+//            for (User_Account user_account :users){
+//                System.out.println(user_account.getUser_Username());
+//            }
+
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
     public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        IUserService iUserService =new IUserServiceImpl();
-        List<User_Account> users=iUserService.findAll();
-        HttpSession session = req.getSession();
-        users.get(2).getUser_Id();
-        System.out.println(users);
-        if(username.equals("admin")&&password.equals("123")){
-            req.setAttribute("userList",users);
-            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
 
-        }else{
-            req.setAttribute("userList",users);
-            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
-        }
     }
 }

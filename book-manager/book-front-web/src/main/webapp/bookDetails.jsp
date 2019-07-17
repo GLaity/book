@@ -260,46 +260,46 @@
         <div class="cont_wrap">
             <table class="table">
                 <c:forEach items="${adviceList}" var="advice">
-                <tr>
-                    <td width="20%" align="center">${advice.getUser_Id()}</td>
-                    <td width="60%">${advice.getAdvice_Text()}</td>
-                    <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
-                </tr>
+                    <tr>
+                        <td width="20%" align="center">${advice.getUser_Id()}</td>
+                        <td width="60%">${advice.getAdvice_Text()}</td>
+                        <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
+                    </tr>
                 </c:forEach>
             </table>
             <!--分页-->
             <form action="/book?_method=addAdvice" method="post">
-            <div class="box_con3">
-                <div class="head">
-                    <input type="hidden" name="bookId" value="${requestScope.bookBasic.getBook_Id()}">
-                    <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
-                    <ul>
-                        <li>☆</li>
-                        <li>☆</li>
-                        <li>☆</li>
-                        <li>☆</li>
-                        <li>☆</li>
-                    </ul>
+                <div class="box_con3">
+                    <div class="head">
+                        <input type="hidden" name="bookId" value="${requestScope.bookBasic.getBook_Id()}">
+                        <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
+                        <ul>
+                            <li>☆</li>
+                            <li>☆</li>
+                            <li>☆</li>
+                            <li>☆</li>
+                            <li>☆</li>
+                        </ul>
+                    </div>
+                    <div class="text">
+                        <textarea rows="5" cols="100%" name="adviceText" placeholder="我的评论"></textarea>
+                    </div>
+                    <br>
+                    <div class="button">
+                        <input type="submit" value="提交" name="" />
+                        <input type="reset" value="重置" name="" />
+                    </div>
                 </div>
-                <div class="text">
-                    <textarea rows="5" cols="100%" name="adviceText" placeholder="我的评论"></textarea>
-                </div>
-                <br>
-                <div class="button">
-                    <input type="submit" value="提交" name="" />
-                    <input type="reset" value="重置" name="" />
-                </div>
-            </div>
             </form>
 
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
+            <%--            <div class="paging">--%>
+            <%--                <a>第一页</a>--%>
+            <%--                <a class="active">2</a>--%>
+            <%--                <a>3</a>--%>
+            <%--                <a>...</a>--%>
+            <%--                <a>89</a>--%>
+            <%--                <a>最后一页</a>--%>
+            <%--            </div>--%>
         </div>
         <!--小说目录-->
         <div class="cont_wrap">
@@ -307,26 +307,26 @@
                 <c:forEach items="${bookDir}" var="dir" varStatus="vs">
                     <c:if test="${vs.count%3 == 1}">
                         <tr>
-                            <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 2}">
-                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 0}">
-                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
             </table>
             <!--分页-->
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
+            <%--            <div class="paging">--%>
+            <%--                <a>第一页</a>--%>
+            <%--                <a class="active">2</a>--%>
+            <%--                <a>3</a>--%>
+            <%--                <a>...</a>--%>
+            <%--                <a>89</a>--%>
+            <%--                <a>最后一页</a>--%>
+            <%--            </div>--%>
         </div>
     </article>
 </section>
