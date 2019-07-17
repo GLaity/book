@@ -259,9 +259,9 @@
         <!--小说评价-->
         <div class="cont_wrap">
             <table class="table">
-                <c:forEach items="${adviceList}" var="advice">
+                <c:forEach items="${adviceList}" var="advice" varStatus="vs">
                 <tr>
-                    <td width="20%" align="center">${advice.getUser_Id()}</td>
+                    <td width="20%" align="center">${adviceUserList[vs.count-1].getUser_Username()}</td>
                     <td width="60%">${advice.getAdvice_Text()}</td>
                     <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
                 </tr>

@@ -207,7 +207,7 @@
                 <span id="repwdmsg"></span>
 
                 <li class="link_li">
-                    <label><input type="checkbox"/><a>阅读注册协议</a></label>
+                    <label><input type="checkbox" name="agree"/><a>阅读注册协议</a></label>
                     <a href="login.jsp" title="登录账号" class="fr">已有账号，立即登录？</a>
                 </li>
                 <li class="link_li">

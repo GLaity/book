@@ -168,6 +168,7 @@ header nav .navList .category .asideNav dd {
 .idxRtAtc dt a{float:right;position:relative;color:#ccc;font-size:12px;}
 .idxRtAtc dd{margin:0;height:35px;line-height:35px;border-bottom:1px #d2d2d2 dotted;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
 .idxRtAtc dd:last-child{border:none;}
+.idxRtAtc span{float: right;}
 .idxArticle{margin:8px auto;overflow:hidden;}
 .idxArticle dl{width:30%;float:left;background:#f9f9f9;padding:8px 10px;border-top:2px #ff830f solid;border-radius:0 0 5px 5px;margin:0;}
 .idxArticle dl:hover{border-top:2px #e4393c solid;}

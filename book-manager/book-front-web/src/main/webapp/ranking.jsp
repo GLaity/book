@@ -1,14 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-<<<<<<< HEAD
-  User: lenovo
-  Date: 2019/7/17
-  Time: 14:56
-=======
   User: 郭文佐
   Date: 2019/7/17
   Time: 14:51
->>>>>>> 72999361f843e4080bdf7e6bf2c52b5551d9d7bf
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -74,7 +68,6 @@
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
->>>>>>>>> Temporary merge branch 2
             </ul>
         </div>
     </div>
@@ -172,7 +165,7 @@
         <c:forEach items="${queueBookVisited}" var="bookBasic" varStatus="vs">
             <dd>
                 <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
-                    ${numVisited[vs.count-1]}
+                <span>${numVisited[vs.count-1]}</span>
             </dd>
         </c:forEach>
     </dl>
@@ -183,7 +176,7 @@
         <c:forEach items="${queueBookCollected}" var="bookBasic" varStatus="vs">
             <dd>
                 <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
-                    ${numCollected[vs.count-1]}
+                <span>${numCollected[vs.count-1]}</span>
             </dd>
 
         </c:forEach>
@@ -195,7 +188,7 @@
         <c:forEach items="${queueBookBought}" var="bookBasic" varStatus="vs">
             <dd>
                 <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
-                    ${numBought[vs.count-1]}
+                <span>${numBought[vs.count-1]}</span>
             </dd>
         </c:forEach>
     </dl>
