@@ -6,7 +6,6 @@
         <artifactId>book-manager</artifactId>
         <groupId>com.lanqiao</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../book-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -28,6 +27,11 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -59,18 +63,7 @@
         </dependency>
         <dependency>
             <groupId>com.lanqiao</groupId>
-            <artifactId>book-manager-dao</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.lanqiao</groupId>
             <artifactId>book-manager-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.lanqiao</groupId>
-            <artifactId>book-manager-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

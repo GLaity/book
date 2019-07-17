@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -88,11 +91,12 @@
                             <a href="add-product.html" class="btn btn-small btn-primary">添加新书籍</a>
                         </div>
                     </div>
+
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                             <thead>
                             <tr class="tm-bg-gray">
-                                <th scope="col">&nbsp;</th>
+<%--                                <th scope="col">&nbsp;</th>--%>
                                 <th scope="col">书名</th>
                                 <th scope="col" class="text-center">书籍编号</th>
                                 <th scope="col" class="text-center">作者</th>
@@ -100,41 +104,44 @@
                                 <th scope="col">&nbsp;</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
-                                <td class="tm-product-name">1. In malesuada placerat (hover)</td>
-                                <td class="text-center">145</td>
-                                <td class="text-center">255</td>
-                                <td>2018-10-28</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                            </tr>
-                            </tbody>
+
+                            <c:forEach items="${bookList}" var="bookBasic">
+                                <tbody>
+                                <tr>
+    <%--                                <th scope="row">--%>
+    <%--                                    <input type="checkbox" aria-label="Checkbox">--%>
+    <%--                                </th>--%>
+                                    <td class="tm-product-name">${bookBasic.getBook_Title()}</td>
+                                    <td class="text-center">${bookBasic.getBook_Id()}</td>
+                                    <td class="text-center">${bookBasic.getWriter_Id()}</td>
+                                    <td>${bookBasic.getBook_Createdate()}</td>
+                                    <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
                         </table>
                     </div>
 
-                    <div class="tm-table-mt tm-table-actions-row">
+<%--                    <div class="tm-table-mt tm-table-actions-row">--%>
 
-                        <div class="tm-table-actions-col">
-                            <a class="btn " href="#" role="button">上一页</a>
+<%--                        <div class="tm-table-actions-col">--%>
+<%--                            <a class="btn " href="#" role="button">上一页</a>--%>
 
-                            <nav aria-label="Page navigation" class="d-inline-block">
-                                <ul class="pagination tm-pagination">
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <span class="tm-dots d-block">...</span>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">13</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">14</a></li>
-                                    <a class="btn " href="#" role="button">下一页</a>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+<%--                            <nav aria-label="Page navigation" class="d-inline-block">--%>
+<%--                                <ul class="pagination tm-pagination">--%>
+<%--                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+<%--                                    <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                                    <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                                    <li class="page-item">--%>
+<%--                                        <span class="tm-dots d-block">...</span>--%>
+<%--                                    </li>--%>
+<%--                                    <li class="page-item"><a class="page-link" href="#">13</a></li>--%>
+<%--                                    <li class="page-item"><a class="page-link" href="#">14</a></li>--%>
+<%--                                    <a class="btn " href="#" role="button">下一页</a>--%>
+<%--                                </ul>--%>
+<%--                            </nav>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
         </div>

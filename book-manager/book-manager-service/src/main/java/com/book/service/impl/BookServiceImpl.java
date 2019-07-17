@@ -16,6 +16,7 @@ import com.book.pojo.Book_Extend;
 import com.book.pojo.Book_Type;
 import com.book.service.IBookService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl implements IBookService {
@@ -65,9 +66,49 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
+    public List<Book_Basic> findBookBasicAll() {
+        return bookDao.selectAllBook();
+    }
+
+    @Override
     public List<Book_Basic> findBookByTypeId(int typeId) {
         List<Book_Basic> books = bookDao.selectBookByType(typeId);
         return books;
+    }
+
+    @Override
+    public List<Book_Basic> findBookBySearchName(String  searchName) {
+        return bookDao.selectBookByLikeName(searchName);
+    }
+
+    @Override
+    public List<Book_Basic> queueByVisited() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByVisited();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
+    }
+
+    @Override
+    public List<Book_Basic> queueByCollected() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByCollected();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
+    }
+
+    @Override
+    public List<Book_Basic> queueByBought() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByBought();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
     }
 
     @Override

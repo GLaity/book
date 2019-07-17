@@ -31,7 +31,12 @@ public class BookControlServlet extends HttpServlet {
             case "update":
                 update(request,response);
                 break;
+            default:
+                break;
         }
+        List<Book_Basic> books = bookDao.selectAllBook();
+        request.setAttribute("bookList",books);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +47,7 @@ public class BookControlServlet extends HttpServlet {
     private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book_Basic> books = bookDao.selectAllBook();
         request.setAttribute("bookList",books);
-        request.getRequestDispatcher("/bookControler.jsp").forward(request,response);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,7 +59,7 @@ public class BookControlServlet extends HttpServlet {
 //        int bookId = Integer.valueOf(request.getAttribute("deleteBook"));
         int bookId = Integer.valueOf(request.getParameter("bookId"));
         bookDao.deleteBookById(bookId);
-        request.getRequestDispatcher("/bookControler.jsp").forward(request,response);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
     private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int bookId = Integer.valueOf(request.getParameter("bookId"));
@@ -66,6 +71,4 @@ public class BookControlServlet extends HttpServlet {
          bookDao.updateBook(book_basic);
         request.getRequestDispatcher("/editbook.jsp").forward(request,response);
     }
-
-
 }

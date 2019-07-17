@@ -31,13 +31,13 @@ public class WolfTest {
     }
     @Test
     public void bookSelectTest(){
-//        Book_Basic book = null;
-//        IBookDao bookDao = new BookDaoImpl();
-//        book = bookDao.selectBookById(1);
-//        System.out.println(book.getBook_Context());
-//        List<Book_Basic> books = null;
-//        books = bookDao.selectBookByType(2);
-//        System.out.println(books.get(1).getBook_Context());
+        Book_Basic book = null;
+        IBookDao bookDao = new BookDaoImpl();
+        book = bookDao.selectBookById(1);
+        System.out.println(book.getBook_Context());
+        List<Book_Basic> books = null;
+        books = bookDao.selectBookByType(2);
+        System.out.println(books.get(1).getBook_Context());
     }
 
     @Test

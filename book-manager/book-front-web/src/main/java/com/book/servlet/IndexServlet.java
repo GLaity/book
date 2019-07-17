@@ -1,5 +1,6 @@
 package com.book.servlet;
 
+import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Type;
 import com.book.service.IBookService;
 import com.book.service.impl.BookServiceImpl;
@@ -18,8 +19,11 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IBookService bookService = new BookServiceImpl();
         List<Book_Type> book_typeList = bookService.findBookType();
+        List<Book_Basic> bookQuere = bookService.queueByVisited();
+        req.setAttribute("bookQuere",bookQuere);
         req.setAttribute("book_typeList",book_typeList);
         req.getRequestDispatcher("index.jsp").forward(req,resp);
+
     }
 
     @Override
