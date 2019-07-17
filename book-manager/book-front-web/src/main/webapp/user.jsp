@@ -139,7 +139,7 @@
                 </dl>
 
             </li>
-            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -455,54 +455,47 @@
         <!--条件检索-->
         <div style="margin:8px 0;">
             <select class="select">
-                <option>商品分类</option>
-                <option>男装</option>
-                <option>女装</option>
-                <option>配饰</option>
+                <option>分类</option>
+                <option>小说名</option>
+                <option>作者</option>
+                <option>评价</option>
             </select>
             <input type="text" class="textbox textbox_225" placeholder="输入产品货号/关键词" />
             <input type="button" value="搜索" class="group_btn" />
         </div>
         <table class="order_table">
             <tr>
-                <th>货号</th>
-                <th>图片</th>
-                <th>名称</th>
+                <th>小说名</th>
+<%--                <th>图片</th>--%>
+                <th>作者</th>
+                <th>日期</th>
                 <th>评价</th>
                 <th>操作</th>
             </tr>
-            <tr>
-                <td class="center">A880936</td>
-                <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>
-                <td><a h href="product.html" target="_blank">这里是产品名称哦</a></td>
-                <td class="center"><strong class="rmb_icon">59.00</strong></td>
-                <td class="center">
-                    <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
-                    <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>
-                    <a title="删除"><img src="images/icon_trash.gif" /></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="center">A880936</td>
-                <td class="center"><a href="product.html" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
-                <td><a href="product.html" target="_blank">这里是产品名称哦</a></td>
-                <td class="center"><strong class="rmb_icon">159.00</strong></td>
-                <td class="center">
-                    <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
-                    <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>
-                    <a title="删除"><img src="images/icon_trash.gif" /></a>
-                </td>
-            </tr>
+            <c:forEach items="${adviceList}" var="advice" varStatus="vs">
+                <tr>
+                    <td class="center"><a h href="product.html" target="_blank">${bookAdviceList[vs.count-1].getBook_Title()}</a></td>
+<%--                    <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>--%>
+                    <td class="center">${bookAdviceList[vs.count-1].getWriter_Id()}</td>
+                    <td class="center">${advice.getAdvice_Date()}</td>
+                    <td class="center"><strong class="rmb_icon">${advice.getAdvice_Text()}</strong></td>
+                    <td class="center">
+<%--                        <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
+<%--                        <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
+                        <a href="/personal?_method=deleteAdvice&adviceId=${advice.getAdvice_Id()}" title="删除"><img src="images/icon_trash.gif" /></a>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
         <!--分页-->
-        <div class="paging" style="text-align:right">
-            <a>第一页</a>
-            <a class="active">2</a>
-            <a>3</a>
-            <a>...</a>
-            <a>89</a>
-            <a>最后一页</a>
-        </div>
+<%--        <div class="paging" style="text-align:right">--%>
+<%--            <a>第一页</a>--%>
+<%--            <a class="active">2</a>--%>
+<%--            <a>3</a>--%>
+<%--            <a>...</a>--%>
+<%--            <a>89</a>--%>
+<%--            <a>最后一页</a>--%>
+<%--        </div>--%>
     </div>
 
     <!--右侧：会员等级-->

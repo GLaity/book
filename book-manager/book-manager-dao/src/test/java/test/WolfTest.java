@@ -3,9 +3,11 @@ package test;
 import com.book.dao.IBookContendDao;
 import com.book.dao.IBookDao;
 import com.book.dao.IBookDirDao;
+import com.book.dao.IVipDao;
 import com.book.dao.impl.BookContendDaoImpl;
 import com.book.dao.impl.BookDaoImpl;
 import com.book.dao.impl.BookDirDaoImpl;
+import com.book.dao.impl.VipDaoImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import org.junit.Test;
@@ -16,71 +18,71 @@ import java.util.List;
 public class WolfTest {
     @Test
     public void bookBasicTest(){
-        Book_Basic book = new Book_Basic();
-//        book.setBook_Id(2);
-        book.setBook_Title("万古天帝X3!");
-        book.setBook_Context("0.0紫寰王朝，东极大陆一个疆域辽阔，武道、术法都颇为繁荣的人类国度。时则盛夏，烈日炎炎。");
-        book.setType_Id(2);
-        book.setWriter_Id("习风");
-        book.setBook_Createdate("2019.07.12");
-        IBookDao bookDao = new BookDaoImpl();
-        bookDao.insertBook(book);
-//        bookDao.updateBook(book);
+//        Book_Basic book = new Book_Basic();
+////        book.setBook_Id(2);
+//        book.setBook_Title("万古天帝X3!");
+//        book.setBook_Context("0.0紫寰王朝，东极大陆一个疆域辽阔，武道、术法都颇为繁荣的人类国度。时则盛夏，烈日炎炎。");
+//        book.setType_Id(2);
+//        book.setWriter_Id("习风");
+//        book.setBook_Createdate("2019.07.12");
+//        IBookDao bookDao = new BookDaoImpl();
+//        bookDao.insertBook(book);
+////        bookDao.updateBook(book);
     }
     @Test
     public void bookSelectTest(){
-        Book_Basic book = null;
-        IBookDao bookDao = new BookDaoImpl();
-        book = bookDao.selectBookById(1);
-        System.out.println(book.getBook_Context());
-        List<Book_Basic> books = null;
-        books = bookDao.selectBookByType(2);
-        System.out.println(books.get(1).getBook_Context());
+//        Book_Basic book = null;
+//        IBookDao bookDao = new BookDaoImpl();
+//        book = bookDao.selectBookById(1);
+//        System.out.println(book.getBook_Context());
+//        List<Book_Basic> books = null;
+//        books = bookDao.selectBookByType(2);
+//        System.out.println(books.get(1).getBook_Context());
     }
 
     @Test
     public void bookContendTest(){
 //        Book_Contend contend = new Book_Contend(2,"D:\\Download\\万古天帝");
-        IBookContendDao bookContendDao = new BookContendDaoImpl();
-//        bookContendDao.insertBookContend(contend);
-//        bookContendDao.deleteBookContend(2);
-        Book_Contend contend2 = bookContendDao.findBookContend(1);
-        System.out.println(contend2.getBook_Id());
+//        IBookContendDao bookContendDao = new BookContendDaoImpl();
+////        bookContendDao.insertBookContend(contend);
+////        bookContendDao.deleteBookContend(2);
+//        Book_Contend contend2 = bookContendDao.findBookContend(1);
+//        System.out.println(contend2.getBook_Id());
     }
 
     String path = "D:\\Download\\万古天帝\\";
     @Test
     public void bookDirBuild() throws IOException {
 
-        String writePath = path + "dir.txt";
-        File writeFile = new File(writePath);
-        if (!writeFile.exists()){
-            writeFile.createNewFile();
-        }
-
-        int count = 1;
-//        String readPath = "";
-//        FileWriter fw = new FileWriter(writeFile);
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(writeFile),"UTF-8"));
-        File readFile = new File(getReadPath(count));
-         do{
-            BufferedReader reader=new BufferedReader( new InputStreamReader(new FileInputStream(readFile),"gbk"));
-//            FileReader fr = new FileReader(readFile);  //字符输入流
-//            BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
-//             String str = br.readLine();
-             String str = reader.readLine();
-             byte[] bytes = str.getBytes("UTF-8");
-             String outStr = new String(bytes);
-//             fw.write(str + "\n");
-             writer.write(outStr + "\n");
-//             writer.write(str.getBytes("UTF-8")+ "\n");
-//             br.close();
-            count++;
-            readFile = new File(getReadPath(count));
-            reader.close();
-        }while(readFile.exists());
-         writer.flush();
-         writer.close();
+//        String writePath = path + "dir.txt";
+//        File writeFile = new File(writePath);
+//        if (!writeFile.exists()){
+//            writeFile.createNewFile();
+//        }
+//
+//        int count = 1;
+////        String readPath = "";
+////        FileWriter fw = new FileWriter(writeFile);
+//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(writeFile),"UTF-8"));
+//        File readFile = new File(getReadPath(count));
+//         do{
+//            BufferedReader reader=new BufferedReader( new InputStreamReader(new FileInputStream(readFile),"gbk"));
+////            FileReader fr = new FileReader(readFile);  //字符输入流
+////            BufferedReader br = new BufferedReader(fr);  //使文件可按行读取并具有缓冲功能
+////             String str = br.readLine();
+//             String str = reader.readLine();
+//             byte[] bytes = str.getBytes("UTF-8");
+//             String outStr = new String(bytes);
+////             fw.write(str + "\n");
+//             writer.write(outStr + "\n");
+////             writer.write(str.getBytes("UTF-8")+ "\n");
+////             br.close();
+//            count++;
+//            readFile = new File(getReadPath(count));
+//            reader.close();
+//        }while(readFile.exists());
+//         writer.flush();
+//         writer.close();
 //         fw.close();
 //         writer.close();
 
@@ -110,18 +112,18 @@ public class WolfTest {
 
     @Test
     public void TestGetBookDir() throws IOException {
-        IBookDirDao bookDirDao = new BookDirDaoImpl();
-//        bookDirDao.setBookDir(1);
-        List<String> bookDir = bookDirDao.getBookDir(1);
-        if (bookDir == null){
-            System.out.println("null");
-        }
-        System.out.println("0" + bookDir.get(0));
-        System.out.println("1" + bookDir.get(1));
-//        for (String str : bookDir){
-//            System.out.println(str);
+//        IBookDirDao bookDirDao = new BookDirDaoImpl();
+////        bookDirDao.setBookDir(1);
+//        List<String> bookDir = bookDirDao.getBookDir(1);
+//        if (bookDir == null){
+//            System.out.println("null");
 //        }
-        System.out.println(bookDir.size());
+//        System.out.println("0" + bookDir.get(0));
+//        System.out.println("1" + bookDir.get(1));
+////        for (String str : bookDir){
+////            System.out.println(str);
+////        }
+//        System.out.println(bookDir.size());
 
     }
 
@@ -131,21 +133,21 @@ public class WolfTest {
 //        String copyPath = "D:\\Download\\万古天\\copy.txt";
         String readPath = null;
         String copyPath = null;
-        //输入流
-        BufferedReader reader=new BufferedReader(
-                new InputStreamReader(new FileInputStream(new File(readPath)),"gbk"));
-        //输出流
-        BufferedWriter writer=new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(new File(copyPath)),"UTF-8"));
-        String string;
-        while((string=reader.readLine())!=null) {
-            byte[] str = string.getBytes("UTF-8");
-            String outStr = new String(str);
-            writer.write(outStr);
-        }
-        writer.flush();
-        writer.close();
-        reader.close();
+//        //输入流
+//        BufferedReader reader=new BufferedReader(
+//                new InputStreamReader(new FileInputStream(new File(readPath)),"gbk"));
+//        //输出流
+//        BufferedWriter writer=new BufferedWriter(
+//                new OutputStreamWriter(new FileOutputStream(new File(copyPath)),"UTF-8"));
+//        String string;
+//        while((string=reader.readLine())!=null) {
+//            byte[] str = string.getBytes("UTF-8");
+//            String outStr = new String(str);
+//            writer.write(outStr);
+//        }
+//        writer.flush();
+//        writer.close();
+//        reader.close();
     }
 
     @Test
@@ -160,4 +162,11 @@ public class WolfTest {
         System.out.println(newname);        //获取小说名
         System.out.println(picturePath);    //获取小说封面图片
     }
+    @Test
+    public void TestVip(){
+        IVipDao vipDao = new VipDaoImpl();
+        vipDao.deleteVipAccountId(2023);
+    }
+
+
 }

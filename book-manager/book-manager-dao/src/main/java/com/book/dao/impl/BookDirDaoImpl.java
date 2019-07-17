@@ -12,8 +12,8 @@ public class BookDirDaoImpl implements IBookDirDao {
 
     @Override
     public List<String> getBookDir(int BookId) {
-//        String path = "D:\\Download\\万古天帝\\" + "dir.txt";
-//        String path  = "D:\\Download\\万古天帝\\dir.txt";
+        // String path = "D:\\Download\\万古天帝\\" + "dir.txt";
+// String path  = "D:\\Download\\万古天帝\\dir.txt";
         String path = readTargetBook(BookId) + "/dir.txt";
         List<String> bookDir =  new ArrayList<>();
         String dir = null;
@@ -23,13 +23,12 @@ public class BookDirDaoImpl implements IBookDirDao {
             reader = new BufferedReader( new InputStreamReader(new FileInputStream(new File(path)),"UTF-8"));
             do{
                 dir = reader.readLine();
-//                System.out.println(dir);
                 if(dir == null){
                     continue;
                 }
                 bookDir.add(dir);
 
-//                bookDir.add(reader.readLine());
+            //   bookDir.add(reader.readLine());
             }while (dir != null);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

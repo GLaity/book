@@ -8,10 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.FileReader"%>
-<%@page import="java.io.File"%>
-<%@ page import="java.io.InputStreamReader" %>
+<%@ page import="java.io.*" %>
 <%--<%@ page import="com.book.service.IBookReadService" %>--%>
 <%--<%@ page import="com.book.service.impl.BookReadServiceImpl" %>--%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
@@ -135,7 +132,7 @@
                 </dl>
 
             </li>
-            <li><a href="index.jsp" class="active">首页</a></li>
+            <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -182,15 +179,15 @@
 <%--%>--%>
 <!--导航指向-->
 <aside class="wrap insideLink">
-    <a href="index.html">首页</a>
-    <a href="article_list.html">爱情动物</a>
+    <a href="/">首页</a>
+    <a href="article_list.html">${bookBasic.getBook_Title()}</a>
 </aside>
 <section class="wrap atc_list">
     <div class="atc_rd">
-        <h2 class="atc_ttl">爱情动物（代序）</h2>
+        <h2 class="atc_ttl">${bookBasic.getBook_Title()}</h2>
         <p class="otherInfor">
-            <span>作者：DeathGhost</span>
-            <time>2019-01-02 09:43</time>
+            <span>作者：${bookBasic.getWriter_Id()}</span>
+            <time>${bookBasic.getBook_Createdate()}</time>
         </p>
 
                 <span class="atc_cha">

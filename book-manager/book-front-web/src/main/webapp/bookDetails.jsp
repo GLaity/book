@@ -85,7 +85,7 @@
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <c:if test="${!empty(sessionScope.user)}">
-                    <li><a href="user.jsp">个人中心</a></li>
+                    <li><a href="/personal">个人中心</a></li>
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
@@ -157,7 +157,7 @@
                 </dl>
 
             </li>
-            <li><a href="../../../../book-manager-web/src/main/webapp/index.jsp" class="active">首页</a></li>
+            <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -182,7 +182,7 @@
 
 <!--导航指向-->
 <aside class="wrap insideLink">
-    <a href="index.html">首页</a>
+    <a href="/">首页</a>
     <a href="product_list.html">小说</a>
 </aside>
 <section class="wrap product_detail">
@@ -251,7 +251,7 @@
     <article>
         <ul class="item_tab">
             <li><a class="curr_li">小说简介</a></li>
-            <li><a>小说评价（2893）</a></li>
+            <li><a>小说评价</a></li>
             <li><a>小说目录</a></li>
         </ul>
         <!--商品详情-->
@@ -270,7 +270,7 @@
                 </c:forEach>
             </table>
             <!--分页-->
-            <form action="/book?_method=addadvice" method="post">
+            <form action="/book?_method=addAdvice" method="post">
             <div class="box_con3">
                 <div class="head">
                     <input type="hidden" name="bookId" value="${requestScope.bookBasic.getBook_Id()}">
@@ -309,13 +309,13 @@
                 <c:forEach items="${bookDir}" var="dir" varStatus="vs">
                     <c:if test="${vs.count%3 == 1}">
                         <tr>
-                            <td><a href="#">${dir}</a></td>
+                            <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 2}">
-                        <td><a href="#">${dir}</a></td>
+                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 0}">
-                            <td><a href="#">${dir}</a></td>
+                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
