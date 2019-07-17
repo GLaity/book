@@ -4,11 +4,13 @@ import com.book.dao.IBookExtendDao;
 import com.book.pojo.Book_Extend;
 import com.book.util.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookExtendImpl implements IBookExtendDao {
@@ -94,7 +96,59 @@ public class BookExtendImpl implements IBookExtendDao {
         Book_Extend book_extend = bookExtendDao.selectBookById(book_Id);
         updateBook(sql,book_extend.getBook_Bought(),book_Id);
     }
-//
+
+    @Override
+    public List<Integer> queueByVisited() {
+        String sql = "select book_id from book_extend order by book_visited desc limit 8";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    @Override
+    public List<Integer> queueByCollected() {
+        String sql = "select book_id from book_extend order by book_collected desc limit 8";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    @Override
+    public List<Integer> queueByBought() {
+        String sql = "select book_id from book_extend order by book_bought desc limit 8";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    //
     private List<Integer> selectBook(String sql,int low,int height){
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         List<Integer> arr = null;

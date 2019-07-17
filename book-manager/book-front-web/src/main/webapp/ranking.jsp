@@ -1,13 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
+<<<<<<< HEAD
   User: lenovo
   Date: 2019/7/17
   Time: 14:56
+=======
+  User: 郭文佐
+  Date: 2019/7/17
+  Time: 14:51
+>>>>>>> 72999361f843e4080bdf7e6bf2c52b5551d9d7bf
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<<<<<<< HEAD
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -17,6 +24,19 @@
     <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
     <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/style.css" /><script src="js/html5.js"></script>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>排行榜</title>
+    <meta name="keywords" content="DeathGhost" />
+    <meta name="description" content="DeathGhost" />
+    <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
+    <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/html5.js"></script>
+>>>>>>> 72999361f843e4080bdf7e6bf2c52b5551d9d7bf
     <script src="js/jquery.js"></script>
     <script>
         $(document).ready(function(){
@@ -141,62 +161,55 @@
     </nav>
 </header>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         //测试效果，程序对接如需变动重新编辑
-        $(".switchNav li").click(function(){
+        $(".switchNav li").click(function() {
             $(this).addClass("active").siblings().removeClass("active");
         });
-        $("#chanpin").click(function(){
-            $(".inputWrap input[type='text']").attr("placeholder","输入小说关键词");
+        $("#chanpin").click(function() {
+            $(".inputWrap input[type='text']").attr("placeholder", "输入小说关键词");
         });
-        $("#shangjia").click(function(){
-            $(".inputWrap input[type='text']").attr("placeholder","输入作者姓名");
+        $("#shangjia").click(function() {
+            $(".inputWrap input[type='text']").attr("placeholder", "输入作者姓名");
         });
     });
-
 </script>
 
 <!--导航指向-->
 <section class="wrap atc_list">
     <dl class="idxRtAtc">
         <dt>
-            <em class="obviousText">最新排行</em>
+            <em class="obviousText">访问量排行</em>
+        </dt>
+        <c:forEach items="${queueBookVisited}" var="bookBasic" varStatus="vs">
+            <dd>
+                <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
+                    ${numVisited[vs.count-1]}
+            </dd>
+        </c:forEach>
+    </dl>
+    <dl class="idxRtAtc">
+        <dt>
+            <em class="obviousText">收藏量排行</em>
+        </dt>
+        <c:forEach items="${queueBookCollected}" var="bookBasic" varStatus="vs">
+            <dd>
+                <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
+                    ${numCollected[vs.count-1]}
+            </dd>
 
-        </dt>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
+        </c:forEach>
     </dl>
     <dl class="idxRtAtc">
         <dt>
-            <em class="obviousText">最新排行</em>
+            <em class="obviousText">购买量排行</em>
         </dt>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-    </dl>
-    <dl class="idxRtAtc">
-        <dt>
-            <em class="obviousText">最新排行</em>
-        </dt>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
-        <dd><a href="article_read.html">小说小说小说小说小说小说小说小说</a></dd>
+        <c:forEach items="${queueBookBought}" var="bookBasic" varStatus="vs">
+            <dd>
+                <a href="/book?bookId=${bookBasic.getBook_Id()}">${bookBasic.getBook_Title()}</a>
+                    ${numBought[vs.count-1]}
+            </dd>
+        </c:forEach>
     </dl>
 </section>
 <!--footer-->
@@ -262,3 +275,4 @@
 </footer>
 </body>
 </html>
+

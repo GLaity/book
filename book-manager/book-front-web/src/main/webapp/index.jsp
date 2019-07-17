@@ -104,7 +104,7 @@
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
-                    <img src="bookimg/2.jpg" />
+                    <a href="/book?bookId=2"  style="padding: 0px"><img src="bookimg/2.jpg" /></a>
                 </dl>
             </li>
             <li><a href="/" class="active">首页</a></li>
@@ -256,14 +256,9 @@ $()
                 <em class="obviousText">最新排行</em>
                 <a href="ranking_list.jsp">more</a>
             </dt>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <c:forEach items="${bookQuere}" var="book">
+                <dd><a href="/book?bookId=${book.getBook_Id()}">${book.getBook_Title()}</a></dd>
+            </c:forEach>
         </dl>
 
     </div>
