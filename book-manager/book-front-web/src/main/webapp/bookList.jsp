@@ -56,7 +56,7 @@
             </c:if>
             <c:if test="${!empty(sessionScope.user)}">
                 <ul class="topLtNav">
-                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                    <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
                 </ul>
             </c:if>
             <!--topRightNav-->
@@ -105,42 +105,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="bookList.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="type.jsp"><span><i>玄幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=1"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>武侠</i></span></a>
+                        <a href="/booktype?_method=type&typeId=2"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>都市</i></span></a>
+                        <a href="/booktype?_method=type&typeId=3"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>军事</i></span></a>
+                        <a href="/booktype?_method=type&typeId=4"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>历史</i></span></a>
+                        <a href="/booktype?_method=type&typeId=5"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>游戏</i></span></a>
+                        <a href="/booktype?_method=type&typeId=6"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>悬疑</i></span></a>
+                        <a href="/booktype?_method=type&typeId=7"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>科幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=8"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>言情</i></span></a>
+                        <a href="/booktype?_method=type&typeId=9"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>青春</i></span></a>
+                        <a href="/booktype?_method=type&typeId=10"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="bookList.jsp">完本</a></li>
-            <li><a href="bookList.jsp">书库</a></li>
+            <li><a href="/ranking">排行</a></li>
+            <li><a href="/list">完本</a></li>
+            <li><a href="/list">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -188,16 +188,16 @@
                     <dl>
                         <dt>按收藏量筛选：</dt>
                         <dd>
-                            <a>小说A</a>
-                            <a>小说B</a>
-                            <a>小说C</a>
-                            <a>小说D</a>
-                            <a>小说E</a>
-                            <a>小说F</a>
-                            <a>小说G</a>
-                            <a>小说H</a>
-                            <a>小说I</a>
-                            <a>小说J</a>
+                            <a>A</a>
+                            <a>B</a>
+                            <a>C</a>
+                            <a>D</a>
+                            <a>E</a>
+                            <a>F</a>
+                            <a>G</a>
+                            <a>H</a>
+                            <a>I</a>
+                            <a>J</a>
                         </dd>
                     </dl>
                 </li>
@@ -237,14 +237,14 @@
                 </c:forEach>
             </ul>
             <!--分页-->
-            <div class="paging">
-                <a>第一页</a>
-                <a class="active">2</a>
-                <a>3</a>
-                <a>...</a>
-                <a>89</a>
-                <a>最后一页</a>
-            </div>
+<%--            <div class="paging">--%>
+<%--                <a>第一页</a>--%>
+<%--                <a class="active">2</a>--%>
+<%--                <a>3</a>--%>
+<%--                <a>...</a>--%>
+<%--                <a>89</a>--%>
+<%--                <a>最后一页</a>--%>
+<%--            </div>--%>
         </section>
 
     </div>
@@ -252,75 +252,63 @@
         <dl class="rtLiTwoCol">
             <dt>热门推荐</dt>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods002.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=1">
+                    <img src="bookimg/1.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=2">
+                    <img src="bookimg/2.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=3">
+                    <img src="bookimg/3.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods004.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=4">
+                    <img src="bookimg/4.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods008.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=5">
+                    <img src="bookimg/5.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=6">
+                    <img src="bookimg/6.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=7">
+                    <img src="bookimg/7.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=8">
+                    <img src="bookimg/8.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods008.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=9">
+                    <img src="bookimg/9.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=10">
+                    <img src="bookimg/10.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=11">
+                    <img src="bookimg/11.jpg"/>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
-                    <p>0.00</p>
+                <a href="/book?bookId=12">
+                    <img src="bookimg/12.jpg"/>
                 </a>
             </dd>
         </dl>

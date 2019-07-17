@@ -37,14 +37,27 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.jsp">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.jsp">个人中心</a></li>
-                <li><a href="favorite.jsp" class="favorIcon">收藏夹</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="/personal">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
@@ -80,42 +93,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="product_list.html">分类</a></dt> -->
                     <dd>
-                        <a href="type.jsp"><span><i>玄幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=1"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>武侠</i></span></a>
+                        <a href="/booktype?_method=type&typeId=2"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>都市</i></span></a>
+                        <a href="/booktype?_method=type&typeId=3"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>军事</i></span></a>
+                        <a href="/booktype?_method=type&typeId=4"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>历史</i></span></a>
+                        <a href="/booktype?_method=type&typeId=5"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>游戏</i></span></a>
+                        <a href="/booktype?_method=type&typeId=6"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>悬疑</i></span></a>
+                        <a href="/booktype?_method=type&typeId=7"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>科幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=8"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>言情</i></span></a>
+                        <a href="/booktype?_method=type&typeId=9"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>青春</i></span></a>
+                        <a href="/booktype?_method=type&typeId=10"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="bookList.jsp">完本</a></li>
-            <li><a href="bookList.jsp">书库</a></li>
+            <li><a href="/ranking">排行</a></li>
+            <li><a href="/list">完本</a></li>
+            <li><a href="/list">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -151,7 +164,7 @@
                 </li>
                 <li class="link_li">
                     <a href="register.jsp" title="注册新用户" class="fl">注册新用户</a>
-                    <a href="find_pwd.jsp" title="忘记密码" class="fr">忘记密码？</a>
+                    <a href="#" title="忘记密码" class="fr">忘记密码？</a>
                 </li>
                 <li class="link_li">
                     <input type="submit" value="立即登录" class="sbmt_btn"/>
@@ -171,37 +184,37 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
     </ul>
