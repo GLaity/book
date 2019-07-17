@@ -1,13 +1,10 @@
 package com.book.dao.impl;
 
 import com.book.dao.IBookContendDao;
-import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import com.book.util.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.columns.StringColumnHandler;
 
 import java.sql.SQLException;
 
@@ -25,6 +22,17 @@ public class BookContendDaoImpl implements IBookContendDao {
     }
 
     @Override
+    public void updateBookContend(Book_Contend contend) {
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "update BOOK_CONTEND set BOOK_CONTEND=? where BOOK_ID=?";
+        try {
+            qr.update(sql,contend.getBook_Contend(),contend.getBook_Id());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void deleteBookContend(int BookId) {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         String sql = "delete from BOOK_CONTEND where book_id=?";
@@ -32,7 +40,8 @@ public class BookContendDaoImpl implements IBookContendDao {
             qr.update(sql,BookId);
         } catch (SQLException e) {
             e.printStackTrace();
-        }    }
+        }
+    }
 
     @Override
     public Book_Contend findBookContend(int BookId) {

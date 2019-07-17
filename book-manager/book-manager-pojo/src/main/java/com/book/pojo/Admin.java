@@ -7,22 +7,11 @@ public class Admin {
 
     public Admin() {
     }
-
     public Admin(String admin_Id, String admin_Name, String admin_Password) {
         this.admin_Id = admin_Id;
         this.admin_Name = admin_Name;
         this.admin_Password = admin_Password;
     }
-
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "admin_Id='" + admin_Id + '\'' +
-                ", admin_Name='" + admin_Name + '\'' +
-                ", admin_Password='" + admin_Password + '\'' +
-                '}';
-    }
-
     public String getAdmin_Id() {
         return admin_Id;
     }
@@ -45,5 +34,14 @@ public class Admin {
 
     public void setAdmin_Password(String admin_Password) {
         this.admin_Password = admin_Password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "admin_Id='" + admin_Id + '\'' +
+                ", admin_Name='" + admin_Name + '\'' +
+                ", admin_Password='" + admin_Password + '\'' +
+                '}';
     }
 }
