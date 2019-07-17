@@ -30,10 +30,10 @@
                 $(".asideNav").slideUp();
             });
             //冒泡
-            $(".favorite_list li a").click(function(){
-                alert("链接");
-                window.location.href='product.jsp';
-            });
+            // $(".favorite_list li a").click(function(){
+            //     alert("链接");
+            //     window.location.href='product.jsp';
+            // });
             $(".favorite_list li .shop_collect_goods").click(function(){
                 alert("收藏小说");
                 event.stopPropagation();

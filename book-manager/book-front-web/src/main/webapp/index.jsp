@@ -78,9 +78,10 @@
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
-                <form>
+                <form action="<c:url value="/list"/>" method="get">
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词"/>
+                        <input type="hidden" name="condition" value="search"/>
+                        <input type="text" name="value" placeholder="输入小说关键词"/>
                     </div>
                     <div class="btnWrap">
                         <input type="submit" value="搜索"/>
@@ -103,7 +104,7 @@
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
-                    <img src="upload/ad002.jpg" />
+                    <img src="bookimg/2.jpg" />
                 </dl>
             </li>
             <li><a href="/" class="active">首页</a></li>
@@ -137,17 +138,17 @@ $()
         <div id="slide">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide01.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide02.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide03.jpg"/>
                     </a>
                 </div>
@@ -157,7 +158,7 @@ $()
         <!--singleAd-->
         <div class="singleAd">
             <a href="bookDetails.jsp">
-                <img src="upload/sigleAd.jpg"/>
+                <img src="bookimg/sigleAd.jpg"/>
             </a>
         </div>
         <!--bestShop-->
@@ -168,49 +169,49 @@ $()
             </dt>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/001.jpg"/>
+                    <img src="bookimg/001.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/002.jpg"/>
+                    <img src="bookimg/002.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/003.jpg"/>
+                    <img src="bookimg/003.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/004.jpg"/>
+                    <img src="bookimg/004.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/005.jpg"/>
+                    <img src="bookimg/005.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/006.jpg"/>
+                    <img src="bookimg/006.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/007.jpg"/>
+                    <img src="bookimg/007.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
             <dd>
                 <a href="bookDetails.jsp">
-                    <img src="upload/008.jpg"/>
+                    <img src="bookimg/008.jpg"/>
                     <h2>精品小说</h2>
                 </a>
             </dd>
@@ -283,76 +284,76 @@ $()
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="bookDetails.jsp"><img src="upload/bestCategoryPic01.jpg"/></a>
+        <a href="bookDetails.jsp"><img src="bookimg/bestCategoryPic01.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
+                    <img src="bookimg/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
+                    <img src="bookimg/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>545.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods004.jpg"/>
+                    <img src="bookimg/goods004.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
+                    <img src="bookimg/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
+                    <img src="bookimg/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>980.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods002.jpg"/>
+                    <img src="bookimg/goods002.jpg"/>
                     <h3>小说</h3>
                     <p><span>642.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods004.jpg"/>
+                    <img src="bookimg/goods004.jpg"/>
                     <h3>小说</h3>
                     <p><span>793.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
+                    <img src="bookimg/goods001.jpg"/>
                     <h3>小说</h3>
                     <p><span>755.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods002.jpg"/>
+                    <img src="bookimg/goods002.jpg"/>
                     <h3>小说</h3>
                     <p><span>360.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
+                    <img src="bookimg/goods003.jpg"/>
                     <h3>小说</h3>
                     <p><span>1255.00</span></p>
                 </a>
@@ -381,69 +382,69 @@ $()
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="bookDetails.jsp"><img src="upload/bestCategoryPic02.jpg"/></a>
+        <a href="bookDetails.jsp"><img src="bookimg/bestCategoryPic02.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
+                    <img src="bookimg/goods005.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
+                    <img src="bookimg/goods006.jpg"/>
                     <h3>小说</h3>
                     <p><span>545.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
+                    <img src="bookimg/goods007.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods008.jpg"/>
+                    <img src="bookimg/goods008.jpg"/>
                     <h3>小说</h3>
                     <p><span>1000.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods009.jpg"/>
+                    <img src="bookimg/goods009.jpg"/>
                     <h3>小说</h3>
                     <p><span>980.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods010.jpg"/>
+                    <img src="bookimg/goods010.jpg"/>
                     <h3>小说</h3>
                     <p><span>642.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
+                    <img src="bookimg/goods005.jpg"/>
                     <h3>小说</h3>
                     <p><span>793.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
+                    <img src="bookimg/goods006.jpg"/>
                     <h3>小说</h3>
                     <p><span>755.00</span></p>
                 </a>
             </li>
             <li>
                 <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
+                    <img src="bookimg/goods007.jpg"/>
                     <h3>小说</h3>
                     <p><span>360.00</span></p>
                 </a>
@@ -474,31 +475,31 @@ $()
     <ul>
         <li>
             <a href="bookDetails.jsp">
-                <img src="upload/case001.jpg"/>
+                <img src="bookimg/case001.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
             <a href="bookDetails.jsp">
-                <img src="upload/case002.jpg"/>
+                <img src="bookimg/case002.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
             <a href="bookDetails.jsp">
-                <img src="upload/case003.jpg"/>
+                <img src="bookimg/case003.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
             <a href="bookDetails.jsp">
-                <img src="upload/case004.jpg"/>
+                <img src="bookimg/case004.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
         <li>
             <a href="bookDetails.jsp">
-                <img src="upload/case005.jpg"/>
+                <img src="bookimg/case005.jpg"/>
                 <h3>小说</h3>
             </a>
         </li>
@@ -507,45 +508,7 @@ $()
 <!--section:two->articleList-->
 <!--footer-->
 <footer>
-    <!--help-->
-    <ul class="wrap help">
-        <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
-        </li>
-    </ul>
+
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
 

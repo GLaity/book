@@ -65,9 +65,19 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
+    public List<Book_Basic> findBookBasicAll() {
+        return bookDao.selectAllBook();
+    }
+
+    @Override
     public List<Book_Basic> findBookByTypeId(int typeId) {
         List<Book_Basic> books = bookDao.selectBookByType(typeId);
         return books;
+    }
+
+    @Override
+    public List<Book_Basic> findBookBySearchName(String  searchName) {
+        return bookDao.selectBookByLikeName(searchName);
     }
 
     @Override

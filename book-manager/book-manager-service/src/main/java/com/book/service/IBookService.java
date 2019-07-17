@@ -26,8 +26,9 @@ public interface IBookService {
 
     Book_Basic findBookBasicById(int bookId);
     Book_Extend findBookExtendById(int bookId);
-
+    List<Book_Basic> findBookBasicAll();
     List<Book_Basic> findBookByTypeId(int typeId);
+    List<Book_Basic> findBookBySearchName(String searchName);
 
     //根据类型id返回书籍信息
     List<Book_Type> findBookType();

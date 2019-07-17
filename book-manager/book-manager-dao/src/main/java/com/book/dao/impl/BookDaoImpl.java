@@ -87,4 +87,17 @@ public class BookDaoImpl implements IBookDao {
         }
         return books;
     }
+
+    @Override
+    public List<Book_Basic> selectBookByLikeName(String likeName) {
+        List<Book_Basic> books = null;
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "select * from book_basic where book_title like '%" + likeName + "%'";
+        try {
+            books = qr.query(sql,new BeanListHandler<Book_Basic>(Book_Basic.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
 }
