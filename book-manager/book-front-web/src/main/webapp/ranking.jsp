@@ -60,7 +60,7 @@
             </c:if>
             <c:if test="${!empty(sessionScope.user)}">
                 <ul class="topLtNav">
-                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                    <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
                 </ul>
             </c:if>
             <!--topRightNav-->
@@ -74,6 +74,7 @@
                     <li><a href="#" class="favorIcon">收藏夹</a></li>
                 </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
+>>>>>>>>> Temporary merge branch 2
             </ul>
         </div>
     </div>
@@ -108,42 +109,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="product_list.html">分类</a></dt> -->
                     <dd>
-                        <a href="type.html"><span><i>玄幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=1"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>武侠</i></span></a>
+                        <a href="/booktype?_method=type&typeId=2"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>都市</i></span></a>
+                        <a href="/booktype?_method=type&typeId=3"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>军事</i></span></a>
+                        <a href="/booktype?_method=type&typeId=4"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>历史</i></span></a>
+                        <a href="/booktype?_method=type&typeId=5"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>游戏</i></span></a>
+                        <a href="/booktype?_method=type&typeId=6"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>悬疑</i></span></a>
+                        <a href="/booktype?_method=type&typeId=7"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>科幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=8"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>言情</i></span></a>
+                        <a href="/booktype?_method=type&typeId=9"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.html"><span><i>青春</i></span></a>
+                        <a href="/booktype?_method=type&typeId=10"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
-            <li><a href="index.html" class="active">首页</a></li>
-            <li><a href="ranking_list.html">排行</a></li>
-            <li><a href="product_list.html">完本</a></li>
-            <li><a href="product_list.html">书库</a></li>
+            <li><a href="/" class="active">首页</a></li>
+            <li><a href="/ranking">排行</a></li>
+            <li><a href="/list">完本</a></li>
+            <li><a href="/list">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -206,37 +207,37 @@
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
         <li>
             <dl>
                 <dt>关于我们</dt>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
-                <dd><a href="article_read.html">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
             </dl>
         </li>
     </ul>

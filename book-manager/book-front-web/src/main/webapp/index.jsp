@@ -254,7 +254,7 @@ $()
         <dl class="idxRtAtc">
             <dt>
                 <em class="obviousText">最新排行</em>
-                <a href="ranking_list.jsp">more</a>
+                <a href="/ranking">more</a>
             </dt>
             <c:forEach items="${bookQuere}" var="book">
                 <dd><a href="/book?bookId=${book.getBook_Id()}">${book.getBook_Title()}</a></dd>

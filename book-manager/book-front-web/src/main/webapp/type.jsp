@@ -48,14 +48,27 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.jsp">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.jsp">个人中心</a></li>
-                <li><a href="favorite.jsp" class="favorIcon">收藏夹</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="/personal">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
@@ -91,42 +104,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="type.jsp"><span><i>玄幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=1"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>武侠</i></span></a>
+                        <a href="/booktype?_method=type&typeId=2"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>都市</i></span></a>
+                        <a href="/booktype?_method=type&typeId=3"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>军事</i></span></a>
+                        <a href="/booktype?_method=type&typeId=4"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>历史</i></span></a>
+                        <a href="/booktype?_method=type&typeId=5"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>游戏</i></span></a>
+                        <a href="/booktype?_method=type&typeId=6"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>悬疑</i></span></a>
+                        <a href="/booktype?_method=type&typeId=7"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>科幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=8"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>言情</i></span></a>
+                        <a href="/booktype?_method=type&typeId=9"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="type.jsp"><span><i>青春</i></span></a>
+                        <a href="/booktype?_method=type&typeId=10"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="bookList.jsp">完本</a></li>
-            <li><a href="bookList.jsp">书库</a></li>
+            <li><a href="/ranking">排行</a></li>
+            <li><a href="/list">完本</a></li>
+            <li><a href="/list">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -179,14 +192,14 @@
 <%--        </c:forEach>--%>
     </ul>
     <!--分页-->
-    <div class="paging">
-        <a>第一页</a>
-        <a class="active">2</a>
-        <a>3</a>
-        <a>...</a>
-        <a>89</a>
-        <a>最后一页</a>
-    </div>
+<%--    <div class="paging">--%>
+<%--        <a>第一页</a>--%>
+<%--        <a class="active">2</a>--%>
+<%--        <a>3</a>--%>
+<%--        <a>...</a>--%>
+<%--        <a>89</a>--%>
+<%--        <a>最后一页</a>--%>
+<%--    </div>--%>
 </section>
 <!--footer-->
 <footer>
@@ -231,14 +244,14 @@
     </ul>
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
-        <dd><a href="http://www.17sucai.com" target="_blank">17素材</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/24448.html">HTML5模块化后台管理模板</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/15966.html">绿色清爽后台管理系统模板</a></dd>
-        <dd><a href="http://www.17sucai.com/pins/14931.html">黑色的cms商城网站后台管理模板</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">前端博客</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">博客</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">新码笔记</a></dd>
-        <dd><a href="http://www.deathghost.cn" target="_blank">DethGhost</a></dd>
+        <dd><a href="#" target="_blank">17素材</a></dd>
+        <dd><a href="#">HTML5模块化后台管理模板</a></dd>
+        <dd><a href="#">绿色清爽后台管理系统模板</a></dd>
+        <dd><a href="#">黑色的cms商城网站后台管理模板</a></dd>
+        <dd><a href="#" target="_blank">前端博客</a></dd>
+        <dd><a href="#" target="_blank">博客</a></dd>
+        <dd><a href="#" target="_blank">新码笔记</a></dd>
+        <dd><a href="#" target="_blank">DethGhost</a></dd>
         <dd><a href="#">当当</a></dd>
         <dd><a href="#">优酷</a></dd>
         <dd><a href="#">土豆</a></dd>
