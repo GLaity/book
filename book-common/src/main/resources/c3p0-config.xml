@@ -5,13 +5,9 @@
     -->
     <default-config>
         <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://192.168.0.113:3306/book?serverTimezone=UTC</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC</property>
         <property name="user">root</property>
-        <property name="password">0216</property>
-
-<!--        <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/book?serverTimezone=UTC</property>-->
-<!--        <property name="user">root</property>-->
-<!--        <property name="password">123456</property>-->
+        <property name="password">root</property>
 
         <property name="initialPoolSize">10</property>
         <property name="maxIdleTime">30</property><!-- 最大空闲时间 -->
@@ -19,7 +15,6 @@
         <property name="minPoolSize">5</property>
         <property name="maxStatements">200</property>
     </default-config>
-
     <!--
         C3P0的命名配置，
         如果在代码中“ComboPooledDataSource ds = new ComboPooledDataSource("mysql");”这样写就表示使用的是name为mysql的配置信息来创建数据源

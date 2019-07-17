@@ -1,7 +1,7 @@
 package com.book.util;
 
-import javax.sql.DataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import javax.sql.DataSource;
 
 public class JDBCUtils {
     private static ComboPooledDataSource ds = new ComboPooledDataSource();
@@ -9,4 +9,3 @@ public class JDBCUtils {
         return ds;
     }
 }
-
