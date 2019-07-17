@@ -27,4 +27,7 @@ public interface IBookExtendDao {
     //根据id更新书的购买量
     void updateBookBoughtBy(int book_Id);
 
+    List<Integer> queueByVisited();
+    List<Integer> queueByCollected();
+    List<Integer> queueByBought();
 }

@@ -4,7 +4,6 @@ import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Extend;
 import com.book.pojo.Book_Type;
 
-import java.awt.print.Book;
 import java.util.List;
 
 import java.util.List;
@@ -29,6 +28,9 @@ public interface IBookService {
     List<Book_Basic> findBookBasicAll();
     List<Book_Basic> findBookByTypeId(int typeId);
     List<Book_Basic> findBookBySearchName(String searchName);
+    List<Book_Basic> queueByVisited();
+    List<Book_Basic> queueByCollected();
+    List<Book_Basic> queueByBought();
 
     //根据类型id返回书籍信息
     List<Book_Type> findBookType();

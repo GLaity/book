@@ -256,14 +256,9 @@ $()
                 <em class="obviousText">最新排行</em>
                 <a href="ranking_list.jsp">more</a>
             </dt>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
-            <dd><a href="article_read.jsp">小说小说小说小说小说小说小说小说</a></dd>
+            <c:forEach items="${bookQuere}" var="book">
+                <dd><a href="/book?bookId=${book.getBook_Id()}">${book.getBook_Title()}</a></dd>
+            </c:forEach>
         </dl>
 
     </div>
