@@ -152,11 +152,11 @@
 <section class="wrap shop_goods_li">
     <h2>${bookType.getType_Name()}小说</h2>
     <ul class="favorite_list">
-        <%new File("/Book").mkdir();%>
         <c:forEach items="${bookBasicList}" var="bookBasic">
             <li>
                 <a href="/book?bookId=${bookBasic.getBook_Id()}">
-                    <img src="upload/goods005.jpg"/>
+                    <img src="bookimg/${bookBasic.getBook_Id()}.jpg">
+<%--                    <img src="upload/goods005.jpg"/>--%>
                     <h3>${bookBasic.getBook_Title()}</h3>
                     <p class="price"><span class="rmb_icon">298.00</span></p>
                     <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>
