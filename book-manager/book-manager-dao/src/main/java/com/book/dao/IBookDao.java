@@ -19,6 +19,6 @@ public interface IBookDao {
     //查询全部书籍
     public  List<Book_Basic> selectAllBook();
 
-
+    List<Book_Basic> selectBookByLikeName(String likeName);
 
 }
