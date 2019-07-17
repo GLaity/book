@@ -125,8 +125,8 @@
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>

@@ -51,7 +51,6 @@
                 $(".user_rt_cont").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
             })
         });
-
     </script>
 </head>
 <body>
@@ -105,41 +104,40 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.html">分类</a></dt> -->
+                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="#"><span><i>玄幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>武侠</i></span></a>
+                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>都市</i></span></a>
+                        <a href="product_list.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>军事</i></span></a>
+                        <a href="product_list.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>历史</i></span></a>
+                        <a href="product_list.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>游戏</i></span></a>
+                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>悬疑</i></span></a>
+                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>科幻</i></span></a>
+                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>言情</i></span></a>
+                        <a href="product_list.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="#"><span><i>青春</i></span></a>
+                        <a href="product_list.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
-
             </li>
-            <li><a href="/" class="active">首页</a></li>
+            <li><a href="index.jsp" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="product_list.jsp">完本</a></li>
             <li><a href="product_list.jsp">书库</a></li>
@@ -180,83 +178,82 @@
     <!--右侧：个人资料-->
     <div class="user_rt_cont selected">
         <div class="top_title">
-            <strong><em>DeathGhost</em>欢迎回到用户中心</strong>
+            <strong><em><c:out value="${sessionScope.user.getUser_Username()}"></c:out></em>欢迎回到用户中心</strong>
         </div>
 
         <div class="user_factbook">
-            <a href="#" class="user_icon">
+            <a href="profile.html" class="user_icon">
                 <img src="images/icon/DefaultAvatar.jpg" />
                 <span>修改头像</span>
             </a>
             <div class="user_infor">
-                <p><strong>DeathGhost</strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="#">申请入驻</a></p>
+                <p><strong><c:out value="${sessionScope.user.getUser_Username()}"></c:out></strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="authenticate.html">申请入驻</a></p>
                 <p>上次登录时间：<time>2019-01-14 13:55</time>，登录ip：192.168.1.1</p>
-                <p>账户余额：<strong class="rmb_icon">0.00</strong><a href="#" class="btn">充值</a><a href="#" class="btn">提现</a></p>
+                <p>账户余额：<strong class="rmb_icon">0.00</strong><a href="account.html" class="btn">充值</a><a href="account.html"
+                                                                                                          class="btn">提现</a></p>
             </div>
         </div>
         <dl class="user_order_tips">
             <dt>订单</dt>
             <dd>
-                <a href="#">
-                    <strong>20</strong>
-                    <em>订单</em>
+                <a href="order_list.html">
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalVisit()}"></c:out></strong>
+                    <em>浏览数</em>
                 </a>
             </dd>
             <dd>
-                <a href="#">
-                    <strong>10</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dt>订单</dt>
-            <dd>
-                <a href="#">
-                    <strong>20</strong>
-                    <em>订单</em>
+                <a href="order_list.html">
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalBought()}"></c:out></strong>
+                    <em>购买数</em>
                 </a>
             </dd>
             <dd>
-                <a href="#">
-                    <strong>10</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-
-        </dl>
-        <dl class="user_order_tips">
-            <dt>提醒</dt>
-            <dd>
-                <a href="#">
-                    <strong>9</strong>
-                    <em>订单</em>
+                <a href="order_list.html">
+                    <strong><c:out value="${countAccount.getCount_TotalPay()}"></c:out></strong>
+                    <em>消费金额（元）</em>
                 </a>
             </dd>
             <dd>
-                <a href="#">
-                    <strong>10</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dd>
-                <a href="#">
-                    <strong>20</strong>
-                    <em>订单</em>
-                </a>
-            </dd>
-            <dd>
-                <a href="#">
-                    <strong>2</strong>
-                    <em>订单</em>
+                <a href="order_list.html">
+                    <strong><c:out value="${sessionScope.countAccount.getCount_TotalTime()}"></c:out></strong>
+                    <em>阅读时长（分钟）</em>
                 </a>
             </dd>
         </dl>
+        <%--        <dl class="user_order_tips">--%>
+        <%--            <dt>提醒</dt>--%>
+        <%--            <dd>--%>
+        <%--                <a href="#">--%>
+        <%--                    <strong>9</strong>--%>
+        <%--                    <em>订单</em>--%>
+        <%--                </a>--%>
+        <%--            </dd>--%>
+        <%--            <dd>--%>
+        <%--                <a href="#">--%>
+        <%--                    <strong>10</strong>--%>
+        <%--                    <em>订单</em>--%>
+        <%--                </a>--%>
+        <%--            </dd>--%>
+        <%--            <dd>--%>
+        <%--                <a href="#">--%>
+        <%--                    <strong>20</strong>--%>
+        <%--                    <em>订单</em>--%>
+        <%--                </a>--%>
+        <%--            </dd>--%>
+        <%--            <dd>--%>
+        <%--                <a href="#">--%>
+        <%--                    <strong>2</strong>--%>
+        <%--                    <em>订单</em>--%>
+        <%--                </a>--%>
+        <%--            </dd>--%>
+        <%--        </dl>--%>
     </div>
 
     <!--右侧：我的浏览-->
     <div class="user_rt_cont">
         <div class="top_title">
             <strong>商品列表</strong>
-            <a href="#" title="添加新商品" class="fr">添加新商品</a>
+            <a href="seller_product_detail.html" title="添加新商品" class="fr">添加新商品</a>
         </div>
         <!--条件检索-->
         <div style="margin:8px 0;">
@@ -281,20 +278,20 @@
             </tr>
             <tr>
                 <td class="center">A880936</td>
-                <td class="center"><a href="product.jsp" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>
-                <td><a h href="product.jsp" target="_blank">这里是产品名称哦</a></td>
+                <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>
+                <td><a h href="product.html" target="_blank">这里是产品名称哦</a></td>
                 <td class="center"><strong class="rmb_icon">59.00</strong></td>
                 <td class="center">10000</td>
                 <td class="center">平方米</td>
                 <td class="center">
-                    <a href="product.jsp" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
-                    <a href="#" title="编辑"><img src="images/icon_edit.gif" /></a>
+                    <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
+                    <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>
                     <a title="删除"><img src="images/icon_trash.gif" /></a>
                 </td>
             </tr>
             <tr>
                 <td class="center">A880936</td>
-                <td class="center"><a href="product.html" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
+                <td class="center"><a href="/book?bookId=1" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
                 <td><a href="product.html" target="_blank">这里是产品名称哦</a></td>
                 <td class="center"><strong class="rmb_icon">159.00</strong></td>
                 <td class="center">10000</td>
@@ -466,7 +463,7 @@
         <table class="order_table">
             <tr>
                 <th>小说名</th>
-<%--                <th>图片</th>--%>
+                <%--                <th>图片</th>--%>
                 <th>作者</th>
                 <th>日期</th>
                 <th>评价</th>
@@ -475,27 +472,27 @@
             <c:forEach items="${adviceList}" var="advice" varStatus="vs">
                 <tr>
                     <td class="center"><a h href="product.html" target="_blank">${bookAdviceList[vs.count-1].getBook_Title()}</a></td>
-<%--                    <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>--%>
+                        <%--                    <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>--%>
                     <td class="center">${bookAdviceList[vs.count-1].getWriter_Id()}</td>
                     <td class="center">${advice.getAdvice_Date()}</td>
                     <td class="center"><strong class="rmb_icon">${advice.getAdvice_Text()}</strong></td>
                     <td class="center">
-<%--                        <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
-<%--                        <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
+                            <%--                        <a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
+                            <%--                        <a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
                         <a href="/personal?_method=deleteAdvice&adviceId=${advice.getAdvice_Id()}" title="删除"><img src="images/icon_trash.gif" /></a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
         <!--分页-->
-<%--        <div class="paging" style="text-align:right">--%>
-<%--            <a>第一页</a>--%>
-<%--            <a class="active">2</a>--%>
-<%--            <a>3</a>--%>
-<%--            <a>...</a>--%>
-<%--            <a>89</a>--%>
-<%--            <a>最后一页</a>--%>
-<%--        </div>--%>
+        <%--        <div class="paging" style="text-align:right">--%>
+        <%--            <a>第一页</a>--%>
+        <%--            <a class="active">2</a>--%>
+        <%--            <a>3</a>--%>
+        <%--            <a>...</a>--%>
+        <%--            <a>89</a>--%>
+        <%--            <a>最后一页</a>--%>
+        <%--        </div>--%>
     </div>
 
     <!--右侧：会员等级-->
@@ -746,4 +743,3 @@
 </footer>
 </body>
 </html>
-

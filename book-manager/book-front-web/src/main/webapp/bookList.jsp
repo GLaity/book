@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -45,14 +47,27 @@
     <div class="topNavBg">
         <div class="wrap">
             <!--topLeftNav-->
-            <ul class="topLtNav">
-                <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
-                <li><a href="register.jsp">注册</a></li>
-            </ul>
+            <c:if test="${empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="login.jsp" class="obviousText">亲，请登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${!empty(sessionScope.user)}">
+                <ul class="topLtNav">
+                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                </ul>
+            </c:if>
             <!--topRightNav-->
             <ul class="topRtNav">
-                <li><a href="user.jsp">个人中心</a></li>
-                <li><a href="#" class="favorIcon">收藏夹</a></li>
+                <c:if test="${empty(sessionScope.user)}">
+                    <li><a href="login.jsp">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
+                <c:if test="${!empty(sessionScope.user)}">
+                    <li><a href="/personal">个人中心</a></li>
+                    <li><a href="#" class="favorIcon">收藏夹</a></li>
+                </c:if>
                 <li><a href="#" class="srvIcon">客户服务</a></li>
             </ul>
         </div>
@@ -86,7 +101,7 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="product_list.jsp">分类</a></dt> -->
+                    <!-- <dt><a href="bookList.jsp">分类</a></dt> -->
                     <dd>
                         <a href="type.jsp"><span><i>玄幻</i></span></a>
                     </dd>
@@ -122,8 +137,8 @@
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
