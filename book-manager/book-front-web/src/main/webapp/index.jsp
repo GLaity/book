@@ -78,9 +78,10 @@
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
-                <form>
+                <form action="<c:url value="/list"/>" method="get">
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词"/>
+                        <input type="hidden" name="condition" value="search"/>
+                        <input type="text" name="value" placeholder="输入小说关键词"/>
                     </div>
                     <div class="btnWrap">
                         <input type="submit" value="搜索"/>
@@ -108,8 +109,8 @@
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -164,7 +165,7 @@ $()
         <dl class="bestShop">
             <dt>
                 <strong>优秀小说推荐</strong>
-                <a href="product_list.jsp" class="fr">更多</a>
+                <a href="bookList.jsp" class="fr">更多</a>
             </dt>
             <dd>
                 <a href="bookDetails.jsp">

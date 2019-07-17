@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -26,10 +28,10 @@
                 $(".asideNav").slideUp();
             });
             //冒泡
-            $(".favorite_list li a").click(function(){
-                alert("链接");
-                window.location.href='bookDetails.jsp';
-            });
+            // $(".favorite_list li a").click(function(){
+            //     alert("链接");
+            //     window.location.href='bookDetails.jsp';
+            // });
             $(".favorite_list li .shop_collect_goods").click(function(){
                 alert("收藏产品");
                 event.stopPropagation();
@@ -59,26 +61,27 @@
     </div>
     <!--logoArea-->
     <div class="wrap logoSearch">
-        <!--logo-->
-        <div class="logo"><h1><img src="images/logo.png"/></h1></div>
-        <!--search-->
-        <div class="search">
-            <ul class="switchNav">
-                <li class="active" id="chanpin">小说</li>
-                <li id="shangjia">作者</li>
-            </ul>
-            <div class="searchBox">
-                <form>
-                    <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词"/>
-                    </div>
-                    <div class="btnWrap">
-                        <input type="submit" value="搜索"/>
-                    </div>
-                </form>
-                <!-- <a href="#" class="advancedSearch">高级搜索</a> -->
+            <!--logo-->
+            <div class="logo"><h1><img src="images/logo.png"/></h1></div>
+            <!--search-->
+            <div class="search">
+                <ul class="switchNav">
+                    <li class="active" id="chanpin">小说</li>
+                    <li id="shangjia">作者</li>
+                </ul>
+                <div class="searchBox">
+                    <form action="<c:url value="/list"/>" method="get">
+                        <div class="inputWrap">
+                            <input type="hidden" name="condition" value="search"/>
+                            <input type="text" name="value" placeholder="输入小说关键词"/>
+                        </div>
+                        <div class="btnWrap">
+                            <input type="submit" value="搜索"/>
+                        </div>
+                    </form>
+                    <!-- <a href="#" class="advancedSearch">高级搜索</a> -->
+                </div>
             </div>
-        </div>
     </div>
     <!--nav-->
     <nav>
@@ -86,7 +89,7 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="product_list.jsp">分类</a></dt> -->
+                    <!-- <dt><a href="bookList.jsp">分类</a></dt> -->
                     <dd>
                         <a href="type.jsp"><span><i>玄幻</i></span></a>
                     </dd>
@@ -122,8 +125,8 @@
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -154,16 +157,16 @@
                     <dl>
                         <dt>分类：</dt>
                         <dd>
-                            <a>玄幻</a>
-                            <a>武侠</a>
-                            <a>都市</a>
-                            <a>军事</a>
-                            <a>历史</a>
-                            <a>游戏</a>
-                            <a>悬疑</a>
-                            <a>科幻</a>
-                            <a>言情</a>
-                            <a>青春</a>
+                            <a href="<c:url value="/list?condition=type&value=1"/>">玄幻</a>
+                            <a href="<c:url value="/list?condition=type&value=2"/>">武侠</a>
+                            <a href="<c:url value="/list?condition=type&value=3"/>">都市</a>
+                            <a href="<c:url value="/list?condition=type&value=4"/>">军事</a>
+                            <a href="<c:url value="/list?condition=type&value=5"/>">历史</a>
+                            <a href="<c:url value="/list?condition=type&value=6"/>">游戏</a>
+                            <a href="<c:url value="/list?condition=type&value=7"/>">悬疑</a>
+                            <a href="<c:url value="/list?condition=type&value=8"/>">科幻</a>
+                            <a href="<c:url value="/list?condition=type&value=9"/>">言情</a>
+                            <a href="<c:url value="/list?condition=type&value=10"/>">青春</a>
                         </dd>
                     </dl>
                 </li>
@@ -199,128 +202,25 @@
         </div>
         <!--产品列表-->
         <section class="shop_goods_li">
-            <h2>小说产品</h2>
+            <h2>小说:
+                <c:if test="${!empty(bookType)}">
+                    ${bookType.getType_Name()}
+                </c:if>
+                <c:if test="${!empty(keyName)}">
+                    ${keyName}
+                </c:if>
+            </h2>
             <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods005.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods010.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods009.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods008.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg"/>
-                        <h3>2019时尚新款</h3>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
-                    </a>
-                </li>
+                <c:forEach items="${bookBasicList}" var="bookBasic">
+                    <li>
+                        <a href="/book?bookId=${bookBasic.getBook_Id()}">
+                            <img src="upload/goods005.jpg"/>
+                            <h3>${bookBasic.getBook_Title()}</h3>
+                            <p class="price"><span class="rmb_icon">298.00</span></p>
+                            <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
+                        </a>
+                    </li>
+                </c:forEach>
             </ul>
             <!--分页-->
             <div class="paging">

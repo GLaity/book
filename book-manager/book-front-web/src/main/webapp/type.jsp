@@ -30,10 +30,10 @@
                 $(".asideNav").slideUp();
             });
             //冒泡
-            $(".favorite_list li a").click(function(){
-                alert("链接");
-                window.location.href='product.jsp';
-            });
+            // $(".favorite_list li a").click(function(){
+            //     alert("链接");
+            //     window.location.href='product.jsp';
+            // });
             $(".favorite_list li .shop_collect_goods").click(function(){
                 alert("收藏小说");
                 event.stopPropagation();
@@ -125,8 +125,8 @@
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>

@@ -125,42 +125,42 @@
                 <dl class="asideNav indexAsideNav">
                     <!-- <dt><a href="channel.jsp">分类</a></dt> -->
                     <dd>
-                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
+                        <a href="bookList.jsp"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
+                        <a href="bookList.jsp"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>都市</i></span></a>
+                        <a href="bookList.jsp"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>军事</i></span></a>
+                        <a href="bookList.jsp"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>历史</i></span></a>
+                        <a href="bookList.jsp"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
+                        <a href="bookList.jsp"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
+                        <a href="bookList.jsp"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
+                        <a href="bookList.jsp"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>言情</i></span></a>
+                        <a href="bookList.jsp"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>青春</i></span></a>
+                        <a href="bookList.jsp"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
 
             </li>
             <li><a href="/" class="active">首页</a></li>
             <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="product_list.jsp">完本</a></li>
-            <li><a href="product_list.jsp">书库</a></li>
+            <li><a href="bookList.jsp">完本</a></li>
+            <li><a href="bookList.jsp">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -237,7 +237,7 @@
                 </li>
 
                 <li class="last_li">
-                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=1'"/>
+                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
                     <input type="button" value="加入书架" class="add_btn" />
                 </li>
             </ul>
