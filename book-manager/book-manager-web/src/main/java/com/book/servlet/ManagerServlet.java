@@ -22,7 +22,6 @@ public class ManagerServlet extends HttpServlet {
             case "login":
                 login(req, resp);
                 break;
-
         }
     }
 
@@ -35,16 +34,16 @@ public class ManagerServlet extends HttpServlet {
         String password = req.getParameter("password");
         IUserService iUserService =new IUserServiceImpl();
         List<User_Account> users=iUserService.findAll();
-        System.out.println(users);
         HttpSession session = req.getSession();
-
+        users.get(2).getUser_Id();
+        System.out.println(users);
         if(username.equals("admin")&&password.equals("123")){
-            session.setAttribute("userList",users);
-            resp.sendRedirect("userinformation.jsp");
-        }else{
-            session.setAttribute("userList",users);
-            resp.sendRedirect("userinformation.jsp");
-        }
+            req.setAttribute("userList",users);
+            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
 
+        }else{
+            req.setAttribute("userList",users);
+            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
+        }
     }
 }

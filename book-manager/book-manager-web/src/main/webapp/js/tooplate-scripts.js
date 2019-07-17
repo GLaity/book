@@ -47,7 +47,7 @@ function drawLineChart() {
           },
           {
             label: "平均访问次数",
-            data: [44, 19, 38, 46, 85, 66, 79，22，36，64，96，66],
+            data: [44, 19, 38, 46, 85, 66, 79,22,36,64,96,66],
             fill: false,
             borderColor: "rgba(153, 102, 255, 1)",
             lineTension: 0.1

@@ -1,8 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
+<<<<<<< HEAD
   User: 郭文佐
   Date: 2019/7/17
   Time: 14:51
+=======
+  User: lenovo
+  Date: 2019/7/17
+  Time: 14:56
+>>>>>>> 9f6e9026919c31697ca7bec1b427f8db2a38223c
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -134,14 +140,14 @@
 <script>
     $(document).ready(function() {
         //测试效果，程序对接如需变动重新编辑
-        $(".switchNav li").click(function() {
+        $(".switchNav li").click(function(){
             $(this).addClass("active").siblings().removeClass("active");
         });
-        $("#chanpin").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入小说关键词");
+        $("#chanpin").click(function(){
+            $(".inputWrap input[type='text']").attr("placeholder","输入小说关键词");
         });
-        $("#shangjia").click(function() {
-            $(".inputWrap input[type='text']").attr("placeholder", "输入作者姓名");
+        $("#shangjia").click(function(){
+            $(".inputWrap input[type='text']").attr("placeholder","输入作者姓名");
         });
     });
 </script>

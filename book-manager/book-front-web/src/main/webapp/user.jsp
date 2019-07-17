@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: 郭文佐
@@ -52,6 +51,7 @@
                 $(".user_rt_cont").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
             })
         });
+
     </script>
 </head>
 <body>
@@ -105,41 +105,42 @@
             <li class="category">
                 <a>全部小说分类</a>
                 <dl class="asideNav indexAsideNav">
-                    <!-- <dt><a href="channel.jsp">分类</a></dt> -->
+                    <!-- <dt><a href="channel.html">分类</a></dt> -->
                     <dd>
-                        <a href="product_list.jsp"><span><i>玄幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=1"><span><i>玄幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>武侠</i></span></a>
+                        <a href="/booktype?_method=type&typeId=2"><span><i>武侠</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>都市</i></span></a>
+                        <a href="/booktype?_method=type&typeId=3"><span><i>都市</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>军事</i></span></a>
+                        <a href="/booktype?_method=type&typeId=4"><span><i>军事</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>历史</i></span></a>
+                        <a href="/booktype?_method=type&typeId=5"><span><i>历史</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>游戏</i></span></a>
+                        <a href="/booktype?_method=type&typeId=6"><span><i>游戏</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>悬疑</i></span></a>
+                        <a href="/booktype?_method=type&typeId=7"><span><i>悬疑</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>科幻</i></span></a>
+                        <a href="/booktype?_method=type&typeId=8"><span><i>科幻</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>言情</i></span></a>
+                        <a href="/booktype?_method=type&typeId=9"><span><i>言情</i></span></a>
                     </dd>
                     <dd>
-                        <a href="product_list.jsp"><span><i>青春</i></span></a>
+                        <a href="/booktype?_method=type&typeId=10"><span><i>青春</i></span></a>
                     </dd>
                 </dl>
+
             </li>
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="#">排行</a></li>
+            <li><a href="ranking_list.jsp">排行</a></li>
             <li><a href="/list">完本</a></li>
             <li><a href="/list">书库</a></li>
         </ul>
@@ -254,7 +255,7 @@
     <div class="user_rt_cont">
         <div class="top_title">
             <strong>商品列表</strong>
-            <a href="seller_product_detail.html" title="添加新商品" class="fr">添加新商品</a>
+            <a href="#" title="添加新商品" class="fr">添加新商品</a>
         </div>
         <!--条件检索-->
         <div style="margin:8px 0;">
@@ -744,3 +745,4 @@
 </footer>
 </body>
 </html>
+
