@@ -91,8 +91,8 @@ header .logoSearch .search .switchNav li:hover{background:#ffeee5;color:#ff4400;
 header .logoSearch .search .switchNav .active{background:#e4393c;color:white;}
 header .logoSearch .search .switchNav .active:hover{background:#e4393c;color:white;}
 header .logoSearch .search .searchBox{}
-header .logoSearch .search .searchBox .inputWrap{border:3px #e4393c solid;float:left;}
-header .logoSearch .search .searchBox .inputWrap input[type="text"]{padding:6px 0;text-indent: 10px;height:22px;line-height:22px;width:620px;border: none;}
+header .logoSearch .search .searchBox .inputWrap{border:3px #e4393c solid;float:left;height: 34px;}
+header .logoSearch .search .searchBox .inputWrap input[type="text"]{padding:6px 0;text-indent: 10px;line-height:22px;width:620px;border: none;}
 header .logoSearch .search .searchBox .btnWrap{background:#e4393c;border:3px #e4393c solid;vertical-align:middle;float:left;}
 header .logoSearch .search .searchBox .btnWrap input[type="submit"]{color:white;font-size:16px;height:34px;background:none;border:none;cursor:pointer;font-size:20px;letter-spacing:5px;text-indent: 5px;font-weight:bolder;}
 /* header .logoSearch .search .searchBox .advancedSearch{display:block;color:grey;float:left;height:40px;line-height:40px;margin-left:8px;} */

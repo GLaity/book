@@ -14,7 +14,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<<<<<< HEAD
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -24,19 +23,7 @@
     <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
     <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/style.css" /><script src="js/html5.js"></script>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>排行榜</title>
-    <meta name="keywords" content="DeathGhost" />
-    <meta name="description" content="DeathGhost" />
-    <meta name="author" content="DeathGhost,deathghost@deathghost.cn">
-    <link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/html5.js"></script>
->>>>>>> 72999361f843e4080bdf7e6bf2c52b5551d9d7bf
     <script src="js/jquery.js"></script>
     <script>
         $(document).ready(function(){

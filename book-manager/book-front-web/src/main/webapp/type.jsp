@@ -169,7 +169,7 @@
 <%--        <c:forEach items="${pathList}" var="path">--%>
 <%--            <li>--%>
 <%--                <a>--%>
-<%--                    <img src= "${path}/picture.jpg"/>--%>
+<%--                    <img src= "${path}/17.jpg"/>--%>
 
 <%--&lt;%&ndash;                    <h3>${}</h3>&ndash;%&gt;--%>
 <%--                    <p class="price"><span class="rmb_icon">298.00</span></p>--%>
