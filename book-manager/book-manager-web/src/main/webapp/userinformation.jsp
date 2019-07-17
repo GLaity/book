@@ -114,10 +114,9 @@
                                         <td class="text-center">
                                             <c:out value="${ user_account.getUser_Date()}"></c:out>
                                         </td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                        <td><a href="/read.do?userId=${user_account.getUser_Id()}&_method=remove"><i class="fas fa-trash-alt tm-trash-icon"></i></a></td>
                                     </tr>
                                 </c:forEach>
-
                                 </tbody>
                                 </table>
                     </div>
@@ -150,8 +149,7 @@
 <script>
     $(function () {
         $('.tm-product-name').on('click', function () {
-
-            window.location.href = "edituesr.jsp";
+            window.location.href = "edituser.jsp";
         });
     })
 </script>
