@@ -237,7 +237,7 @@
                 </li>
 
                 <li class="last_li">
-                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=1'"/>
+                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
                     <input type="button" value="加入书架" class="add_btn" />
                 </li>
             </ul>
