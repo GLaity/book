@@ -22,7 +22,7 @@
     <script>
         function  deleteAdvice(adviceId) {
             // var adviceId = $(this).children(".adId").val();
-            alert(adviceId);
+            // alert(adviceId);
             $.ajax({
                 type:"get",
                 url:"/personal?_method=deleteAdvice",
