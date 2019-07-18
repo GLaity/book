@@ -236,7 +236,12 @@
 
                 <li class="last_li">
                     <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
-                    <input type="button" value="加入书架" class="add_btn" />
+                    <c:if test="${empty(sessionScope.user)}">
+                        <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = 'login.jsp'"/>
+                    </c:if>
+                    <c:if test="${!empty(sessionScope.user)}">
+                        <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}"/>
+                    </c:if>
                 </li>
             </ul>
         </div>

@@ -37,6 +37,9 @@ public class BookReadServlet extends HttpServlet {
             case "dir":
                 dir(req,resp);
                 break;
+            case "collection":
+                collection(req, resp);
+                break;
         }
     }
 
@@ -99,5 +102,10 @@ public class BookReadServlet extends HttpServlet {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         IBookDirDao bookDirDao = new BookDirDaoImpl();
         List<String> dir = bookDirDao.getBookDir(bookId);
+    }
+    public void collection(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        IBookService bookService = new BookServiceImpl();
+        bookService.modifyCollectedById(bookId);
     }
 }
