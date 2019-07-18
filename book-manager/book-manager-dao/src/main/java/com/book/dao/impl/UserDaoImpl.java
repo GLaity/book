@@ -11,7 +11,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserDaoImpl implements IUserDao {
-    //新增用户 ，注册用户
+    public void insertUser(User_Account user) {
+        String sql ="insert into user_account(user_username,user_password,user_date,user_tel,user_email)values(?,?,date(NOW()),?,?)";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            qr.update(sql,user.getUser_Username(),user.getUser_Password(),user.getUser_Tel(),user.getUser_Email());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    //新增用户
     public void insertUserAccount(User_Account user) {
         String sql ="insert into user_account(user_username,user_password,user_date)values(?,?,date(NOW()))";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());

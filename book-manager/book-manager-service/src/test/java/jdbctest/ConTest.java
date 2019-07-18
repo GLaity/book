@@ -3,6 +3,9 @@ package jdbctest;
 import com.admin.service.AdminService;
 import com.admin.service.impl.AdminServiceImpl;
 import com.book.pojo.Admin;
+import com.book.pojo.User_Account;
+import com.book.service.IUserService;
+import com.book.service.impl.IUserServiceImpl;
 
 public class ConTest {
 
@@ -15,8 +18,5 @@ public class ConTest {
 //        }
 //    }
 public static void main(String[] args) {
-    AdminService adminService =new AdminServiceImpl();
-    Admin admin=adminService.adminLogin("zyp","123456");
-    System.out.println(admin.toString());
 }
 }

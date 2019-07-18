@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用户管理</title>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -18,7 +17,22 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/tooplate.css">
 </head>
+<%--<script>--%>
+<%--    $(function () {--%>
+<%--        $.post({--%>
+<%--                url:"/read.do?_method=remove",--%>
+<%--                date:{--%>
+
+<%--                }--%>
+<%--            success:function (data) {--%>
+<%--                var--%>
+<%--            }--%>
+<%--            }--%>
+<%--        )--%>
+<%--    })--%>
+<%--</script>--%>
 <body id="reportsPage" class="bg02">
+
 <div class="" id="home">
     <div class="container">
         <div class="row">
@@ -35,7 +49,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="userinformation.jsp">用户管理
+                                <a class="nav-link active" href="read.do?_method=getList">用户管理
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -50,7 +64,7 @@
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="books.jsp">书籍管理</a>
+                                <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                             </li>
 
                             <li class="nav-item">
@@ -83,12 +97,15 @@
                         <div class="col-md-4 col-sm-12 text-right">
                             <a href="edituser.jsp" class="btn btn-small btn-primary">添加新用户</a>
                         </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-small btn-primary" id="user_del_modal_btn" onclick="fn_del_user()">批量删除</button>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                                 <thead>
                                 <tr class="tm-bg-gray">
-                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>
                                     <th scope="col" class="text-center">用户姓名</th>
                                     <th scope="col" class="text-center">手机号</th>
                                     <th scope="col">邮箱</th>
@@ -96,11 +113,11 @@
                                     <th scope="col">&nbsp;</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="user_tables">
                                 <c:forEach items="${userList}" var="user_account">
-                                    <tr>
+                                    <tr id="user">
                                         <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
+                                            <input type="checkbox" aria-label="Checkbox" id="check_allUser">
                                         </th>
                                         <td class="text-center">
                                             <c:out value="${user_account.getUser_Username()}"></c:out>
@@ -115,11 +132,66 @@
                                             <c:out value="${ user_account.getUser_Date()}"></c:out>
                                         </td>
                                         <td><a href="/read.do?userId=${user_account.getUser_Id()}&_method=remove"><i class="fas fa-trash-alt tm-trash-icon"></i></a></td>
+                                        <td><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mymodal">编辑</button></td>
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            用户编辑
+                                                        </h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <form method="post" href="read.do?_method=update">
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-3">
+                                                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
+                                                                    </label>
+                                                                    <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Username()}"></c:out>">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
+                                                                <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value="<c:out value="${user_account.getUser_Tel()}"></c:out>">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
+                                                                </label>
+                                                                <c:choose>
+                                                                    <c:when test="${!empty(user_account.getUser_Date())}"><c:out value="user_account.getUser_Date()"></c:out></c:when>
+                                                                    <c:otherwise> <input type="date" id="userDate" name="userDate" value="user_account.getUser_Date()" ></c:otherwise>
+                                                                </c:choose>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
+                                                                <input  placeholder="邮箱" id="userEmail" name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Email()}"></c:out>">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">密码</label>
+                                                                <input placeholder="密码" id="userPassword" name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value=" <c:out value="${user_account.getUser_Password()}"></c:out>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <sys:message content="${message}"/>
+                                                            <c:if test="${not empty message}">
+                                                                <script type="text/javascript">$("#messageBox").show()</script>
+                                                            </c:if>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                                        <button type="button" class="btn btn-primary" onclick="fn_user_add()">保存</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                                 </table>
                     </div>
+
 <%--                    <div class="tm-table-actions-col">--%>
 <%--                        <a class="btn " href="#" role="button">上一页</a>--%>
 <%--                        <nav aria-label="Page navigation" class="d-inline-block">--%>
@@ -146,12 +218,44 @@
 <!-- https://jquery.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script>
-    $(function () {
-        $('.tm-product-name').on('click', function () {
-            window.location.href = "edituser.jsp";
-        });
+<script type="text/javascript">
+var flag=0;//全局变量用来判断是否选中复选框，默认没有选中
+var delId="";//要删除的用户id数组
+var delIds = "";
+var size = 0;
+var totalCount = 0;
+var currentPage = 1;  // 默认当前页面为1
+var startPage=0;
+var endPage = 0;
+function fn_user_add(){
+    $.ajax({
+        url:"",
     })
+}
+// function fn_del_user() {
+//     if(delId==""&&flag == 0){
+//         alert("空,还未选中要删除的用户")
+//     }else {
+//         $.ajax({
+//             url:,
+//             type:"post",
+//             data:{"type":}
+//             dataType
+//         })
+//     }
+// }
+//单选和全选
+$("#check_allUser").click(function () {
+    if (flag==0){
+        alert(xxxx)
+        $("user_tables input[type='checkbox']").prop("checked",true);
+        flag=1;
+    }else {
+        alert(yyyyy)
+        $("user_tables input[type='checkbox']").prop("checked",false);
+        flag=0;
+    }
+})
 </script>
 </body>
 </html>

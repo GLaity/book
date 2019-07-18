@@ -11,57 +11,62 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-
 @WebServlet("/book.do")
 public class BookControlServlet extends HttpServlet {
     IBookDao bookDao = new BookDaoImpl();
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fun = req.getParameter("_method");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String fun = request.getParameter("_method");
         switch (fun){
             case "getList":
-                getList(req,resp);
+                getList(request,response);
                 break;
             case "add":
-                add(req,resp);
+                add(request,response);
                 break;
             case "remove":
-                remove(req,resp);
+                remove(request,response);
                 break;
             case "update":
-                update(req,resp);
+                update(request,response);
+                break;
+            default:
                 break;
         }
+        List<Book_Basic> books = bookDao.selectAllBook();
+        request.setAttribute("bookList",books);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
-    private void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Book_Basic book = (Book_Basic) req.getAttribute("Book");
-        bookDao.insertBook(book);
-        req.getRequestDispatcher("/userinformation.jsp").forward(req,resp);
-    }
-    private void getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+    private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book_Basic> books = bookDao.selectAllBook();
-        req.setAttribute("bookList",books);
-        req.getRequestDispatcher("/bookControler.jsp").forward(req,resp);
+        request.setAttribute("bookList",books);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
-    private void remove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int bookId = Integer.valueOf(req.getParameter("bookId"));
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Book_Basic book = (Book_Basic) request.getAttribute("Book");
+        bookDao.insertBook(book);
+        request.getRequestDispatcher("/addproduct.jsp").forward(request,response);
+    }
+    private void remove(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        int bookId = Integer.valueOf(request.getAttribute("deleteBook"));
+        int bookId = Integer.valueOf(request.getParameter("bookId"));
         bookDao.deleteBookById(bookId);
-        req.getRequestDispatcher("/bookControler.jsp").forward(req,resp);
+        request.getRequestDispatcher("bookControler.jsp").forward(request,response);
     }
-    private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int bookId = Integer.valueOf(req.getParameter("bookId"));
+    private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int bookId = Integer.valueOf(request.getParameter("bookId"));
         Book_Basic book_basic=bookDao.selectBookById(bookId);
-        book_basic.setBook_Title(req.getParameter("title"));
-        book_basic.setType_Id(Integer.valueOf(req.getParameter("typeID")));
-        book_basic.setBook_Context(req.getParameter("bookContext"));
-        book_basic.setBook_Createdate(req.getParameter("creatDate"));
+        book_basic.setBook_Title(request.getParameter("title"));
+        book_basic.setType_Id(Integer.valueOf(request.getParameter("typeID")));
+        book_basic.setBook_Context(request.getParameter("bookContext"));
+        book_basic.setBook_Createdate(request.getParameter("creatDate"));
         bookDao.updateBook(book_basic);
-        req.getRequestDispatcher("/editbook.jsp").forward(req,resp);
+        request.getRequestDispatcher("/editbook.jsp").forward(request,response);
     }
 }

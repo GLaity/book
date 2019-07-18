@@ -54,7 +54,7 @@
                             </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="books.jsp">书籍管理</a>
+                            <a class="nav-link" href="bookControler.jsp">书籍管理</a>
                         </li>
 
                         <li class="nav-item">
@@ -87,24 +87,24 @@
                         <div class="input-group mb-3">
                             <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
                             </label>
-                            <input placeholder="用户名" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
-                            <input  placeholder="手机号"  name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
-                            <input  placeholder="邮箱"  name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input  placeholder="邮箱" id="userEmail" name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">密码</label>
-                            <input placeholder="密码"  name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input placeholder="密码" id="userPassword" name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
                             </label>
-                            <input type="date" name="userDate" value="" >
+                            <input type="date" id="userDate" name="userDate" value="" >
                         </div>
 <%--                        <div class="input-group mb-3">--%>
 <%--                            <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">会员等级：--%>
@@ -138,6 +138,33 @@
         </div>
     </div>
 </div>
+<%--<script>--%>
+<%--    function insert() {--%>
+<%--        var  name= $("#userName").val();--%>
+<%--        var password =$("#userPassword").val();--%>
+<%--        var  email =$("#userEmail").val();--%>
+<%--        var  tel =$("#userTel").val();--%>
+<%--        var  user={--%>
+<%--            "name":name,--%>
+<%--            "password":password,--%>
+<%--            "email":email,--%>
+<%--            "tel":tel--%>
+<%--        }--%>
+<%--        $.ajax({--%>
+<%--            type:"get",--%>
+<%--            url:"//read.do?_method=add",--%>
+<%--            data:user,--%>
+<%--            beforeSend:function tip() {--%>
+<%--                alert("确定添加?");--%>
+<%--            },--%>
+<%--            success:function back(data) {--%>
+<%--                alert(user.name);--%>
+<%--            }--%>
+<%--            }--%>
+<%--        )--%>
+
+<%--    }--%>
+<%--</script>--%>
 <script src="js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>

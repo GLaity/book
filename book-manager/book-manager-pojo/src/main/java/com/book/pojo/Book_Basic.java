@@ -7,7 +7,6 @@ public class Book_Basic {
     private int type_Id;
     private String writer_Id;
     private String book_Createdate;
-
     public Book_Basic() {
     }
 
