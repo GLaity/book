@@ -58,6 +58,11 @@
                 $("#adviceLevel").val($(this).index()+1)
             })
         })
+        $(function () {
+            $("#collecBtn").click(function () {
+                alert("已收藏");
+            })
+        })
     </script>
 </head>
 <body>
@@ -177,6 +182,7 @@
         });
     });
 
+
 </script>
 
 <!--导航指向-->
@@ -240,7 +246,21 @@
                         <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = 'login.jsp'"/>
                     </c:if>
                     <c:if test="${!empty(sessionScope.user)}">
-                        <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}"/>
+
+<%--                        <c:if test="${flag eq 0}">--%>
+<%--                            <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${flag eq 1}">--%>
+<%--                            <input type="button" value="收藏小说" class="add_btn" name="collecBtn" />--%>
+<%--                        </c:if>--%>
+                        <c:choose>
+                            <c:when test="${flag} == 0">
+                                <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="button" value="收藏小说" class="add_btn" id="collecBtn" />
+                            </c:otherwise>
+                        </c:choose>
                     </c:if>
                 </li>
             </ul>
