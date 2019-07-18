@@ -484,7 +484,44 @@ $()
 <!--section:two->articleList-->
 <!--footer-->
 <footer>
-
+    <ul class="wrap help">
+        <li>
+            <dl>
+                <dt>关于我们</dt>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>关于我们</dt>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>关于我们</dt>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>关于我们</dt>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+                <dd><a href="#">小说小说</a></dd>
+            </dl>
+        </li>
+    </ul>
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
 
