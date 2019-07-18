@@ -101,7 +101,7 @@
                                 <th scope="col" class="text-center">书籍编号</th>
                                 <th scope="col" class="text-center">作者</th>
                                 <th scope="col">创建日期</th>
-                                <th scope="col">&nbsp;</th>
+                                <th scope="col" colspan="2">操作</th>
                             </tr>
                             </thead>
 
@@ -114,8 +114,9 @@
                                     <td class="tm-product-name">${bookBasic.getBook_Title()}</td>
                                     <td class="text-center">${bookBasic.getBook_Id()}</td>
                                     <td class="text-center">${bookBasic.getWriter_Id()}</td>
-                                    <td>${bookBasic.getBook_Createdate()}</td>
-                                    <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                    <td class="text-center">${bookBasic.getBook_Createdate()}</td>
+                                    <td class="text-center"><a>修改</a></td>
+                                    <td class="text-center"><a>删除</a></td>
                                 </tr>
                                 </tbody>
                             </c:forEach>
