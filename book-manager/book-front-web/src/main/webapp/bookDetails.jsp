@@ -57,10 +57,60 @@
                 $(this).prevAll().text(text_s).addClass("current");
                 $("#adviceLevel").val($(this).index()+1)
             })
+            $("#advice").click(function () {
+                var bookId = $("#bookId").val();
+                $.ajax({
+                    type:"get",
+                    url:"/book?_method=advice",
+                    data:{'bookId':bookId},
+                    success:function (data) {
+                        $("#adviceTable").empty();
+                        var json = JSON.parse(data);
+                        for (var i = 0; i < json.length; i++){
+                            $("#adviceTable").append("<tr>\n" +
+                                "<td width=\"20%\" align=\"center\">"+json[i].userName+"</td>\n" +
+                                "<td width=\"60%\">"+json[i].adviceText+"</td>\n" +
+                                "<td width=\"20%\" align=\"center\"><time>"+json[i].adviceDate+"</time></td>\n" +
+                                "</tr>");
+                        }
+                    }
+                })
+            })
+            $("#adviceSub").click(function () {
+                var adviceLevel = $("#adviceLevel").val();
+                var adviceText = $("#adviceText").val();
+                var bookId = $("#bookId").val();
+                var param = {bookId:bookId, adviceLevel:adviceLevel, adviceText:adviceText}
+                var obj =  JSON.stringify(param);
+                if ( $("#userId").val() == "") {
+                    alert("请登录后再进行评论！")
+                } else {
+                    if (adviceLevel == "" || adviceText == "") {
+                        alert("请先选择评价等级并填写评价内容！")
+                    } else {
+                        $.ajax({
+                            type:"get",
+                            url:"/book?_method=addAdvice&bookId="+bookId,
+                            data:{'param':obj},
+                            success:function (data) {
+                                var json = JSON.parse(data);
+                                $("#adviceTable").empty();
+                                for (var i = 0; i < json.length; i++){
+                                    $("#adviceTable").append("<tr>\n" +
+                                        "                       <td width=\"20%\" align=\"center\">"+json[i].userName+"</td>\n" +
+                                        "                       <td width=\"60%\">"+json[i].adviceText+"</td>\n" +
+                                        "                       <td width=\"20%\" align=\"center\"><time>"+json[i].adviceDate+"</time></td>\n" +
+                                        "                    </tr>");
+                                }
+                            }
+                        })
+                    }
+                }
+            })
         })
         $(function () {
             $("#collecBtn").click(function () {
-                alert("已收藏");
+                alert("小说已收藏！");
             })
         })
     </script>
@@ -182,7 +232,6 @@
         });
     });
 
-
 </script>
 
 <!--导航指向-->
@@ -247,20 +296,13 @@
                     </c:if>
                     <c:if test="${!empty(sessionScope.user)}">
 
-<%--                        <c:if test="${flag eq 0}">--%>
-<%--                            <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>--%>
-<%--                        </c:if>--%>
-<%--                        <c:if test="${flag eq 1}">--%>
-<%--                            <input type="button" value="收藏小说" class="add_btn" name="collecBtn" />--%>
-<%--                        </c:if>--%>
-                        <c:choose>
-                            <c:when test="${flag} == 0">
-                                <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>
-                            </c:when>
-                            <c:otherwise>
-                                <input type="button" value="收藏小说" class="add_btn" id="collecBtn" />
-                            </c:otherwise>
-                        </c:choose>
+                        <c:if test="${flag eq 0}">
+                            <input type="button" value="未收藏" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>
+                        </c:if>
+                        <c:if test="${flag eq 1}">
+                            <input type="button" value="已收藏" class="add_btn" id="collecBtn" />
+                        </c:if>
+
                     </c:if>
                 </li>
             </ul>
@@ -274,7 +316,7 @@
     <article>
         <ul class="item_tab">
             <li><a class="curr_li">小说简介</a></li>
-            <li><a>小说评价</a></li>
+            <li id="advice"><a>小说评价</a></li>
             <li><a>小说目录</a></li>
         </ul>
         <!--商品详情-->
@@ -283,48 +325,49 @@
         </div>
         <!--小说评价-->
         <div class="cont_wrap">
-            <table class="table">
-                <c:forEach items="${adviceList}" var="advice">
-                    <tr>
-                        <td width="20%" align="center">${advice.getUser_Id()}</td>
-                        <td width="60%">${advice.getAdvice_Text()}</td>
-                        <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>
-                    </tr>
-                </c:forEach>
+            <table class="table" id="adviceTable">
+<%--                <c:forEach items="${adviceList}" var="advice" varStatus="vs">--%>
+<%--                <tr>--%>
+<%--                    <td width="20%" align="center">${adviceUserList[vs.count-1].getUser_Username()}</td>--%>
+<%--                    <td width="60%">${advice.getAdvice_Text()}</td>--%>
+<%--                    <td width="20%" align="center"><time>${advice.getAdvice_Date()}</time></td>--%>
+<%--                </tr>--%>
+<%--                </c:forEach>--%>
             </table>
             <!--分页-->
-            <form action="/book?_method=addAdvice" method="post">
-                <div class="box_con3">
-                    <div class="head">
-                        <input type="hidden" name="bookId" value="${requestScope.bookBasic.getBook_Id()}">
-                        <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
-                        <ul>
-                            <li>☆</li>
-                            <li>☆</li>
-                            <li>☆</li>
-                            <li>☆</li>
-                            <li>☆</li>
-                        </ul>
-                    </div>
-                    <div class="text">
-                        <textarea rows="5" cols="100%" name="adviceText" placeholder="我的评论"></textarea>
-                    </div>
-                    <br>
-                    <div class="button">
-                        <input type="submit" value="提交" name="" />
-                        <input type="reset" value="重置" name="" />
-                    </div>
+            <form  action="#" >
+            <div class="box_con3">
+                <div class="head">
+                    <input type="hidden" name="userId" id="userId" value="${sessionScope.user.getUser_Id()}">
+                    <input type="hidden" name="bookId" id="bookId" value="${requestScope.bookBasic.getBook_Id()}">
+                    <input type="hidden" id="adviceLevel" name="adviceLevel" value=""/>
+                    <ul>
+                        <li>☆</li>
+                        <li>☆</li>
+                        <li>☆</li>
+                        <li>☆</li>
+                        <li>☆</li>
+                    </ul>
                 </div>
+                <div class="text">
+                    <textarea rows="5" cols="100%" name="adviceText" id="adviceText" placeholder="我的评论"></textarea>
+                </div>
+                <br>
+                <div class="button">
+                    <input type="button" id="adviceSub" value="提交" name="" />
+                    <input type="reset" value="重置" name="" />
+                </div>
+            </div>
             </form>
 
-            <%--            <div class="paging">--%>
-            <%--                <a>第一页</a>--%>
-            <%--                <a class="active">2</a>--%>
-            <%--                <a>3</a>--%>
-            <%--                <a>...</a>--%>
-            <%--                <a>89</a>--%>
-            <%--                <a>最后一页</a>--%>
-            <%--            </div>--%>
+<%--            <div class="paging">--%>
+<%--                <a>第一页</a>--%>
+<%--                <a class="active">2</a>--%>
+<%--                <a>3</a>--%>
+<%--                <a>...</a>--%>
+<%--                <a>89</a>--%>
+<%--                <a>最后一页</a>--%>
+<%--            </div>--%>
         </div>
         <!--小说目录-->
         <div class="cont_wrap">
@@ -332,26 +375,26 @@
                 <c:forEach items="${bookDir}" var="dir" varStatus="vs">
                     <c:if test="${vs.count%3 == 1}">
                         <tr>
-                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                            <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 2}">
-                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                     </c:if>
                     <c:if test="${vs.count%3 == 0}">
-                        <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
+                             <td><a href="/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=${vs.count}">${dir}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
             </table>
             <!--分页-->
-            <%--            <div class="paging">--%>
-            <%--                <a>第一页</a>--%>
-            <%--                <a class="active">2</a>--%>
-            <%--                <a>3</a>--%>
-            <%--                <a>...</a>--%>
-            <%--                <a>89</a>--%>
-            <%--                <a>最后一页</a>--%>
-            <%--            </div>--%>
+<%--            <div class="paging">--%>
+<%--                <a>第一页</a>--%>
+<%--                <a class="active">2</a>--%>
+<%--                <a>3</a>--%>
+<%--                <a>...</a>--%>
+<%--                <a>89</a>--%>
+<%--                <a>最后一页</a>--%>
+<%--            </div>--%>
         </div>
     </article>
 </section>

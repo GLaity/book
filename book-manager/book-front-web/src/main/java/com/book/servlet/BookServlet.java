@@ -1,15 +1,20 @@
 package com.book.servlet;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.book.pojo.Advice;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Extend;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
+import com.book.service.IUserCollectedService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
 import com.book.service.impl.IUserServiceImpl;
+import com.book.service.impl.UserCollectedServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +38,9 @@ public class BookServlet extends HttpServlet {
             execute(req, resp);
         } else {
             switch (method){
+                case "advice":
+                    advice(req,resp);
+                    break;
                 case "addAdvice" :
                     addAdvice(req, resp);
                     break;
@@ -61,8 +70,25 @@ public class BookServlet extends HttpServlet {
 
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        int flag=0;
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+
+        if(user!=null){
+            List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());
+            if(bookBasicsList==null){
+                flag=0;
+            }else{
+                for(Book_Basic bookBasic : bookBasicsList){
+                    if(bookBasic.getBook_Id()==bookId){
+                        flag=1;
+                    }
+                }
+            }
+        }
+
         IBookService bookService = new BookServiceImpl();
-        IUserService userService = new IUserServiceImpl();
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
         Book_Extend bookExtend = bookService.findBookExtendById(bookId);
         List<String> bookDir = bookService.getBookDir(bookId);
@@ -70,41 +96,51 @@ public class BookServlet extends HttpServlet {
         req.setAttribute("bookExtend",bookExtend);
         req.setAttribute("bookDir",bookDir);
 
-        IAdviceService adviceService = new AdviceServiceImpl();
-        List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
-        List<User_Account> adviceUserList = new ArrayList<>();
-        for (Advice advice:adviceList){
-            adviceUserList.add(userService.findUserById(advice.getUser_Id()));
-        }
-        req.setAttribute("adviceUserList", adviceUserList);
-        req.setAttribute("adviceList",adviceList);
+        req.setAttribute("flag",flag);
 
         req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);
         return null;
     }
+    public String advice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        IAdviceService adviceService = new AdviceServiceImpl();
+        IUserService userService = new IUserServiceImpl();
+        List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
+        List<JSONObject> json = new ArrayList<>();
+        for (Advice advice:adviceList){
+            User_Account user = userService.findUserById(advice.getUser_Id());
+//            adviceUserList.add(userService.findUserById(advice.getUser_Id()));
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("userName",user.getUser_Username());
+            jsonObject.put("adviceText", advice.getAdvice_Text());
+            jsonObject.put("adviceDate",advice.getAdvice_Date());
+            json.add(jsonObject);
+        }
+        String dataStr = JSON.toJSONString(json);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
+        return null;
+    }
 
     public String addAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String adviceText = req.getParameter("adviceText");
-        int adviceLevel = Integer.valueOf(req.getParameter("adviceLevel"));
-        int bookId = Integer.parseInt(req.getParameter("bookId"));
+        String param = req.getParameter("param");
+        JSONObject json = JSON.parseObject(param);
+        String adviceText = json.getString("adviceText");
+        int adviceLevel = Integer.valueOf(json.getString("adviceLevel"));
+        int bookId = Integer.valueOf(json.getString("bookId"));
 
-        System.out.println(bookId);
         HttpSession session = req.getSession();
         User_Account user = (User_Account) session.getAttribute("user");
-        if(user == null){
-            resp.sendRedirect("login.jsp");
-        }else {
-//            System.out.println(adviceText);
-//            System.out.println(adviceLevel);
-            IAdviceService adviceService = new AdviceServiceImpl();
-            Advice advice = new Advice();
-            advice.setUser_Id(user.getUser_Id());
-            advice.setBook_Id(bookId);
-            advice.setAdvice_Level(adviceLevel);
-            advice.setAdvice_Text(adviceText);
-            adviceService.addAdvice(advice);
-            execute(req, resp);
-        }
+        IAdviceService adviceService = new AdviceServiceImpl();
+        Advice advice = new Advice();
+        advice.setUser_Id(user.getUser_Id());
+        advice.setBook_Id(bookId);
+        advice.setAdvice_Level(adviceLevel);
+        advice.setAdvice_Text(adviceText);
+        adviceService.addAdvice(advice);
+
+        advice(req, resp);
 
         return null;
     }

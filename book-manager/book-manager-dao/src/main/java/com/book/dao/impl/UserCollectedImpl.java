@@ -23,6 +23,18 @@ public class UserCollectedImpl implements IUserCollectedDao {
     }
 
     @Override
+    public void deleteUserCollect(int userId, int bookId) {
+        String sql = "delete from user_book_collection where user_id=? and book_id=?";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            qr.update(sql,userId,bookId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public List<Book_Basic> countUserCollectList(int userId) {
         String sql = "SELECT * FROM book_basic WHERE book_id in (SELECT book_id FROM user_book_collection WHERE user_id = ?)";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());

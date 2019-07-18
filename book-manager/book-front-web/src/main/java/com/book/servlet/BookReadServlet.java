@@ -8,6 +8,7 @@ import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import com.book.pojo.User_Account;
 import com.book.pojo.User_Book_Collection;
+import com.book.pojo.User_Account;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
 import com.book.service.IUserCollectedService;
@@ -59,10 +60,23 @@ public class BookReadServlet extends HttpServlet {
     public void start(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int chapterId = Integer.valueOf(req.getParameter("chapterId"));
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account) session.getAttribute("user");
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+
+        List<Book_Basic> bookVisitedList = (List<Book_Basic>) session.getAttribute("bookVisitedList");
+        if (bookVisitedList == null){
+            bookVisitedList = new ArrayList<>();
+            session.setAttribute("bookVisitedList",bookVisitedList);
+        }
+        if (user != null){
+            bookVisitedList.add(bookBasic);
+            session.setAttribute("bookVisitedList",bookVisitedList);
+        }
         req.setAttribute("bookBasic",bookBasic);
         req.setAttribute("bookId",bookId);
         req.setAttribute("chapterId",chapterId);
+
         String path = bookReadService.readTargetBook(bookId,chapterId);
         req.setAttribute("path",path);
         req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
@@ -115,32 +129,10 @@ public class BookReadServlet extends HttpServlet {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int userId = Integer.valueOf(req.getParameter("userId"));
         IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
-        List<Book_Basic> bookBasics = userCollectedService.queryUserCollectList(userId);
-        if(bookBasics==null){
-            addCollected(userId,bookId);
-            resp.sendRedirect("/book?bookId="+bookId);
-            System.out.println(8);
-        }else{
-            int flag=0;
-            for(Book_Basic bookBasic : bookBasics){
-                if(bookBasic.getBook_Id()==bookId){
-                    flag=1;
-                }
-            }
-            if(flag==0){
-                addCollected(userId,bookId);
-                req.setAttribute("flag",flag);
-                resp.sendRedirect("/book?bookId="+bookId);
-                System.out.println(flag);
-            }else if(flag==1){
-                req.setAttribute("flag",flag);
-                System.out.println(flag);
-            }
-        }
-
-
-
+        addCollected(userId,bookId);
+        resp.sendRedirect("/book?bookId="+bookId);
     }
+
     //添加收藏信息
     public void addCollected(int userId,int bookId){
         IUserCollectedService userCollectedService = new UserCollectedServiceImpl();

@@ -11,4 +11,6 @@ public interface IUserCollectedService {
 
     //查询用户收藏书的列表
     List<Book_Basic> queryUserCollectList(int userId);
+
+    void removeCollected(int userId,int bookId);
 }

@@ -20,6 +20,76 @@
     <script src="js/html5.js"></script>
     <script src="js/jquery.js"></script>
     <script>
+        function  deleteAdvice(adviceId) {
+            // var adviceId = $(this).children(".adId").val();
+            alert(adviceId);
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=deleteAdvice",
+                data:{"adviceId":adviceId},
+                success:function () {
+                    flush();
+                }
+            })
+        }
+        function  deleteCollected(bookId) {
+            // var adviceId = $(this).children(".adId").val();
+            alert(bookId);
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=deleteCollected",
+                data:{"bookId":bookId},
+                success:function () {
+                    collectflush();
+                }
+            })
+        }
+        function flush() {
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=myAdvice",
+                success:function (data) {
+                    $("#adviceTable").empty();
+                    var json = JSON.parse(data);
+                    for (var i = 0; i < json.length; i++){
+                        $("#adviceTable").append("<tr>\n" +
+                            "<td class=\"center\"><a h href=\"/book?bookId="+json[i].bookId+"\" target=\"_blank\">"+json[i].bookName+"</a></td>\n" +
+                            "<td class=\"center\">"+json[i].writer+"</td>\n" +
+                            "<td class=\"center\">"+json[i].adviceDate+"</td>\n" +
+                            "<td class=\"center\"><strong class=\"rmb_icon\">"+json[i].adviceText+"</strong></td>\n" +
+                            "<td class=\"center\">\n" +
+                            "   <%--<a href=\"product.html\" target=\"_blank\" title=\"查看\"><img src=\"images/icon_view.gif\" /></a>--%>\n" +
+                            "   <%--<a href=\"seller_product_detail.html\" title=\"编辑\"><img src=\"images/icon_edit.gif\" /></a>--%>\n" +
+                            "   <a href=\"#\" title=\"删除\" class=\"deleteBtn\"  onclick=\"deleteAdvice("+json[i].adviceId+")\">" +
+                            "       <input type=\"hidden\" class=\"adId\" value=\""+json[i].adviceId+"\">" +
+                            "       <img src=\"images/icon_trash.gif\" />" +
+                            "   </a>\n" +
+                            "   </td>\n" +
+                            "</tr>");
+                    }
+                }
+            })
+        }
+        function collectflush() {
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=myCollected",
+                success:function (data) {
+                    $("#favoriteList").empty();
+                    var json = JSON.parse(data);
+                    for(var i = 0;i<json.length;i++){
+                        $("#favoriteList").append(
+                            " <li>\n" +
+                            "     <a>\n" +
+                            "       <img src=\"bookimg/"+json[i].bookId+".jpg\" />\n" +
+                            "       <h2>"+json[i].bookName+"</h2>\n" +
+                            "       <p class=\"remove\"><span onclick=\"deleteCollected("+json[i].bookId+")\">&#126;</span></p>\n" +
+                            "    </a>\n" +
+                            " </li>");
+                    }
+                }
+            })
+        }
         $(document).ready(function(){
             $("nav .indexAsideNav").hide();
             $("nav .category").mouseover(function(){
@@ -46,11 +116,12 @@
         });
         $(function() {
             $(".user_aside_nav dd").click(function() {
-                // $(this).addClass("active");
-                // $(this).siblings().removeClass("active");
                 $(".user_rt_cont").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
             })
+            $("#myAdvice").click(flush())
+            $("#favoriteList").click(collectflush())
         });
+
 
     </script>
 </head>
@@ -170,8 +241,8 @@
 
             <dd><a href="#">个人资料</a></dd>
             <dd><a href="#">我的浏览</a></dd>
-            <dd><a href="#">我的书架</a></dd>
-            <dd><a href="#">我的评论</a></dd>
+            <dd><a href="#" id="myCollected">我的书架</a></dd>
+            <dd><a href="#" id="myAdvice">我的评论</a></dd>
             <dd><a href="#">会员等级</a></dd>
             <dd><a href="#">账户详情</a></dd>
             <dd><a href="#">订单列表</a></dd>
@@ -252,57 +323,44 @@
 
     <!--右侧：我的浏览-->
     <div class="user_rt_cont">
-        <div class="top_title">
-            <strong>商品列表</strong>
-            <a href="#" title="添加新商品" class="fr">添加新商品</a>
-        </div>
+<%--        <div class="top_title">--%>
+<%--            <strong>商品列表</strong>--%>
+<%--            <a href="#" title="添加新商品" class="fr">添加新商品</a>--%>
+<%--        </div>--%>
         <!--条件检索-->
-        <div style="margin:8px 0;">
-            <select class="select">
-                <option>商品分类</option>
-                <option>男装</option>
-                <option>女装</option>
-                <option>配饰</option>
-            </select>
-            <input type="text" class="textbox textbox_225" placeholder="输入产品货号/关键词" />
-            <input type="button" value="搜索" class="group_btn" />
-        </div>
+<%--        <div style="margin:8px 0;">--%>
+<%--            <select class="select">--%>
+<%--                <option>商品分类</option>--%>
+<%--                <option>男装</option>--%>
+<%--                <option>女装</option>--%>
+<%--                <option>配饰</option>--%>
+<%--            </select>--%>
+<%--            <input type="text" class="textbox textbox_225" placeholder="输入产品货号/关键词" />--%>
+<%--            <input type="button" value="搜索" class="group_btn" />--%>
+<%--        </div>--%>
         <table class="order_table">
             <tr>
-                <th>货号</th>
+                <th>小说名</th>
                 <th>图片</th>
-                <th>名称</th>
-                <th>价格</th>
-                <th>库存</th>
-                <th>单位</th>
+                <th>作者</th>
+                <th>出版日期</th>
                 <th>操作</th>
             </tr>
-            <tr>
-                <td class="center">A880936</td>
-                <td class="center"><a href="#" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>
-                <td><a h href="#" target="_blank">这里是产品名称哦</a></td>
-                <td class="center"><strong class="rmb_icon">59.00</strong></td>
-                <td class="center">10000</td>
-                <td class="center">平方米</td>
-                <td class="center">
-                    <a href="#" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
-                    <a href="#" title="编辑"><img src="images/icon_edit.gif" /></a>
-                    <a title="删除"><img src="images/icon_trash.gif" /></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="center">A880936</td>
-                <td class="center"><a href="/book?bookId=1" target="_blank"><img src="upload/goods010.jpg" width="50" height="50" /></a></td>
-                <td><a href="#" target="_blank">这里是产品名称哦</a></td>
-                <td class="center"><strong class="rmb_icon">159.00</strong></td>
-                <td class="center">10000</td>
-                <td class="center">平方米</td>
-                <td class="center">
-                    <a href="#" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>
-                    <a href="#" title="编辑"><img src="images/icon_edit.gif" /></a>
-                    <a title="删除"><img src="images/icon_trash.gif" /></a>
-                </td>
-            </tr>
+            <c:if test="${!empty(bookVisitedList)}">
+                <c:forEach items="${bookVisitedList}" var="bookVisited">
+                    <tr>
+                        <td class="center"><a href="#" target="_blank">${bookVisited.getBook_Title()}</a></td>
+                        <td class="center"><a href="#" target="_blank"><img src="bookimg/${bookVisited.getBook_Id()}.jpg" width="50" height="50" /></a></td>
+                        <td class="center">${bookVisited.getWriter_Id()}</td>
+                        <td class="center">${bookVisited.getBook_Createdate()}</td>
+                        <td class="center">
+                                <%--                        <a href="#" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
+                                <%--                        <a href="#" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
+                            <a title="删除"><img src="images/icon_trash.gif" /></a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:if>
         </table>
         <!--分页-->
 <%--        <div class="paging" style="text-align:right">--%>
@@ -323,32 +381,23 @@
             <li>已购买</li>
         </ul>
         <div class="favoriteWrap" style="display:block;">
-            <!--收藏列表-->
+
+            <ul class="favorite_list" id="favoriteList">
+<%--                <c:forEach items="${bookBasicsList}" var="book" >--%>
+<%--                    <li>--%>
+<%--                        <a>--%>
+<%--                            <img src="bookimg/${book.getBook_Id()}.jpg" />--%>
+<%--                            <h2>${book.getBook_Title()}</h2>--%>
+<%--                            <p class="remove" onclick="deleteAdvice(bookId)"><span>&#126;</span></p>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                </c:forEach>--%>
+            </ul>
+        </div>
+        <!--购买-->
+        <div class="favoriteWrap">
+            <!--购买列表-->
             <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods005.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods010.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods009.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
                 <li>
                     <a>
                         <img src="upload/goods008.jpg" />
@@ -357,90 +406,8 @@
                         <p class="remove"><span>&#126;</span></p>
                     </a>
                 </li>
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
             </ul>
-            <!--分页-->
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
-        </div>
-        <!--店铺收藏-->
-        <div class="favoriteWrap">
-            <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-            </ul>
-            <!--分页-->
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
+
         </div>
     </div>
 
@@ -462,6 +429,7 @@
             <input type="button" value="搜索" class="group_btn" />
         </div>
         <table class="order_table">
+            <thead>
             <tr>
                 <th>小说名</th>
                 <%--                <th>图片</th>--%>
@@ -470,20 +438,22 @@
                 <th>评价</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${adviceList}" var="advice" varStatus="vs">
-                <tr>
-                    <td class="center"><a h href="/book?bookId=${bookAdviceList[vs.count-1].getBook_Id()}" target="_blank">${bookAdviceList[vs.count-1].getBook_Title()}</a></td>
-                        <%--<td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" width="50" height="50" /></a></td>--%>
-                    <td class="center">${bookAdviceList[vs.count-1].getWriter_Id()}</td>
-                    <td class="center">${advice.getAdvice_Date()}</td>
-                    <td class="center"><strong class="rmb_icon">${advice.getAdvice_Text()}</strong></td>
-                    <td class="center">
-                            <%--<a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
-                            <%--<a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
-                        <a href="/personal?_method=deleteAdvice&adviceId=${advice.getAdvice_Id()}" title="删除"><img src="images/icon_trash.gif" /></a>
-                    </td>
-                </tr>
-            </c:forEach>
+            </thead>
+            <tbody id="adviceTable">
+<%--            <c:forEach items="${adviceList}" var="advice" varStatus="vs">--%>
+<%--                <tr>--%>
+<%--                    <td class="center"><a h href="/book?bookId=${bookAdviceList[vs.count-1].getBook_Id()}" target="_blank">${bookAdviceList[vs.count-1].getBook_Title()}</a></td>--%>
+<%--                    <td class="center">${bookAdviceList[vs.count-1].getWriter_Id()}</td>--%>
+<%--                    <td class="center">${advice.getAdvice_Date()}</td>--%>
+<%--                    <td class="center"><strong class="rmb_icon">${advice.getAdvice_Text()}</strong></td>--%>
+<%--                    <td class="center">--%>
+<%--                            &lt;%&ndash;<a href="product.html" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>&ndash;%&gt;--%>
+<%--                            &lt;%&ndash;<a href="seller_product_detail.html" title="编辑"><img src="images/icon_edit.gif" /></a>&ndash;%&gt;--%>
+<%--                        <a href="/personal?_method=deleteAdvice&adviceId=${advice.getAdvice_Id()}" title="删除"><img src="images/icon_trash.gif" /></a>--%>
+<%--                    </td>--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
+            </tbody>
         </table>
         <!--分页-->
         <%--        <div class="paging" style="text-align:right">--%>

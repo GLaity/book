@@ -11,4 +11,6 @@ public interface IUserCollectedDao {
     //根据用户id查询收藏的书的id
     //统计用户收藏书的列表
     List<Book_Basic> countUserCollectList(int userId);
+    //删除收藏
+    void deleteUserCollect(int userId,int bookId);
 }

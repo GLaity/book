@@ -41,10 +41,8 @@ public class UserServlet extends HttpServlet {
         User_Account user = userService.loginService(username,password);
         Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
         if(user==null){
-
             resp.sendRedirect("login.jsp");
         }else{
-
             session.setAttribute("user",user);
             session.setAttribute("countAccount",countAccount);
             resp.sendRedirect("/");
