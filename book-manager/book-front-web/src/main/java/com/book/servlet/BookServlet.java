@@ -6,8 +6,10 @@ import com.book.pojo.Book_Extend;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
+import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
+import com.book.service.impl.IUserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -58,8 +61,8 @@ public class BookServlet extends HttpServlet {
 
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
-
         IBookService bookService = new BookServiceImpl();
+        IUserService userService = new IUserServiceImpl();
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
         Book_Extend bookExtend = bookService.findBookExtendById(bookId);
         List<String> bookDir = bookService.getBookDir(bookId);
@@ -69,6 +72,11 @@ public class BookServlet extends HttpServlet {
 
         IAdviceService adviceService = new AdviceServiceImpl();
         List<Advice> adviceList = adviceService.findAdviceByBook(bookId);
+        List<User_Account> adviceUserList = new ArrayList<>();
+        for (Advice advice:adviceList){
+            adviceUserList.add(userService.findUserById(advice.getUser_Id()));
+        }
+        req.setAttribute("adviceUserList", adviceUserList);
         req.setAttribute("adviceList",adviceList);
 
         req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);

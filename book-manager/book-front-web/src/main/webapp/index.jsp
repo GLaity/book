@@ -1,5 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.book.pojo.Book_Type" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: lenovo
   Date: 2019/7/12
