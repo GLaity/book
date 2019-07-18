@@ -215,11 +215,11 @@ header nav .navList .category .asideNav dd {
 .idexCase li:hover a h3{background:rgba(0,183,238,.5);font-size:14px;}
 footer{margin-top:20px;overflow:hidden;}
 footer .help{overflow:hidden;}
-footer .help li{float:left;width:24.8%;border-right:1px #d2d2d2 solid;}
+
+
+footer .help li{float:left;width:8%;border-right:1px #B18091 solid;text-align: center;}
 footer .help li:last-child{border:none;}
-footer .help li dl{margin:0 5%;}
-footer .help li dl dt{font-weight:bold;font-size:16px;height:40px;line-height:40px;text-align: center;}
-footer .help li dl dd{margin:8px 0;text-align: center;}
+
 footer .otherLink{margin:8px auto;overflow:hidden;text-align: center;}
 
 footer .otherLink dt{height:40px;line-height:40px;border-bottom:1px #d2d2d2 solid;font-size:16px;}
