@@ -1,13 +1,7 @@
 package test;
 
-import com.book.dao.IBookContendDao;
-import com.book.dao.IBookDao;
-import com.book.dao.IBookDirDao;
-import com.book.dao.IVipDao;
-import com.book.dao.impl.BookContendDaoImpl;
-import com.book.dao.impl.BookDaoImpl;
-import com.book.dao.impl.BookDirDaoImpl;
-import com.book.dao.impl.VipDaoImpl;
+import com.book.dao.*;
+import com.book.dao.impl.*;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import org.junit.Test;
@@ -152,20 +146,23 @@ public class WolfTest {
 
     @Test
     public void TestSplit(){
-        IBookContendDao bookContend = new BookContendDaoImpl();
-        Book_Contend book_contend = bookContend.findBookContend(1);
-        String path = book_contend.getBook_Contend();
-        String picturePath = path + "/picture.jpg";
-//		String[] sa=filename.split("\\/");
-        String[] sa=path.split("\\\\");
-        String newname=sa[sa.length-1];
-        System.out.println(newname);        //获取小说名
-        System.out.println(picturePath);    //获取小说封面图片
+//        IBookContendDao bookContend = new BookContendDaoImpl();
+//        Book_Contend book_contend = bookContend.findBookContend(1);
+//        String path = book_contend.getBook_Contend();
+//        String picturePath = path + "/picture.jpg";
+////		String[] sa=filename.split("\\/");
+//        String[] sa=path.split("\\\\");
+//        String newname=sa[sa.length-1];
+//        System.out.println(newname);        //获取小说名
+//        System.out.println(picturePath);    //获取小说封面图片
     }
     @Test
     public void TestVip(){
-        IVipDao vipDao = new VipDaoImpl();
-        vipDao.deleteVipAccountId(2023);
+//        IVipDao vipDao = new VipDaoImpl();
+//        vipDao.deleteVipAccountId(2023);
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        int chapters = bookExtendDao.findBookChapters(1);
+        System.out.println(chapters);
     }
 
 

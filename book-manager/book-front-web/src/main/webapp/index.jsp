@@ -104,13 +104,13 @@
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
-                    <img src="upload/ad002.jpg" />
+                    <a href="/book?bookId=3"  style="padding: 0px"><img src="bookimg/3.jpg" /></a>
                 </dl>
             </li>
             <li><a href="/" class="active">首页</a></li>
-            <li><a href="ranking_list.jsp">排行</a></li>
-            <li><a href="bookList.jsp">完本</a></li>
-            <li><a href="bookList.jsp">书库</a></li>
+            <li><a href="/ranking">排行</a></li>
+            <li><a href="/list">完本</a></li>
+            <li><a href="/list">书库</a></li>
         </ul>
     </nav>
 </header>
@@ -138,17 +138,17 @@ $()
         <div id="slide">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide01.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide02.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="bookDetails.jsp">
+                    <a href="/book?bookId=1">
                         <img src="upload/slide03.jpg"/>
                     </a>
                 </div>
@@ -157,62 +157,62 @@ $()
         </div>
         <!--singleAd-->
         <div class="singleAd">
-            <a href="bookDetails.jsp">
-                <img src="upload/sigleAd.jpg"/>
+            <a href="/book?bookId=1">
+                <img src="bookimg/1.jpg"/>
             </a>
         </div>
         <!--bestShop-->
         <dl class="bestShop">
             <dt>
                 <strong>优秀小说推荐</strong>
-                <a href="bookList.jsp" class="fr">更多</a>
+                <a href="#" class="fr">更多</a>
             </dt>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/001.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=2">
+                    <img src="bookimg/2.jpg"/>
+                    <h2>斗罗重生</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/002.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=4">
+                    <img src="bookimg/4.jpg"/>
+                    <h2>九极剑神</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/003.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=5">
+                    <img src="bookimg/5.jpg"/>
+                    <h2>罗浮</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/004.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=6">
+                    <img src="bookimg/6.jpg"/>
+                    <h2>网游之大盗贼</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/005.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=7">
+                    <img src="bookimg/7.jpg"/>
+                    <h2>雷霆之主</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/006.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=8">
+                    <img src="bookimg/8.jpg"/>
+                    <h2>武动之武祖再临</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/007.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=9">
+                    <img src="bookimg/9.jpg"/>
+                    <h2>轮回开端</h2>
                 </a>
             </dd>
             <dd>
-                <a href="bookDetails.jsp">
-                    <img src="upload/008.jpg"/>
-                    <h2>精品小说</h2>
+                <a href="/book?bookId=10">
+                    <img src="bookimg/10.jpg"/>
+                    <h2>王牌强兵</h2>
                 </a>
             </dd>
         </dl>
@@ -254,7 +254,7 @@ $()
         <dl class="idxRtAtc">
             <dt>
                 <em class="obviousText">最新排行</em>
-                <a href="ranking_list.jsp">more</a>
+                <a href="/ranking">more</a>
             </dt>
             <c:forEach items="${bookQuere}" var="book">
                 <dd><a href="/book?bookId=${book.getBook_Id()}">${book.getBook_Title()}</a></dd>
@@ -270,87 +270,77 @@ $()
             <a href="#">男生频道</a>
         </strong>
         <span class="classLi">
-   <a href="type.jsp">悬疑</a>
-   <a href="type.jsp">军事</a>
-   <a href="type.jsp">科幻</a>
-   <a href="type.jsp">玄幻</a>
-   <a href="type.jsp">游戏</a>
+   <a href="/booktype?_method=type&typeId=7">悬疑</a>
+   <a href="/booktype?_method=type&typeId=4">军事</a>
+   <a href="/booktype?_method=type&typeId=8">科幻</a>
+   <a href="/booktype?_method=type&typeId=1">玄幻</a>
+   <a href="/booktype?_method=type&typeId=6">游戏</a>
   </span>
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="bookDetails.jsp"><img src="upload/bestCategoryPic01.jpg"/></a>
+        <a href="/book?bookId=2"><img src="bookimg/2.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=8">
+                    <img src="bookimg/8.jpg"/>
+                    <h3>武动之武祖再临</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>545.00</span></p>
+                <a href="/book?bookId=11">
+                    <img src="bookimg/11.jpg"/>
+                    <h3>懦弱的勇士</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods004.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=13">
+                    <img src="bookimg/13.jpg"/>
+                    <h3>男主高攀不起，告辞</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=14">
+                    <img src="bookimg/14.jpg"/>
+                    <h3>帝国的朝阳</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>980.00</span></p>
+                <a href="/book?bookId=15">
+                    <img src="bookimg/15.jpg"/>
+                    <h3>民国大能</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods002.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>642.00</span></p>
+                <a href="/book?bookId=16">
+                    <img src="bookimg/16.jpg"/>
+                    <h3>大清拆迁工</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods004.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>793.00</span></p>
+                <a href="/book?bookId=17">
+                <img src="bookimg/17.jpg"/>
+                <h3>我有一间扎纸店</h3>
+            </a>
+            </li>
+            <li>
+                <a href="/book?bookId=18">
+                    <img src="bookimg/18.jpg"/>
+                    <h3>痞子神探</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods001.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>755.00</span></p>
+                <a href="/book?bookId=19">
+                    <img src="bookimg/19.jpg"/>
+                    <h3>惊天盗墓团</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods002.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>360.00</span></p>
-                </a>
-            </li>
-            <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods003.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1255.00</span></p>
+                <a href="/book?bookId=20">
+                    <img src="bookimg/20.jpg"/>
+                    <h3>星际之全能炊事员</h3>
                 </a>
             </li>
         </ul>
@@ -377,87 +367,77 @@ $()
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="bookDetails.jsp"><img src="upload/bestCategoryPic02.jpg"/></a>
+        <a href="/book?bookId=2"><img src="bookimg/2.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=12">
+                    <img src="bookimg/12.jpg"/>
+                    <h3>豪门霸总的黑心前妻</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>545.00</span></p>
+                <a href="/book?bookId=17">
+                    <img src="bookimg/17.jpg"/>
+                    <h3>我有一间扎纸店</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=21">
+                    <img src="bookimg/21.jpg"/>
+                    <h3>东宫宠妾</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods008.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1000.00</span></p>
+                <a href="/book?bookId=22">
+                    <img src="bookimg/22.jpg"/>
+                    <h3>太子今天又被调戏了</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods009.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>980.00</span></p>
+                <a href="/book?bookId=23">
+                    <img src="bookimg/23.jpg"/>
+                    <h3>重生之王爷的奋斗</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods010.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>642.00</span></p>
+                <a href="/book?bookId=24">
+                    <img src="bookimg/24.jpg"/>
+                    <h3>废弃皇妃</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods005.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>793.00</span></p>
+                <a href="/book?bookId=25">
+                    <img src="bookimg/25.jpg"/>
+                    <h3>爵迹</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods006.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>755.00</span></p>
+                <a href="/book?bookId=13">
+                    <img src="bookimg/13.jpg"/>
+                    <h3>男主高攀不起，告辞</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods007.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>360.00</span></p>
+                <a href="/book?bookId=2">
+                    <img src="bookimg/2.jpg"/>
+                    <h3>斗罗重生</h3>
                 </a>
             </li>
             <li>
-                <a href="bookDetails.jsp">
-                    <img src="upload/goods008.jpg"/>
-                    <h3>小说</h3>
-                    <p><span>1255.00</span></p>
+                <a href="/book?bookId=20">
+                    <img src="bookimg/20.jpg"/>
+                    <h3>星际之全能炊事员</h3>
                 </a>
             </li>
         </ul>
         <!--bestBrand-->
         <div class="idxBrandLi">
-            <a href="bookDetails.jsp"><img src="upload/brandLogo01.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo02.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo03.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo04.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo01.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo02.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo03.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo04.jpg"/></a>
         </div>
     </div>
 </section>
@@ -465,100 +445,84 @@ $()
 <section class="wrap idexCase">
     <h2>
         <strong>小说推荐</strong>
-        <a href="bookDetails.jsp">more</a>
+        <a href="#">more</a>
     </h2>
     <ul>
         <li>
-            <a href="bookDetails.jsp">
-                <img src="upload/case001.jpg"/>
-                <h3>小说</h3>
+            <a href="/book?bookId=8">
+                <img src="bookimg/8.jpg"/>
+                <h3>武动之武祖再临</h3>
             </a>
         </li>
         <li>
-            <a href="bookDetails.jsp">
-                <img src="upload/case002.jpg"/>
-                <h3>小说</h3>
+            <a href="/book?bookId=11">
+                <img src="bookimg/11.jpg"/>
+                <h3>懦弱的勇士</h3>
             </a>
         </li>
         <li>
-            <a href="bookDetails.jsp">
-                <img src="upload/case003.jpg"/>
-                <h3>小说</h3>
+            <a href="/book?bookId=13">
+                <img src="bookimg/13.jpg"/>
+                <h3>男主高攀不起，告辞</h3>
             </a>
         </li>
         <li>
-            <a href="bookDetails.jsp">
-                <img src="upload/case004.jpg"/>
-                <h3>小说</h3>
+            <a href="/book?bookId=14">
+                <img src="bookimg/14.jpg"/>
+                <h3>帝国的朝阳</h3>
             </a>
         </li>
         <li>
-            <a href="bookDetails.jsp">
-                <img src="upload/case005.jpg"/>
-                <h3>小说</h3>
+            <a href="/book?bookId=15">
+                <img src="bookimg/15.jpg"/>
+                <h3>民国大能</h3>
             </a>
         </li>
+
     </ul>
 </section>
 <!--section:two->articleList-->
 <!--footer-->
 <footer>
     <!--help-->
-    <ul class="wrap help">
+    <ul class="wrap help" style="margin-left:35%;">
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">关于我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">联系我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">加入我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-                <dd><a href="article_read.jsp">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">联系客服</a>
         </li>
+
     </ul>
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
 
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-
+        <dd><a href="//www.qidian.com">起点中文网</a></dd>
+        <dd><a href="//www.qdmm.com" target="_blank">起点女生网</a></dd>
+        <dd><a href="http://chuangshi.qq.com" target="_blank">创世中文网</a></dd>
+        <dd><a href="http://yunqi.qq.com" target="_blank">云起书院</a></dd>
+        <dd><a href="//www.hongxiu.com" target="_blank">红袖添香</a></dd>
+        <dd><a href="//www.readnovel.com" target="_blank">小说阅读网</a></dd>
+        <dd><a href="//www.xs8.cn" target="_blank">言情小说吧</a></dd>
+        <dd><a href="http://www.xxsy.net" target="_blank">潇湘书院</a></dd>
+        <dd><a href="http://www.lrts.me" target="_blank">懒人听书</a></dd>
+        <dd><a href="http://yuedu.yuewen.com" target="_blank">阅文悦读</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appqq" target="_blank">QQ阅读</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appqd" target="_blank">起点读书</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appzj" target="_blank">作家助手</a></dd>
+        <dd><a href="//www.webnovel.com" target="_blank" title="Qidian International">起点国际版</a></dd>
+        <dd><a href="http://www.tingbook.com" target="_blank">天方听书网</a></dd>
     </dl>
     <div class="wrap btmInfor">
         <p>© 2019 DeathGhost.cn 版权所有 网络文化经营许可证：晋网文[2019]***-02号 增值小说经营许可证：晋B2-200***24-1 信息网络传播阅读许可证：1109***4号</p>
+        <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
+        <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
         <address>联系地址：山西省太原市尖草坪区</address>
     </div>
 </footer>

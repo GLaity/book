@@ -4,13 +4,11 @@ import com.book.dao.IBookExtendDao;
 import com.book.pojo.Book_Extend;
 import com.book.util.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookExtendImpl implements IBookExtendDao {
@@ -99,53 +97,31 @@ public class BookExtendImpl implements IBookExtendDao {
 
     @Override
     public List<Integer> queueByVisited() {
-        String sql = "select book_id from book_extend order by book_visited desc limit 8";
-        List<Object[]> tempList = null;
-        List<Integer> bookIdList = new ArrayList<>();
-        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        try {
-            tempList = qr.query(sql, new ArrayListHandler());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        for (Object[] ob:tempList){
-            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
-        }
-        return bookIdList;
+        return null;
     }
 
     @Override
     public List<Integer> queueByCollected() {
-        String sql = "select book_id from book_extend order by book_collected desc limit 8";
-        List<Object[]> tempList = null;
-        List<Integer> bookIdList = new ArrayList<>();
-        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        try {
-            tempList = qr.query(sql, new ArrayListHandler());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        for (Object[] ob:tempList){
-            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
-        }
-        return bookIdList;
+        return null;
     }
 
     @Override
     public List<Integer> queueByBought() {
-        String sql = "select book_id from book_extend order by book_bought desc limit 8";
-        List<Object[]> tempList = null;
-        List<Integer> bookIdList = new ArrayList<>();
+        return null;
+    }
+
+    @Override
+    public int findBookChapters(int BookId) {
+        Book_Extend bookExtend = null;
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "select book_Chapters from BOOK_EXTEND where book_id=?";
         try {
-            tempList = qr.query(sql, new ArrayListHandler());
+//            bookExtend = qr.query(sql,new BeanHandler<Book_Extend>(Book_Extend.class),BookId);
+            bookExtend = qr.query(sql,new BeanHandler<>(Book_Extend.class),BookId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (Object[] ob:tempList){
-            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
-        }
-        return bookIdList;
+        return bookExtend.getBook_Chapters();
     }
 
     //

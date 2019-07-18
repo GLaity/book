@@ -85,7 +85,7 @@ public class BookReadServlet extends HttpServlet {
 
         req.setAttribute("bookId",bookId);
         req.setAttribute("path",path);
-        if(chapterId >= 10){
+        if(chapterId >= 100){
             req.setAttribute("chapterId",chapterId);
             req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
         } else {

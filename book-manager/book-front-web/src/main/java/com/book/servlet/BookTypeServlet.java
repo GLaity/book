@@ -18,11 +18,11 @@ import java.util.List;
 public class BookTypeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       String method = req.getParameter("_method");
-       switch (method){
-           case "type":
-               bookType(req, resp);
-       }
+        String method = req.getParameter("_method");
+        switch (method){
+            case "type":
+                bookType(req, resp);
+        }
 
     }
     @Override

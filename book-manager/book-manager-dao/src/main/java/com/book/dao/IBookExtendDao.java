@@ -30,4 +30,7 @@ public interface IBookExtendDao {
     List<Integer> queueByVisited();
     List<Integer> queueByCollected();
     List<Integer> queueByBought();
+
+    //根据id获取小说章节数
+    int findBookChapters(int BookId);
 }

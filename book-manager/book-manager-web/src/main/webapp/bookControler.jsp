@@ -115,8 +115,8 @@
                                     <td class="text-center">${bookBasic.getBook_Id()}</td>
                                     <td class="text-center">${bookBasic.getWriter_Id()}</td>
                                     <td class="text-center">${bookBasic.getBook_Createdate()}</td>
-                                    <td class="text-center"><a>修改</a></td>
-                                    <td class="text-center"><a>删除</a></td>
+                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=update">修改</a></td>
+                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=remove">删除</a></td>
                                 </tr>
                                 </tbody>
                             </c:forEach>
