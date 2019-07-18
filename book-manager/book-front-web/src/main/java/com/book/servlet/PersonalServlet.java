@@ -1,5 +1,7 @@
 package com.book.servlet;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.book.dao.IBookDirDao;
 import com.book.pojo.Advice;
 import com.book.pojo.Book_Basic;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,9 @@ public class PersonalServlet extends HttpServlet {
             execute(req, resp);
         } else {
             switch (method) {
+                case "myAdvice":
+                    myAdvice(req, resp);
+                    break;
                 case "deleteAdvice":
                     deleteAdvice(req, resp);
                     break;
@@ -42,6 +48,12 @@ public class PersonalServlet extends HttpServlet {
     }
 
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.getRequestDispatcher("user.jsp").forward(req,resp);
+    }
+
+    public void myAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
         HttpSession session = req.getSession();
         User_Account userAccount = (User_Account) session.getAttribute("user");
         IAdviceService adviceService = new AdviceServiceImpl();
@@ -49,18 +61,29 @@ public class PersonalServlet extends HttpServlet {
         List<Advice> adviceList = adviceService.findAdviceByUser(userAccount.getUser_Id());
         List<Book_Basic> bookAdviceList = new ArrayList<>();
         for (Advice advice:adviceList){
-
             bookAdviceList.add(bookService.findBookBasicById(advice.getBook_Id()));
         }
-        req.setAttribute("adviceList",adviceList);
-        req.setAttribute("bookAdviceList",bookAdviceList);
-        req.getRequestDispatcher("user.jsp").forward(req,resp);
+        List<JSONObject> json = new ArrayList<>();
+        for (Advice advice:adviceList){
+            JSONObject jsonObject = new JSONObject();
+            Book_Basic book = bookService.findBookBasicById(advice.getBook_Id());
+            jsonObject.put("adviceId", advice.getAdvice_Id());
+            jsonObject.put("bookId", advice.getBook_Id());
+            jsonObject.put("bookName", book.getBook_Title());
+            jsonObject.put("writer", book.getWriter_Id());
+            jsonObject.put("adviceDate", advice.getAdvice_Date());
+            jsonObject.put("adviceText", advice.getAdvice_Text());
+            json.add(jsonObject);
+        }
+        String dataStr = JSON.toJSONString(json);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
+
     }
 
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
         int adviceId = Integer.valueOf(req.getParameter("adviceId"));
         adviceService.removeAdvice(adviceId);
-        execute(req, resp);
     }
 }

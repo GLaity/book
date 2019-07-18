@@ -4,6 +4,7 @@ import com.book.dao.IBookDirDao;
 import com.book.dao.impl.BookDirDaoImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
+import com.book.pojo.User_Account;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
 import com.book.service.impl.BookReadServiceImpl;
@@ -14,7 +15,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/read.do")
@@ -48,10 +51,23 @@ public class BookReadServlet extends HttpServlet {
     public void start(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int chapterId = Integer.valueOf(req.getParameter("chapterId"));
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account) session.getAttribute("user");
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+
+        List<Book_Basic> bookVisitedList = (List<Book_Basic>) session.getAttribute("bookVisitedList");
+        if (bookVisitedList == null){
+            bookVisitedList = new ArrayList<>();
+            session.setAttribute("bookVisitedList",bookVisitedList);
+        }
+        if (user != null){
+            bookVisitedList.add(bookBasic);
+            session.setAttribute("bookVisitedList",bookVisitedList);
+        }
         req.setAttribute("bookBasic",bookBasic);
         req.setAttribute("bookId",bookId);
         req.setAttribute("chapterId",chapterId);
+
         String path = bookReadService.readTargetBook(bookId,chapterId);
         req.setAttribute("path",path);
         req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
