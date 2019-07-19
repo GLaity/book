@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Wolf
-  Date: 2019/7/16
-  Time: 15:05
+  Date: 2019/7/19
+  Time: 19:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,8 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>布克小说网—书籍管理界面</title>
-
+    <title>评论管理界面</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -113,7 +112,6 @@
                                     <td class="text-center">${bookBasic.getBook_price()}</td>
                                     <td class="text-center">${bookBasic.getWriter_Id()}</td>
                                     <td class="text-center">${bookBasic.getBook_Createdate()}</td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=update">修改</a></td>
                                     <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=remove">删除</a></td>
                                 </tr>
                                 </tbody>
