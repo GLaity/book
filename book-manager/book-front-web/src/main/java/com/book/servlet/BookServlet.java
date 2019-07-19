@@ -100,11 +100,16 @@ public class BookServlet extends HttpServlet {
                     isBought = 2;
                 }
             } else {
-                for(Book_Basic tempBookBasic : bookBoughtList){
-                    if(tempBookBasic.getBook_Id()==bookId){
-                        isBought = 1;
+                if(userVip.getVip_Balance() >= bookBasic.getBook_Price()){
+                    for(Book_Basic tempBookBasic : bookBoughtList){
+                        if(tempBookBasic.getBook_Id()==bookId){
+                            isBought = 1;
+                        }
                     }
+                } else {
+                    isBought = 2;
                 }
+
             }
         }
 

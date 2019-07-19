@@ -43,6 +43,8 @@ public class PersonalServlet extends HttpServlet {
                     break;
                 case "deleteCollected":
                     deleteCollected(req, resp);
+                case "mybought":
+                    mybought(req,resp);
             }
         }
     }
@@ -103,7 +105,24 @@ public class PersonalServlet extends HttpServlet {
 
     }
 
+    public void mybought(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        IUserBookShelfService userBookShelfService = new UserBookShelfServiceImpl();
+        List<Book_Basic> bookBasicsList = userBookShelfService.queryUserBoughtList(user.getUser_Id());
+        List<JSONObject> json = new ArrayList<>();
+        for(Book_Basic bookBasic :bookBasicsList){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("bookName",bookBasic.getBook_Title());
+            jsonObject.put("bookId",bookBasic.getBook_Id());
+            json.add(jsonObject);
+        }
+        String dataStr = JSON.toJSONString(json);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
 
+    }
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
         int adviceId = Integer.valueOf(req.getParameter("adviceId"));

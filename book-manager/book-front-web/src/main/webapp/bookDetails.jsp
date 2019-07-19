@@ -115,6 +115,9 @@
             $("#boughtBtn").click(function () {
                 alert("账户余额不足！");
             })
+            $("#bought").click(function () {
+                alert("已购买！");
+            })
         })
     </script>
 </head>
@@ -315,7 +318,7 @@
                             <input type="button" value="未购买" class="buy_btn" onclick = "window.location.href = '/read.do?_method=buy&bookId=${bookBasic.getBook_Id()}'"/>
                         </c:if>
                         <c:if test="${isBought eq 1}">
-                            <input type="button" value="已购买" class="buy_btn"/>
+                            <input type="button" value="已购买" class="buy_btn" id="bought"/>
                         </c:if>
                         <c:if test="${isBought eq 2}">
                             <input type="button" value="未购买" class="buy_btn" id="boughtBtn"/>

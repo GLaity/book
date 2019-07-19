@@ -90,6 +90,25 @@
                 }
             })
         }
+        function buyflush() {
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=mybought",
+                success:function (data) {
+                    $("#buyList").empty();
+                    var json = JSON.parse(data);
+                    for(var i = 0;i<json.length;i++){
+                        $("#buyList").append(
+                            " <li>\n" +
+                            "     <a>\n" +
+                            "       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" />\n" +
+                            "       <h2>"+json[i].bookName+"</h2>\n" +
+                            "    </a>\n" +
+                            " </li>");
+                    }
+                }
+            })
+        }
         $(document).ready(function(){
             $("nav .indexAsideNav").hide();
             $("nav .category").mouseover(function(){
@@ -120,6 +139,8 @@
             })
             $("#myAdvice").click(flush())
             $("#favoriteList").click(collectflush())
+            $("#buyList").click(buyflush())
+
         });
 
 
@@ -262,7 +283,9 @@
             <div class="user_infor">
                 <p><strong><c:out value="${sessionScope.user.getUser_Username()}"></c:out></strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="#">申请入驻</a></p>
                 <p>上次登录时间：<time>2019-01-14 13:55</time>，登录ip：192.168.1.1</p>
-                <p>账户余额：<strong class="rmb_icon">${sessionScope.userVip.getVip_Balance()}</strong><a href="#" class="btn">充值</a><a href="#" class="btn">提现</a></p>
+                <p>账户余额：<strong class="rmb_icon">${sessionScope.userVip.getVip_Balance()}</strong>
+                    <a href="#" class="btn" id="recharge">充值</a>
+                    </p>
             </div>
         </div>
         <dl class="user_order_tips">
@@ -397,15 +420,15 @@
         <!--购买-->
         <div class="favoriteWrap">
             <!--购买列表-->
-            <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods008.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
+            <ul class="favorite_list" id="buyList">
+<%--                <li>--%>
+<%--                    <a>--%>
+<%--                        <img src="upload/goods008.jpg" />--%>
+<%--                        <h2>2019时尚新款</h2>--%>
+<%--                        <p class="price"><span class="rmb_icon">298.00</span></p>--%>
+<%--                        <p class="remove"><span>&#126;</span></p>--%>
+<%--                    </a>--%>
+<%--                </li>--%>
             </ul>
 
         </div>
