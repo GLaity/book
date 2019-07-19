@@ -94,7 +94,7 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book_Basic> queueAllByVisited() {
         List<Book_Basic> bookBasicList = new ArrayList<>();
-        List<Integer> bookIdList = bookExtendDao.queueByVisited();
+        List<Integer> bookIdList = bookExtendDao.queueByVisitedAll();
         for (int bookId:bookIdList){
             bookBasicList.add(findBookBasicById(bookId));
         }
@@ -114,7 +114,7 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book_Basic> queueAllByCollected() {
         List<Book_Basic> bookBasicList = new ArrayList<>();
-        List<Integer> bookIdList = bookExtendDao.queueByCollected();
+        List<Integer> bookIdList = bookExtendDao.queueByCollectedAll();
         for (int bookId:bookIdList){
             bookBasicList.add(findBookBasicById(bookId));
         }
@@ -134,7 +134,7 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book_Basic> queueAllByBought() {
         List<Book_Basic> bookBasicList = new ArrayList<>();
-        List<Integer> bookIdList = bookExtendDao.queueByBought();
+        List<Integer> bookIdList = bookExtendDao.queueByBoughtAll();
         for (int bookId:bookIdList){
             bookBasicList.add(findBookBasicById(bookId));
         }

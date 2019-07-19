@@ -45,14 +45,14 @@ body class="bg02">
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="nav-link dropdown-toggle" href="bookRank?_method=visit" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
                                 信息统计
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">小说浏览统计</a>
-                                <a class="dropdown-item" href="#">小说收藏统计</a>
-                                <a class="dropdown-item" href="#">小说购买统计</a>
+                                <a class="dropdown-item" href="bookRank?_method=visit">小说浏览统计</a>
+                                <a class="dropdown-item" href="bookRank?_method=collect">小说收藏统计</a>
+                                <a class="dropdown-item" href="bookRank?_method=bought">小说购买统计</a>
                             </div>
                         </li>
                         <li class="nav-item ">
@@ -116,22 +116,22 @@ body class="bg02">
                             </label>
                             ${bookBasic.getBook_Createdate()}
                         </div>
-<%--                        <div class="input-group mb-3">--%>
-<%--                            <label  class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">所属分类：--%>
-<%--                            </label>--%>
-<%--                            <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="type" name="type">--%>
-<%--                                <option value="1" selected>玄幻</option>--%>
-<%--                                <option value="2" >武侠</option>--%>
-<%--                                <option value="3" >都市</option>--%>
-<%--                                <option value="4" >军事</option>--%>
-<%--                                <option value="5" >历史</option>--%>
-<%--                                <option value="6" >游戏</option>--%>
-<%--                                <option value="7" >悬疑</option>--%>
-<%--                                <option value="8" >科幻</option>--%>
-<%--                                <option value="9" >言情</option>--%>
-<%--                                <option value="10">青春</option>--%>
-<%--                            </select>--%>
-<%--                        </div>--%>
+                        <div class="input-group mb-3">
+                            <label  class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">所属分类：
+                            </label>
+                            <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="type" name="type">
+                                <option value="1" selected>玄幻</option>
+                                <option value="2" >武侠</option>
+                                <option value="3" >都市</option>
+                                <option value="4" >军事</option>
+                                <option value="5" >历史</option>
+                                <option value="6" >游戏</option>
+                                <option value="7" >悬疑</option>
+                                <option value="8" >科幻</option>
+                                <option value="9" >言情</option>
+                                <option value="10">青春</option>
+                            </select>
+                        </div>
                         <div class="input-group mb-3">
                             <label  class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">上传书籍:
                             </label>

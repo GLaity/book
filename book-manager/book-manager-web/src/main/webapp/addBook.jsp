@@ -45,14 +45,14 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="nav-link dropdown-toggle" href="bookRank?_method=visit" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
                                 信息统计
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="book-bowse-statistics.html">小说浏览统计</a>
-                                <a class="dropdown-item" href="#">小说收藏统计</a>
-                                <a class="dropdown-item" href="index.html">小说购买统计</a>
+                                <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
+                                <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
+                                <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
                             </div>
                         </li>
                         <li class="nav-item ">

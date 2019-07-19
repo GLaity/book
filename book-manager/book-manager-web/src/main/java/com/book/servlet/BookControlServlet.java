@@ -102,7 +102,7 @@ public class BookControlServlet extends HttpServlet {
         book.setWriter_Id(request.getParameter("author"));
         book.setBook_price(Double.parseDouble(request.getParameter("price")));
         book.setBook_Context(request.getParameter("context"));
-//        book.setType_Id(Integer.valueOf(request.getParameter("type")));
+        book.setType_Id(Integer.valueOf(request.getParameter("type")));
         bookService.updateBookInformation(book);
         List<Book_Basic> books = bookService.findBookBasicAll();
         request.setAttribute("bookList",books);
