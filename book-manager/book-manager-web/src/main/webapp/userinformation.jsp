@@ -38,10 +38,8 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                    <a class="navbar-brand" href="userinformation.jsp">
                         <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                         <h1 class="tm-site-title mb-0">后台管理</h1>
-                    </a>
                     <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -97,15 +95,15 @@
                         <div class="col-md-4 col-sm-12 text-right">
                             <a href="edituser.jsp" class="btn btn-small btn-primary">添加新用户</a>
                         </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-small btn-primary" id="user_del_modal_btn" onclick="fn_del_user()">批量删除</button>
-                        </div>
+<%--                        <div class="col-md-2">--%>
+<%--                            <button type="button" class="btn btn-small btn-primary" id="user_del_modal_btn" onclick="fn_del_user()">批量删除</button>--%>
+<%--                        </div>--%>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                                 <thead>
                                 <tr class="tm-bg-gray">
-                                    <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>
+<                                   <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>
                                     <th scope="col" class="text-center">用户姓名</th>
                                     <th scope="col" class="text-center">手机号</th>
                                     <th scope="col">邮箱</th>
@@ -117,7 +115,7 @@
                                 <c:forEach items="${userList}" var="user_account">
                                     <tr id="user">
                                         <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox" id="check_allUser">
+                                            <input type="checkbox" aria-label="Checkbox">
                                         </th>
                                         <td class="text-center">
                                             <c:out value="${user_account.getUser_Username()}"></c:out>
@@ -125,7 +123,7 @@
                                         <td class="text-center">
                                             <c:out value="${user_account.getUser_Tel()}"></c:out>
                                         </td>
-                                        <td class="tm-product-name">
+                                        <td class="text-center">
                                             <c:out value="${user_account.getUser_Email()}"></c:out>
                                         </td>
                                         <td class="text-center">
@@ -144,14 +142,13 @@
                                                             &times;
                                                         </button>
                                                     </div>
-                                                    <form method="post" href="read.do?_method=update">
                                                         <div class="modal-body">
-                                                            <div class="form-group">
+                                                            <div class="form-group" id="myFormId">
                                                                 <div class="input-group mb-3">
                                                                     <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
                                                                     </label>
                                                                     <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Username()}"></c:out>">
-                                                            </div>
+                                                                </div>
                                                             <div class="input-group mb-3">
                                                                 <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
                                                                 <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value="<c:out value="${user_account.getUser_Tel()}"></c:out>">
@@ -159,10 +156,7 @@
                                                             <div class="input-group mb-3">
                                                                 <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
                                                                 </label>
-                                                                <c:choose>
-                                                                    <c:when test="${!empty(user_account.getUser_Date())}"><c:out value="user_account.getUser_Date()"></c:out></c:when>
-                                                                    <c:otherwise> <input type="date" id="userDate" name="userDate" value="user_account.getUser_Date()" ></c:otherwise>
-                                                                </c:choose>
+                                                                <input type="date" id="userDate" name="userDate" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="user_account.getUser_Date()" >
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
@@ -174,15 +168,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                        <sys:message content="${message}"/>
-                                                            <c:if test="${not empty message}">
-                                                                <script type="text/javascript">$("#messageBox").show()</script>
-                                                            </c:if>
+<%--                                                        <sys:message content="${message}"/>--%>
+<%--                                                            <c:if test="${not empty message}">--%>
+<%--                                                                <script type="text/javascript">$("#messageBox").show()</script>--%>
+<%--                                                            </c:if>--%>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                                                        <button type="button" class="btn btn-primary" onclick="fn_user_add()">保存</button>
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="fn_close">关闭</button>
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="fn_user_add">保存</button>
                                                     </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,43 +212,70 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
 <script type="text/javascript">
-var flag=0;//全局变量用来判断是否选中复选框，默认没有选中
-var delId="";//要删除的用户id数组
-var delIds = "";
-var size = 0;
-var totalCount = 0;
-var currentPage = 1;  // 默认当前页面为1
-var startPage=0;
-var endPage = 0;
-function fn_user_add(){
-    $.ajax({
-        url:"",
-    })
-}
-// function fn_del_user() {
-//     if(delId==""&&flag == 0){
-//         alert("空,还未选中要删除的用户")
-//     }else {
-//         $.ajax({
-//             url:,
-//             type:"post",
-//             data:{"type":}
-//             dataType
-//         })
-//     }
-// }
-//单选和全选
-$("#check_allUser").click(function () {
-    if (flag==0){
-        alert(xxxx)
-        $("user_tables input[type='checkbox']").prop("checked",true);
-        flag=1;
-    }else {
-        alert(yyyyy)
-        $("user_tables input[type='checkbox']").prop("checked",false);
-        flag=0;
-    }
-})
+<%--var flag=0;//全局变量用来判断是否选中复选框，默认没有选中--%>
+<%--var delId="";//要删除的用户id数组--%>
+<%--var delIds = "";--%>
+<%--var size = 0;--%>
+<%--var totalCount = 0;--%>
+<%--var currentPage = 1;  // 默认当前页面为1--%>
+<%--var startPage=0;--%>
+<%--var endPage = 0;--%>
+<%--var user=${"#myFormId input"};--%>
+<%--function fn_user_add(){--%>
+<%--    $.ajax({--%>
+<%--        url:"read.do?_method=update",--%>
+<%--        type:"post",--%>
+<%--        dataType:"json",--%>
+<%--        data:user.serialize(),--%>
+<%--        success:function (data) {--%>
+<%--            var user = JSON.parse(data);--%>
+<%--            $("#user_tables").append(--%>
+<%--                ""--%>
+<%--            )--%>
+<%--        },--%>
+<%--        error:function () {--%>
+<%--            alert(失败);--%>
+<%--        }--%>
+<%--    })--%>
+<%--}--%>
+<%--function fn_user_list() {--%>
+<%--    $.ajax({--%>
+<%--        url: "read.do?_method=getList",--%>
+<%--        type: "post",--%>
+<%--        dataType: "json",--%>
+<%--        success:function (data) {--%>
+<%--        for (var i=0;i<data.length;i++){--%>
+<%--            var str =JSON.parse(data);--%>
+<%--            $("<tr id=\"user\">\n") .append("                                        <th scope=\"row\">\n" +--%>
+<%--                "                                            <input type=\"checkbox\" aria-label=\"Checkbox\">\n" +--%>
+<%--                "                                        </th>\n" +--%>
+<%--                "                                        <td class=\"text-center\">"+data.User_Username+"</td>\n" +--%>
+<%--                "                                        <td class=\"text-center\">"+data.User_Tel+"</td>\n" +--%>
+<%--                "                                        <td class=\"text-center\">"+data.User_Email+"</td>\n" +--%>
+<%--                "                                        <td class=\"text-center\">"+data.User_Date+"</td>\n" +--%>
+<%--                "                                        <td><a href=\"/read.do?userId=${user_account.getUser_Id()}&_method=remove\"><i class=\"fas fa-trash-alt tm-trash-icon\"></i></a></td>\n" +--%>
+<%--                "                                        <td><button type=\"button\" class=\"btn btn-default btn-sm\" data-toggle=\"modal\" data-target=\"#mymodal\">编辑</button></td>\n" +--%>
+<%--                "                                        <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+" </tr>")--%>
+<%--            }--%>
+<%--        }--%>
+<%--    })--%>
+<%--}--%>
+    $('.modal-body').on('hidden.bs.modal', '.modal', function () {
+    $(this).removeData('bs.modal');
+});
+
+<%--//单选和全选--%>
+<%--$("#check_allUser").click(function () {--%>
+<%--    if (flag==0){--%>
+<%--        alert(xxxx);--%>
+<%--        $("user_tables input[type='checkbox']").prop("checked",true);--%>
+<%--        flag=1;--%>
+<%--    }else {--%>
+<%--        alert(yyyyy);--%>
+<%--        $("user_tables input[type='checkbox']").prop("checked",false);--%>
+<%--        flag=0;--%>
+<%--    }--%>
+<%--})--%>
 </script>
 </body>
 </html>

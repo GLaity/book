@@ -1,5 +1,6 @@
 package com.book.servlet;
 
+import com.alibaba.fastjson.JSON;
 import com.book.pojo.Advice;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
@@ -21,7 +22,8 @@ public class ReaderControlServlet extends HttpServlet {
     IAdviceService iAdviceService =new AdviceServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                String method =req.getParameter("_method");
+
+        String method =req.getParameter("_method");
                     switch (method){
                         case "add":
                             add(req,resp);
@@ -37,7 +39,6 @@ public class ReaderControlServlet extends HttpServlet {
                             break;
                     }
                 }
-//        PrintWriter out =resp.getWriter();
 //        switch (fun){
 //            case "add":
 //               add(req,resp);
@@ -80,13 +81,14 @@ public class ReaderControlServlet extends HttpServlet {
     }
     private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int userId =Integer.valueOf(req.getParameter("userId"));
+//        PrintWriter out =resp.getWriter();
         User_Account user_account =iUserService.findUserById(userId);
         user_account.setUser_Username(req.getParameter("userName"));
         user_account.setUser_Password(req.getParameter("userPassword"));
         user_account.setUser_Tel(req.getParameter("userTel"));
         user_account.setUser_Email(req.getParameter("useEmail"));
         iUserService.modifyUser(user_account);
-        req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
+        execute(req, resp);
     }
     private void remove(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int userId =Integer.valueOf(req.getParameter("userId"));

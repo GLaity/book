@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="userinformation.jsp">用户管理
+                            <a class="nav-link" href="read.do?_method=getList">用户管理
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
