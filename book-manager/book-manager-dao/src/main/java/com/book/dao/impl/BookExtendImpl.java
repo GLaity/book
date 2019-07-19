@@ -74,7 +74,7 @@ public class BookExtendImpl implements IBookExtendDao {
     }
 
     @Override
-    public void updateBookVisitById(int book_Id) {
+    public void addBookVisitById(int book_Id) {
         String sql = "update book_extend set book_visited=? where book_id=?";
         IBookExtendDao bookExtendDao = new BookExtendImpl();
         Book_Extend book_extend = bookExtendDao.selectBookById(book_Id);
@@ -98,7 +98,7 @@ public class BookExtendImpl implements IBookExtendDao {
     }
 
     @Override
-    public void deleteBookCollected(int bookId) {
+    public void reduceBookCollected(int bookId) {
         String sql = "update book_extend set book_collected=? where book_id=?";
         IBookExtendDao bookExtendDao = new BookExtendImpl();
         Book_Extend book_extend = bookExtendDao.selectBookById(bookId);

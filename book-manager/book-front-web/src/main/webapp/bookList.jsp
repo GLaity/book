@@ -228,9 +228,9 @@
                 <c:forEach items="${bookBasicList}" var="bookBasic">
                     <li>
                         <a href="/book?bookId=${bookBasic.getBook_Id()}">
-                            <img src="bookimg/${bookBasic.getBook_Id()}.jpg"/>
+                            <img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"/>
                             <h3>${bookBasic.getBook_Title()}</h3>
-                            <p class="price"><span class="rmb_icon">298.00</span></p>
+                            <p class="price"><span class="rmb_icon">${bookBasic.getBook_Price()}</span></p>
                             <p class="shop_collect_goods" title="收藏该产品"><span>&#115;</span></p>
                         </a>
                     </li>
@@ -253,62 +253,62 @@
             <dt>热门推荐</dt>
             <dd>
                 <a href="/book?bookId=1">
-                    <img src="bookimg/1.jpg"/>
+                    <img src="../../../../bookimg/1.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=2">
-                    <img src="bookimg/2.jpg"/>
+                    <img src="../../../../bookimg/2.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=3">
-                    <img src="bookimg/3.jpg"/>
+                    <img src="../../../../bookimg/3.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=4">
-                    <img src="bookimg/4.jpg"/>
+                    <img src="../../../../bookimg/4.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=5">
-                    <img src="bookimg/5.jpg"/>
+                    <img src="../../../../bookimg/5.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=6">
-                    <img src="bookimg/6.jpg"/>
+                    <img src="../../../../bookimg/6.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=7">
-                    <img src="bookimg/7.jpg"/>
+                    <img src="../../../../bookimg/7.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=8">
-                    <img src="bookimg/8.jpg"/>
+                    <img src="../../../../bookimg/8.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=9">
-                    <img src="bookimg/9.jpg"/>
+                    <img src="../../../../bookimg/9.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=10">
-                    <img src="bookimg/10.jpg"/>
+                    <img src="../../../../bookimg/10.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=11">
-                    <img src="bookimg/11.jpg"/>
+                    <img src="../../../../bookimg/11.jpg"/>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=12">
-                    <img src="bookimg/12.jpg"/>
+                    <img src="../../../../bookimg/12.jpg"/>
                 </a>
             </dd>
         </dl>

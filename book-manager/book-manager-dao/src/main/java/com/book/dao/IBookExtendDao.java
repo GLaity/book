@@ -21,14 +21,14 @@ public interface IBookExtendDao {
     //根据id查询书籍信息
     Book_Extend selectBookById(int book_Id);
     //根据id更新书的浏览量+1
-    void updateBookVisitById(int book_Id);
+    void addBookVisitById(int book_Id);
     //根据id更新书的收藏量
     void updateBookCollectBy(int book_Id);
     //根据id更新书的购买量
     void updateBookBoughtBy(int book_Id);
 
     //删除书的收藏信息-1
-    void deleteBookCollected(int bookId);
+    void reduceBookCollected(int bookId);
 
     List<Integer> queueByVisited();
     List<Integer> queueByCollected();

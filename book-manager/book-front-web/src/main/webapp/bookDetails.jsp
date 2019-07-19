@@ -245,7 +245,7 @@
         <div>
             <div id="preview" class="spec-preview">
 						<span class="jqzoom">
-							<img src="bookimg/${bookBasic.getBook_Id()}.jpg" />
+							<img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg" />
 						</span> </div>
         </div>
     </div>

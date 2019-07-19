@@ -1,6 +1,6 @@
 package com.book.dao.impl;
 
-import com.book.dao.IUserCollectedDao;
+import com.book.dao.IUserBookShelfDao;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.User_Book_Collection;
 import com.book.util.JDBCUtils;
@@ -10,7 +10,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserCollectedImpl implements IUserCollectedDao {
+public class UserBookShelfImpl implements IUserBookShelfDao {
     @Override
     public void insertUserCollect(User_Book_Collection userBookCollection) {
         String sql = "insert into user_book_collection values(?,?)";

@@ -1,14 +1,10 @@
 package com.book.servlet;
 
 import com.book.dao.IBookDirDao;
-import com.book.dao.IUserCollectedDao;
 import com.book.dao.impl.BookDirDaoImpl;
-import com.book.dao.impl.UserCollectedImpl;
 import com.book.pojo.Book_Basic;
-import com.book.pojo.Book_Contend;
 import com.book.pojo.User_Account;
 import com.book.pojo.User_Book_Collection;
-import com.book.pojo.User_Account;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
 import com.book.service.IUserCollectedService;

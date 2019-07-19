@@ -139,6 +139,6 @@ public class BookServiceImpl implements IBookService {
     @Override
     public void modifyVisitedById(int bookId) {
         IBookExtendDao bookExtendDao = new BookExtendImpl();
-        bookExtendDao.updateBookVisitById(bookId);
+        bookExtendDao.addBookVisitById(bookId);
     }
 }

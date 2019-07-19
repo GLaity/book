@@ -103,7 +103,7 @@
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
-                    <a href="/book?bookId=3"  style="padding: 0px"><img src="bookimg/3.jpg" /></a>
+                    <a href="/book?bookId=3"  style="padding: 0px"><img src="../../../../bookimg/3.jpg" /></a>
                 </dl>
             </li>
             <li><a href="/" class="active">首页</a></li>
@@ -157,7 +157,7 @@ $()
         <!--singleAd-->
         <div class="singleAd">
             <a href="/book?bookId=1">
-                <img src="bookimg/1.jpg"/>
+                <img src="../../../../bookimg/1.jpg"/>
             </a>
         </div>
         <!--bestShop-->
@@ -168,49 +168,49 @@ $()
             </dt>
             <dd>
                 <a href="/book?bookId=2">
-                    <img src="bookimg/2.jpg"/>
+                    <img src="../../../../bookimg/2.jpg"/>
                     <h2>斗罗重生</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=4">
-                    <img src="bookimg/4.jpg"/>
+                    <img src="../../../../bookimg/4.jpg"/>
                     <h2>九极剑神</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=5">
-                    <img src="bookimg/5.jpg"/>
+                    <img src="../../../../bookimg/5.jpg"/>
                     <h2>罗浮</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=6">
-                    <img src="bookimg/6.jpg"/>
+                    <img src="../../../../bookimg/6.jpg"/>
                     <h2>网游之大盗贼</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=7">
-                    <img src="bookimg/7.jpg"/>
+                    <img src="../../../../bookimg/7.jpg"/>
                     <h2>雷霆之主</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=8">
-                    <img src="bookimg/8.jpg"/>
+                    <img src="../../../../bookimg/8.jpg"/>
                     <h2>武动之武祖再临</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=9">
-                    <img src="bookimg/9.jpg"/>
+                    <img src="../../../../bookimg/9.jpg"/>
                     <h2>轮回开端</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=10">
-                    <img src="bookimg/10.jpg"/>
+                    <img src="../../../../bookimg/10.jpg"/>
                     <h2>王牌强兵</h2>
                 </a>
             </dd>
@@ -278,67 +278,67 @@ $()
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="/book?bookId=2"><img src="bookimg/2.jpg"/></a>
+        <a href="/book?bookId=2"><img src="../../../../bookimg/2.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
                 <a href="/book?bookId=8">
-                    <img src="bookimg/8.jpg"/>
+                    <img src="../../../../bookimg/8.jpg"/>
                     <h3>武动之武祖再临</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=11">
-                    <img src="bookimg/11.jpg"/>
+                    <img src="../../../../bookimg/11.jpg"/>
                     <h3>懦弱的勇士</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=13">
-                    <img src="bookimg/13.jpg"/>
+                    <img src="../../../../bookimg/13.jpg"/>
                     <h3>男主高攀不起，告辞</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=14">
-                    <img src="bookimg/14.jpg"/>
+                    <img src="../../../../bookimg/14.jpg"/>
                     <h3>帝国的朝阳</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=15">
-                    <img src="bookimg/15.jpg"/>
+                    <img src="../../../../bookimg/15.jpg"/>
                     <h3>民国大能</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=16">
-                    <img src="bookimg/16.jpg"/>
+                    <img src="../../../../bookimg/16.jpg"/>
                     <h3>大清拆迁工</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=17">
-                <img src="bookimg/17.jpg"/>
+                    <img src="../../../../bookimg/17.jpg"/>
                 <h3>我有一间扎纸店</h3>
             </a>
             </li>
             <li>
                 <a href="/book?bookId=18">
-                    <img src="bookimg/18.jpg"/>
+                    <img src="../../../../bookimg/18.jpg"/>
                     <h3>痞子神探</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=19">
-                    <img src="bookimg/19.jpg"/>
+                    <img src="../../../../bookimg/19.jpg"/>
                     <h3>惊天盗墓团</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=20">
-                    <img src="bookimg/20.jpg"/>
+                    <img src="../../../../bookimg/20.jpg"/>
                     <h3>星际之全能炊事员</h3>
                 </a>
             </li>
@@ -366,67 +366,67 @@ $()
     </h2>
     <div class="ltArea">
         <!--ad:category pic-->
-        <a href="/book?bookId=2"><img src="bookimg/2.jpg"/></a>
+        <a href="/book?bookId=2"><img src="../../../../bookimg/2.jpg"/></a>
     </div>
     <div class="ctLi">
         <ul>
             <li>
                 <a href="/book?bookId=12">
-                    <img src="bookimg/12.jpg"/>
+                    <img src="../../../../bookimg/12.jpg"/>
                     <h3>豪门霸总的黑心前妻</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=17">
-                    <img src="bookimg/17.jpg"/>
+                    <img src="../../../../bookimg/17.jpg"/>
                     <h3>我有一间扎纸店</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=21">
-                    <img src="bookimg/21.jpg"/>
+                    <img src="../../../../bookimg/21.jpg"/>
                     <h3>东宫宠妾</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=22">
-                    <img src="bookimg/22.jpg"/>
+                    <img src="../../../../bookimg/22.jpg"/>
                     <h3>太子今天又被调戏了</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=23">
-                    <img src="bookimg/23.jpg"/>
+                    <img src="../../../../bookimg/23.jpg"/>
                     <h3>重生之王爷的奋斗</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=24">
-                    <img src="bookimg/24.jpg"/>
+                    <img src="../../../../bookimg/24.jpg"/>
                     <h3>废弃皇妃</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=25">
-                    <img src="bookimg/25.jpg"/>
+                    <img src="../../../../bookimg/25.jpg"/>
                     <h3>爵迹</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=13">
-                    <img src="bookimg/13.jpg"/>
+                    <img src="../../../../bookimg/13.jpg"/>
                     <h3>男主高攀不起，告辞</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=2">
-                    <img src="bookimg/2.jpg"/>
+                    <img src="../../../../bookimg/2.jpg"/>
                     <h3>斗罗重生</h3>
                 </a>
             </li>
             <li>
                 <a href="/book?bookId=20">
-                    <img src="bookimg/20.jpg"/>
+                    <img src="../../../../bookimg/20.jpg"/>
                     <h3>星际之全能炊事员</h3>
                 </a>
             </li>
@@ -449,31 +449,31 @@ $()
     <ul>
         <li>
             <a href="/book?bookId=8">
-                <img src="bookimg/8.jpg"/>
+                <img src="../../../../bookimg/8.jpg"/>
                 <h3>武动之武祖再临</h3>
             </a>
         </li>
         <li>
             <a href="/book?bookId=11">
-                <img src="bookimg/11.jpg"/>
+                <img src="../../../../bookimg/11.jpg"/>
                 <h3>懦弱的勇士</h3>
             </a>
         </li>
         <li>
             <a href="/book?bookId=13">
-                <img src="bookimg/13.jpg"/>
+                <img src="../../../../bookimg/13.jpg"/>
                 <h3>男主高攀不起，告辞</h3>
             </a>
         </li>
         <li>
             <a href="/book?bookId=14">
-                <img src="bookimg/14.jpg"/>
+                <img src="../../../../bookimg/14.jpg"/>
                 <h3>帝国的朝阳</h3>
             </a>
         </li>
         <li>
             <a href="/book?bookId=15">
-                <img src="bookimg/15.jpg"/>
+                <img src="../../../../bookimg/15.jpg"/>
                 <h3>民国大能</h3>
             </a>
         </li>
