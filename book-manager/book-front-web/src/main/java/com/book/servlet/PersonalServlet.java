@@ -2,16 +2,15 @@ package com.book.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.book.dao.IBookDirDao;
 import com.book.pojo.Advice;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
-import com.book.service.IUserCollectedService;
+import com.book.service.IUserBookShelfService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
-import com.book.service.impl.UserCollectedServiceImpl;
+import com.book.service.impl.UserBookShelfServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,7 +60,7 @@ public class PersonalServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         HttpSession session = req.getSession();
         User_Account user = (User_Account)session.getAttribute("user");
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());
         List<JSONObject> json = new ArrayList<>();
         for(Book_Basic bookBasic :bookBasicsList){
@@ -111,7 +110,7 @@ public class PersonalServlet extends HttpServlet {
         adviceService.removeAdvice(adviceId);
     }
     public void deleteCollected(HttpServletRequest req, HttpServletResponse resp){
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         HttpSession session = req.getSession();
         User_Account user = (User_Account)session.getAttribute("user");

@@ -1,17 +1,5 @@
 package jdbctest;
 
-import com.book.pojo.Advice;
-import com.book.pojo.Book_Basic;
-import com.book.service.IAdviceService;
-import com.book.service.IBookService;
-import com.book.service.IUserCollectedService;
-import com.book.service.impl.AdviceServiceImpl;
-import com.book.service.impl.BookServiceImpl;
-import com.book.service.impl.UserCollectedServiceImpl;
-import org.junit.Test;
-
-import java.util.List;
-
 public class ConTest {
 
 //    @Test
@@ -30,7 +18,7 @@ public class ConTest {
 //    }
 //    @Test
 //    public  void Demo(){
-//        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+//        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
 //        userCollectedService.removeCollected(2020,8);
 //    }
 }

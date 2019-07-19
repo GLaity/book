@@ -1,16 +1,23 @@
 package com.book.servlet;
 
+import com.book.dao.IBookDao;
 import com.book.dao.IBookDirDao;
+import com.book.dao.IUserDao;
+import com.book.dao.impl.BookDaoImpl;
 import com.book.dao.impl.BookDirDaoImpl;
+import com.book.dao.impl.UserDaoImpl;
+import com.book.pojo.*;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.User_Account;
 import com.book.pojo.User_Book_Collection;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
-import com.book.service.IUserCollectedService;
+import com.book.service.IUserBookShelfService;
+import com.book.service.IUserService;
 import com.book.service.impl.BookReadServiceImpl;
 import com.book.service.impl.BookServiceImpl;
-import com.book.service.impl.UserCollectedServiceImpl;
+import com.book.service.impl.IUserServiceImpl;
+import com.book.service.impl.UserBookShelfServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +33,7 @@ import java.util.List;
 public class BookReadServlet extends HttpServlet {
     IBookReadService bookReadService = new BookReadServiceImpl();
     IBookService bookService = new BookServiceImpl();
+    IUserService userService = new IUserServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fun = req.getParameter("_method");
@@ -44,6 +52,9 @@ public class BookReadServlet extends HttpServlet {
                 break;
             case "collection":
                 collection(req, resp);
+                break;
+            case "buy":
+                buy(req,resp);
                 break;
         }
     }
@@ -66,16 +77,20 @@ public class BookReadServlet extends HttpServlet {
             session.setAttribute("bookVisitedList",bookVisitedList);
         }
         if (user != null){
+            userService.modifyTotalVisit(user.getUser_Id());
             bookVisitedList.add(bookBasic);
             session.setAttribute("bookVisitedList",bookVisitedList);
-        }
-        req.setAttribute("bookBasic",bookBasic);
-        req.setAttribute("bookId",bookId);
-        req.setAttribute("chapterId",chapterId);
+            req.setAttribute("bookBasic",bookBasic);
+            req.setAttribute("bookId",bookId);
+            req.setAttribute("chapterId",chapterId);
 
-        String path = bookReadService.readTargetBook(bookId,chapterId);
-        req.setAttribute("path",path);
-        req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            String path = bookReadService.readTargetBook(bookId,chapterId);
+            req.setAttribute("path",path);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        } else {
+            resp.sendRedirect("login.jsp");
+        }
+
     }
 
     public void last(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -124,19 +139,32 @@ public class BookReadServlet extends HttpServlet {
     public void collection(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int userId = Integer.valueOf(req.getParameter("userId"));
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+//        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         addCollected(userId,bookId);
         resp.sendRedirect("/book?bookId="+bookId);
     }
 
     //添加收藏信息
     public void addCollected(int userId,int bookId){
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         bookService = new BookServiceImpl();
         bookService.modifyCollectedById(bookId);
         User_Book_Collection userBookCollection = new User_Book_Collection();
         userBookCollection.setUser_Id(userId);
         userBookCollection.setBook_Id(bookId);
         userCollectedService.addUserCollect(userBookCollection);
+    }
+
+    public void buy(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account) session.getAttribute("user");
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        IUserService userService = new IUserServiceImpl();
+        userService.buyBook(user.getUser_Id(),bookId);
+        Vip_Account userVip = userService.findBalance(user.getUser_Id());
+        Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
+        session.setAttribute("userVip",userVip);
+        session.setAttribute("countAccount",countAccount);
+        resp.sendRedirect("/book?bookId="+bookId);
     }
 }

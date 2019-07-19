@@ -8,6 +8,7 @@ public class Book_Basic {
     private String writer_Id;
     private String book_Createdate;
     private Double book_Price;
+
     public Book_Basic() {
     }
 

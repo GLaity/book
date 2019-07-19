@@ -133,12 +133,18 @@ public class BookServiceImpl implements IBookService {
     @Override
     public void modifyCollectedById(int bookId) {
         IBookExtendDao bookExtendDao = new BookExtendImpl();
-        bookExtendDao.updateBookCollectBy(bookId);
+        bookExtendDao.addBookCollectBy(bookId);
     }
 
     @Override
     public void modifyVisitedById(int bookId) {
         IBookExtendDao bookExtendDao = new BookExtendImpl();
         bookExtendDao.addBookVisitById(bookId);
+    }
+
+    @Override
+    public void modifyboughtById(int bookId) {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        bookExtendDao.addBookBoughtBy(bookId);
     }
 }

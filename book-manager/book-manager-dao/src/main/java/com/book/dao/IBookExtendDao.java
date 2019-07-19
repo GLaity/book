@@ -23,9 +23,9 @@ public interface IBookExtendDao {
     //根据id更新书的浏览量+1
     void addBookVisitById(int book_Id);
     //根据id更新书的收藏量
-    void updateBookCollectBy(int book_Id);
+    void addBookCollectBy(int book_Id);
     //根据id更新书的购买量
-    void updateBookBoughtBy(int book_Id);
+    void addBookBoughtBy(int book_Id);
 
     //删除书的收藏信息-1
     void reduceBookCollected(int bookId);
