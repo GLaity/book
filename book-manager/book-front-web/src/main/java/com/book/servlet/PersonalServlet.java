@@ -2,18 +2,9 @@ package com.book.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.book.pojo.Advice;
-import com.book.pojo.Book_Basic;
-import com.book.pojo.User_Account;
-import com.book.pojo.User_Cost;
-import com.book.service.IAdviceService;
-import com.book.service.IBookService;
-import com.book.service.IUserBookShelfService;
-import com.book.service.IUserCostService;
-import com.book.service.impl.AdviceServiceImpl;
-import com.book.service.impl.BookServiceImpl;
-import com.book.service.impl.UserBookShelfServiceImpl;
-import com.book.service.impl.UserCostServiceImpl;
+import com.book.pojo.*;
+import com.book.service.*;
+import com.book.service.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,10 +37,16 @@ public class PersonalServlet extends HttpServlet {
                     break;
                 case "deleteCollected":
                     deleteCollected(req, resp);
+                    break;
                 case "mybought":
                     mybought(req,resp);
+                    break;
                 case "myCost":
                     myCost(req, resp);
+                    break;
+                case "recharge":
+                    recharge(req,resp);
+                    break;
             }
         }
     }
@@ -79,7 +76,6 @@ public class PersonalServlet extends HttpServlet {
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
-        System.out.println(dataStr);
 
     }
     public void myAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -150,8 +146,22 @@ public class PersonalServlet extends HttpServlet {
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
-        System.out.println(dataStr);
     }
+
+    public void recharge(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        double num = Double.valueOf(req.getParameter("num"));
+        HttpSession session = req.getSession();
+        Vip_Account userVip = (Vip_Account) session.getAttribute("userVip");
+        User_Account user = (User_Account) session.getAttribute("user");
+        IUserService userService = new IUserServiceImpl();
+        userService.modifyBalance(user.getUser_Id(),userVip.getVip_Balance() + num);
+        userVip = userService.findBalance(user.getUser_Id());
+        session.setAttribute("userVip",userVip);
+        String dataStr = JSON.toJSONString(userVip);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
+    }
+
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
         int adviceId = Integer.valueOf(req.getParameter("adviceId"));
@@ -164,4 +174,6 @@ public class PersonalServlet extends HttpServlet {
         User_Account user = (User_Account)session.getAttribute("user");
         userCollectedService.removeCollected(user.getUser_Id(),bookId);
     }
+
+
 }
