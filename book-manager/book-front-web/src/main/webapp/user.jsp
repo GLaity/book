@@ -35,7 +35,7 @@
         }
         function  deleteCollected(bookId) {
             // var adviceId = $(this).children(".adId").val();
-            alert(bookId);
+            // alert(bookId);
             $.ajax({
                 type:"get",
                 url:"/personal?_method=deleteCollected",
@@ -78,7 +78,7 @@
                 url:"/personal?_method=mybought",
                 success:function (data) {
                     $("#buyList").empty();
-                    var json = JSON.parse("[{\"bookName\":\"九极剑神\",\"bookId\":4}]");
+                    var json = JSON.parse(data);
                     for(var i = 0;i<json.length;i++){
                         $("#buyList").append(
                             " <li>\n" +
@@ -104,8 +104,8 @@
                             "     <a href=\"/book?bookId="+json[i].bookId+"\">\n" +
                             "       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" />\n" +
                             "       <h2>"+json[i].bookName+"</h2>\n" +
-                            "       <p class=\"remove\"><span onclick=\"deleteCollected("+json[i].bookId+")\">&#126;</span></p>\n" +
                             "    </a>\n" +
+                            "       <p class=\"remove\"><span onclick=\"deleteCollected("+json[i].bookId+")\">&#126;</span></p>\n" +
                             " </li>");
                     }
                 }
@@ -167,12 +167,22 @@
             $("#favoriteList").click(collectflush())
             $("#buyList").click(buyflush())
             $("#costList").click(costflush())
+
+
             $("#recharge").click(function () {
-                const num=prompt("请输入要充值的金额","");
+                const num = prompt("请输入要充值的金额","");
                 if (num!=null && num!="") {
-                    alert("你输入的是" + num);
-
-
+                    $.ajax({
+                        type:"get",
+                        url:"/personal?_method=recharge",
+                        data:{"num":num},
+                        success:function (data) {
+                            alert("充值成功，余额增加" + num);
+                            var json = JSON.parse(data);
+                            $("#balance").empty();
+                            $("#balance").append(json.vip_Balance)
+                        }
+                    })
                 }
             })
         });
@@ -317,7 +327,9 @@
             <div class="user_infor">
                 <p><strong><c:out value="${sessionScope.user.getUser_Username()}"></c:out></strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="#">申请入驻</a></p>
                 <p>上次登录时间：<time>2019-01-14 13:55</time>，登录ip：192.168.1.1</p>
-                <p>账户余额：<strong class="rmb_icon">${sessionScope.userVip.getVip_Balance()}</strong>
+                <p>账户余额：<strong class="rmb_icon" id="balance">
+                    ${sessionScope.userVip.getVip_Balance()}
+                </strong>
                     <a href="#" class="btn" id="recharge">充值</a>
                     </p>
             </div>
