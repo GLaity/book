@@ -204,23 +204,8 @@
 <!--footer-->
 <footer>
     <!--help-->
-    <ul class="wrap help" style="margin-left:35%;">
-        <li>
-            <a href="#" target="_blank">关于我们</a>
-        </li>
-        <li>
-            <a href="#" target="_blank">联系我们</a>
-        </li>
-        <li>
-            <a href="#" target="_blank">加入我们</a>
-        </li>
-        <li>
-            <a href="#" target="_blank">联系客服</a>
-        </li>
 
-    </ul>
     <dl class="wrap otherLink">
-        <dt>友情链接</dt>
 
         <dd><a href="//www.qidian.com">起点中文网</a></dd>
         <dd><a href="//www.qdmm.com" target="_blank">起点女生网</a></dd>
@@ -238,10 +223,25 @@
         <dd><a href="//www.webnovel.com" target="_blank" title="Qidian International">起点国际版</a></dd>
         <dd><a href="http://www.tingbook.com" target="_blank">天方听书网</a></dd>
     </dl>
+    <ul class="wrap help" style="margin-left:35%;">
+        <li>
+            <a href="#" target="_blank">关于我们</a>
+        </li>
+        <li>
+            <a href="#" target="_blank">联系我们</a>
+        </li>
+        <li>
+            <a href="#" target="_blank">加入我们</a>
+        </li>
+        <li>
+            <a href="#" target="_blank">联系客服</a>
+        </li>
+
+    </ul>
     <div class="wrap btmInfor">
+        <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
         <p>© 2019 DeathGhost.cn 版权所有 网络文化经营许可证：晋网文[2019]***-02号 增值小说经营许可证：晋B2-200***24-1 信息网络传播阅读许可证：1109***4号</p>
         <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
-        <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
         <address>联系地址：山西省太原市尖草坪区</address>
     </div>
 </footer>

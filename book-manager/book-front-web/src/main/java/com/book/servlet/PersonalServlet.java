@@ -46,10 +46,13 @@ public class PersonalServlet extends HttpServlet {
                     break;
                 case "deleteCollected":
                     deleteCollected(req, resp);
+                    break;
                 case "mybought":
                     mybought(req,resp);
+                    break;
                 case "myCost":
                     myCost(req, resp);
+                    break;
             }
         }
     }
@@ -79,8 +82,6 @@ public class PersonalServlet extends HttpServlet {
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
-        System.out.println(dataStr);
-
     }
     public void myAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
@@ -150,7 +151,6 @@ public class PersonalServlet extends HttpServlet {
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
-        System.out.println(dataStr);
     }
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
