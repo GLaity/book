@@ -24,6 +24,7 @@ public interface IUserService {
 
     void modifyBalance(int userId, double newBalance);
     Vip_Account findBalance(int userId);
+    void buyBook(int userId, int bookId);
 
     Count_Account findUserCountById(int userId);
 }

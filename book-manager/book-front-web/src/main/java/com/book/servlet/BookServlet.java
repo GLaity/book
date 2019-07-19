@@ -2,10 +2,7 @@ package com.book.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.book.pojo.Advice;
-import com.book.pojo.Book_Basic;
-import com.book.pojo.Book_Extend;
-import com.book.pojo.User_Account;
+import com.book.pojo.*;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
 import com.book.service.IUserBookShelfService;
@@ -70,32 +67,55 @@ public class BookServlet extends HttpServlet {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         HttpSession session = req.getSession();
+
         User_Account user = (User_Account)session.getAttribute("user");
+        Vip_Account userVip = (Vip_Account) session.getAttribute("userVip");
         int flag=0;
+        int isBought = 0;
         IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
+
+        IBookService bookService = new BookServiceImpl();
+        Book_Basic bookBasic = bookService.findBookBasicById(bookId);
+        Book_Extend bookExtend = bookService.findBookExtendById(bookId);
+        Book_Type bookType = bookService.fintBookTypeByTypeId(bookBasic.getType_Id());
+        List<String> bookDir = bookService.getBookDir(bookId);
 
         if(user!=null){
             List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());
             if(bookBasicsList==null){
                 flag=0;
             }else{
-                for(Book_Basic bookBasic : bookBasicsList){
-                    if(bookBasic.getBook_Id()==bookId){
+                for(Book_Basic tempBookBasic : bookBasicsList){
+                    if(tempBookBasic.getBook_Id()==bookId){
                         flag=1;
+                    }
+                }
+            }
+
+            List<Book_Basic> bookBoughtList = userCollectedService.queryUserBoughtList(user.getUser_Id());
+            if (bookBoughtList == null){
+                if(userVip.getVip_Balance() >= bookBasic.getBook_Price()){
+                    isBought = 0;
+                } else {
+                    isBought = 2;
+                }
+            } else {
+                for(Book_Basic tempBookBasic : bookBoughtList){
+                    if(tempBookBasic.getBook_Id()==bookId){
+                        isBought = 1;
                     }
                 }
             }
         }
 
-        IBookService bookService = new BookServiceImpl();
-        Book_Basic bookBasic = bookService.findBookBasicById(bookId);
-        Book_Extend bookExtend = bookService.findBookExtendById(bookId);
-        List<String> bookDir = bookService.getBookDir(bookId);
+
         req.setAttribute("bookBasic",bookBasic);
+        req.setAttribute("bookType",bookType);
         req.setAttribute("bookExtend",bookExtend);
         req.setAttribute("bookDir",bookDir);
 
         req.setAttribute("flag",flag);
+        req.setAttribute("isBought",isBought);
 
         req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);
         return null;

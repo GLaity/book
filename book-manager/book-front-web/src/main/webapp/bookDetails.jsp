@@ -112,6 +112,9 @@
             $("#collecBtn").click(function () {
                 alert("小说已收藏！");
             })
+            $("#boughtBtn").click(function () {
+                alert("账户余额不足！");
+            })
         })
     </script>
 </head>
@@ -271,7 +274,13 @@
                 <li>
                     <dl class="horizontal">
                         <dt>类别：</dt>
-                        <dd><em><c:out value="${requestScope.bookBasic.getType_Id()}"></c:out></em></dd>
+                        <dd><em><c:out value="${requestScope.bookType.getType_Name()}"></c:out></em></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl class="horizontal">
+                        <dt>价格：</dt>
+                        <dd><em><c:out value="${requestScope.bookBasic.getBook_Price()}"></c:out>个金币</em></dd>
                     </dl>
                 </li>
                 <li class="statistics">
@@ -293,17 +302,26 @@
                     <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
                     <c:if test="${empty(sessionScope.user)}">
                         <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = 'login.jsp'"/>
+                        <input type="button" value="购买小说" class="buy_btn" onclick = "window.location.href = 'login.jsp'"/>
                     </c:if>
                     <c:if test="${!empty(sessionScope.user)}">
-
                         <c:if test="${flag eq 0}">
                             <input type="button" value="未收藏" class="add_btn" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'"/>
                         </c:if>
                         <c:if test="${flag eq 1}">
                             <input type="button" value="已收藏" class="add_btn" id="collecBtn" />
                         </c:if>
-
+                        <c:if test="${isBought eq 0}">
+                            <input type="button" value="未购买" class="buy_btn" onclick = "window.location.href = '/read.do?_method=buy&bookId=${bookBasic.getBook_Id()}'"/>
+                        </c:if>
+                        <c:if test="${isBought eq 1}">
+                            <input type="button" value="已购买" class="buy_btn"/>
+                        </c:if>
+                        <c:if test="${isBought eq 2}">
+                            <input type="button" value="未购买" class="buy_btn" id="boughtBtn"/>
+                        </c:if>
                     </c:if>
+
                 </li>
             </ul>
         </div>

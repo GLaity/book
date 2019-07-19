@@ -36,8 +36,11 @@ public class UserBookShelfServiceImpl implements IUserBookShelfService {
     }
 
     @Override
-    public void addUserBought(User_Book_Bought userBookBought) {
+    public void addUserBought(int userId, int bookId) {
         IUserBookShelfDao userBookShelfDao = new UserBookShelfImpl();
+        User_Book_Bought userBookBought = new User_Book_Bought();
+        userBookBought.setBook_Id(bookId);
+        userBookBought.setUser_Id(userId);
         userBookShelfDao.insertUserBought(userBookBought);
     }
 

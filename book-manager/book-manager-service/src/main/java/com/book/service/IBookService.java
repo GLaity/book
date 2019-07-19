@@ -39,7 +39,7 @@ public interface IBookService {
     //根据书的id更改收藏量浏览量    待写：购买量
     void modifyCollectedById(int bookId);
     void modifyVisitedById(int bookId);
-
+    void modifyboughtById(int bookId);
 
 
 }

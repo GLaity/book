@@ -16,7 +16,7 @@ public interface IUserBookShelfService {
     void removeCollected(int userId,int bookId);
 
     //添加收藏信息
-    void addUserBought(User_Book_Bought userBookBought);
+    void addUserBought(int userId, int bookId);
 
     //查询用户收藏书的列表
     List<Book_Basic> queryUserBoughtList(int userId);

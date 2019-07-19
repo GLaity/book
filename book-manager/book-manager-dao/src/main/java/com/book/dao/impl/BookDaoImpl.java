@@ -15,10 +15,10 @@ public class BookDaoImpl implements IBookDao {
     public void insertBook(Book_Basic book) {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 //        String sql = "insert into book_basic(book_id,book_title,book_context,type_id,writer_id,book_createdate) values(?,?,?,?,?,date(NOW()))";
-        String sql = "insert into BOOK_BASIC(BOOK_TITLE,BOOK_CONTEXT,TYPE_ID,WRITER_ID,BOOK_CREATEDATE) values(?,?,?,?,date(NOW()))";
+        String sql = "insert into BOOK_BASIC(BOOK_TITLE,BOOK_CONTEXT,TYPE_ID,WRITER_ID,BOOK_CREATEDATE,book_price) values(?,?,?,?,date(NOW()),?)";
         try {
 //            qr.update(sql,book.getBook_Id(),book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getWriter_Id());
-            qr.update(sql,book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getWriter_Id());
+            qr.update(sql,book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getWriter_Id(), book.getBook_Price());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -28,11 +28,11 @@ public class BookDaoImpl implements IBookDao {
     public void updateBook(Book_Basic book) {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 //        String sql = "update book_basic set book_title=?,book_context=?,type_id=?,writer_id=?,book_createdate=? where book_id=?";
-        String sql = "update book_basic set book_title=?,book_context=?,type_id=? where book_id=?";
+        String sql = "update book_basic set book_title=?,book_context=?,type_id=? book_price=? where book_id=?";
 
         try {
 //            qr.update(sql,book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getWriter_Id(),book.getBook_Createdate(),book.getBook_Id());
-            qr.update(sql,book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getBook_Id());
+            qr.update(sql,book.getBook_Title(),book.getBook_Context(),book.getType_Id(),book.getBook_Price(), book.getBook_Id());
         } catch (SQLException e) {
             e.printStackTrace();
         }

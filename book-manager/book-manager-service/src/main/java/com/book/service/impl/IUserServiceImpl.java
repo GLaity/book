@@ -1,12 +1,17 @@
 package com.book.service.impl;
 
+import com.book.dao.IBookDao;
 import com.book.dao.ICountAccountDao;
 import com.book.dao.IUserDao;
+import com.book.dao.impl.BookDaoImpl;
 import com.book.dao.impl.CountAccountImpl;
 import com.book.dao.impl.UserDaoImpl;
+import com.book.pojo.Book_Basic;
 import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
 import com.book.pojo.Vip_Account;
+import com.book.service.IBookService;
+import com.book.service.IUserBookShelfService;
 import com.book.service.IUserService;
 
 import java.util.List;
@@ -103,6 +108,22 @@ public class IUserServiceImpl implements IUserService {
     public Vip_Account findBalance(int userId) {
         IUserDao userDao = new UserDaoImpl();
         return userDao.selectUserVip(userId);
+    }
+
+    @Override
+    public void buyBook(int userId, int bookId) {
+        IUserDao userDao = new UserDaoImpl();
+        IBookDao bookDao = new BookDaoImpl();
+        IBookService bookService = new BookServiceImpl();
+        IUserBookShelfService userBookShelfService = new UserBookShelfServiceImpl();
+        Vip_Account userVip = findBalance(userId);
+        Book_Basic book = bookDao.selectBookById(bookId);
+
+        userDao.updateUserVip(userId, userVip.getVip_Balance() - book.getBook_Price());
+        modifyTotalBought(userId);
+        bookService.modifyboughtById(bookId);
+        userBookShelfService.addUserBought(userId,bookId);
+        modifyTotalPay(userId,book.getBook_Price());
     }
 
     @Override
