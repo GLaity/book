@@ -129,4 +129,16 @@ public class BookServiceImpl implements IBookService {
         String path = contend.getBook_Contend();
         return path;
     }
+
+    @Override
+    public void modifyCollectedById(int bookId) {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        bookExtendDao.updateBookCollectBy(bookId);
+    }
+
+    @Override
+    public void modifyVisitedById(int bookId) {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        bookExtendDao.updateBookVisitById(bookId);
+    }
 }

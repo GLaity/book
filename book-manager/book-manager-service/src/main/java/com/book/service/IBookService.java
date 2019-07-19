@@ -36,6 +36,10 @@ public interface IBookService {
     List<Book_Type> findBookType();
     Book_Type fintBookTypeByTypeId(int type_Id);
     String findPathById(int bookId);
+    //根据书的id更改收藏量浏览量    待写：购买量
+    void modifyCollectedById(int bookId);
+    void modifyVisitedById(int bookId);
+
 
 
 }

@@ -98,6 +98,29 @@ public class BookExtendImpl implements IBookExtendDao {
     }
 
     @Override
+    public void deleteBookCollected(int bookId) {
+        String sql = "update book_extend set book_collected=? where book_id=?";
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        Book_Extend book_extend = bookExtendDao.selectBookById(bookId);
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            qr.update(sql,book_extend.getBook_Collected()-1,bookId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    //
+    private List<Integer> selectBook(String sql,int low,int height){
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        List<Integer> arr = null;
+        try {
+            arr = qr.query(sql,new BeanListHandler<>(Integer.class),low,height);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arr;
+    }
+    @Override
     public List<Integer> queueByVisited() {
         String sql = "select book_id from book_extend order by book_visited desc limit 8";
         List<Object[]> tempList = null;
@@ -146,18 +169,6 @@ public class BookExtendImpl implements IBookExtendDao {
             bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
         }
         return bookIdList;
-    }
-
-    //
-    private List<Integer> selectBook(String sql,int low,int height){
-        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        List<Integer> arr = null;
-        try {
-            arr = qr.query(sql,new BeanListHandler<>(Integer.class),low,height);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return arr;
     }
 
     private void updateBook(String sql, int num,int book_Id){

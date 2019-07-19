@@ -12,7 +12,6 @@
 
     <artifactId>book-common</artifactId>
     <packaging>jar</packaging>
-
     <dependencies>
         <dependency>
             <groupId>c3p0</groupId>

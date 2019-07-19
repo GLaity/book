@@ -32,6 +32,18 @@
                 }
             })
         }
+        function  deleteCollected(bookId) {
+            // var adviceId = $(this).children(".adId").val();
+            alert(bookId);
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=deleteCollected",
+                data:{"bookId":bookId},
+                success:function () {
+                    collectflush();
+                }
+            })
+        }
         function flush() {
             $.ajax({
                 type:"get",
@@ -54,6 +66,26 @@
                             "   </a>\n" +
                             "   </td>\n" +
                             "</tr>");
+                    }
+                }
+            })
+        }
+        function collectflush() {
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=myCollected",
+                success:function (data) {
+                    $("#favoriteList").empty();
+                    var json = JSON.parse(data);
+                    for(var i = 0;i<json.length;i++){
+                        $("#favoriteList").append(
+                            " <li>\n" +
+                            "     <a>\n" +
+                            "       <img src=\"bookimg/"+json[i].bookId+".jpg\" />\n" +
+                            "       <h2>"+json[i].bookName+"</h2>\n" +
+                            "       <p class=\"remove\"><span onclick=\"deleteCollected("+json[i].bookId+")\">&#126;</span></p>\n" +
+                            "    </a>\n" +
+                            " </li>");
                     }
                 }
             })
@@ -87,7 +119,9 @@
                 $(".user_rt_cont").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
             })
             $("#myAdvice").click(flush())
+            $("#favoriteList").click(collectflush())
         });
+
 
     </script>
 </head>
@@ -207,7 +241,7 @@
 
             <dd><a href="#">个人资料</a></dd>
             <dd><a href="#">我的浏览</a></dd>
-            <dd><a href="#">我的书架</a></dd>
+            <dd><a href="#" id="myCollected">我的书架</a></dd>
             <dd><a href="#" id="myAdvice">我的评论</a></dd>
             <dd><a href="#">会员等级</a></dd>
             <dd><a href="#">账户详情</a></dd>
@@ -347,32 +381,23 @@
             <li>已购买</li>
         </ul>
         <div class="favoriteWrap" style="display:block;">
-            <!--收藏列表-->
+
+            <ul class="favorite_list" id="favoriteList">
+<%--                <c:forEach items="${bookBasicsList}" var="book" >--%>
+<%--                    <li>--%>
+<%--                        <a>--%>
+<%--                            <img src="bookimg/${book.getBook_Id()}.jpg" />--%>
+<%--                            <h2>${book.getBook_Title()}</h2>--%>
+<%--                            <p class="remove" onclick="deleteAdvice(bookId)"><span>&#126;</span></p>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                </c:forEach>--%>
+            </ul>
+        </div>
+        <!--购买-->
+        <div class="favoriteWrap">
+            <!--购买列表-->
             <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods005.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods010.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods009.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
                 <li>
                     <a>
                         <img src="upload/goods008.jpg" />
@@ -381,90 +406,8 @@
                         <p class="remove"><span>&#126;</span></p>
                     </a>
                 </li>
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg" />
-                        <h2>2019时尚新款</h2>
-                        <p class="price"><span class="rmb_icon">298.00</span></p>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
             </ul>
-            <!--分页-->
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
-        </div>
-        <!--店铺收藏-->
-        <div class="favoriteWrap">
-            <ul class="favorite_list">
-                <li>
-                    <a>
-                        <img src="upload/goods006.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods004.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods003.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="upload/goods002.jpg" />
-                        <h2>店铺一</h2>
-                        <p class="remove"><span>&#126;</span></p>
-                    </a>
-                </li>
-            </ul>
-            <!--分页-->
-<%--            <div class="paging">--%>
-<%--                <a>第一页</a>--%>
-<%--                <a class="active">2</a>--%>
-<%--                <a>3</a>--%>
-<%--                <a>...</a>--%>
-<%--                <a>89</a>--%>
-<%--                <a>最后一页</a>--%>
-<%--            </div>--%>
+
         </div>
     </div>
 
@@ -711,61 +654,44 @@
 <!-- footer-->
 <footer>
     <!--help-->
-    <ul class="wrap help">
+    <ul class="wrap help" style="margin-left:35%;">
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">关于我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">联系我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">加入我们</a>
         </li>
         <li>
-            <dl>
-                <dt>关于我们</dt>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-                <dd><a href="#">小说小说</a></dd>
-            </dl>
+            <a href="#" target="_blank">联系客服</a>
         </li>
+
     </ul>
     <dl class="wrap otherLink">
         <dt>友情链接</dt>
 
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#" target="_blank">小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-        <dd><a href="#">小说小说小说小说</a></dd>
-
+        <dd><a href="//www.qidian.com">起点中文网</a></dd>
+        <dd><a href="//www.qdmm.com" target="_blank">起点女生网</a></dd>
+        <dd><a href="http://chuangshi.qq.com" target="_blank">创世中文网</a></dd>
+        <dd><a href="http://yunqi.qq.com" target="_blank">云起书院</a></dd>
+        <dd><a href="//www.hongxiu.com" target="_blank">红袖添香</a></dd>
+        <dd><a href="//www.readnovel.com" target="_blank">小说阅读网</a></dd>
+        <dd><a href="//www.xs8.cn" target="_blank">言情小说吧</a></dd>
+        <dd><a href="http://www.xxsy.net" target="_blank">潇湘书院</a></dd>
+        <dd><a href="http://www.lrts.me" target="_blank">懒人听书</a></dd>
+        <dd><a href="http://yuedu.yuewen.com" target="_blank">阅文悦读</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appqq" target="_blank">QQ阅读</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appqd" target="_blank">起点读书</a></dd>
+        <dd><a href="//www.yuewen.com/app.html#appzj" target="_blank">作家助手</a></dd>
+        <dd><a href="//www.webnovel.com" target="_blank" title="Qidian International">起点国际版</a></dd>
+        <dd><a href="http://www.tingbook.com" target="_blank">天方听书网</a></dd>
     </dl>
     <div class="wrap btmInfor">
         <p>© 2019 DeathGhost.cn 版权所有 网络文化经营许可证：晋网文[2019]***-02号 增值小说经营许可证：晋B2-200***24-1 信息网络传播阅读许可证：1109***4号</p>
+        <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！举报电话：010-59357051</p>
+        <p>本站所收录的作品、社区话题、用户评论、用户上传内容或图片等均属用户个人行为。如前述内容侵害您的权益，欢迎举报投诉，一经核实，立即删除，本站不承担任何责任</p>
         <address>联系地址：山西省太原市尖草坪区</address>
     </div>
 </footer>

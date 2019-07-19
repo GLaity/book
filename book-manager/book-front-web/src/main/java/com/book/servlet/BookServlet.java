@@ -9,10 +9,12 @@ import com.book.pojo.Book_Extend;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
+import com.book.service.IUserCollectedService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
 import com.book.service.impl.IUserServiceImpl;
+import com.book.service.impl.UserCollectedServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,6 +70,24 @@ public class BookServlet extends HttpServlet {
 
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        int flag=0;
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+
+        if(user!=null){
+            List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());
+            if(bookBasicsList==null){
+                flag=0;
+            }else{
+                for(Book_Basic bookBasic : bookBasicsList){
+                    if(bookBasic.getBook_Id()==bookId){
+                        flag=1;
+                    }
+                }
+            }
+        }
+
         IBookService bookService = new BookServiceImpl();
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
         Book_Extend bookExtend = bookService.findBookExtendById(bookId);
@@ -75,6 +95,8 @@ public class BookServlet extends HttpServlet {
         req.setAttribute("bookBasic",bookBasic);
         req.setAttribute("bookExtend",bookExtend);
         req.setAttribute("bookDir",bookDir);
+
+        req.setAttribute("flag",flag);
 
         req.getRequestDispatcher("bookDetails.jsp").forward(req,resp);
         return null;

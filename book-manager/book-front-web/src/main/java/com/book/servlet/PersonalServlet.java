@@ -8,8 +8,10 @@ import com.book.pojo.Book_Basic;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
+import com.book.service.IUserCollectedService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
+import com.book.service.impl.UserCollectedServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +39,11 @@ public class PersonalServlet extends HttpServlet {
                 case "deleteAdvice":
                     deleteAdvice(req, resp);
                     break;
-
+                case "myCollected":
+                    myCollected(req, resp);
+                    break;
+                case "deleteCollected":
+                    deleteCollected(req, resp);
             }
         }
     }
@@ -48,10 +54,27 @@ public class PersonalServlet extends HttpServlet {
     }
 
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("user.jsp").forward(req,resp);
     }
+    //收藏
+    public void myCollected(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());
+        List<JSONObject> json = new ArrayList<>();
+        for(Book_Basic bookBasic :bookBasicsList){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("bookName",bookBasic.getBook_Title());
+            jsonObject.put("bookId",bookBasic.getBook_Id());
+            json.add(jsonObject);
+        }
+        String dataStr = JSON.toJSONString(json);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
 
+    }
     public void myAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         HttpSession session = req.getSession();
@@ -81,9 +104,17 @@ public class PersonalServlet extends HttpServlet {
 
     }
 
+
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
         int adviceId = Integer.valueOf(req.getParameter("adviceId"));
         adviceService.removeAdvice(adviceId);
+    }
+    public void deleteCollected(HttpServletRequest req, HttpServletResponse resp){
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        userCollectedService.removeCollected(user.getUser_Id(),bookId);
     }
 }

@@ -1,14 +1,20 @@
 package com.book.servlet;
 
 import com.book.dao.IBookDirDao;
+import com.book.dao.IUserCollectedDao;
 import com.book.dao.impl.BookDirDaoImpl;
+import com.book.dao.impl.UserCollectedImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
 import com.book.pojo.User_Account;
+import com.book.pojo.User_Book_Collection;
+import com.book.pojo.User_Account;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
+import com.book.service.IUserCollectedService;
 import com.book.service.impl.BookReadServiceImpl;
 import com.book.service.impl.BookServiceImpl;
+import com.book.service.impl.UserCollectedServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +45,9 @@ public class BookReadServlet extends HttpServlet {
                 break;
             case "dir":
                 dir(req,resp);
+                break;
+            case "collection":
+                collection(req, resp);
                 break;
         }
     }
@@ -102,7 +111,7 @@ public class BookReadServlet extends HttpServlet {
 
         req.setAttribute("bookId",bookId);
         req.setAttribute("path",path);
-        if(chapterId >= 10){
+        if(chapterId >= 100){
             req.setAttribute("chapterId",chapterId);
             req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
         } else {
@@ -115,5 +124,23 @@ public class BookReadServlet extends HttpServlet {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         IBookDirDao bookDirDao = new BookDirDaoImpl();
         List<String> dir = bookDirDao.getBookDir(bookId);
+    }
+    public void collection(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int bookId = Integer.valueOf(req.getParameter("bookId"));
+        int userId = Integer.valueOf(req.getParameter("userId"));
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        addCollected(userId,bookId);
+        resp.sendRedirect("/book?bookId="+bookId);
+    }
+
+    //添加收藏信息
+    public void addCollected(int userId,int bookId){
+        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        bookService = new BookServiceImpl();
+        bookService.modifyCollectedById(bookId);
+        User_Book_Collection userBookCollection = new User_Book_Collection();
+        userBookCollection.setUser_Id(userId);
+        userBookCollection.setBook_Id(bookId);
+        userCollectedService.addUserCollect(userBookCollection);
     }
 }
