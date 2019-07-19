@@ -81,7 +81,7 @@
                         $("#favoriteList").append(
                             " <li>\n" +
                             "     <a>\n" +
-                            "       <img src=\"bookimg/"+json[i].bookId+".jpg\" />\n" +
+                            "       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" />\n" +
                             "       <h2>"+json[i].bookName+"</h2>\n" +
                             "       <p class=\"remove\"><span onclick=\"deleteCollected("+json[i].bookId+")\">&#126;</span></p>\n" +
                             "    </a>\n" +
@@ -350,7 +350,7 @@
                 <c:forEach items="${bookVisitedList}" var="bookVisited">
                     <tr>
                         <td class="center"><a href="#" target="_blank">${bookVisited.getBook_Title()}</a></td>
-                        <td class="center"><a href="#" target="_blank"><img src="bookimg/${bookVisited.getBook_Id()}.jpg" width="50" height="50" /></a></td>
+                        <td class="center"><a href="#" target="_blank"><img src="../../../../bookimg/${bookVisited.getBook_Id()}.jpg" width="50" height="50" /></a></td>
                         <td class="center">${bookVisited.getWriter_Id()}</td>
                         <td class="center">${bookVisited.getBook_Createdate()}</td>
                         <td class="center">
@@ -386,7 +386,7 @@
 <%--                <c:forEach items="${bookBasicsList}" var="book" >--%>
 <%--                    <li>--%>
 <%--                        <a>--%>
-<%--                            <img src="bookimg/${book.getBook_Id()}.jpg" />--%>
+<%--                            <img src="../../../../bookimg/${book.getBook_Id()}.jpg" />--%>
 <%--                            <h2>${book.getBook_Title()}</h2>--%>
 <%--                            <p class="remove" onclick="deleteAdvice(bookId)"><span>&#126;</span></p>--%>
 <%--                        </a>--%>
