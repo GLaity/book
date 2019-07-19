@@ -20,6 +20,7 @@
     <script src="js/html5.js"></script>
     <script src="js/jquery.js"></script>
     <script>
+
         function  deleteAdvice(adviceId) {
             // var adviceId = $(this).children(".adId").val();
             // alert(adviceId);
@@ -70,6 +71,26 @@
                 }
             })
         }
+
+        function buyflush() {
+            $.ajax({
+                type:"get",
+                url:"/personal?_method=mybought",
+                success:function (data) {
+                    $("#buyList").empty();
+                    var json = JSON.parse("[{\"bookName\":\"九极剑神\",\"bookId\":4}]");
+                    for(var i = 0;i<json.length;i++){
+                        $("#buyList").append(
+                            " <li>\n" +
+                            "     <a>\n" +
+                            "       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" />\n" +
+                            "       <h2>"+json[i].bookName+"</h2>\n" +
+                            "    </a>\n" +
+                            " </li>");
+                    }
+                }
+            })
+        }
         function collectflush() {
             $.ajax({
                 type:"get",
@@ -90,21 +111,25 @@
                 }
             })
         }
-        function buyflush() {
+
+        function costflush() {
             $.ajax({
                 type:"get",
-                url:"/personal?_method=mybought",
+                url:"/personal?_method=myCost",
                 success:function (data) {
-                    $("#buyList").empty();
+                    $("#costList").empty();
                     var json = JSON.parse(data);
                     for(var i = 0;i<json.length;i++){
-                        $("#buyList").append(
-                            " <li>\n" +
-                            "     <a>\n" +
-                            "       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" />\n" +
-                            "       <h2>"+json[i].bookName+"</h2>\n" +
-                            "    </a>\n" +
-                            " </li>");
+                        $("#costList").append(
+                            "<tr>\n" +
+                            "        <td class=\"center\"><a href=\"/book?bookId="+json[i].bookId+"\" target=\"_blank\">" +
+                            "                       <img src=\"../../../../bookimg/"+json[i].bookId+".jpg\" style=\"width:50px;height:50px;\" /></a></td>\n" +
+                            "         <td><a href=\"/book?bookId=2\" target=\"_blank\">"+json[i].bookName+"</a></td>\n" +
+                            "        <td class=\"center\"><span class=\"rmb_icon\">"+json[i].WriterName+"</span></td>\n" +
+                            "        <td class=\"center\"><b>"+json[i].costDate+"</b></td>\n" +
+                            "       <td class=\"center\"><strong class=\"rmb_icon\">"+json[i].costMoney+"</strong></td>\n" +
+                            "       <td class=\"center\"><span>支付成功</span></td>\n" +
+                            "</tr>");
                     }
                 }
             })
@@ -134,15 +159,22 @@
             });
         });
         $(function() {
+            localStorage.clear();
             $(".user_aside_nav dd").click(function() {
                 $(".user_rt_cont").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
             })
             $("#myAdvice").click(flush())
             $("#favoriteList").click(collectflush())
             $("#buyList").click(buyflush())
-
+            $("#costList").click(costflush())
         });
-
+        // $("#recharge").click(function () {
+        //     const num=prompt("请输入要充值的金额","");
+        //     if (num!=null && num!="") {
+        //         alert("你输入的是" + num);
+        //
+        //     }
+        // })
 
     </script>
 </head>
@@ -593,14 +625,17 @@
 <%--                    <em class="shop_name">一号店</em>--%>
                         <a href="#">订单详情</a>
                     </caption>
-                    <tr>
-                        <td class="center"><a href="product.html" target="_blank"><img src="upload/goods009.jpg" style="width:50px;height:50px;" /></a></td>
-                        <td><a href="product.html" target="_blank">这里是产品名称哦</a></td>
-                        <td class="center"><span class="rmb_icon">作者</span></td>
-                        <td class="center"><b>日期</b></td>
-                        <td class="center"><strong class="rmb_icon">52.00</strong></td>
-                        <td class="center"><span>支付成功</span></td>
-                    </tr>
+                    <tbody id="costList">
+<%--                        <tr>--%>
+<%--                             <td class="center"><a href="/book?bookId=2" target="_blank"><img src="upload/goods009.jpg" style="width:50px;height:50px;" /></a></td>--%>
+<%--                             <td><a href="product.html" target="_blank">这里是产品名称哦</a></td>--%>
+<%--                             <td class="center"><span class="rmb_icon">作者</span></td>--%>
+<%--                             <td class="center"><b>日期</b></td>--%>
+<%--                             <td class="center"><strong class="rmb_icon">52.00</strong></td>--%>
+<%--                             <td class="center"><span>支付成功</span></td>--%>
+<%--                         </tr>--%>
+                    </tbody>
+
                 </table>
             </li>
         </ul>

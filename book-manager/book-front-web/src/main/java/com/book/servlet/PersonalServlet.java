@@ -5,12 +5,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.book.pojo.Advice;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.User_Account;
+import com.book.pojo.User_Cost;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
 import com.book.service.IUserBookShelfService;
+import com.book.service.IUserCostService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
 import com.book.service.impl.UserBookShelfServiceImpl;
+import com.book.service.impl.UserCostServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,6 +48,8 @@ public class PersonalServlet extends HttpServlet {
                     deleteCollected(req, resp);
                 case "mybought":
                     mybought(req,resp);
+                case "myCost":
+                    myCost(req, resp);
             }
         }
     }
@@ -74,6 +79,7 @@ public class PersonalServlet extends HttpServlet {
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
+        System.out.println(dataStr);
 
     }
     public void myAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -105,6 +111,28 @@ public class PersonalServlet extends HttpServlet {
 
     }
 
+    public void myCost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account)session.getAttribute("user");
+        IUserCostService userCostService = new UserCostServiceImpl();
+        List<User_Cost> userCostsList =  userCostService.findUserCostByUser(user.getUser_Id());
+        IBookService bookService = new BookServiceImpl();
+        List<JSONObject> json = new ArrayList<>();
+        for (User_Cost  userCost:userCostsList){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("bookId",userCost.getBook_Id());
+            jsonObject.put("costDate",userCost.getCost_Date());
+            jsonObject.put("costMoney",userCost.getCost_Money());
+            jsonObject.put("bookName",bookService.findBookBasicById(userCost.getBook_Id()).getBook_Title());
+            jsonObject.put("WriterName",bookService.findBookBasicById(userCost.getBook_Id()).getWriter_Id());
+            json.add(jsonObject);
+
+        }
+        String dataStr = JSON.toJSONString(json);
+        PrintWriter out = resp.getWriter();
+        out.print(dataStr);
+    }
     public void mybought(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         HttpSession session = req.getSession();
@@ -118,10 +146,11 @@ public class PersonalServlet extends HttpServlet {
             jsonObject.put("bookId",bookBasic.getBook_Id());
             json.add(jsonObject);
         }
+
         String dataStr = JSON.toJSONString(json);
         PrintWriter out = resp.getWriter();
         out.print(dataStr);
-
+        System.out.println(dataStr);
     }
     public void deleteAdvice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         IAdviceService adviceService = new AdviceServiceImpl();
