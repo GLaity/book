@@ -1,7 +1,6 @@
 package com.book.servlet;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.book.pojo.Advice;
 import com.book.pojo.Book_Basic;
@@ -9,12 +8,12 @@ import com.book.pojo.Book_Extend;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IBookService;
-import com.book.service.IUserCollectedService;
+import com.book.service.IUserBookShelfService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.BookServiceImpl;
 import com.book.service.impl.IUserServiceImpl;
-import com.book.service.impl.UserCollectedServiceImpl;
+import com.book.service.impl.UserBookShelfServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -73,7 +72,7 @@ public class BookServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User_Account user = (User_Account)session.getAttribute("user");
         int flag=0;
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
 
         if(user!=null){
             List<Book_Basic> bookBasicsList = userCollectedService.queryUserCollectList(user.getUser_Id());

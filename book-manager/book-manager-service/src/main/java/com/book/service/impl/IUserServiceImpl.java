@@ -6,6 +6,7 @@ import com.book.dao.impl.CountAccountImpl;
 import com.book.dao.impl.UserDaoImpl;
 import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
+import com.book.pojo.Vip_Account;
 import com.book.service.IUserService;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class IUserServiceImpl implements IUserService {
         dao.insertUserAccount(user);
         ICountAccountDao countDao = new CountAccountImpl();
         countDao.insertUserCount(user.getUser_Id());
+        dao.insertUserVip(user.getUser_Id());
     }
 
     public void modifyUser(User_Account user) {
@@ -89,6 +91,18 @@ public class IUserServiceImpl implements IUserService {
     public void modifyById(int user_id) {
         ICountAccountDao countDao = new CountAccountImpl();
         countDao.selectById(user_id);
+    }
+
+    @Override
+    public void modifyBalance(int userId, double newBalance) {
+        IUserDao userDao = new UserDaoImpl();
+        userDao.updateUserVip(userId,newBalance);
+    }
+
+    @Override
+    public Vip_Account findBalance(int userId) {
+        IUserDao userDao = new UserDaoImpl();
+        return userDao.selectUserVip(userId);
     }
 
     @Override

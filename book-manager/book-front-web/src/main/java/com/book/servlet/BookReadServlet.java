@@ -1,20 +1,16 @@
 package com.book.servlet;
 
 import com.book.dao.IBookDirDao;
-import com.book.dao.IUserCollectedDao;
 import com.book.dao.impl.BookDirDaoImpl;
-import com.book.dao.impl.UserCollectedImpl;
 import com.book.pojo.Book_Basic;
-import com.book.pojo.Book_Contend;
 import com.book.pojo.User_Account;
 import com.book.pojo.User_Book_Collection;
-import com.book.pojo.User_Account;
 import com.book.service.IBookReadService;
 import com.book.service.IBookService;
-import com.book.service.IUserCollectedService;
+import com.book.service.IUserBookShelfService;
 import com.book.service.impl.BookReadServiceImpl;
 import com.book.service.impl.BookServiceImpl;
-import com.book.service.impl.UserCollectedServiceImpl;
+import com.book.service.impl.UserBookShelfServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -72,14 +68,17 @@ public class BookReadServlet extends HttpServlet {
         if (user != null){
             bookVisitedList.add(bookBasic);
             session.setAttribute("bookVisitedList",bookVisitedList);
-        }
-        req.setAttribute("bookBasic",bookBasic);
-        req.setAttribute("bookId",bookId);
-        req.setAttribute("chapterId",chapterId);
+            req.setAttribute("bookBasic",bookBasic);
+            req.setAttribute("bookId",bookId);
+            req.setAttribute("chapterId",chapterId);
 
-        String path = bookReadService.readTargetBook(bookId,chapterId);
-        req.setAttribute("path",path);
-        req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            String path = bookReadService.readTargetBook(bookId,chapterId);
+            req.setAttribute("path",path);
+            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        } else {
+            resp.sendRedirect("login.jsp");
+        }
+
     }
 
     public void last(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -128,14 +127,14 @@ public class BookReadServlet extends HttpServlet {
     public void collection(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int bookId = Integer.valueOf(req.getParameter("bookId"));
         int userId = Integer.valueOf(req.getParameter("userId"));
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         addCollected(userId,bookId);
         resp.sendRedirect("/book?bookId="+bookId);
     }
 
     //添加收藏信息
     public void addCollected(int userId,int bookId){
-        IUserCollectedService userCollectedService = new UserCollectedServiceImpl();
+        IUserBookShelfService userCollectedService = new UserBookShelfServiceImpl();
         bookService = new BookServiceImpl();
         bookService.modifyCollectedById(bookId);
         User_Book_Collection userBookCollection = new User_Book_Collection();

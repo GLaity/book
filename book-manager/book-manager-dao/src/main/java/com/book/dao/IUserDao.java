@@ -1,6 +1,7 @@
 package com.book.dao;
 
 import com.book.pojo.User_Account;
+import com.book.pojo.Vip_Account;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface IUserDao {
     //删除一条记录
     public void deleteUserAccountId(int id);
 
+    void insertUserVip(int userId);
+    void updateUserVip(int userId, double balance);
+    Vip_Account selectUserVip (int userId);
 }

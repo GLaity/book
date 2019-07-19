@@ -3,6 +3,7 @@ package com.book.servlet;
 
 import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
+import com.book.pojo.Vip_Account;
 import com.book.service.IUserService;
 import com.book.service.impl.IUserServiceImpl;
 
@@ -40,11 +41,13 @@ public class UserServlet extends HttpServlet {
         IUserService userService = new IUserServiceImpl();
         User_Account user = userService.loginService(username,password);
         Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
+        Vip_Account userVip = userService.findBalance(user.getUser_Id());
         if(user==null){
             resp.sendRedirect("login.jsp");
         }else{
             session.setAttribute("user",user);
             session.setAttribute("countAccount",countAccount);
+            session.setAttribute("userVip",userVip);
             resp.sendRedirect("/");
         }
 

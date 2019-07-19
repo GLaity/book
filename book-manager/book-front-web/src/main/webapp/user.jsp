@@ -262,7 +262,7 @@
             <div class="user_infor">
                 <p><strong><c:out value="${sessionScope.user.getUser_Username()}"></c:out></strong>（会员）<span class="user_vip unaccredited">未认证！</span><a href="#">申请入驻</a></p>
                 <p>上次登录时间：<time>2019-01-14 13:55</time>，登录ip：192.168.1.1</p>
-                <p>账户余额：<strong class="rmb_icon">0.00</strong><a href="#" class="btn">充值</a><a href="#" class="btn">提现</a></p>
+                <p>账户余额：<strong class="rmb_icon">${sessionScope.userVip.getVip_Balance()}</strong><a href="#" class="btn">充值</a><a href="#" class="btn">提现</a></p>
             </div>
         </div>
         <dl class="user_order_tips">

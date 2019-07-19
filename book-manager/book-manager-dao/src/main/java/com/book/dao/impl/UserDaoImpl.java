@@ -2,6 +2,7 @@ package com.book.dao.impl;
 
 import com.book.dao.IUserDao;
 import com.book.pojo.User_Account;
+import com.book.pojo.Vip_Account;
 import com.book.util.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -78,5 +79,40 @@ public class UserDaoImpl implements IUserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void insertUserVip(int userId) {
+        String sql = "insert into vip_account(user_id,vip_id,vip_balance)values(?,1,0) ";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            qr.update(sql,userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateUserVip(int userId, double newBalance) {
+        String sql ="update vip_account set vip_balance=? where user_id=?";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            qr.update(sql,newBalance,userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Vip_Account selectUserVip(int userId) {
+        String sql = "select * from vip_account where user_id=?";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        Vip_Account userVip = null;
+        try {
+            userVip = qr.query(sql,new BeanHandler<>(Vip_Account.class),userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userVip;
     }
 }
