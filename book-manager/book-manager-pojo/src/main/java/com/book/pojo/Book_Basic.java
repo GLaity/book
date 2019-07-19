@@ -7,17 +7,19 @@ public class Book_Basic {
     private int type_Id;
     private String writer_Id;
     private String book_Createdate;
+    private double book_price;
 
     public Book_Basic() {
     }
 
-    public Book_Basic(int book_Id, String book_Title, String book_Context, int type_Id, String writer_Id, String book_Createdate) {
+    public Book_Basic(int book_Id, String book_Title, String book_Context, int type_Id, String writer_Id, String book_Createdate, double book_price) {
         this.book_Id = book_Id;
         this.book_Title = book_Title;
         this.book_Context = book_Context;
         this.type_Id = type_Id;
         this.writer_Id = writer_Id;
         this.book_Createdate = book_Createdate;
+        this.book_price = book_price;
     }
 
     public int getBook_Id() {
@@ -68,6 +70,14 @@ public class Book_Basic {
         this.book_Createdate = book_Createdate;
     }
 
+    public double getBook_price() {
+        return book_price;
+    }
+
+    public void setBook_price(double book_price) {
+        this.book_price = book_price;
+    }
+
     @Override
     public String toString() {
         return "Book_Basic{" +
@@ -77,6 +87,7 @@ public class Book_Basic {
                 ", type_Id=" + type_Id +
                 ", writer_Id='" + writer_Id + '\'' +
                 ", book_Createdate='" + book_Createdate + '\'' +
+                ", book_price=" + book_price +
                 '}';
     }
 }

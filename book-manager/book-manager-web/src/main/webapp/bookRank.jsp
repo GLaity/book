@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Wolf
-  Date: 2019/7/16
-  Time: 15:05
+  Date: 2019/7/18
+  Time: 15:10
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -47,14 +47,13 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle" href="bookRank?_method=visit" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">信息统计
-
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
-                                    <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
-                                    <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
+                                    <a class="dropdown-item" href="bookRank?_method=visit">小说浏览统计</a>
+                                    <a class="dropdown-item" href="bookRank?_method=collect">小说收藏统计</a>
+                                    <a class="dropdown-item" href="bookRank?_method=bought">小说购买统计</a>
                                 </div>
                             </li>
                             <li class="nav-item ">
@@ -88,7 +87,9 @@
 
                         </div>
                         <div class="col-md-4 col-sm-12 text-right">
-                            <a href="book.do?_method=add" class="btn btn-small btn-primary">添加新书籍</a>
+                            <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
+                            <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
+                            <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
                         </div>
                     </div>
 
@@ -97,30 +98,26 @@
                             <thead>
                             <tr class="tm-bg-gray">
                                 <th scope="col">书名</th>
-                                <th scope="col">小说封面</th>
-                                <th scope="col">小说售价</th>
                                 <th scope="col" class="text-center">作者</th>
                                 <th scope="col">创建日期</th>
-                                <th scope="col" colspan="2">操作</th>
+                                <th scope="col">缩略图</th>
+                                <th scope="col">${title}</th>
                             </tr>
                             </thead>
 
-                            <c:forEach items="${bookList}" var="bookBasic">
+                            <c:forEach items="${queueBook}" var="bookBasic" varStatus="vs">
                                 <tbody>
                                 <tr>
                                     <td class="tm-product-name">${bookBasic.getBook_Title()}</td>
-                                    <td class="text-center"><img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"  width="80" height="100"/></td>
-                                    <td class="text-center">${bookBasic.getBook_price()}</td>
                                     <td class="text-center">${bookBasic.getWriter_Id()}</td>
                                     <td class="text-center">${bookBasic.getBook_Createdate()}</td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=update">修改</a></td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=remove">删除</a></td>
+                                    <td class="text-center"><img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"  width="120" height="150"/></td>
+                                    <td class="text-center">${num[vs.count-1]}</td>
                                 </tr>
                                 </tbody>
                             </c:forEach>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>

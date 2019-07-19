@@ -1,8 +1,8 @@
-package com.book.read.impl;
+package com.book.service.impl;
 
 import com.book.dao.IBookDirDao;
 import com.book.dao.impl.BookDirDaoImpl;
-import com.book.read.IBookDirService;
+import com.book.service.IBookDirService;
 
 import java.io.IOException;
 import java.util.List;

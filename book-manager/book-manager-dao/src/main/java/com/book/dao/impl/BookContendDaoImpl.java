@@ -47,6 +47,8 @@ public class BookContendDaoImpl implements IBookContendDao {
     public Book_Contend findBookContend(int BookId) {
 //    public String findBookContend(int BookId) {
         Book_Contend contend = null;
+//        contend.setBook_Id(BookId);
+//        contend.setBook_Contend("../../../../books/" + BookId);
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         String sql = "select BOOK_CONTEND from BOOK_CONTEND where book_id=?";
         try {
@@ -57,6 +59,4 @@ public class BookContendDaoImpl implements IBookContendDao {
         }
         return contend;
     }
-
-
 }

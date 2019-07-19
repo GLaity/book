@@ -169,7 +169,7 @@
         <c:forEach items="${bookBasicList}" var="bookBasic">
             <li>
                 <a href="/book?bookId=${bookBasic.getBook_Id()}">
-                    <img src="bookimg/${bookBasic.getBook_Id()}.jpg"/>
+                    <img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"/>
                     <h3>${bookBasic.getBook_Title()}</h3>
                     <p class="price"><span class="rmb_icon">298.00</span></p>
                     <p class="shop_collect_goods" title="收藏该小说"><span>&#115;</span></p>

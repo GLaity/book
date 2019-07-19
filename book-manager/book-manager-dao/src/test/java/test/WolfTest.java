@@ -4,6 +4,8 @@ import com.book.dao.*;
 import com.book.dao.impl.*;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Book_Contend;
+import com.book.pojo.Book_Extend;
+import com.book.util.UpdateUtils;
 import org.junit.Test;
 
 import java.io.*;
@@ -161,8 +163,31 @@ public class WolfTest {
 //        IVipDao vipDao = new VipDaoImpl();
 //        vipDao.deleteVipAccountId(2023);
         IBookExtendDao bookExtendDao = new BookExtendImpl();
-        int chapters = bookExtendDao.findBookChapters(1);
-        System.out.println(chapters);
+//        int chapters = bookExtendDao.findBookChapters(1);
+//        System.out.println(chapters);
+        List<Book_Extend> bookExtends = bookExtendDao.selectBookChapters();
+        for (Book_Extend bookExtend : bookExtends){
+            System.out.println(bookExtend.getBook_Chapters());
+        }
+    }
+
+    @Test
+    public void TestCopy() throws IOException {
+        String URL = "C:\\Users\\Wolf\\Pictures\\1.png";
+        String name = "大树";
+        IBookContendDao bookContendDao = new BookContendDaoImpl();
+        System.out.println(bookContendDao.findBookContend(1).getBook_Contend());
+//        IBookDirDao bookDirDao = new BookDirDaoImpl();
+//        bookDirDao.setBookDir(27);
+//        System.out.println(bookDirDao.getBookDir(2));
+//        IBookExtendDao bookExtendDao = new BookExtendImpl();
+//        List<Integer> lists = bookExtendDao.queueByBoughtAll();
+//        System.out.println(lists.size());
+//        byte[] nameByte = name.getBytes("gbk");
+//        name = new String(nameByte);
+//
+//        UpdateUtils.UpdateBookPIC(URL,100);
+//        UpdateUtils.UpdateBook(URL,"newBook",1);
     }
 
 

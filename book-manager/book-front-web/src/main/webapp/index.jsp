@@ -104,7 +104,7 @@
                     </c:forEach>
                 </dl>
                 <dl class="asideNav2">
-                    <a href="/book?bookId=3"  style="padding: 0px"><img src="bookimg/3.jpg" /></a>
+                    <a href="/book?bookId=3"  style="padding: 0px"><img src="../../../../bookimg/3.jpg" /></a>
                 </dl>
             </li>
             <li><a href="/" class="active">首页</a></li>
@@ -158,7 +158,7 @@ $()
         <!--singleAd-->
         <div class="singleAd">
             <a href="/book?bookId=1">
-                <img src="bookimg/1.jpg"/>
+                <img src="../../../../bookimg/1.jpg"/>
             </a>
         </div>
         <!--bestShop-->
@@ -169,49 +169,49 @@ $()
             </dt>
             <dd>
                 <a href="/book?bookId=2">
-                    <img src="bookimg/2.jpg"/>
+                    <img src="../../../../bookimg/2.jpg"/>
                     <h2>斗罗重生</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=4">
-                    <img src="bookimg/4.jpg"/>
+                    <img src="../../../../bookimg/4.jpg"/>
                     <h2>九极剑神</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=5">
-                    <img src="bookimg/5.jpg"/>
+                    <img src="../../../../bookimg/5.jpg"/>
                     <h2>罗浮</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=6">
-                    <img src="bookimg/6.jpg"/>
+                    <img src="../../../../bookimg/6.jpg"/>
                     <h2>网游之大盗贼</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=7">
-                    <img src="bookimg/7.jpg"/>
+                    <img src="../../../../bookimg/7.jpg"/>
                     <h2>雷霆之主</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=8">
-                    <img src="bookimg/8.jpg"/>
+                    <img src="../../../../bookimg/8.jpg"/>
                     <h2>武动之武祖再临</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=9">
-                    <img src="bookimg/9.jpg"/>
+                    <img src="../../../../bookimg/9.jpg"/>
                     <h2>轮回开端</h2>
                 </a>
             </dd>
             <dd>
                 <a href="/book?bookId=10">
-                    <img src="bookimg/10.jpg"/>
+                    <img src="../../../../bookimg/10.jpg"/>
                     <h2>王牌强兵</h2>
                 </a>
             </dd>

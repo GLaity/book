@@ -32,10 +32,20 @@ public interface IBookService {
     List<Book_Basic> queueByCollected();
     List<Book_Basic> queueByBought();
 
+    List<Book_Basic> queueAllByVisited();
+    List<Book_Basic> queueAllByCollected();
+    List<Book_Basic> queueAllByBought();
+
     //根据类型id返回书籍信息
     List<Book_Type> findBookType();
     Book_Type fintBookTypeByTypeId(int type_Id);
     String findPathById(int bookId);
 
+    //根据小说id返回书籍章节数
+    int findBookChapterByBookId(int bookId);
+    //返回全部小说章节数
+    List<Book_Extend> findAllBookChapters();
+    //返回全部小说排行信息
+    List<Book_Extend> findAllBookExtend();
 
 }
