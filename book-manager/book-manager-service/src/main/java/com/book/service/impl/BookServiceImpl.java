@@ -35,7 +35,7 @@ public class BookServiceImpl implements IBookService {
     }
 
     public void updateBookInformation(Book_Basic book) {
-        bookDao.insertBook(book);
+        bookDao.updateBook(book);
     }
 
     public void updateBookAllInformation(Book_Basic book,String bookPath){
@@ -92,6 +92,16 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
+    public List<Book_Basic> queueAllByVisited() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByVisitedAll();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
+    }
+
+    @Override
     public List<Book_Basic> queueByCollected() {
         List<Book_Basic> bookBasicList = new ArrayList<>();
         List<Integer> bookIdList = bookExtendDao.queueByCollected();
@@ -102,9 +112,29 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
+    public List<Book_Basic> queueAllByCollected() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByCollectedAll();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
+    }
+
+    @Override
     public List<Book_Basic> queueByBought() {
         List<Book_Basic> bookBasicList = new ArrayList<>();
         List<Integer> bookIdList = bookExtendDao.queueByBought();
+        for (int bookId:bookIdList){
+            bookBasicList.add(findBookBasicById(bookId));
+        }
+        return bookBasicList;
+    }
+
+    @Override
+    public List<Book_Basic> queueAllByBought() {
+        List<Book_Basic> bookBasicList = new ArrayList<>();
+        List<Integer> bookIdList = bookExtendDao.queueByBoughtAll();
         for (int bookId:bookIdList){
             bookBasicList.add(findBookBasicById(bookId));
         }
@@ -128,6 +158,24 @@ public class BookServiceImpl implements IBookService {
         Book_Contend contend = bookContendDao.findBookContend(bookId);
         String path = contend.getBook_Contend();
         return path;
+    }
+
+    @Override
+    public int findBookChapterByBookId(int bookId) {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        return bookExtendDao.findBookChapters(bookId);
+    }
+
+    @Override
+    public List<Book_Extend> findAllBookChapters() {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        return bookExtendDao.selectBookChapters();
+    }
+
+    @Override
+    public List<Book_Extend> findAllBookExtend() {
+        IBookExtendDao bookExtendDao = new BookExtendImpl();
+        return bookExtendDao.selectAllBookExtend();
     }
 
     @Override

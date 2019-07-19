@@ -6,7 +6,9 @@ import com.book.pojo.Vip_Account;
 import java.util.List;
 
 public interface IUserDao {
-    //新增记录
+    //新增用户
+    public  void insertUser(User_Account user);
+    //注册用户
     public void insertUserAccount(User_Account user);
     //更新记录
     public void updateUserAccount(User_Account user);

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Wolf
-  Date: 2019/7/16
-  Time: 15:05
+  Date: 2019/7/19
+  Time: 19:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,8 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>布克小说网—书籍管理界面</title>
-
+    <title>评论管理界面</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -52,9 +51,9 @@
 
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
-                                    <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
-                                    <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
+                                    <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
+                                    <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
+                                    <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
                                 </div>
                             </li>
                             <li class="nav-item ">
@@ -84,37 +83,30 @@
                 <div class="bg-white tm-block h-100">
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
-                            <h2 class="tm-block-title d-inline-block">书籍信息</h2>
+                            <h2 class="tm-block-title d-inline-block"></h2>
 
                         </div>
-                        <div class="col-md-4 col-sm-12 text-right">
-                            <a href="book.do?_method=add" class="btn btn-small btn-primary">添加新书籍</a>
-                        </div>
+
                     </div>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                             <thead>
                             <tr class="tm-bg-gray">
-                                <th scope="col">书名</th>
-                                <th scope="col">小说封面</th>
-                                <th scope="col">小说售价</th>
-                                <th scope="col" class="text-center">作者</th>
-                                <th scope="col">创建日期</th>
-                                <th scope="col" colspan="2">操作</th>
+                                <th scope="col">评论内容</th>
+                                <th scope="col">评论时间</th>
+                                <th scope="col">评论星级</th>
+                                <th scope="col" class="text-center">操作</th>
                             </tr>
                             </thead>
 
-                            <c:forEach items="${bookList}" var="bookBasic">
+                            <c:forEach items="${advices}" var="advice">
                                 <tbody>
                                 <tr>
-                                    <td class="tm-product-name">${bookBasic.getBook_Title()}</td>
-                                    <td class="text-center"><img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"  width="80" height="100"/></td>
-                                    <td class="text-center">${bookBasic.getBook_Price()}</td>
-                                    <td class="text-center">${bookBasic.getWriter_Id()}</td>
-                                    <td class="text-center">${bookBasic.getBook_Createdate()}</td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=update">修改</a></td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=remove">删除</a></td>
+                                    <td class="tm-product-name">${advice.getAdvice_Text()}</td>
+                                    <td class="text-center">${advice.getAdvice_Date()}</td>
+                                    <td class="text-center">${advice.getAdvice_Level()}</td>
+                                    <td class="text-center"><a href="advice.do?adviceId=${advice.getAdvice_Id()}&_method=delete">删除</a></td>
                                 </tr>
                                 </tbody>
                             </c:forEach>
@@ -130,5 +122,12 @@
 <!-- https://jquery.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
+<script>
+    $(function () {
+        $('.tm-product-name').on('click', function () {
+            window.location.href = "edit-product.html";
+        });
+    })
+</script>
 </body>
 </html>

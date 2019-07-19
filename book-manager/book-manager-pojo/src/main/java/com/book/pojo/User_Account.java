@@ -17,6 +17,22 @@ public class User_Account {
         this.user_Password = user_Password;
     }
 
+    public User_Account(String user_Username, String user_Password, String user_Tel, String user_Email, String user_Photo) {
+        this.user_Username = user_Username;
+        this.user_Password = user_Password;
+        this.user_Tel = user_Tel;
+        this.user_Email = user_Email;
+        this.user_Photo = user_Photo;
+    }
+    public User_Account(String user_Username, String user_Password, String user_Date, String user_Tel, String user_Email, String user_Photo) {
+        this.user_Username = user_Username;
+        this.user_Password = user_Password;
+        this.user_Date = user_Date;
+        this.user_Tel = user_Tel;
+        this.user_Email = user_Email;
+        this.user_Photo = user_Photo;
+    }
+
     public User_Account(int user_Id, String user_Username, String user_Password, String user_Date, String user_Tel, String user_Email, String user_Photo) {
         this.user_Id = user_Id;
         this.user_Username = user_Username;

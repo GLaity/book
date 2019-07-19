@@ -112,6 +112,99 @@ public class BookExtendImpl implements IBookExtendDao {
 
 
     //
+
+    @Override
+    public List<Integer> queueByVisitedAll() {
+        String sql = "select book_id from book_extend order by book_visited desc";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    @Override
+    public List<Integer> queueByCollectedAll() {
+        String sql = "select book_id from book_extend order by book_collected desc";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    @Override
+    public List<Integer> queueByBoughtAll() {
+        String sql = "select book_id from book_extend order by book_bought desc";
+        List<Object[]> tempList = null;
+        List<Integer> bookIdList = new ArrayList<>();
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            tempList = qr.query(sql, new ArrayListHandler());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Object[] ob:tempList){
+            bookIdList.add(Integer.valueOf(String.valueOf(ob[0])));
+        }
+        return bookIdList;
+    }
+
+    @Override
+    public int findBookChapters(int BookId) {
+        Book_Extend bookExtend = null;
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "select book_Chapters from BOOK_EXTEND where book_id=?";
+        try {
+//            bookExtend = qr.query(sql,new BeanHandler<Book_Extend>(Book_Extend.class),BookId);
+            bookExtend = qr.query(sql,new BeanHandler<>(Book_Extend.class),BookId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bookExtend.getBook_Chapters();
+    }
+
+    @Override
+    public List<Book_Extend> selectBookChapters() {
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        List<Book_Extend> bookExtends = null;
+        String sql = "select book_Chapters from book_extend";
+        try {
+            bookExtends = qr.query(sql,new BeanListHandler<Book_Extend>(Book_Extend.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bookExtends;
+    }
+
+    @Override
+    public List<Book_Extend> selectAllBookExtend() {
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        List<Book_Extend> bookExtends = null;
+        String sql = "select * from book_extend";
+        try {
+            bookExtends = qr.query(sql,new BeanListHandler<Book_Extend>(Book_Extend.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bookExtends;
+    }
+
+    //
     private List<Integer> selectBook(String sql,int low,int height){
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         List<Integer> arr = null;

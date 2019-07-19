@@ -43,7 +43,6 @@ public class VipDaoImpl implements IVipDao {
             e.printStackTrace();
         }
         return vip;
-
     }
 
     public List<Vip_Account> selectVipAccount() {
@@ -59,7 +58,7 @@ public class VipDaoImpl implements IVipDao {
     }
 
     public void deleteVipAccountId(int id) {
-        String sql = "delete from `vip_account` where vip_id=?";
+        String sql = "delete from vip_account where vip_id=?";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         try {
             qr.update(sql,id);

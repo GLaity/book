@@ -56,6 +56,13 @@ public class IUserServiceImpl implements IUserService {
         dao.deleteUserAccountId(id);
     }
 
+    @Override
+    public void initUser(User_Account user) {
+       IUserDao dao =new UserDaoImpl();
+       dao.insertUser(user);
+       ICountAccountDao countDao = new CountAccountImpl();
+       countDao.insertUserCount(user.getUser_Id());
+    }
     public User_Account loginService(String username, String password) {
         IUserDao userdao = new UserDaoImpl();
         User_Account user = new User_Account();

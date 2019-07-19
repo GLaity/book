@@ -13,6 +13,7 @@ public interface IUserService {
     public User_Account findUserByUsername(String username);
     public List<User_Account> findAll();
     public void removeUser(int id);
+    public void initUser(User_Account user);
     public User_Account loginService(String username,String password);
 
 
