@@ -73,18 +73,19 @@ public class BookReadServlet extends HttpServlet {
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
 
         List<Book_Basic> bookVisitedList = (List<Book_Basic>) session.getAttribute("bookVisitedList");
-        List<Book_Basic> bookBoughtList = userBookShelfService.queryUserBoughtList(user.getUser_Id());
-        Boolean flag = false;
-        for (Book_Basic temp:bookBoughtList){
-            if (temp.getBook_Id() == bookBasic.getBook_Id()){
-                flag = true;
-            }
-        }
+
         if (bookVisitedList == null){
             bookVisitedList = new ArrayList<>();
             session.setAttribute("bookVisitedList",bookVisitedList);
         }
         if (user != null ){
+            List<Book_Basic> bookBoughtList = userBookShelfService.queryUserBoughtList(user.getUser_Id());
+            Boolean flag = false;
+            for (Book_Basic temp:bookBoughtList){
+                if (temp.getBook_Id() == bookBasic.getBook_Id()){
+                    flag = true;
+                }
+            }
             if (flag || chapterId <= 5){
                 userService.modifyTotalVisit(user.getUser_Id());
                 bookVisitedList.add(bookBasic);

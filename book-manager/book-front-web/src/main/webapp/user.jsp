@@ -308,8 +308,8 @@
             <dd><a href="#">我的浏览</a></dd>
             <dd><a href="#" id="myCollected">我的书架</a></dd>
             <dd><a href="#" id="myAdvice">我的评论</a></dd>
-            <dd><a href="#">会员等级</a></dd>
-            <dd><a href="#">账户详情</a></dd>
+<%--            <dd><a href="#">会员等级</a></dd>--%>
+<%--            <dd><a href="#">账户详情</a></dd>--%>
             <dd><a href="#">订单列表</a></dd>
         </dl>
     </aside>
@@ -413,7 +413,7 @@
                 <th>图片</th>
                 <th>作者</th>
                 <th>出版日期</th>
-                <th>操作</th>
+<%--                <th>操作</th>--%>
             </tr>
             <c:if test="${!empty(bookVisitedList)}">
                 <c:forEach items="${bookVisitedList}" var="bookVisited">
@@ -422,11 +422,11 @@
                         <td class="center"><a href="#" target="_blank"><img src="../../../../bookimg/${bookVisited.getBook_Id()}.jpg" width="50" height="50" /></a></td>
                         <td class="center">${bookVisited.getWriter_Id()}</td>
                         <td class="center">${bookVisited.getBook_Createdate()}</td>
-                        <td class="center">
+<%--                        <td class="center">--%>
                                 <%--                        <a href="#" target="_blank" title="查看"><img src="images/icon_view.gif" /></a>--%>
                                 <%--                        <a href="#" title="编辑"><img src="images/icon_edit.gif" /></a>--%>
-                            <a title="删除"><img src="images/icon_trash.gif" /></a>
-                        </td>
+<%--                            <a title="删除"><img src="images/icon_trash.gif" /></a>--%>
+<%--                        </td>--%>
                     </tr>
                 </c:forEach>
             </c:if>
@@ -536,87 +536,87 @@
     </div>
 
     <!--右侧：会员等级-->
-    <div class="user_rt_cont"></div>
+<%--    <div class="user_rt_cont"></div>--%>
 
-    <!--右侧：账户详情-->
-    <div class="user_rt_cont">
-        <div class="top_title">
-            <strong>资金管理</strong>
-        </div>
-        <dl class="user_account">
-            <dt>账户余额：</dt>
-            <dd>
-                <strong class="rmb_icon">0.00</strong>
-                <a class="link_btn" id="chongzhi">充值</a>
-                <a class="link_btn" id="tixian">提现</a>
-                <span class="sums">
-							<label>充值金额：<input type="text" class="textbox" />元</label>
-							<input type="button" value="确认按钮" class="group_btn" />
-						</span>
-            </dd>
-        </dl>
-        <table class="order_table">
-            <caption><span class="fl">资金变动明细</span></caption>
-            <tr>
-                <th>类型</th>
-                <th>交易金额</th>
-                <th>当前余额</th>
-                <th>交易时间</th>
-                <th>操作</th>
-            </tr>
-            <tr>
-                <td class="center">充值</td>
-                <td class="center"><strong class="rmb_icon">58.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">充值完成！</td>
-            </tr>
-            <tr>
-                <td class="center">提现</td>
-                <td class="center"><strong class="rmb_icon">129.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">等待处理！</td>
-            </tr>
-            <tr>
-                <td class="center">订单：201301151702</td>
-                <td class="center"><strong class="rmb_icon">129.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">交易完成！</td>
-            </tr>
-            <tr>
-                <td class="center">充值</td>
-                <td class="center"><strong class="rmb_icon">58.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">充值完成！</td>
-            </tr>
-            <tr>
-                <td class="center">提现</td>
-                <td class="center"><strong class="rmb_icon">129.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">等待处理！</td>
-            </tr>
-            <tr>
-                <td class="center">订单：201301151702</td>
-                <td class="center"><strong class="rmb_icon">129.00</strong></td>
-                <td class="center"><span class="rmb_icon">2359.00</span></td>
-                <td class="center"><time>2013-01-15 16:59:21</time></td>
-                <td class="center">交易完成！</td>
-            </tr>
-        </table>
-        <!--分页-->
-<%--        <div class="paging">--%>
-<%--            <a>第一页</a>--%>
-<%--            <a class="active">2</a>--%>
-<%--            <a>3</a>--%>
-<%--            <a>...</a>--%>
-<%--            <a>89</a>--%>
-<%--            <a>最后一页</a>--%>
+<%--    <!--右侧：账户详情-->--%>
+<%--    <div class="user_rt_cont">--%>
+<%--        <div class="top_title">--%>
+<%--            <strong>资金管理</strong>--%>
 <%--        </div>--%>
-    </div>
+<%--        <dl class="user_account">--%>
+<%--            <dt>账户余额：</dt>--%>
+<%--            <dd>--%>
+<%--                <strong class="rmb_icon">0.00</strong>--%>
+<%--                <a class="link_btn" id="chongzhi">充值</a>--%>
+<%--                <a class="link_btn" id="tixian">提现</a>--%>
+<%--                <span class="sums">--%>
+<%--							<label>充值金额：<input type="text" class="textbox" />元</label>--%>
+<%--							<input type="button" value="确认按钮" class="group_btn" />--%>
+<%--						</span>--%>
+<%--            </dd>--%>
+<%--        </dl>--%>
+<%--        <table class="order_table">--%>
+<%--            <caption><span class="fl">资金变动明细</span></caption>--%>
+<%--            <tr>--%>
+<%--                <th>类型</th>--%>
+<%--                <th>交易金额</th>--%>
+<%--                <th>当前余额</th>--%>
+<%--                <th>交易时间</th>--%>
+<%--                <th>操作</th>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">充值</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">58.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">充值完成！</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">提现</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">129.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">等待处理！</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">订单：201301151702</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">129.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">交易完成！</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">充值</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">58.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">充值完成！</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">提现</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">129.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">等待处理！</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="center">订单：201301151702</td>--%>
+<%--                <td class="center"><strong class="rmb_icon">129.00</strong></td>--%>
+<%--                <td class="center"><span class="rmb_icon">2359.00</span></td>--%>
+<%--                <td class="center"><time>2013-01-15 16:59:21</time></td>--%>
+<%--                <td class="center">交易完成！</td>--%>
+<%--            </tr>--%>
+<%--        </table>--%>
+<%--        <!--分页-->--%>
+<%--&lt;%&ndash;        <div class="paging">&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a>第一页</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a class="active">2</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a>3</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a>...</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a>89</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a>最后一页</a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        </div>&ndash;%&gt;--%>
+<%--    </div>--%>
 
     <!--右侧：订单列表-->
     <div class="user_rt_cont">
