@@ -34,6 +34,7 @@ public class BookReadServlet extends HttpServlet {
     IBookReadService bookReadService = new BookReadServiceImpl();
     IBookService bookService = new BookServiceImpl();
     IUserService userService = new IUserServiceImpl();
+    IUserBookShelfService userBookShelfService = new UserBookShelfServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fun = req.getParameter("_method");
@@ -72,21 +73,32 @@ public class BookReadServlet extends HttpServlet {
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
 
         List<Book_Basic> bookVisitedList = (List<Book_Basic>) session.getAttribute("bookVisitedList");
+        List<Book_Basic> bookBoughtList = userBookShelfService.queryUserBoughtList(user.getUser_Id());
+        Boolean flag = false;
+        for (Book_Basic temp:bookBoughtList){
+            if (temp.getBook_Id() == bookBasic.getBook_Id()){
+                flag = true;
+            }
+        }
         if (bookVisitedList == null){
             bookVisitedList = new ArrayList<>();
             session.setAttribute("bookVisitedList",bookVisitedList);
         }
-        if (user != null){
-            userService.modifyTotalVisit(user.getUser_Id());
-            bookVisitedList.add(bookBasic);
-            session.setAttribute("bookVisitedList",bookVisitedList);
-            req.setAttribute("bookBasic",bookBasic);
-            req.setAttribute("bookId",bookId);
-            req.setAttribute("chapterId",chapterId);
+        if (user != null ){
+            if (flag || chapterId <= 5){
+                userService.modifyTotalVisit(user.getUser_Id());
+                bookVisitedList.add(bookBasic);
+                session.setAttribute("bookVisitedList",bookVisitedList);
+                req.setAttribute("bookBasic",bookBasic);
+                req.setAttribute("bookId",bookId);
+                req.setAttribute("chapterId",chapterId);
 
-            String path = bookReadService.readTargetBook(bookId,chapterId);
-            req.setAttribute("path",path);
-            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+                String path = bookReadService.readTargetBook(bookId,chapterId);
+                req.setAttribute("path",path);
+                req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            } else {
+                resp.sendRedirect("/book?bookId="+bookId);
+            }
         } else {
             resp.sendRedirect("login.jsp");
         }
@@ -118,16 +130,28 @@ public class BookReadServlet extends HttpServlet {
         String path = bookReadService.readTargetBook(bookId,chapterId+1);
         Book_Basic bookBasic = bookService.findBookBasicById(bookId);
 
+        HttpSession session = req.getSession();
+        User_Account user = (User_Account) session.getAttribute("user");
+        List<Book_Basic> bookBoughtList = userBookShelfService.queryUserBoughtList(user.getUser_Id());
+        Boolean flag = false;
+        for (Book_Basic temp:bookBoughtList){
+            if (temp.getBook_Id() == bookBasic.getBook_Id()){
+                flag = true;
+            }
+        }
         req.setAttribute("bookBasic",bookBasic);
-
         req.setAttribute("bookId",bookId);
         req.setAttribute("path",path);
-        if(chapterId >= 100){
-            req.setAttribute("chapterId",chapterId);
-            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+        if (flag || chapterId <= 4){
+            if (chapterId >= 100 ){
+                req.setAttribute("chapterId",chapterId);
+                req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            } else {
+                req.setAttribute("chapterId",chapterId+1);
+                req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            }
         } else {
-            req.setAttribute("chapterId",chapterId+1);
-            req.getRequestDispatcher("/bookRead.jsp").forward(req,resp);
+            resp.sendRedirect("/book?bookId="+bookId);
         }
     }
 
