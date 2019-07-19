@@ -2,9 +2,11 @@ package com.book.service.impl;
 
 import com.book.dao.IBookDao;
 import com.book.dao.ICountAccountDao;
+import com.book.dao.IUserCostDao;
 import com.book.dao.IUserDao;
 import com.book.dao.impl.BookDaoImpl;
 import com.book.dao.impl.CountAccountImpl;
+import com.book.dao.impl.UserCostDaoImpl;
 import com.book.dao.impl.UserDaoImpl;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Count_Account;
@@ -12,6 +14,7 @@ import com.book.pojo.User_Account;
 import com.book.pojo.Vip_Account;
 import com.book.service.IBookService;
 import com.book.service.IUserBookShelfService;
+import com.book.service.IUserCostService;
 import com.book.service.IUserService;
 
 import java.util.List;
@@ -116,6 +119,7 @@ public class IUserServiceImpl implements IUserService {
         IBookDao bookDao = new BookDaoImpl();
         IBookService bookService = new BookServiceImpl();
         IUserBookShelfService userBookShelfService = new UserBookShelfServiceImpl();
+        IUserCostService userCostService = new UserCostServiceImpl();
         Vip_Account userVip = findBalance(userId);
         Book_Basic book = bookDao.selectBookById(bookId);
 
@@ -124,6 +128,7 @@ public class IUserServiceImpl implements IUserService {
         bookService.modifyboughtById(bookId);
         userBookShelfService.addUserBought(userId,bookId);
         modifyTotalPay(userId,book.getBook_Price());
+        userCostService.addUserCost(userId,bookId);
     }
 
     @Override
