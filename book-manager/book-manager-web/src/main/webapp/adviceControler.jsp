@@ -41,7 +41,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="userinformation.jsp">用户管理
+                                <a class="nav-link" href="read.do?_method=getList">用户管理
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -57,11 +57,11 @@
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="bookControler.jsp">书籍管理</a>
+                                <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">作者管理</a>
+                                <a class="nav-link" href="advice.do?_method=getadvice">评论管理</a>
                             </li>
 
                         </ul>
@@ -83,36 +83,30 @@
                 <div class="bg-white tm-block h-100">
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
-                            <h2 class="tm-block-title d-inline-block">书籍信息</h2>
+                            <h2 class="tm-block-title d-inline-block"></h2>
 
                         </div>
-                        <div class="col-md-4 col-sm-12 text-right">
-                            <a href="book.do?_method=add" class="btn btn-small btn-primary">添加新书籍</a>
-                        </div>
+
                     </div>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                             <thead>
                             <tr class="tm-bg-gray">
-                                <th scope="col">书名</th>
-                                <th scope="col">小说封面</th>
-                                <th scope="col">小说售价</th>
-                                <th scope="col" class="text-center">作者</th>
-                                <th scope="col">创建日期</th>
-                                <th scope="col" colspan="2">操作</th>
+                                <th scope="col">评论内容</th>
+                                <th scope="col">评论时间</th>
+                                <th scope="col">评论星级</th>
+                                <th scope="col" class="text-center">操作</th>
                             </tr>
                             </thead>
 
-                            <c:forEach items="${bookList}" var="bookBasic">
+                            <c:forEach items="${advices}" var="advice">
                                 <tbody>
                                 <tr>
-                                    <td class="tm-product-name">${bookBasic.getBook_Title()}</td>
-                                    <td class="text-center"><img src="../../../../bookimg/${bookBasic.getBook_Id()}.jpg"  width="80" height="100"/></td>
-                                    <td class="text-center">${bookBasic.getBook_price()}</td>
-                                    <td class="text-center">${bookBasic.getWriter_Id()}</td>
-                                    <td class="text-center">${bookBasic.getBook_Createdate()}</td>
-                                    <td class="text-center"><a href="book.do?bookId=${bookBasic.getBook_Id()}&_method=remove">删除</a></td>
+                                    <td class="tm-product-name">${advice.getAdvice_Text()}</td>
+                                    <td class="text-center">${advice.getAdvice_Date()}</td>
+                                    <td class="text-center">${advice.getAdvice_Level()}</td>
+                                    <td class="text-center"><a href="advice.do?adviceId=${advice.getAdvice_Id()}&_method=delete">删除</a></td>
                                 </tr>
                                 </tbody>
                             </c:forEach>

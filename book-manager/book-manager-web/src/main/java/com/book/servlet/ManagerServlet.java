@@ -12,37 +12,31 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/managerlogin.do")
+@WebServlet("/login.do")
 public class ManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String method = req.getParameter("_method");
-//        switch (method){
-//            case "login":
-//                login(req, resp);
-//                break;
-//        }
-
-        //AdminService adminService =new AdminServiceImpl();
-       // Admin admin =adminService.adminLogin(username,password);
-       // System.out.println(admin.getAdmin_Name());
-//        System.out.println(admin.getAdmin_Password());
-
-
-            System.out.println("登录成功");
-//            HttpSession session = req.getSession();
-            IUserService iUserService =new IUserServiceImpl();
-
-//            for (User_Account user_account :users){
-//                System.out.println(user_account.getUser_Username());
-//            }
-
+        String username = req.getParameter("adminName");
+        String password = req.getParameter("password");
+        if(username.equals("zyp")&&(password.equals("123456"))) {
+            List<User_Account> users=getList(req, resp);
+            for (User_Account user_account:users){
+                System.out.println(user_account);
+            }
+            req.setAttribute("userList",users);
+            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
+        }
+        else {
+            resp.sendRedirect("login.jsp");
+        }
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
-    public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
+    public List<User_Account> getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        IUserService iUserService =new IUserServiceImpl();
+        List<User_Account>userList=iUserService.findAll();
+        return userList;
     }
 }

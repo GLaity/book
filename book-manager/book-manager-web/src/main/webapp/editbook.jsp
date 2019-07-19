@@ -43,33 +43,33 @@ body class="bg02">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="userinformation.jsp">用户管理
+                            <a class="nav-link active" href="read.do?_method=getList">用户管理
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="bookRank?_method=visit" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                信息统计
+                               aria-expanded="false">信息统计
+
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="bookRank?_method=visit">小说浏览统计</a>
-                                <a class="dropdown-item" href="bookRank?_method=collect">小说收藏统计</a>
-                                <a class="dropdown-item" href="bookRank?_method=bought">小说购买统计</a>
+                                <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
+                                <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
+                                <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
                             </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="books.jsp">书籍管理</a>
+                            <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="books.jsp">作者管理</a>
+                            <a class="nav-link" href="advice.do?_method=getadvice">评论管理</a>
                         </li>
 
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-flex" href="login.html">
+                            <a class="nav-link d-flex" href="login.jsp">
                                 <i class="far fa-user mr-2 tm-logout-icon"></i>
                                 <span>注销</span>
                             </a>

@@ -42,7 +42,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="userinformation.jsp">用户管理
+                                <a class="nav-link" href="read.do?_method=getList">用户管理
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -52,17 +52,17 @@
 
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
-                                    <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
-                                    <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
+                                    <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
+                                    <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
+                                    <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="bookControler.jsp">书籍管理</a>
+                                <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">作者管理</a>
+                                <a class="nav-link" href="advice.do?_method=getadvice">评论管理</a>
                             </li>
 
                         </ul>
@@ -130,12 +130,5 @@
 <!-- https://jquery.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script>
-    $(function () {
-        $('.tm-product-name').on('click', function () {
-            window.location.href = "edit-product.html";
-        });
-    })
-</script>
 </body>
 </html>

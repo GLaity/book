@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="page-wrapper flex-row align-items-center">
-    <form action="/read.do?_method=getList" method="post">
+    <form action="/login.do" method="post">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
@@ -34,13 +34,11 @@
                             <label class="form-control-label">ÃÜÂë</label>
                             <input type="password" class="form-control" name="password">
                         </div>
-
                         <div class="custom-control custom-checkbox mt-4">
                             <input type="checkbox" class="custom-control-input" id="login">
                             <label class="custom-control-label" for="login">¼Ç×¡ÃÜÂë</label>
                         </div>
                     </div>
-
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">

@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-12">
             <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                <a class="navbar-brand" href="userinformation.jsp">
+                <a class="navbar-brand" href="read.do?_method=getList">
                     <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                     <h1 class="tm-site-title mb-0">后台管理</h1>
                 </a>
@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="userinformation.jsp">用户管理
+                            <a class="nav-link" href="read.do?_method=getList">用户管理
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -48,17 +48,17 @@
                                 信息统计
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">小说浏览统计</a>
-                                <a class="dropdown-item" href="#">小说收藏统计</a>
-                                <a class="dropdown-item" href="#">小说购买统计</a>
+                                <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
+                                <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
+                                <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
                             </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="books.jsp">书籍管理</a>
+                            <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">作者管理</a>
+                            <a class="nav-link" href="advice.do?_method=getadvice">评论管理</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -87,24 +87,24 @@
                         <div class="input-group mb-3">
                             <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
                             </label>
-                            <input placeholder="用户名" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
-                            <input  placeholder="手机号"  name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
-                            <input  placeholder="邮箱"  name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input  placeholder="邮箱" id="userEmail" name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">密码</label>
-                            <input placeholder="密码"  name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            <input placeholder="密码" id="userPassword" name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
                         <div class="input-group mb-3">
                             <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
                             </label>
-                            <input type="date" name="userDate" value="" >
+                            <input type="date" id="userDate" name="userDate" value="" >
                         </div>
 <%--                        <div class="input-group mb-3">--%>
 <%--                            <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">会员等级：--%>
@@ -138,6 +138,33 @@
         </div>
     </div>
 </div>
+<%--<script>--%>
+<%--    function insert() {--%>
+<%--        var  name= $("#userName").val();--%>
+<%--        var password =$("#userPassword").val();--%>
+<%--        var  email =$("#userEmail").val();--%>
+<%--        var  tel =$("#userTel").val();--%>
+<%--        var  user={--%>
+<%--            "name":name,--%>
+<%--            "password":password,--%>
+<%--            "email":email,--%>
+<%--            "tel":tel--%>
+<%--        }--%>
+<%--        $.ajax({--%>
+<%--            type:"get",--%>
+<%--            url:"//read.do?_method=add",--%>
+<%--            data:user,--%>
+<%--            beforeSend:function tip() {--%>
+<%--                alert("确定添加?");--%>
+<%--            },--%>
+<%--            success:function back(data) {--%>
+<%--                alert(user.name);--%>
+<%--            }--%>
+<%--            }--%>
+<%--        )--%>
+
+<%--    }--%>
+<%--</script>--%>
 <script src="js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>

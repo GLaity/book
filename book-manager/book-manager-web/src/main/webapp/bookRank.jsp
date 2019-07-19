@@ -42,12 +42,12 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="userinformation.jsp">用户管理
+                                <a class="nav-link" href="read.do?_method=getList">用户管理
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="bookRank?_method=visit" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">信息统计
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,11 +57,11 @@
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="bookControler.jsp">书籍管理</a>
+                                <a class="nav-link" href="book.do?_method=getList">书籍管理</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">作者管理</a>
+                                <a class="nav-link" href="advice.do?_method=getadvice">评论管理</a>
                             </li>
 
                         </ul>

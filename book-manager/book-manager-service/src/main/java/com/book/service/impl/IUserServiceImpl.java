@@ -1,5 +1,6 @@
 package com.book.service.impl;
 
+import com.book.dao.IBookDao;
 import com.book.dao.ICountAccountDao;
 import com.book.dao.IUserDao;
 import com.book.dao.impl.CountAccountImpl;
@@ -46,6 +47,13 @@ public class IUserServiceImpl implements IUserService {
         dao.deleteUserAccountId(id);
     }
 
+    @Override
+    public void initUser(User_Account user) {
+       IUserDao dao =new UserDaoImpl();
+       dao.insertUser(user);
+       ICountAccountDao countDao = new CountAccountImpl();
+       countDao.insertUserCount(user.getUser_Id());
+    }
     public User_Account loginService(String username, String password) {
         IUserDao userdao = new UserDaoImpl();
         User_Account user = new User_Account();
