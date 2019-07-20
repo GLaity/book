@@ -167,9 +167,10 @@
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
-                <form>
+                <form action="<c:url value="/list"/>" method="get">
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词" />
+                        <input type="hidden" name="condition" value="search"/>
+                        <input type="text" name="value" placeholder="输入小说关键词" />
                     </div>
                     <div class="btnWrap">
                         <input type="submit" value="搜索" />
@@ -303,7 +304,7 @@
                 </li>
 
                 <li class="last_li">
-                    <input type="button" value="免费试读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
+                    <input type="button" value="开始阅读" class="buy_btn" onclick = "window.location.href = '/read.do?_method=start&bookId=${bookBasic.getBook_Id()}&chapterId=1'"/>
                     <c:if test="${empty(sessionScope.user)}">
                         <input type="button" value="收藏小说" class="add_btn" onclick = "window.location.href = 'login.jsp'"/>
                         <input type="button" value="购买小说" class="buy_btn" onclick = "window.location.href = 'login.jsp'"/>

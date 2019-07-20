@@ -224,9 +224,10 @@
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
-                <form>
+                <form action="<c:url value="/list"/>" method="get">
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词" />
+                        <input type="hidden" name="condition" value="search"/>
+                        <input type="text" name="value" placeholder="输入小说关键词" />
                     </div>
                     <div class="btnWrap">
                         <input type="submit" value="搜索" />
@@ -485,19 +486,19 @@
     <div class="user_rt_cont">
         <div class="top_title">
             <strong>小说列表</strong>
-            <a href="#" title="添加新商品" class="fr">添加新商品</a>
+<%--            <a href="#" title="添加新商品" class="fr">添加新商品</a>--%>
         </div>
         <!--条件检索-->
-        <div style="margin:8px 0;">
-            <select class="select">
-                <option>分类</option>
-                <option>小说名</option>
-                <option>作者</option>
-                <option>评价</option>
-            </select>
-            <input type="text" class="textbox textbox_225" placeholder="输入产品货号/关键词" />
-            <input type="button" value="搜索" class="group_btn" />
-        </div>
+<%--        <div style="margin:8px 0;">--%>
+<%--            <select class="select">--%>
+<%--                <option>分类</option>--%>
+<%--                <option>小说名</option>--%>
+<%--                <option>作者</option>--%>
+<%--                <option>评价</option>--%>
+<%--            </select>--%>
+<%--            <input type="text" class="textbox textbox_225" placeholder="输入产品货号/关键词" />--%>
+<%--            <input type="button" value="搜索" class="group_btn" />--%>
+<%--        </div>--%>
         <table class="order_table">
             <thead>
             <tr>

@@ -21,6 +21,24 @@
     <script src="js/jquery.js"></script>
     <script src="js/swiper.min.js"></script>
     <script>
+        function checkAgreement()
+        {
+            if (document.getElementById("readArgee").checked == false)
+            {
+                alert("不同意协议不能注册");
+                document.getElementById("readArgee").focus();
+                return false;
+            }
+            return true;
+        }
+        // function disable()
+        // {
+        //     document.getElementById("regbtn").disabled=true
+        // }
+        // function enable()
+        // {
+        //     document.getElementById("regbtn").disabled=false
+        // }
         $(document).ready(function(){
             $("nav .indexAsideNav").hide();
             $("nav .category").mouseover(function(){
@@ -109,9 +127,10 @@
                 <li id="shangjia">作者</li>
             </ul>
             <div class="searchBox">
-                <form>
+                <form action="<c:url value="/list"/>" method="get">
                     <div class="inputWrap">
-                        <input type="text" placeholder="输入小说关键词"/>
+                        <input type="hidden" name="condition" value="search"/>
+                        <input type="text" name="value" placeholder="输入小说关键词"/>
                     </div>
                     <div class="btnWrap">
                         <input type="submit" value="搜索"/>
@@ -187,7 +206,7 @@
     <div class="lt_img">
         <img src="images/form_bg.jpg"/>
     </div>
-    <form action="/user?_method=register" method="post">
+    <form action="/user?_method=register" method="post" onsubmit="return checkAgreement();">
         <div class="rt_form">
             <h2>会员注册</h2>
             <ul>
@@ -207,7 +226,7 @@
                 <span id="repwdmsg"></span>
 
                 <li class="link_li">
-                    <label><input type="checkbox" name="agree"/><a>阅读注册协议</a></label>
+                    <label><input type="checkbox" name="agree" id="readArgee"/><a>阅读注册协议</a></label>
                     <a href="login.jsp" title="登录账号" class="fr">已有账号，立即登录？</a>
                 </li>
                 <li class="link_li">

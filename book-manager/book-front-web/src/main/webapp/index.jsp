@@ -346,10 +346,10 @@ $()
         </ul>
         <!--bestBrand-->
         <div class="idxBrandLi">
-            <a href="bookDetails.jsp"><img src="upload/brandLogo01.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo02.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo03.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo04.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo01.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo02.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo03.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo04.jpg"/></a>
         </div>
     </div>
 </section>
