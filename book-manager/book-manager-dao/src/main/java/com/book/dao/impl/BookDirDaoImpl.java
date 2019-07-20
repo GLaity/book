@@ -49,9 +49,9 @@ public class BookDirDaoImpl implements IBookDirDao {
 
     @Override
     public void setBookDir(int BookId) throws IOException {
-//        String path = readTargetBook(BookId) + "/";
+       String path = readTargetBook(BookId) + "/";
 //        String path = "D:\\Download\\万古天" + "\\";
-        String path = "../books/"+ BookId + "/";
+//        String path = "../books/"+ BookId + "/";
         String writePath = path + "dir.txt";
         File writeFile = new File(writePath);
         if (!writeFile.exists()){
