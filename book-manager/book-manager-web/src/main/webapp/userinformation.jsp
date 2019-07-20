@@ -106,13 +106,13 @@
                                 <th scope="col" class="text-center">用户姓名</th>
                                 <th scope="col" class="text-center">手机号</th>
                                 <th scope="col"class="text-center">邮箱</th>
-<%--                                <th scope="col"class="text-center">账户余额</th>--%>
+                                <th scope="col"class="text-center">账户余额</th>
                                 <th scope="col"class="text-center">注册日期</th>
                                 <th scope="col">&nbsp;</th>
                             </tr>
                             </thead>
                             <tbody id="user_tables">
-                            <c:forEach items="${userList}" var="user_account">
+                            <c:forEach items="${userList}" var="user_account" varStatus="vs">
                                 <tr id="user">
                                     <th scope="row">
                                         <input type="checkbox" aria-label="Checkbox">
@@ -126,9 +126,9 @@
                                     <td class="text-center">
                                         <c:out value="${user_account.getUser_Email()}"></c:out>
                                     </td>
-<%--                                    <td class="text-center">--%>
-<%--                                        <c:out value="${user_account.()}"></c:out>--%>
-<%--                                    </td>--%>
+                                    <td class="text-center">
+                                        <c:out value="${money[vs.count-1]}"></c:out>
+                                    </td>
                                     <td class="text-center">
                                         <c:out value="${ user_account.getUser_Date()}"></c:out>
                                     </td>

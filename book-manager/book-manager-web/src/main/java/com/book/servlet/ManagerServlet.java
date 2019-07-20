@@ -24,7 +24,8 @@ public class ManagerServlet extends HttpServlet {
                 System.out.println(user_account);
             }
             req.setAttribute("userList",users);
-            req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
+        //req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
+        req.getRequestDispatcher("read.do?_method=getList").forward(req,resp);
         }
         else {
             resp.sendRedirect("login.jsp");

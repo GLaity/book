@@ -111,8 +111,7 @@
                                 <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="type" name="type">
                                     <option value="1" selected>玄幻</option>
                                     <option value="2" >武侠</option>
-                                    <option value="3" >都市</option>
-                                    <option value="4" >军事</option>
+                                    <option value="3" >都市</option>                                    <option value="4" >军事</option>
                                     <option value="5" >历史</option>
                                     <option value="6" >游戏</option>
                                     <option value="7" >悬疑</option>

@@ -93,19 +93,23 @@
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                             <thead>
                             <tr class="tm-bg-gray">
+                                <th scope="col">评论用户</th>
                                 <th scope="col">评论内容</th>
+                                <th scope="col">小说名</th>
                                 <th scope="col">评论时间</th>
                                 <th scope="col">评论星级</th>
                                 <th scope="col" class="text-center">操作</th>
                             </tr>
                             </thead>
 
-                            <c:forEach items="${advices}" var="advice">
+                            <c:forEach items="${advices}" var="advice" varStatus="vs" >
                                 <tbody>
                                 <tr>
+                                    <td class="tm-product-name">${username[vs.count-1]}</td>
                                     <td class="tm-product-name">${advice.getAdvice_Text()}</td>
-                                    <td class="text-center">${advice.getAdvice_Date()}</td>
-                                    <td class="text-center">${advice.getAdvice_Level()}</td>
+                                    <td class="tm-product-name">${bookTitles[vs.count-1]}</td>
+                                    <td class="tm-product-name">${advice.getAdvice_Date()}</td>
+                                    <td class="tm-product-name">${advice.getAdvice_Level()}</td>
                                     <td class="text-center"><a href="advice.do?adviceId=${advice.getAdvice_Id()}&_method=delete">删除</a></td>
                                 </tr>
                                 </tbody>

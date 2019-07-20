@@ -1,13 +1,7 @@
 package com.book.service.impl;
 
-import com.book.dao.IBookDao;
-import com.book.dao.ICountAccountDao;
-import com.book.dao.IUserCostDao;
-import com.book.dao.IUserDao;
-import com.book.dao.impl.BookDaoImpl;
-import com.book.dao.impl.CountAccountImpl;
-import com.book.dao.impl.UserCostDaoImpl;
-import com.book.dao.impl.UserDaoImpl;
+import com.book.dao.*;
+import com.book.dao.impl.*;
 import com.book.pojo.Book_Basic;
 import com.book.pojo.Count_Account;
 import com.book.pojo.User_Account;
@@ -59,9 +53,15 @@ public class IUserServiceImpl implements IUserService {
     @Override
     public void initUser(User_Account user) {
        IUserDao dao =new UserDaoImpl();
+       IVipDao vipDao = new VipDaoImpl();
        dao.insertUser(user);
        ICountAccountDao countDao = new CountAccountImpl();
        countDao.insertUserCount(user.getUser_Id());
+       Vip_Account vipAccount = new Vip_Account();
+       vipAccount.setUser_Id(user.getUser_Id());
+       vipAccount.setVip_Id(1);
+       vipAccount.setVip_Balance(0);
+       vipDao.insertVipAccount(vipAccount);
     }
     public User_Account loginService(String username, String password) {
         IUserDao userdao = new UserDaoImpl();

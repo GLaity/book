@@ -63,9 +63,9 @@ public class BookControlServlet extends HttpServlet {
 //        book.setBook_Createdate(date(NOW()));
         String booksrc = request.getParameter("booksrc");
         String fileinput = request.getParameter("fileinput");
-        System.out.println(booksrc);
-        System.out.println(fileinput);
-        System.out.println(book);
+//        System.out.println(booksrc);
+//        System.out.println(fileinput);
+//        System.out.println(book);
 //        String bookPath = "D:\\Download\\" + book.getBook_Title();
         bookService.insertNewBook(book,fileinput);
         List<Book_Basic> books = bookService.findBookBasicAll();

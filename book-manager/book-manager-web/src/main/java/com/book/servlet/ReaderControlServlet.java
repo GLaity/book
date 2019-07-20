@@ -1,6 +1,7 @@
 package com.book.servlet;
 
 import com.book.pojo.User_Account;
+import com.book.pojo.Vip_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 @WebServlet("/read.do")
 public class ReaderControlServlet extends HttpServlet {
@@ -40,6 +42,13 @@ public class ReaderControlServlet extends HttpServlet {
 
     private void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User_Account> users = iUserService.findAll();
+        IUserService userService = new IUserServiceImpl();
+        List<Double> money = new ArrayList<>();
+        for(User_Account user : users){
+            money.add(userService.findBalance(user.getUser_Id()).getVip_Balance());
+            System.out.println(money);
+        }
+        req.setAttribute("money",money);
         req.setAttribute("userList",users);
         req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
     }

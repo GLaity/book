@@ -51,9 +51,9 @@
                                    aria-expanded="false">信息统计
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="bookRank?_method=visit">小说浏览统计</a>
-                                    <a class="dropdown-item" href="bookRank?_method=collect">小说收藏统计</a>
-                                    <a class="dropdown-item" href="bookRank?_method=bought">小说购买统计</a>
+                                    <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
+                                    <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
+                                    <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
                                 </div>
                             </li>
                             <li class="nav-item ">
@@ -127,12 +127,5 @@
 <!-- https://jquery.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script>
-    $(function () {
-        $('.tm-product-name').on('click', function () {
-            window.location.href = "edit-product.html";
-        });
-    })
-</script>
 </body>
 </html>
