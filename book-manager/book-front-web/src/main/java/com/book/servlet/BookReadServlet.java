@@ -89,6 +89,8 @@ public class BookReadServlet extends HttpServlet {
             if (flag || chapterId <= 5){
                 userService.modifyTotalVisit(user.getUser_Id());
                 bookVisitedList.add(bookBasic);
+
+                bookService.modifyVisitedById(bookId);
                 session.setAttribute("bookVisitedList",bookVisitedList);
                 req.setAttribute("bookBasic",bookBasic);
                 req.setAttribute("bookId",bookId);
