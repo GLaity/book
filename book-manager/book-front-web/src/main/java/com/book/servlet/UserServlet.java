@@ -27,6 +27,8 @@ public class UserServlet extends HttpServlet {
             case "register":
                 register(req,resp);
                 break;
+            case "quit":
+                quit(req,resp);
         }
     }
 
@@ -40,11 +42,12 @@ public class UserServlet extends HttpServlet {
         HttpSession session = req.getSession();
         IUserService userService = new IUserServiceImpl();
         User_Account user = userService.loginService(username,password);
-        Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
-        Vip_Account userVip = userService.findBalance(user.getUser_Id());
+
         if(user==null){
             resp.sendRedirect("login.jsp");
         }else{
+            Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
+            Vip_Account userVip = userService.findBalance(user.getUser_Id());
             session.setAttribute("user",user);
             session.setAttribute("countAccount",countAccount);
             session.setAttribute("userVip",userVip);
@@ -61,5 +64,12 @@ public class UserServlet extends HttpServlet {
         user.setUser_Password(password);
         userService.addUser(user);
         resp.sendRedirect("/login.jsp");
+    }
+    public void quit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        HttpSession session = req.getSession();
+        session.removeAttribute("user");
+        session.removeAttribute("countAccount");
+        session.removeAttribute("userVip");
+        resp.sendRedirect("/");
     }
 }

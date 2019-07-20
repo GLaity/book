@@ -48,6 +48,7 @@
             <c:if test="${!empty(sessionScope.user)}">
                 <ul class="topLtNav">
                     <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+
                 </ul>
             </c:if>
             <!--topRightNav-->

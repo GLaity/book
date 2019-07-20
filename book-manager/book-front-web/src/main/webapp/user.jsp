@@ -127,7 +127,7 @@
                             "         <td><a href=\"/book?bookId="+json[i].bookId+"\" target=\"_blank\">"+json[i].bookName+"</a></td>\n" +
                             "        <td class=\"center\"><span class=\"rmb_icon\">"+json[i].WriterName+"</span></td>\n" +
                             "        <td class=\"center\"><b>"+json[i].costDate+"</b></td>\n" +
-                            "       <td class=\"center\"><strong class=\"rmb_icon\">"+json[i].costMoney+"</strong></td>\n" +
+                            "       <td class=\"center\"><strong class=\"rmb_icon\">￥"+json[i].costMoney+"</strong></td>\n" +
                             "       <td class=\"center\"><span>支付成功</span></td>\n" +
                             "</tr>");
                     }
@@ -200,6 +200,7 @@
             <c:if test="${!empty(sessionScope.user)}">
                 <ul class="topLtNav">
                     <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                    <li><a href="/user?_method=quit" >退出登录</a></li>
                 </ul>
             </c:if>
             <!--topRightNav-->

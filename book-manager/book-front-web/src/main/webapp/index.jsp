@@ -47,7 +47,8 @@
             </c:if>
             <c:if test="${!empty(sessionScope.user)}">
                 <ul class="topLtNav">
-                    <li><a href="#" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                    <li><a href="/personal" class="obviousText">您好！<c:out value="${sessionScope.user.getUser_Username()}"></c:out></a></li>
+                    <li><a href="/user?_method=quit" >退出登录</a></li>
                 </ul>
             </c:if>
             <!--topRightNav-->
@@ -359,9 +360,9 @@ $()
             <a href="#">女生频道</a>
         </strong>
         <span class="classLi">
-   <a href="type.jsp">言情</a>
-   <a href="type.jsp">青春</a>
-   <a href="type.jsp">都市</a>
+   <a href="/booktype?_method=type&typeId=9">言情</a>
+   <a href="/booktype?_method=type&typeId=10">青春</a>
+   <a href="/booktype?_method=type&typeId=3">都市</a>
   </span>
     </h2>
     <div class="ltArea">
