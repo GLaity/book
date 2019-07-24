@@ -138,17 +138,17 @@ $()
         <div id="slide">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="/book?bookId=1">
+                    <a href="/book?bookId=23">
                         <img src="upload/slide01.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="/book?bookId=1">
+                    <a href="/book?bookId=25">
                         <img src="upload/slide02.jpg"/>
                     </a>
                 </div>
                 <div class="swiper-slide">
-                    <a href="/book?bookId=1">
+                    <a href="/book?bookId=24">
                         <img src="upload/slide03.jpg"/>
                     </a>
                 </div>
@@ -165,7 +165,7 @@ $()
         <dl class="bestShop">
             <dt>
                 <strong>优秀小说推荐</strong>
-                <a href="#" class="fr">更多</a>
+<%--                <a href="#" class="fr">更多</a>--%>
             </dt>
             <dd>
                 <a href="/book?bookId=2">
@@ -346,10 +346,10 @@ $()
         </ul>
         <!--bestBrand-->
         <div class="idxBrandLi">
-            <a href="bookDetails.jsp"><img src="upload/brandLogo01.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo02.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo03.jpg"/></a>
-            <a href="bookDetails.jsp"><img src="upload/brandLogo04.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo01.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo02.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo03.jpg"/></a>
+            <a href="#"><img src="upload/brandLogo04.jpg"/></a>
         </div>
     </div>
 </section>

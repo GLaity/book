@@ -18,8 +18,14 @@ public class IUserServiceImpl implements IUserService {
         IUserDao dao = new UserDaoImpl();
         dao.insertUserAccount(user);
         ICountAccountDao countDao = new CountAccountImpl();
+        IVipDao vipDao = new VipDaoImpl();
         countDao.insertUserCount(user.getUser_Id());
         dao.insertUserVip(user.getUser_Id());
+        Vip_Account vipAccount = new Vip_Account();
+        vipAccount.setUser_Id(user.getUser_Id());
+        vipAccount.setVip_Id(1);
+        vipAccount.setVip_Balance(0);
+        vipDao.insertVipAccount(vipAccount);
     }
 
     public void modifyUser(User_Account user) {
