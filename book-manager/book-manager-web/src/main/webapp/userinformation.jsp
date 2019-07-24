@@ -102,7 +102,7 @@
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
                             <thead>
                             <tr class="tm-bg-gray">
-                                <                                   <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>
+<%--                                <                                   <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>--%>
                                 <th scope="col" class="text-center">用户姓名</th>
                                 <th scope="col" class="text-center">手机号</th>
                                 <th scope="col"class="text-center">邮箱</th>
@@ -114,9 +114,6 @@
                             <tbody id="user_tables">
                             <c:forEach items="${userList}" var="user_account" varStatus="vs">
                                 <tr id="user">
-                                    <th scope="row">
-                                        <input type="checkbox" aria-label="Checkbox">
-                                    </th>
                                     <td class="text-center">
                                         <c:out value="${user_account.getUser_Username()}"></c:out>
                                     </td>

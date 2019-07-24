@@ -51,9 +51,9 @@
 
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a href="bookRank?_method=visit" class="btn btn-small btn-primary">浏览量排行</a>
-                                    <a href="bookRank?_method=collect" class="btn btn-small btn-primary">收藏量排行</a>
-                                    <a href="bookRank?_method=bought" class="btn btn-small btn-primary">销量排行</a>
+                                    <a href="bookRank?_method=visit" class="dropdown-item">浏览量排行</a>
+                                    <a href="bookRank?_method=collect" class="dropdown-item">收藏量排行</a>
+                                    <a href="bookRank?_method=bought" class="dropdown-item">销量排行</a>
                                 </div>
                             </li>
                             <li class="nav-item ">
