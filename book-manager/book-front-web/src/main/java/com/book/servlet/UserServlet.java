@@ -39,14 +39,14 @@ public class UserServlet extends HttpServlet {
         HttpSession session = req.getSession();
         IUserService userService = new IUserServiceImpl();
         User_Account user = userService.loginService(username,password);
-        Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
+       // Count_Account countAccount = userService.findUserCountById(user.getUser_Id());
         if(user==null){
             System.out.println("登陆失败");
             resp.sendRedirect("login.jsp");
         }else{
             System.out.println("登录成功");
             session.setAttribute("user",user);
-            session.setAttribute("countAccount",countAccount);
+           // session.setAttribute("countAccount",countAccount);
             resp.sendRedirect("index.jsp");
         }
 

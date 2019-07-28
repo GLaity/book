@@ -1,11 +1,14 @@
 package com.book.dao.impl;
 
 import com.book.dao.IUserDao;
+import com.book.pojo.Page;
 import com.book.pojo.User_Account;
 import com.book.util.JDBCUtils;
+import com.book.util.PageUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -69,7 +72,7 @@ public class UserDaoImpl implements IUserDao {
     //查询所有用户
     public List<User_Account> selectUserAccount() {
         List<User_Account> userList= null;
-        String sql = "select * from `user_account`";
+        String sql = "select * from `user_account `";
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         try {
             userList  = qr.query(sql,new BeanListHandler<User_Account>(User_Account.class));
@@ -77,7 +80,10 @@ public class UserDaoImpl implements IUserDao {
             e.printStackTrace();
         }
         return userList;
-    }
+    }//分页查询
+//    public void getAllUser(PageUtils<User_Account> pageUtils){
+//        int total
+//    }
         //删除用户
     public void deleteUserAccountId(int id) {
         String sql = "delete from `user_account` where user_id=?";
@@ -87,5 +93,16 @@ public class UserDaoImpl implements IUserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public int getAllCount() {
+        String sql = "select count(*) from `user_account `";
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        try {
+            Long count = qr.query(sql,new ScalarHandler<Long>());
+            return count.intValue();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

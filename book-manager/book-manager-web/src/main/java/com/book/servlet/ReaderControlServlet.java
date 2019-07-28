@@ -1,13 +1,11 @@
 package com.book.servlet;
 
 import com.alibaba.fastjson.JSON;
-import com.book.pojo.Advice;
 import com.book.pojo.User_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
 import com.book.service.impl.IUserServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,11 +53,21 @@ public class ReaderControlServlet extends HttpServlet {
 //        }
 
     private void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User_Account> users = iUserService.findAll();
+        PrintWriter out =resp.getWriter();
+        List<User_Account> users =iUserService.findAll();
+//        int currPage =Integer.valueOf(req.getParameter("currentPage"));
+//        if (currPage==0){
+//            currPage=1;
+//        }
+//        PageUtils <User_Account> pageUtils=new PageUtils();
+//        pageUtils.setCurrentPage(currPage);
+//        resp.setContentType("application/json");
+//        resp.setCharacterEncoding("UTF-8");
+//        String json =JSON.toJSONString(users);
+//        out.print(json);
         req.setAttribute("userList",users);
         req.getRequestDispatcher("userinformation.jsp").forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -85,6 +93,7 @@ public class ReaderControlServlet extends HttpServlet {
         User_Account user_account =iUserService.findUserById(userId);
         user_account.setUser_Username(req.getParameter("userName"));
         user_account.setUser_Password(req.getParameter("userPassword"));
+        user_account.setUser_Date(req.getParameter("userDate"));
         user_account.setUser_Tel(req.getParameter("userTel"));
         user_account.setUser_Email(req.getParameter("useEmail"));
         iUserService.modifyUser(user_account);

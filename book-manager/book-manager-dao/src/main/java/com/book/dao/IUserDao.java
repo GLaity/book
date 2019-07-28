@@ -1,7 +1,9 @@
 package com.book.dao;
 
+import com.book.pojo.Page;
 import com.book.pojo.User_Account;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IUserDao {
@@ -18,5 +20,6 @@ public interface IUserDao {
     public List<User_Account> selectUserAccount();
     //删除一条记录
     public void deleteUserAccountId(int id);
-    //查询
+//    //查询全部数据数量
+//    public int getAllCount();
 }

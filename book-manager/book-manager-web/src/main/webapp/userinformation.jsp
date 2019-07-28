@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/tooplate.css">
+    <link rel="stylesheet" href="css/layui.css">
 </head>
 <%--<script>--%>
 <%--    $(function () {--%>
@@ -101,181 +102,142 @@
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-12">
-                                <thead>
-                                <tr class="tm-bg-gray">
-<                                   <th scope="col"><input type="checkbox" aria-label="Checkbox" id="check_allUser"></th>
-                                    <th scope="col" class="text-center">用户姓名</th>
-                                    <th scope="col" class="text-center">手机号</th>
-                                    <th scope="col">邮箱</th>
-                                    <th scope="col">注册日期</th>
-                                    <th scope="col">&nbsp;</th>
-                                </tr>
-                                </thead>
-                                <tbody id="user_tables">
-                                <c:forEach items="${userList}" var="user_account">
-                                    <tr id="user">
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="text-center">
-                                            <c:out value="${user_account.getUser_Username()}"></c:out>
-                                        </td>
-                                        <td class="text-center">
-                                            <c:out value="${user_account.getUser_Tel()}"></c:out>
-                                        </td>
-                                        <td class="text-center">
-                                            <c:out value="${user_account.getUser_Email()}"></c:out>
-                                        </td>
-                                        <td class="text-center">
-                                            <c:out value="${ user_account.getUser_Date()}"></c:out>
-                                        </td>
-                                        <td><a href="/read.do?userId=${user_account.getUser_Id()}&_method=remove"><i class="fas fa-trash-alt tm-trash-icon"></i></a></td>
-                                        <td><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mymodal">编辑</button></td>
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            用户编辑
-                                                        </h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            &times;
-                                                        </button>
-                                                    </div>
-                                                        <div class="modal-body">
-                                                            <div class="form-group" id="myFormId">
-                                                                <div class="input-group mb-3">
-                                                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
-                                                                    </label>
-                                                                    <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Username()}"></c:out>">
-                                                                </div>
-                                                            <div class="input-group mb-3">
-                                                                <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
-                                                                <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value="<c:out value="${user_account.getUser_Tel()}"></c:out>">
-                                                            </div>
-                                                            <div class="input-group mb-3">
-                                                                <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
-                                                                </label>
-                                                                <input type="date" id="userDate" name="userDate" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="user_account.getUser_Date()" >
-                                                            </div>
-                                                            <div class="input-group mb-3">
-                                                                <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
-                                                                <input  placeholder="邮箱" id="userEmail" name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Email()}"></c:out>">
-                                                            </div>
-                                                            <div class="input-group mb-3">
-                                                                <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">密码</label>
-                                                                <input placeholder="密码" id="userPassword" name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value=" <c:out value="${user_account.getUser_Password()}"></c:out>">
-                                                            </div>
+                                                            <thead>
+                                                            <tr class="tm-bg-gray">
+                                                                <th scope="col" class="text-center">用户姓名</th>
+                                                                <th scope="col" class="text-center">手机号</th>
+                                                                <th scope="col">邮箱</th>
+                                                                <th scope="col">注册日期</th>
+                                                                <th scope="col">&nbsp;</th>
+                                                            </tr>
+                                                            </thead>
+                            <tbody id="user_tables">
+                            <c:forEach items="${userList}" var="user_account" varStatus="vs">
+                                <tr id="user">
+                                    <td class="text-center">
+                                        <c:out value="${user_account.getUser_Username()}"></c:out>
+                                    </td>
+                                    <td class="text-center">
+                                        <c:out value="${user_account.getUser_Tel()}"></c:out>
+                                    </td>
+                                    <td class="text-center">
+                                        <c:out value="${user_account.getUser_Email()}"></c:out>
+                                    </td>
+                                    <td class="text-center">
+                                        <c:out value="${money[vs.count-1]}"></c:out>
+                                    </td>
+                                    <td class="text-center">
+                                        <c:out value="${ user_account.getUser_Date()}"></c:out>
+                                    </td>
+                                    <td><button id="delet" onclick="deleteFunction()"><a id="deleta" href="/read.do?userId=${user_account.getUser_Id()}&_method=remove"><i class="fas fa-trash-alt tm-trash-icon"></i></a></button></td>
+                                    <td><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mymodal">编辑</button></td>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        用户编辑
+                                                    </h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        &times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/read.do?userId=${user_account.getUser_Id()}&_method=update" method="post">
+                                                    <div class="form-group" id="myFormId">
+                                                        <div class="input-group mb-3">
+                                                            <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">用户名：
+                                                            </label>
+                                                            <input placeholder="用户名" id="userName" name="userName" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Username()}"></c:out>">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">手机号：</label>
+                                                            <input  placeholder="手机号"  id="userTel" name="userTel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value="<c:out value="${user_account.getUser_Tel()}"></c:out>">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
+                                                            </label>
+                                                            <input type="date" id="userDate" name="userDate" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="<c:out value="${ user_account.getUser_Date()}"></c:out>">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>
+                                                            <input  placeholder="邮箱" id="userEmail" name="userEmail" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value=" <c:out value="${user_account.getUser_Email()}"></c:out>">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">密码</label>
+                                                            <input placeholder="密码" id="userPassword" name="userPassword" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"value=" <c:out value="${user_account.getUser_Password()}"></c:out>">
                                                         </div>
                                                     </div>
-<%--                                                        <sys:message content="${message}"/>--%>
-<%--                                                            <c:if test="${not empty message}">--%>
-<%--                                                                <script type="text/javascript">$("#messageBox").show()</script>--%>
-<%--                                                            </c:if>--%>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="fn_close">关闭</button>
-                                                        <button type="button" class="btn btn-white" data-dismiss="modal" onclick="fn_user_add">保存</button>
-                                                    </div>
+                                                    <%--                                                        <sys:message content="${message}"/>--%>
+                                                    <%--                                                            <c:if test="${not empty message}">--%>
+                                                    <%--                                                                <script type="text/javascript">$("#messageBox").show()</script>--%>
+                                                    <%--                                                            </c:if>--%>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-white" data-dismiss="modal" >关闭</button>
+                                                    <button type="submit" class="btn btn-white" >保存</button>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                                </table>
+                                    </div>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
-
-<%--                    <div class="tm-table-actions-col">--%>
-<%--                        <a class="btn " href="#" role="button">上一页</a>--%>
-<%--                        <nav aria-label="Page navigation" class="d-inline-block">--%>
-<%--                            <ul class="pagination tm-pagination">--%>
-<%--                                <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
-<%--                                <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
-<%--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
-<%--                                <li class="page-item">--%>
-<%--                                    <span class="tm-dots d-block">...</span>--%>
-<%--                                </li>--%>
-<%--                                <li class="page-item"><a class="page-link" href="#">13</a></li>--%>
-<%--                                <li class="page-item"><a class="page-link" href="#">14</a></li>--%>
-<%--                                <a class="btn " href="#" role="button">下一页</a>--%>
-<%--                            </ul>--%>
-<%--                        </nav>--%>
-
-<%--                    </div>--%>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/layui.js"></script>
 <!-- https://jquery.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
+<%--<script type="text/javascript" src="js/nicePage.js"></script>--%>
 <!-- https://getbootstrap.com/ -->
 <script type="text/javascript">
-<%--var flag=0;//全局变量用来判断是否选中复选框，默认没有选中--%>
-<%--var delId="";//要删除的用户id数组--%>
-<%--var delIds = "";--%>
-<%--var size = 0;--%>
-<%--var totalCount = 0;--%>
-<%--var currentPage = 1;  // 默认当前页面为1--%>
-<%--var startPage=0;--%>
-<%--var endPage = 0;--%>
-<%--var user=${"#myFormId input"};--%>
-<%--function fn_user_add(){--%>
-<%--    $.ajax({--%>
-<%--        url:"read.do?_method=update",--%>
-<%--        type:"post",--%>
-<%--        dataType:"json",--%>
-<%--        data:user.serialize(),--%>
-<%--        success:function (data) {--%>
-<%--            var user = JSON.parse(data);--%>
-<%--            $("#user_tables").append(--%>
-<%--                ""--%>
-<%--            )--%>
-<%--        },--%>
-<%--        error:function () {--%>
-<%--            alert(失败);--%>
-<%--        }--%>
-<%--    })--%>
-<%--}--%>
-<%--function fn_user_list() {--%>
-<%--    $.ajax({--%>
-<%--        url: "read.do?_method=getList",--%>
-<%--        type: "post",--%>
-<%--        dataType: "json",--%>
-<%--        success:function (data) {--%>
-<%--        for (var i=0;i<data.length;i++){--%>
-<%--            var str =JSON.parse(data);--%>
-<%--            $("<tr id=\"user\">\n") .append("                                        <th scope=\"row\">\n" +--%>
-<%--                "                                            <input type=\"checkbox\" aria-label=\"Checkbox\">\n" +--%>
-<%--                "                                        </th>\n" +--%>
-<%--                "                                        <td class=\"text-center\">"+data.User_Username+"</td>\n" +--%>
-<%--                "                                        <td class=\"text-center\">"+data.User_Tel+"</td>\n" +--%>
-<%--                "                                        <td class=\"text-center\">"+data.User_Email+"</td>\n" +--%>
-<%--                "                                        <td class=\"text-center\">"+data.User_Date+"</td>\n" +--%>
-<%--                "                                        <td><a href=\"/read.do?userId=${user_account.getUser_Id()}&_method=remove\"><i class=\"fas fa-trash-alt tm-trash-icon\"></i></a></td>\n" +--%>
-<%--                "                                        <td><button type=\"button\" class=\"btn btn-default btn-sm\" data-toggle=\"modal\" data-target=\"#mymodal\">编辑</button></td>\n" +--%>
-<%--                "                                        <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+" </tr>")--%>
-<%--            }--%>
-<%--        }--%>
-<%--    })--%>
-<%--}--%>
-    $('.modal-body').on('hidden.bs.modal', '.modal', function () {
-    $(this).removeData('bs.modal');
-});
+    function deleteFunction(){
+        var r =confirm("你确定要删除吗？");
+        alert(r);
+        if (r==true) {
+            var deleta=document.getElementById("deleta");
+            deleta.href.replace("/read.do?userId=${user_account.getUser_Id()}&_method=remove");
+        }
 
-<%--//单选和全选--%>
-<%--$("#check_allUser").click(function () {--%>
-<%--    if (flag==0){--%>
-<%--        alert(xxxx);--%>
-<%--        $("user_tables input[type='checkbox']").prop("checked",true);--%>
-<%--        flag=1;--%>
-<%--    }else {--%>
-<%--        alert(yyyyy);--%>
-<%--        $("user_tables input[type='checkbox']").prop("checked",false);--%>
-<%--        flag=0;--%>
-<%--    }--%>
-<%--})--%>
+    }
+    $("#myModal").on("hidden.bs.modal",function () {
+        $(this).removeData("bs.modal")
+    })
+//     $('.modal-body').on('hidden.bs.modal', '.modal', function () {
+//     $(this).removeData('bs.modal');
+// });
+//$(function(){
+//    $.ajax({
+//        url:"read.do?_method=getList",
+//        type:"post",
+//        success:function(data) {
+//            var json =JSON.parse(data);
+//            $("#user_tables").empty();
+//            for (var i=0;i<json.length;i++){
+//                $("#user_tables").append("<td class=\"text-center\">--%>\n" +
+//                    "    json[i].user_Username    \n " +
+//                    "     </td>\n" +
+//                    "     <td class=\"text-center\">\n" +
+//                    "     json[i].user_Tel        \n                              " +
+//                    "        </td>\n" +
+//                    "        <td class=\"text-center\">\n" +
+//                    "        json[i].user_Email                                   \n" +
+//                    "        </td>\n" +
+//                    "            <td class=\"text-center\">\n" +
+//                    "          json[i].user_Date                        \n" +
+//                    "              </td>\n" +
+//                    "           <td><a href=\"/read.do?userId= json[i].user_Id&_method=remove\"><i class=\"fas fa-trash-alt tm-trash-icon\"></i></a></td>\n" +
+//                    "                 <td><button type=\"button\" class=\"btn btn-default btn-sm\" data-toggle=\"modal\" data-target=\"#mymodal\">编辑</button></td>")
+//            }
+//        }
+//    })
+//})
 </script>
 </body>
 </html>
