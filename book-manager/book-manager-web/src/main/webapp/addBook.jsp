@@ -88,7 +88,7 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form action="book.do?_method=saveadd" method="post" class="tm-edit-product-form">
+                        <form action="book.do?_method=saveadd" method="post" class="tm-edit-product-form" enctype="multipart/form-data">
                             <div class="input-group mb-3">
                                 <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">书名</label>
                                 <input id="name" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
@@ -124,7 +124,7 @@
                             <div class="input-group mb-3">
                                 <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">上传书籍:
                                 </label>
-                                <input type="file" id="booksrc" name="booksrc" class="col-xl-8 col-lg-12 col-md-12 col-sm-12" onchange="setBlogrollImageName(this)" txlFillIn="isNotNull" >
+                                <input type="file" id="pic" name="pic" value=""  class="col-xl-8 col-lg-12 col-md-12 col-sm-12" onchange="setBlogrollImageName(this)" txlFillIn="isNotNull" >
                             </div>
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">

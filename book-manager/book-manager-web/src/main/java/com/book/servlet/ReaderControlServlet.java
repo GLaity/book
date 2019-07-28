@@ -1,7 +1,6 @@
 package com.book.servlet;
 
 import com.book.pojo.User_Account;
-import com.book.pojo.Vip_Account;
 import com.book.service.IAdviceService;
 import com.book.service.IUserService;
 import com.book.service.impl.AdviceServiceImpl;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 @WebServlet("/read.do")
@@ -24,21 +22,21 @@ public class ReaderControlServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String method =req.getParameter("_method");
-                    switch (method){
-                        case "add":
-                            add(req,resp);
-                            break;
-                        case "update":
-                            update(req, resp);
-                            break;
-                        case "getList":
-                            execute(req, resp);
-                            break;
-                        case "remove":
-                            remove(req, resp);
-                            break;
-                    }
-                }
+        switch (method){
+            case "add":
+                add(req,resp);
+                break;
+            case "update":
+                update(req, resp);
+                break;
+            case "getList":
+                execute(req, resp);
+                break;
+            case "remove":
+                remove(req, resp);
+                break;
+        }
+    }
 
     private void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User_Account> users = iUserService.findAll();
@@ -69,7 +67,7 @@ public class ReaderControlServlet extends HttpServlet {
         user_account.setUser_Email(userEmail);
         user_account.setUser_Date(userDate);
         user_account.setUser_Tel(userTel);
-       iUserService.initUser(user_account);
+        iUserService.initUser(user_account);
         execute(req, resp);
     }
     private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -89,4 +87,4 @@ public class ReaderControlServlet extends HttpServlet {
         iUserService.removeUser(userId);
         execute(req, resp);
     }
-    }
+}

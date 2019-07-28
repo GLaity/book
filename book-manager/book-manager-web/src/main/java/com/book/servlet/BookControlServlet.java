@@ -3,12 +3,17 @@ package com.book.servlet;
 import com.book.pojo.Book_Basic;
 import com.book.service.IBookService;
 import com.book.service.impl.BookServiceImpl;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -54,6 +59,42 @@ public class BookControlServlet extends HttpServlet {
         request.getRequestDispatcher("addBook.jsp").forward(request,response);
     }
     private void saveadd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DiskFileItemFactory factory = new DiskFileItemFactory(1*1024*1024,(File)this.getServletContext().getAttribute("javax.servlet.context.tempdir"));
+        // 创建servletFileUpload  处理器
+        ServletFileUpload sfu = new ServletFileUpload(factory);
+        // 通过处理器解析请求
+        List<FileItem> list = null;
+        try {
+            list=sfu.parseRequest(request);
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+        // 遍历请求中的属性
+        for(FileItem fi : list){
+            if(!fi.isFormField()){// 判断是否是文件上传项
+                String  fieldName =  fi.getFieldName();
+                System.out.println("fieldName=" + fieldName);//上传组件的name属性
+                String  name =  fi.getName();//文件名称
+                System.out.println("name="+name);
+                String  contentType = fi.getContentType();//文件类型
+                System.out.println("contentType="+contentType);
+                long size = fi.getSize();//文件大小
+                System.out.println("size="+size);
+                // 上传文件
+                //确定文件保存的目录
+                File  file = new File(this.getServletContext().getRealPath("/upload"));
+                if(!file.exists()){
+                    file.mkdirs();
+                }
+                try {
+                    fi.write(new File(file,name));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
         Book_Basic book = new Book_Basic();
         book.setBook_Title(request.getParameter("name"));
         book.setWriter_Id(request.getParameter("author"));
@@ -94,6 +135,7 @@ public class BookControlServlet extends HttpServlet {
         request.getRequestDispatcher("editbook.jsp").forward(request,response);
     }
     private void save(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DiskFileItemFactory factory = new DiskFileItemFactory();
         Book_Basic book = new Book_Basic();
         book.setBook_Id(Integer.valueOf(request.getParameter("bookId")));
         book.setBook_Title(request.getParameter("name"));

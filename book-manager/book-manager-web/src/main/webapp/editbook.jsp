@@ -138,7 +138,9 @@ body class="bg02">
                         <div class="input-group mb-3">
                             <label  class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">上传书籍:
                             </label>
-                            <input type="file" class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                            <input type="file" id="pic" name="pic" value="" class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+<%--                            <input type="file" id="pic" name="pic" value="">--%>
+<%--                            <input type="submit" value="提交">--%>
                         </div>
                         <div class="input-group mb-3">
                             <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
