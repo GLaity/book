@@ -29,6 +29,7 @@ public class UserServlet extends HttpServlet {
                 break;
             case "quit":
                 quit(req,resp);
+                break;
         }
     }
 

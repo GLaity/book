@@ -129,7 +129,8 @@
                                     <td class="text-center">
                                         <c:out value="${ user_account.getUser_Date()}"></c:out>
                                     </td>
-                                    <td><a href="/read.do?userId=${user_account.getUser_Id()}&_method=remove"><i class="fas fa-trash-alt tm-trash-icon"></i></a></td>
+                                    <td><a id="deleta" href="javascript:if(confirm('确实要删除该内容吗?')){location=location='/read.do?userId=${user_account.getUser_Id()}&_method=remove'}" >
+                                        <i class="fas fa-trash-alt tm-trash-icon"></i></a></td>
                                     <td><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mymodal">编辑</button></td>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -156,7 +157,7 @@
                                                         <div class="input-group mb-3">
                                                             <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">注册日期:
                                                             </label>
-                                                            <input type="date" id="userDate" name="userDate" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="user_account.getUser_Date()" >
+                                                            <input type="date" id="userDate" name="userDate" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="<c:out value="${user_account.getUser_Date()}"></c:out>">
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">邮箱：</label>

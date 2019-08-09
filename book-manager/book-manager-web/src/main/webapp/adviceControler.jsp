@@ -110,7 +110,7 @@
                                     <td class="tm-product-name">${bookTitles[vs.count-1]}</td>
                                     <td class="tm-product-name">${advice.getAdvice_Date()}</td>
                                     <td class="tm-product-name">${advice.getAdvice_Level()}</td>
-                                    <td class="text-center"><a href="advice.do?adviceId=${advice.getAdvice_Id()}&_method=delete">删除</a></td>
+                                    <td class="text-center"><a id="deleta" href="javascript:if(confirm('确实要删除该内容吗?')){location=location='advice.do?adviceId=${advice.getAdvice_Id()}&_method=delete'}" >删除</a></td>
                                 </tr>
                                 </tbody>
                             </c:forEach>
